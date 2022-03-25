@@ -19,23 +19,23 @@ public class Prueba : Editor
         #region"Inputs Modificadores"
         gm.nameINP = EditorGUILayout.TextField("Nombre", gm.nameINP);
 
-        gm.vidaINP = (byte)EditorGUILayout.Slider("Vida (+%)", gm.vidaINP, 0, 10);
+        gm.vidaINP = (sbyte)EditorGUILayout.Slider("Vida (+%)", gm.vidaINP, -10, 10);
 
-        gm.dmgINP = (byte)EditorGUILayout.Slider("Daño (+%)", gm.dmgINP, 0, 10);
+        gm.dmgINP = (sbyte)EditorGUILayout.Slider("Daño (+%)", gm.dmgINP, -10, 10);
 
-        gm.multConcienciaINP = (float)EditorGUILayout.Slider("Mult. Conciencia (+Value)", gm.multConcienciaINP, 0f, 10f);
+        gm.multConcienciaINP = (float)EditorGUILayout.Slider("Mult. Conciencia (+Value)", gm.multConcienciaINP, -10f, 10f);
 
-        gm.tgpcINP = (byte)EditorGUILayout.Slider("TGPC (+Value)", gm.tgpcINP, 0, 100);
+        gm.tgpcINP = (sbyte)EditorGUILayout.Slider("TGPC (+Value)", gm.tgpcINP, -100, 100);
 
-        gm.critProbINP = (byte)EditorGUILayout.Slider("Critical Probability (+%)", gm.critProbINP, 0, 100);
+        gm.critProbINP = (sbyte)EditorGUILayout.Slider("Critical Probability (+%)", gm.critProbINP, -100, 100);
 
-        gm.critMultINP = (float)EditorGUILayout.Slider("Mult. Critico (+Value)", gm.critMultINP, 0f, 10f);
+        gm.critMultINP = (float)EditorGUILayout.Slider("Mult. Critico (+Value)", gm.critMultINP, -10f, 10f);
 
-        gm.roboDeVidaINP = (byte)EditorGUILayout.Slider("Robo de Vida (+%)", gm.roboDeVidaINP, 0, 100);
+        gm.roboDeVidaINP = (sbyte)EditorGUILayout.Slider("Robo de Vida (+%)", gm.roboDeVidaINP, -100, 100);
 
-        gm.multVelAtaqueINP = (float)EditorGUILayout.Slider("Mult. Velocidad Ataque (+Value)", gm.multVelAtaqueINP, 0f, 10f);
+        gm.multVelAtaqueINP = (float)EditorGUILayout.Slider("Mult. Velocidad Ataque (+Value)", gm.multVelAtaqueINP, -10f, 10f);
 
-        gm.speedMultINP = (float)EditorGUILayout.Slider("Mult. Velocidad (+Value)", gm.speedMultINP, 0f, 10f);
+        gm.speedMultINP = (float)EditorGUILayout.Slider("Mult. Velocidad (+Value)", gm.speedMultINP, -10f, 10f);
         #endregion
 
         GUILayout.BeginHorizontal();
@@ -77,7 +77,11 @@ public class Prueba : Editor
                 displayMod[i] = EditorGUILayout.TextField(displayMod[i]);
                 if (GUILayout.Button("x"))
                 {
-                    gm.ResetStats(gm.mods.ElementAt(i));
+                    //gm.ResetStats(gm.mods.ElementAt(i));
+                    gm.mods.RemoveAt(i);
+
+                    gm.CheckMods();
+
                     Debug.Log(gm.mods.Count);
                 }
                 GUILayout.EndHorizontal();
@@ -90,7 +94,15 @@ public class Prueba : Editor
 
         if (GUILayout.Button("Do Damage"))
         {
-            gm.DamagePlayer(gm.damageToPlayer);
+            if(gm.playerObject.GetComponent<PlayerController>().blocking)
+            {
+                gm.playerObject.GetComponent<PlayerController>().OnHitBlock();
+                gm.DamagePlayer(gm.damageToPlayer/2);
+            }
+            else
+            {
+                gm.DamagePlayer(gm.damageToPlayer);
+            }
         }
 
         EditorGUILayout.Space();

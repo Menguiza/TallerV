@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public string nameINP;
     [HideInInspector]
-    public byte vidaINP, dmgINP, tgpcINP, critProbINP, roboDeVidaINP;
+    public sbyte vidaINP, dmgINP, tgpcINP, critProbINP, roboDeVidaINP;
     [HideInInspector]
     public float multConcienciaINP, critMultINP, multVelAtaqueINP, speedMultINP;
     [HideInInspector]
@@ -38,17 +38,13 @@ public class GameMaster : MonoBehaviour
     #endregion
 
     //Variables de utilidad
-    byte porcentual = 10;
-    byte hundred = 100;
-    byte one = 1;
-    float suma = 0f;
-    byte zero = 0;
-    byte multTGPC = 1;
+    byte hundred = 100, one = 1, porcentual = 10, zero = 0, fifty = 50, contador = 0, multTGPC = 1, three = 3;
+    float suma = 0f, minConciencia = 0.1f;
 
     [Header("TGPC")]
 
     public float timeToReset = 1f;
-    [HideInInspector]
+
     public bool enableTGPC = true;
 
     //Estados del jugador
@@ -63,11 +59,15 @@ public class GameMaster : MonoBehaviour
         get => multiplicadorConciencia;
         set
         {
-            value = (float)Math.Round(value, 1);
+            value = (float)Math.Round(value, one);
 
-            if(value > 0)
+            if(value > zero)
             {
                 multiplicadorConciencia = value;
+            }
+            else 
+            {
+                multiplicadorConciencia = minConciencia;
             }
         }
     }
@@ -88,18 +88,18 @@ public class GameMaster : MonoBehaviour
         CheckMods();
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         Inconciencia();
     }
 
     #region"Sistema de modificadores y Estadisticas"
 
-    public void AddMod(string name, uint vida, uint dmg, float multConciencia, uint multTGPC, byte critProb, float critMult,
-        byte multRoboPer, float multRobo, float multSpeed)
+    public void AddMod(string name, sbyte vida, sbyte dmg, float multConciencia, sbyte multTGPC, sbyte critProb, float critMult,
+        sbyte multRoboPer, float multRobo, float multSpeed)
     {
 
-        if(mods.Count != 0)
+        if(mods.Count != zero)
         {
             foreach (Mods element in mods)
             {
@@ -109,41 +109,76 @@ public class GameMaster : MonoBehaviour
                 }
             }
 
-            mods.Add(new Mods(name, (byte)vida, (byte)dmg, multConciencia, (byte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
+            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
 
             CheckMods();
         }
-        else if(mods.Count == 0)
+        else if(mods.Count == zero)
         {
-            mods.Add(new Mods(name, (byte)vida, (byte)dmg, multConciencia, (byte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
+            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
 
             CheckMods();
         }
     }
 
-    void CheckMods()
+    public void CheckMods()
     {
-        if(mods.Count !=0)
+        float maxLifeResult = maxLife;
+        float dmgResult = dmg;
+        float multConcienciaResult = one;
+        float tgpcResult = one;
+        float critProbResult = zero;
+        float critMultResult = three;
+        float roboVidaResult = zero;
+        float multVelAtaque = one;
+        float speedMultResult = one;
+
+        uint maxOld = player.MaxLife;
+
+        if(mods.Count != zero)
         {
             foreach (Mods element in mods)
             {
-                if(element.Utilizado == false)
-                {
-                    uint maxOld = player.MaxLife;
-                    player.Damage = player.Damage + (uint)Mathf.Round((dmg * (element.MultDmg * porcentual)) / hundred);
-                    player.MaxLife = player.MaxLife + (uint)Mathf.Round((maxLife * (element.MultVidaMax * porcentual)) / hundred);
-                    MultiplicadorConciencia += element.MultConciencia;
-                    player.TGPC += element.MultTGPC;
-                    player.CritProb += element.MultCritProb;
-                    player.CritMult += element.MultCrit;
-                    player.RoboVida += element.MultRoboPer;
-                    player.MultVelAtaque += element.MultVelAtaque;
-                    player.SpeedMult += element.MultSpeed;
-                    element.Utilizado = true;
-                    CorrectLife(maxOld, player.MaxLife);
-                }
+                maxLifeResult += Mathf.Round((maxLife * (element.MultVidaMax * porcentual)) / hundred);
+
+                dmgResult += Mathf.Round((dmg * (element.MultDmg * porcentual)) / hundred);
+
+                multConcienciaResult += element.MultConciencia;
+
+                tgpcResult += element.MultTGPC;
+
+                critProbResult += element.MultCritProb;
+
+                critMultResult += element.MultCrit;
+
+                roboVidaResult += element.MultRoboPer;
+
+                multVelAtaque += element.MultVelAtaque;
+
+                speedMultResult += element.MultSpeed;
             }
+
         }
+
+        player.MaxLife = (uint)MathF.Max(one, maxLifeResult);
+
+        CorrectLife(maxOld, player.MaxLife);
+
+        player.Damage = (uint)MathF.Max(zero, dmgResult);
+
+        MultiplicadorConciencia = MathF.Max(minConciencia, multConcienciaResult);
+
+        player.TGPC = (uint)MathF.Max(one, tgpcResult);
+
+        player.CritProb = (byte)MathF.Max(zero, critProbResult);
+
+        player.CritMult = MathF.Max(one, critMultResult);
+
+        player.RoboVida = (byte)MathF.Max(zero, roboVidaResult);
+
+        player.MultVelAtaque = MathF.Max(one, multVelAtaque);
+
+        player.SpeedMult = MathF.Max(one, speedMultResult);
     }
 
     public void ResetStats()
@@ -154,35 +189,11 @@ public class GameMaster : MonoBehaviour
         MultiplicadorConciencia = one;
         player.TGPC = one;
         player.CritProb = zero;
-        player.CritMult = one;
+        player.CritMult = three;
         player.RoboVida = zero;
         player.MultVelAtaque = one;
         player.SpeedMult = one;
         CorrectLife(maxOld, player.MaxLife);
-    }
-
-    public void ResetStats(Mods mod)
-    {
-        uint maxOld = player.MaxLife;
-        player.MaxLife -= (uint)Mathf.Round((maxLife * (mod.MultVidaMax * porcentual)) / 100);
-        player.Damage -= (uint)Mathf.Round((dmg * (mod.MultDmg * porcentual)) / hundred); ;
-        CorrectLife(maxOld, player.MaxLife);
-        player.TGPC -= mod.MultTGPC;
-        MultiplicadorConciencia -= mod.MultConciencia;
-        player.CritProb -= mod.MultCritProb;
-        player.CritMult -= mod.MultCrit;
-        player.RoboVida -= mod.MultRoboPer;
-        player.MultVelAtaque -= mod.MultVelAtaque;
-        player.SpeedMult -= mod.MultSpeed;
-        mods.Remove(mod);
-    }
-
-    private void ResetUseMods()
-    {
-        foreach(Mods element in mods)
-        {
-            element.Utilizado = false;
-        }
     }
 
     void CorrectLife(uint maxLife, uint newMaxLife)
@@ -206,37 +217,36 @@ public class GameMaster : MonoBehaviour
     public void DamagePlayer(int value)
     {
         int opVida = (int)(player.Life - value);
-        player.Life = (uint)Mathf.Max(0, opVida);
+        player.Life = (uint)Mathf.Max(zero, opVida);
 
         int opConci = (int)(player.Conciencia - (value * multiplicadorConciencia));
-        player.Conciencia = (ushort)Mathf.Max(0,opConci);
+        player.Conciencia = (ushort)Mathf.Max(zero,opConci);
     }
 
     void Inconciencia()
     {
-        if(enableTGPC == true && player.Status == estado.Dormido)
+        if(contador>=fifty)
         {
-            enableTGPC = false;
-            suma = zero;
-            multTGPC = one;
-            StartCoroutine(MultTGPC());
+            contador = zero;
         }
-    }
 
-    IEnumerator MultTGPC()
-    {
-        yield return new WaitForSeconds(one);
-
-        while (player.Conciencia < player.MaxConciencia)
+        if(contador == zero && enableTGPC == true && player.Status == estado.Dormido && player.Conciencia < player.MaxConciencia)
         {
             suma = player.TGPC * multTGPC;
             player.Conciencia += (ushort)suma;
-            multTGPC += one;
-
-            yield return new WaitForSeconds(one);
+            multTGPC++;
         }
 
-        enableTGPC = true;
+        if(enableTGPC)
+        {
+            contador++;
+        }
+
+        if(Player.Conciencia>=player.MaxConciencia)
+        {
+            suma = zero;
+            multTGPC = one;
+        }
     }
 
     #endregion

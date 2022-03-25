@@ -27,7 +27,14 @@ public class Player
 
         set
         {
-            maxLife = value;
+            if(value>=1)
+            {
+                maxLife = value;
+            }
+            else
+            {
+                maxLife = 1;
+            }
         }
     }
 
@@ -66,7 +73,7 @@ public class Player
             }
             else
             {
-                Debug.LogWarning("Se esta intentando asiganr un daño negativo.");
+                damage = 0;
             }
         }
     }
@@ -103,17 +110,17 @@ public class Player
         get => tGPC;
         set
         {
-            if(value >= 0 && value < maxLife)
+            if(value >= 0 && value < maxConciencia)
             {
                 tGPC = value;
             }
-            else if(value >= maxLife)
+            else if(value >= maxConciencia)
             {
-                tGPC = maxLife;
+                tGPC = maxConciencia;
             }
             else
             {
-                Debug.LogWarning("Se esta asignando al TGPC un valor negativo o mayor a la vida maxima.");
+                TGPC = 0;
             }
         }
     }
@@ -131,6 +138,10 @@ public class Player
             {
                 critProb = 100;
             }
+            else
+            {
+                critProb = 0;
+            }
         }
     }
 
@@ -145,7 +156,7 @@ public class Player
             }
             else
             {
-                Debug.LogWarning("Error al dar valor a Multiplicador de critico.");
+                critMult = 1;
             }
         }
     }
@@ -165,7 +176,7 @@ public class Player
             }
             else
             {
-                Debug.LogWarning("Error al dar valor a Robo de Vida.");
+                roboVida = 0;
             }
         }
     }
@@ -175,13 +186,13 @@ public class Player
         get => multVelAtaque; 
         set
         {
-            if(value >= 1)
+            if(value >= 0)
             {
                 multVelAtaque = value;
             }
             else
             {
-                Debug.LogWarning("Error al dar valor al multiplicador de Velocidad de Ataque.");
+                multVelAtaque = 0;
             }
         }
     }
@@ -197,7 +208,7 @@ public class Player
             }
             else
             {
-                Debug.LogWarning("Se esta intentando asignar un multiplicador de velocidad negativo.");
+                speedMult = 0;
             }
         }
     }

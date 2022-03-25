@@ -9,6 +9,8 @@ public class EnemyController : MonoBehaviour
     [SerializeField]
     uint life = 100;
 
+    public uint conciencia = 5;
+
     [SerializeField]
     GameObject vida;
 

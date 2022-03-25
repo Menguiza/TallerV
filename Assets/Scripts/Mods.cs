@@ -9,13 +9,13 @@ public class Mods
     private bool utilizado;
 
     //Parametros
-    private byte multVidaMax;
-    private byte multDmg;
+    private sbyte multVidaMax;
+    private sbyte multDmg;
     private float multConciencia;
-    private byte multTGPC;
-    private byte multCritProb;
+    private sbyte multTGPC;
+    private sbyte multCritProb;
     private float multCrit;
-    private byte multRoboPer;
+    private sbyte multRoboPer;
     private float multVelAatque;
     private float multSpeed;
 
@@ -46,34 +46,20 @@ public class Mods
             }
         }
     }
-    public byte MultVidaMax
+    public sbyte MultVidaMax
     { 
         get => multVidaMax; 
         set
         {
-            if(value >= 0)
-            {
-                multVidaMax = value;
-            }
-            else
-            {
-                Debug.LogWarning("El multiplicador de vida que intenta ingresar sale de los limites.");
-            }
+            multVidaMax = value;
         }
     }
-    public byte MultDmg 
+    public sbyte MultDmg 
     { 
         get => multDmg; 
         set
         {
-            if(value >= 0)
-            {
-                multDmg = value;
-            }
-            else
-            {
-                Debug.LogWarning("Se esta intentando asignar un valor inferior a 0 al multiplicador de daño.");
-            }
+            multDmg = value;
         }
     }
     public float MultConciencia 
@@ -81,44 +67,23 @@ public class Mods
         get => multConciencia;
         set
         {
-            if(value >= 0)
-            {
-                multConciencia = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador de conciencia es inferior a 0.");
-            }
+            multConciencia = value;
         }
     }
-    public byte MultTGPC 
+    public sbyte MultTGPC 
     { 
         get => multTGPC; 
         set
         {
-            if(value >= 0)
-            {
-                multTGPC = value;
-            }
-            else
-            {
-                Debug.LogWarning("Se esta intentando asignar un valor inferior a 0 al TGPC.");
-            }
+            multTGPC = value;
         }
     }
-    public byte MultCritProb 
+    public sbyte MultCritProb 
     { 
         get => multCritProb; 
         set
         {
-            if(value >= 0)
-            {
-                multCritProb = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador de la probabilidad de critico es inferior a 0.");
-            }
+            multCritProb = value;
         }
     }
     public float MultCrit 
@@ -126,29 +91,15 @@ public class Mods
         get => multCrit; 
         set
         {
-            if(value >= 0)
-            {
-                multCrit = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador de daño critico es inferior a 0.");
-            }
+            multCrit = value;
         }
     }
-    public byte MultRoboPer 
+    public sbyte MultRoboPer 
     { 
         get => multRoboPer;
         set
         {
-            if (value >= 0)
-            {
-                multRoboPer = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador percentual de robo de vida es inferior a 0.");
-            }
+            multRoboPer = value;
         }
     }
     public float MultVelAtaque 
@@ -156,14 +107,7 @@ public class Mods
         get => multVelAatque;
         set
         {
-            if (value >= 0)
-            {
-                multVelAatque = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador de robo de vida es inferior a 0.");
-            }
+            multVelAatque = value;
         }
     }
     public float MultSpeed 
@@ -171,20 +115,13 @@ public class Mods
         get => multSpeed;
         set
         {
-            if (value >= 0)
-            {
-                multSpeed = value;
-            }
-            else
-            {
-                Debug.LogWarning("El valor que intenta asignar al multiplicador de velocidad es inferior a 0.");
-            }
+            multSpeed = value;
         }
     }
 
     //Constructor
-    public Mods(string name, byte multVidaMax, byte multDmg, float multiplicadorConciencia, byte multTGPC, byte multCritProb, float multCrit
-        , byte multRoboPer, float multRobo, float multSpeed)
+    public Mods(string name, sbyte multVidaMax, sbyte multDmg, float multiplicadorConciencia, sbyte multTGPC, sbyte multCritProb, float multCrit
+        , sbyte multRoboPer, float multRobo, float multSpeed)
     {
         Name = name;
         Utilizado = false;

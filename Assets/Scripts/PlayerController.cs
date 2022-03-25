@@ -7,28 +7,34 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float speed = 3;
     [SerializeField]
-    private float jumpFoce = 10f;
+    Transform attackPoint, attackPoint2;
+    [SerializeField]
+    LayerMask enemyLayer;
 
     CharacterController characterContrl;
     Animator anim;
 
     public GameMaster gm;
 
-    BoxCollider weapon;
-
-    bool attack = false;
+    bool attack = false, dodge = false, dodgeEnable = true, knockBacked = false;
+    public bool blocking = false;
 
     //Variables Utilidad
-    byte hundred = 100, zero = 0;
+    byte hundred = 100, zero = 0, fullTurn = 180;
+
     [SerializeField]
-    float gravity = 9.8f, vertical, horizontal, verticalVelocity;
+    private float jumpFoce = 10f, resetDodgeTime = 2f, dodgeForce = 100f, knockBackForce = 5f;
+
+    [SerializeField]
+    float gravity = 9.8f, attackRange = 1f;
+    float horizontal, verticalVelocity;
+
     Vector3 move = Vector3.zero;
 
     void Awake()
     {
         characterContrl = gameObject.GetComponent<CharacterController>();
         anim = gameObject.GetComponent<Animator>();
-        weapon = gameObject.GetComponentInChildren<BoxCollider>();
     }
 
     void Update()
@@ -39,63 +45,109 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelocidadAtaque", gm.Player.MultVelAtaque);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (other.CompareTag("Enemy"))
+        if(hit.collider.CompareTag("Enemy"))
         {
-            uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, other.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            other.gameObject.GetComponent<EnemyController>().Life = result;
-            RoboDeVida(dañoAplicar);
-            gm.enableTGPC = false;
+            anim.SetTrigger("Knock");
+            move = -transform.forward * knockBackForce;
+            knockBacked = true;
         }
-        weapon.enabled = false;
     }
 
     private void Attack()
     {
-        if (Input.GetButton("Punch") && characterContrl.isGrounded)
+        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !blocking)
         {
             anim.SetTrigger("Punch");
+
             attack = true;
+
             anim.SetFloat("Horizontal", zero);
-            Invoke("ResetTGPC", gm.timeToReset);
         }
+        else if(Input.GetButtonDown("Punch") && !characterContrl.isGrounded && !dodge && !knockBacked)
+        {
+            anim.SetTrigger("AirAttack");
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if(attackPoint == null)
+        {
+            return;
+        }
+
+        Gizmos.DrawSphere(attackPoint.position, attackRange);
     }
 
     private void Move()
     {
-        if (!attack)
-        {
-            horizontal = Input.GetAxis("Horizontal");
-
-            TurnChar();
-        }
-        else
+        if (attack && !knockBacked)
         {
             horizontal = zero;
 
-            move = transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+            move.z = horizontal;
         }
-
-        vertical = Input.GetAxisRaw("Vertical");
-
-        anim.SetFloat("Vertical", vertical);
-
-        anim.SetFloat("Horizontal", horizontal);
+        else if (!characterContrl.isGrounded && !knockBacked && !blocking)
+        {
+            if (Input.GetAxisRaw("Horizontal") != zero)
+            {
+                if (Input.GetButtonDown("Dodge") && !dodge)
+                {
+                    dodge = true;
+                    anim.SetTrigger("Dodge");
+                    horizontal = Input.GetAxisRaw("Horizontal");
+                    TurnCharDash();
+                }
+                else
+                {
+                    horizontal = Input.GetAxisRaw("Horizontal");
+                    TurnChar();
+                }
+            }
+        }
+        else if (!knockBacked)
+        {
+            if (Input.GetButtonDown("Dodge") && dodgeEnable && Input.GetAxisRaw("Horizontal") != zero && !knockBacked && !blocking)
+            {
+                dodge = true;
+                dodgeEnable = false;
+                anim.SetTrigger("Dodge");
+                horizontal = Input.GetAxisRaw("Horizontal");
+                TurnCharDash();
+            }
+            else
+            {
+                if (Input.GetButton("Block") && !knockBacked)
+                {
+                    blocking = true;
+                    anim.SetBool("Block", true);
+                }
+                else
+                {
+                    horizontal = Input.GetAxisRaw("Horizontal");
+                    TurnChar();
+                    blocking = false;
+                    anim.SetBool("Block", false);
+                }
+            }
+        }
 
         SetGravity();
 
-        if (vertical > zero && characterContrl.isGrounded)
+        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
+
+        if (Input.GetButtonDown("Jump") && characterContrl.isGrounded && !attack && !dodge && !knockBacked)
         {
             verticalVelocity = jumpFoce;
-            anim.SetTrigger("Jump");
+            anim.SetBool("Jump", true);
             move.y = verticalVelocity;
         }
 
-        if (verticalVelocity <= zero)
+        if (characterContrl.isGrounded && verticalVelocity<zero)
         {
-            anim.ResetTrigger("Jump");
+            anim.SetBool("Jump", false);
         }
 
         characterContrl.Move(move * Time.deltaTime);
@@ -117,44 +169,129 @@ public class PlayerController : MonoBehaviour
 
     void TurnChar()
     {
-        if (horizontal < 0)
+        if (horizontal < zero)
         {
-            transform.rotation = new Quaternion(0, -180, 0, 0);
-            move = -transform.forward * Mathf.Round(horizontal) * (speed * gm.Player.SpeedMult);
+            transform.rotation = new Quaternion(zero, -fullTurn, zero, zero);
+            move = -transform.forward * horizontal * (speed * gm.Player.SpeedMult);
         }
-        else if (horizontal > 0)
+        else if (horizontal > zero)
         {
-            transform.rotation = new Quaternion(0, 0, 0, 0);
-            move = transform.forward * Mathf.Round(horizontal) * (speed * gm.Player.SpeedMult);
+            transform.rotation = new Quaternion(zero, zero, zero, zero);
+            move = transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+        }
+        else
+        {
+            move.z = zero;
+        }
+    }
+
+    void TurnCharDash()
+    {
+        if (horizontal < zero)
+        {
+            move = transform.forward * dodgeForce;
+        }
+        else if (horizontal > zero)
+        {
+            move = transform.forward * dodgeForce;
+        }
+        else
+        {
+            move.z = zero;
         }
     }
 
     #region"Metodos de Utilidad"
     public void ActiveCollider()
     {
-        weapon.enabled = true;
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint.position, attackRange, enemyLayer);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            uint dañoAplicar = ProbabilidadCritico(gm.Player);
+            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
+            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            RoboDeVida(dañoAplicar);
+
+            gm.enableTGPC = false;
+
+            if(gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia<gm.Player.MaxConciencia)
+            {
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+            }
+        }
+    }
+
+    public void ActiveCollider2()
+    {
+        Collider[] hitEnemies = Physics.OverlapSphere(attackPoint2.position, attackRange, enemyLayer);
+
+        foreach (Collider enemy in hitEnemies)
+        {
+            uint dañoAplicar = ProbabilidadCritico(gm.Player);
+            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
+            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            RoboDeVida(dañoAplicar);
+
+            gm.enableTGPC = false;
+
+            if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
+            {
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+            }
+        }
     }
 
     public void InactiveCollider()
     {
-        weapon.enabled = false;
         attack = false;
         anim.ResetTrigger("Punch");
+        Invoke("ResetTGPC", gm.timeToReset);
     }
 
     private void ResetTGPC()
     {
         gm.enableTGPC = true;
     }
+
+    public void Dodge()
+    {
+        anim.ResetTrigger("Dodge");
+        dodge = false; 
+        Invoke("ResetDodge", resetDodgeTime);
+    }
+
+    private void ResetDodge()
+    {
+        dodgeEnable = true;
+    }
+
+    public void ResetKnockBack()
+    {
+        knockBacked = false;
+        anim.ResetTrigger("Knock");
+    }
+
+    public void BlockStart()
+    {
+        move.z = zero;
+    }
+
+    public void OnHitBlock()
+    {
+        move = -transform.forward * knockBackForce;
+        anim.SetTrigger("HitBlock");
+    }
+
     #endregion
 
     private uint ProbabilidadCritico(Player player)
     {
         uint daño = player.Damage;
 
-        float rnd = Random.Range(0, 100);
+        float rnd = Random.Range(zero, hundred);
 
-        if (rnd < player.CritProb || rnd == 100)
+        if (rnd < player.CritProb || rnd == hundred)
         {
             daño = (uint)(player.Damage * player.CritMult);
             Debug.Log("Fue Critico");
