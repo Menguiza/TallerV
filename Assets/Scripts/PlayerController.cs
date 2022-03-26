@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
 
     public GameMaster gm;
 
-    bool attack = false, dodge = false, dodgeEnable = true, knockBacked = false;
+    bool attack = false, airAttack = false, dodge = false, dodgeEnable = true, knockBacked = false;
     public bool blocking = false;
 
     //Variables Utilidad
@@ -49,15 +49,21 @@ public class PlayerController : MonoBehaviour
     {
         if(hit.collider.CompareTag("Enemy"))
         {
+            anim.SetBool("Jump", false);
             anim.SetTrigger("Knock");
+            anim.SetBool("Knocked", true);
             move = -transform.forward * knockBackForce;
             knockBacked = true;
+            ResetAnimDodge();
+            ResetAnimDodge2();
+            InactiveCollider();
+            InactiveCollider2();
         }
     }
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !blocking)
+        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !blocking && !airAttack)
         {
             anim.SetTrigger("Punch");
 
@@ -65,8 +71,9 @@ public class PlayerController : MonoBehaviour
 
             anim.SetFloat("Horizontal", zero);
         }
-        else if(Input.GetButtonDown("Punch") && !characterContrl.isGrounded && !dodge && !knockBacked)
+        else if(Input.GetButtonDown("Punch") && !characterContrl.isGrounded && !dodge && !knockBacked && !airAttack && !attack)
         {
+            airAttack = true;
             anim.SetTrigger("AirAttack");
         }
     }
@@ -93,18 +100,36 @@ public class PlayerController : MonoBehaviour
         {
             if (Input.GetAxisRaw("Horizontal") != zero)
             {
-                if (Input.GetButtonDown("Dodge") && !dodge)
+                horizontal = Input.GetAxisRaw("Horizontal"); 
+            }
+
+            if (Input.GetButtonDown("Dodge") && !dodge && horizontal !=zero)
+            {
+                dodge = true;
+                dodgeEnable = false;
+                anim.SetTrigger("DodgeAir");
+
+                if (Input.GetAxisRaw("Horizontal") != zero && Input.GetAxisRaw("Horizontal") != horizontal)
                 {
-                    dodge = true;
-                    anim.SetTrigger("Dodge");
                     horizontal = Input.GetAxisRaw("Horizontal");
-                    TurnCharDash();
                 }
-                else
+
+                if (horizontal < zero)
                 {
-                    horizontal = Input.GetAxisRaw("Horizontal");
-                    TurnChar();
+                    move.z -= dodgeForce * Time.deltaTime;
                 }
+                else if (horizontal > zero)
+                {
+                    move.z += dodgeForce * Time.deltaTime;
+                }
+            }
+            else if (!dodge && horizontal != zero && anim.GetBool("Jump"))
+            {
+                TurnChar();
+            }
+            else if(dodge)
+            {
+                TurnCharDash();
             }
         }
         else if (!knockBacked)
@@ -113,23 +138,35 @@ public class PlayerController : MonoBehaviour
             {
                 dodge = true;
                 dodgeEnable = false;
-                anim.SetTrigger("Dodge");
+                anim.SetTrigger("DodgeGround");
                 horizontal = Input.GetAxisRaw("Horizontal");
-                TurnCharDash();
+
+                if(horizontal<zero)
+                {
+                    move.z -= dodgeForce * Time.deltaTime;
+                }
+                else if(horizontal>zero)
+                {
+                    move.z += dodgeForce * Time.deltaTime;
+                }
             }
             else
             {
-                if (Input.GetButton("Block") && !knockBacked)
+                if (Input.GetButton("Block") && !knockBacked && !dodge)
                 {
                     blocking = true;
                     anim.SetBool("Block", true);
                 }
-                else
+                else if(!dodge)
                 {
                     horizontal = Input.GetAxisRaw("Horizontal");
                     TurnChar();
                     blocking = false;
                     anim.SetBool("Block", false);
+                }
+                else if(dodge)
+                {
+                    TurnCharDash();
                 }
             }
         }
@@ -144,9 +181,15 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Jump", true);
             move.y = verticalVelocity;
         }
+        else if(knockBacked && characterContrl.isGrounded)
+        {
+            verticalVelocity = jumpFoce;
+            move.y = verticalVelocity;
+        }
 
         if (characterContrl.isGrounded && verticalVelocity<zero)
         {
+            anim.SetBool("Knocked", false);
             anim.SetBool("Jump", false);
         }
 
@@ -189,11 +232,11 @@ public class PlayerController : MonoBehaviour
     {
         if (horizontal < zero)
         {
-            move = transform.forward * dodgeForce;
+            move.z -= dodgeForce * Time.deltaTime;
         }
         else if (horizontal > zero)
         {
-            move = transform.forward * dodgeForce;
+            move.z += dodgeForce * Time.deltaTime;
         }
         else
         {
@@ -249,6 +292,12 @@ public class PlayerController : MonoBehaviour
         Invoke("ResetTGPC", gm.timeToReset);
     }
 
+    public void InactiveCollider2()
+    {
+        airAttack = false;
+        anim.ResetTrigger("AirAttack");
+    }
+
     private void ResetTGPC()
     {
         gm.enableTGPC = true;
@@ -256,14 +305,23 @@ public class PlayerController : MonoBehaviour
 
     public void Dodge()
     {
-        anim.ResetTrigger("Dodge");
-        dodge = false; 
         Invoke("ResetDodge", resetDodgeTime);
     }
 
     private void ResetDodge()
     {
         dodgeEnable = true;
+    }
+
+    public void ResetAnimDodge()
+    {
+        anim.ResetTrigger("DodgeAir");
+        dodge = false;
+    }
+    public void ResetAnimDodge2()
+    {
+        anim.ResetTrigger("DodgeGround");
+        dodge = false;
     }
 
     public void ResetKnockBack()

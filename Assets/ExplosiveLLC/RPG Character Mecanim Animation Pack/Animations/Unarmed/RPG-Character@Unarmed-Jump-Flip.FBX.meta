@@ -762,8 +762,15 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.99142855
+      - time: 0
         functionName: Dodge
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: 51db411664d25374f8298b1332945cbe, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 1
+        functionName: ResetAnimDodge
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 51db411664d25374f8298b1332945cbe, type: 3}
         floatParameter: 0
