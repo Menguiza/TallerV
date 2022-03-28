@@ -30,10 +30,32 @@ public class PosturaDelSueño : MonoBehaviour
     [SerializeField] float DT_multSpeed;
     [SerializeField] sbyte DT_multPesadillaPer;
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Apply_SleepTechnique();
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Remove_SleepTechnique();
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            Apply_DreamTechnique();
+        }
+
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            Remove_DreamTechnique();
+        }
+    }
 
     void AssertGameMasterReference()
     {
-        if (TryGetComponent<GameMaster>(out GameMaster gameMaster) == false)
+        if (transform.parent.gameObject.TryGetComponent<GameMaster>(out GameMaster gameMaster) == false)
         {
             Debug.LogWarning("|POSTURA DEL SUEÑO| No se logró acceder al GameMaster");
             return;
@@ -43,17 +65,18 @@ public class PosturaDelSueño : MonoBehaviour
     public void Apply_SleepTechnique()
     {
         AssertGameMasterReference();
-        GetComponent<GameMaster>().AddMod(ST_name, ST_multVidaMax, ST_multDmg, ST_multConciencia, ST_multTGPC, ST_multCritProb, ST_multCrit, ST_multRoboPer, ST_multVelAatque, ST_multSpeed, ST_multPesadillaPer);
+        GetComponentInParent<GameMaster>().AddMod(ST_name, ST_multVidaMax, ST_multDmg, ST_multConciencia, ST_multTGPC, ST_multCritProb, ST_multCrit, ST_multRoboPer, ST_multVelAatque, ST_multSpeed, ST_multPesadillaPer);
     }
 
     public void Remove_SleepTechnique()
     {
         AssertGameMasterReference();
-        foreach (Mods mod in GetComponent<GameMaster>().mods)
+        foreach (Mods mod in GetComponentInParent<GameMaster>().mods)
         {
             if (mod.Name == ST_name)
             {
-                GetComponent<GameMaster>().mods.Remove(mod);
+                GetComponentInParent<GameMaster>().mods.Remove(mod);
+                GetComponentInParent<GameMaster>().CheckMods();
                 return;
             }
         }
@@ -63,17 +86,18 @@ public class PosturaDelSueño : MonoBehaviour
     public void Apply_DreamTechnique()
     {
         AssertGameMasterReference();
-        GetComponent<GameMaster>().AddMod(DT_name, DT_multVidaMax, DT_multDmg, DT_multConciencia, DT_multTGPC, DT_multCritProb, DT_multCrit, DT_multRoboPer, DT_multVelAatque, DT_multSpeed, DT_multPesadillaPer);
+        GetComponentInParent<GameMaster>().AddMod(DT_name, DT_multVidaMax, DT_multDmg, DT_multConciencia, DT_multTGPC, DT_multCritProb, DT_multCrit, DT_multRoboPer, DT_multVelAatque, DT_multSpeed, DT_multPesadillaPer);
     }
 
     public void Remove_DreamTechnique()
     {
         AssertGameMasterReference();
-        foreach (Mods mod in GetComponent<GameMaster>().mods)
+        foreach (Mods mod in GetComponentInParent<GameMaster>().mods)
         {
             if (mod.Name == DT_name)
             {
-                GetComponent<GameMaster>().mods.Remove(mod);
+                GetComponentInParent<GameMaster>().mods.Remove(mod);
+                GetComponentInParent<GameMaster>().CheckMods();
                 return;
             }
         }
