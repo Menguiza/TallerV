@@ -15,6 +15,7 @@ public class PosturaDelSueño : MonoBehaviour
     [SerializeField] sbyte ST_multRoboPer;
     [SerializeField] float ST_multVelAatque;
     [SerializeField] float ST_multSpeed;
+    [SerializeField] sbyte ST_multPesadillaPer;
 
     [Header("Dream technique modifier")]
     [SerializeField] string DT_name;
@@ -27,6 +28,7 @@ public class PosturaDelSueño : MonoBehaviour
     [SerializeField] sbyte DT_multRoboPer;
     [SerializeField] float DT_multVelAatque;
     [SerializeField] float DT_multSpeed;
+    [SerializeField] sbyte DT_multPesadillaPer;
 
 
     void AssertGameMasterReference()
