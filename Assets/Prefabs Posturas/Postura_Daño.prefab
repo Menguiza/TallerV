@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3225476152849441184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3225476152849441198}
+  - component: {fileID: 3225476152849441199}
+  m_Layer: 0
+  m_Name: "Postura_Da\xF1o"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3225476152849441198
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225476152849441184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3225476152849441199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3225476152849441184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba00caf09907b7747a76e0e5ecfab17d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ST_name: "ST Da\xF1o"
+  ST_multVidaMax: 0
+  ST_multDmg: 1
+  ST_multConciencia: 0
+  ST_multTGPC: 0
+  ST_multCritProb: 0
+  ST_multCrit: 0
+  ST_multRoboPer: 0
+  ST_multVelAatque: 0
+  ST_multSpeed: 0
+  ST_multPesadillaPer: 0
+  DT_name: "DT Da\xF1o"
+  DT_multVidaMax: 0
+  DT_multDmg: 5
+  DT_multConciencia: 0
+  DT_multTGPC: 0
+  DT_multCritProb: 0
+  DT_multCrit: 0
+  DT_multRoboPer: 0
+  DT_multVelAatque: 0
+  DT_multSpeed: 0
+  DT_multPesadillaPer: 0
