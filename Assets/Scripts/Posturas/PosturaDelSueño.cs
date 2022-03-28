@@ -43,20 +43,40 @@ public class PosturaDelSueño : MonoBehaviour
     public void Apply_SleepTechnique()
     {
         AssertGameMasterReference();
+        GetComponent<GameMaster>().AddMod(ST_name, ST_multVidaMax, ST_multDmg, ST_multConciencia, ST_multTGPC, ST_multCritProb, ST_multCrit, ST_multRoboPer, ST_multVelAatque, ST_multSpeed, ST_multPesadillaPer);
     }
 
     public void Remove_SleepTechnique()
     {
         AssertGameMasterReference();
+        foreach (Mods mod in GetComponent<GameMaster>().mods)
+        {
+            if (mod.Name == ST_name)
+            {
+                GetComponent<GameMaster>().mods.Remove(mod);
+                return;
+            }
+        }
+        Debug.LogWarning("|POSTURA DEL SUEÑO| No se encontró el Modificador de la Técnica de dormir " + ST_name + " a remover");
     }
 
     public void Apply_DreamTechnique()
     {
         AssertGameMasterReference();
+        GetComponent<GameMaster>().AddMod(DT_name, DT_multVidaMax, DT_multDmg, DT_multConciencia, DT_multTGPC, DT_multCritProb, DT_multCrit, DT_multRoboPer, DT_multVelAatque, DT_multSpeed, DT_multPesadillaPer);
     }
 
     public void Remove_DreamTechnique()
     {
         AssertGameMasterReference();
+        foreach (Mods mod in GetComponent<GameMaster>().mods)
+        {
+            if (mod.Name == DT_name)
+            {
+                GetComponent<GameMaster>().mods.Remove(mod);
+                return;
+            }
+        }
+        Debug.LogWarning("|POSTURA DEL SUEÑO| No se encontró el Modificador de la Técnica del sueño " + DT_name + " a remover");
     }
 }
