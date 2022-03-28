@@ -30,7 +30,7 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public string nameINP;
     [HideInInspector]
-    public sbyte vidaINP, dmgINP, tgpcINP, critProbINP, roboDeVidaINP;
+    public sbyte vidaINP, dmgINP, tgpcINP, critProbINP, roboDeVidaINP, multPesadillaINP;
     [HideInInspector]
     public float multConcienciaINP, critMultINP, multVelAtaqueINP, speedMultINP;
     [HideInInspector]
@@ -40,6 +40,7 @@ public class GameMaster : MonoBehaviour
     //Variables de utilidad
     byte hundred = 100, one = 1, porcentual = 10, zero = 0, fifty = 50, contador = 0, multTGPC = 1, three = 3;
     float suma = 0f, minConciencia = 0.1f;
+    bool nightmareCalled = false;
 
     [Header("TGPC")]
 
@@ -93,10 +94,15 @@ public class GameMaster : MonoBehaviour
         Inconciencia();
     }
 
+    private void Update()
+    {
+        player.Pesadilla = IsNightmare();
+    }
+
     #region"Sistema de modificadores y Estadisticas"
 
     public void AddMod(string name, sbyte vida, sbyte dmg, float multConciencia, sbyte multTGPC, sbyte critProb, float critMult,
-        sbyte multRoboPer, float multRobo, float multSpeed)
+        sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer)
     {
 
         if(mods.Count != zero)
@@ -109,13 +115,13 @@ public class GameMaster : MonoBehaviour
                 }
             }
 
-            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
+            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
 
             CheckMods();
         }
         else if(mods.Count == zero)
         {
-            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multRobo, multSpeed));
+            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
 
             CheckMods();
         }
@@ -132,6 +138,7 @@ public class GameMaster : MonoBehaviour
         float roboVidaResult = zero;
         float multVelAtaque = one;
         float speedMultResult = one;
+        float multPesadillaResult = zero;
 
         uint maxOld = player.MaxLife;
 
@@ -156,6 +163,8 @@ public class GameMaster : MonoBehaviour
                 multVelAtaque += element.MultVelAtaque;
 
                 speedMultResult += element.MultSpeed;
+
+                multPesadillaResult += element.MultPesadillaPer;
             }
 
         }
@@ -179,6 +188,10 @@ public class GameMaster : MonoBehaviour
         player.MultVelAtaque = MathF.Max(one, multVelAtaque);
 
         player.SpeedMult = MathF.Max(one, speedMultResult);
+
+        player.CritProb = (byte)MathF.Max(zero, critProbResult);
+
+        player.MultPesadilla = (byte)MathF.Max(zero, multPesadillaResult);
     }
 
     public void ResetStats()
@@ -193,6 +206,7 @@ public class GameMaster : MonoBehaviour
         player.RoboVida = zero;
         player.MultVelAtaque = one;
         player.SpeedMult = one;
+        player.MultPesadilla = zero;
         CorrectLife(maxOld, player.MaxLife);
     }
 
@@ -246,7 +260,26 @@ public class GameMaster : MonoBehaviour
         {
             suma = zero;
             multTGPC = one;
+            nightmareCalled = false;
         }
+    }
+
+    bool IsNightmare()
+    {
+        if(!nightmareCalled && player.Conciencia<=zero)
+        {
+            nightmareCalled = true;
+
+            float rnd = UnityEngine.Random.Range(zero, hundred);
+
+            if (rnd < player.MultPesadilla || rnd == hundred)
+            {
+                Debug.Log("Fue Pesadilla");
+                return true;
+            }
+        }
+
+        return player.Pesadilla;
     }
 
     #endregion

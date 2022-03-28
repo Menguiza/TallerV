@@ -17,6 +17,7 @@ public class Prueba : Editor
         GUILayout.Label("Sistema de Modificadores", EditorStyles.boldLabel);
 
         #region"Inputs Modificadores"
+
         gm.nameINP = EditorGUILayout.TextField("Nombre", gm.nameINP);
 
         gm.vidaINP = (sbyte)EditorGUILayout.Slider("Vida (+%)", gm.vidaINP, -10, 10);
@@ -36,13 +37,16 @@ public class Prueba : Editor
         gm.multVelAtaqueINP = (float)EditorGUILayout.Slider("Mult. Velocidad Ataque (+Value)", gm.multVelAtaqueINP, -10f, 10f);
 
         gm.speedMultINP = (float)EditorGUILayout.Slider("Mult. Velocidad (+Value)", gm.speedMultINP, -10f, 10f);
+
+        gm.multPesadillaINP = (sbyte)EditorGUILayout.Slider("Nightmare Probability (+%)", gm.multPesadillaINP, -100, 100);
+
         #endregion
 
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Add Mod"))
         {
-            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP);
+            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP, gm.multPesadillaINP);
             gm.nameINP = "";
         }
 
@@ -68,7 +72,7 @@ public class Prueba : Editor
                 displayMod.Add("Nombre: " + gm.mods[i].Name + " | " + "Vida +% : " + gm.mods[i].MultVidaMax + " | " + "Daño +% : " + gm.mods[i].MultDmg
                     + " | " + "MultConciencia +X : " + gm.mods[i].MultConciencia + " | " + "MultTGPC +X : " + gm.mods[i].MultTGPC + 
                     " | " + "Crit Prob +% : " + gm.mods[i].MultCritProb + " | " + "MultCrit +X : " + gm.mods[i].MultCrit + " | " + "Robo de Vida +% : " + gm.mods[i].MultRoboPer
-                    + " | " + "MultVelAtaque +X : " + gm.mods[i].MultVelAtaque + " | " + "MultSpeed +X : " + gm.mods[i].MultSpeed) ;
+                    + " | " + "MultVelAtaque +X : " + gm.mods[i].MultVelAtaque + " | " + "MultSpeed +X : " + gm.mods[i].MultSpeed + " | " +"MultPesadilla +% : " + gm.mods[i].MultPesadillaPer);
             }
 
             for (int i = 0; i < displayMod.Count; i++)
@@ -77,7 +81,6 @@ public class Prueba : Editor
                 displayMod[i] = EditorGUILayout.TextField(displayMod[i]);
                 if (GUILayout.Button("x"))
                 {
-                    //gm.ResetStats(gm.mods.ElementAt(i));
                     gm.mods.RemoveAt(i);
 
                     gm.CheckMods();
@@ -113,7 +116,8 @@ public class Prueba : Editor
         {
             GUILayout.Label("Player Stats", EditorStyles.boldLabel);
 
-            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult;
+            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult, multPesadilla;
+            bool pesadilla;
 
             maxLife = EditorGUILayout.TextField("Vida Maxima: ", gm.Player.MaxLife.ToString());
             life = EditorGUILayout.TextField("Vida Actual: ", gm.Player.Life.ToString());
@@ -127,6 +131,8 @@ public class Prueba : Editor
             roboDeVida = EditorGUILayout.TextField("Porcentaje Robo de Vida: ", gm.Player.RoboVida.ToString());
             multVelAtaque = EditorGUILayout.TextField("Mult. Velocidad Ataque: ", gm.Player.MultVelAtaque.ToString());
             speedMult = EditorGUILayout.TextField("Mult. Velocidad: ", gm.Player.SpeedMult.ToString());
+            multPesadilla = EditorGUILayout.TextField("Mult. Pesadilla: ", gm.Player.MultPesadilla.ToString());
+            pesadilla = EditorGUILayout.Toggle("Pesadilla: ", gm.Player.Pesadilla);
         }
 
         #endregion

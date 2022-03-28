@@ -15,6 +15,8 @@ public class Player
     private byte roboVida = 0;
     private float multVelAtaque = 1f;
     private float speedMult = 1f;
+    private byte multPesadilla = 0;
+    private bool pesadilla = false;
 
     [SerializeField]
     private ushort maxConciencia = 100;
@@ -96,6 +98,7 @@ public class Player
             {
                 Status = GameMaster.estado.Despierto;
                 conciencia = maxConciencia;
+                pesadilla = false;
             }
             else
             {
@@ -209,6 +212,38 @@ public class Player
             else
             {
                 speedMult = 0;
+            }
+        }
+    }
+
+    public byte MultPesadilla 
+    {
+        get => multPesadilla;
+        set
+        {
+            if (value >= 0 && value <= 100)
+            {
+                multPesadilla = value;
+            }
+            else if (value > 100)
+            {
+                multPesadilla = 100;
+            }
+            else
+            {
+                multPesadilla = 0;
+            }
+        }
+    }
+
+    public bool Pesadilla 
+    { 
+        get => pesadilla;
+        set
+        {
+            if (value != pesadilla)
+            {
+                pesadilla = value;
             }
         }
     }
