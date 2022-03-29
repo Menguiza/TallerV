@@ -34,10 +34,11 @@ public class InicializadorSistemaPosturas : MonoBehaviour
     /// <summary>
     /// |Unicamente para la Alpha| Asigna una nueva postura, limpiando rastros de la anterior e inicializando los efectos de la postura.
     /// </summary>
-    public void Testing_AssignNewStance()
+    public void Testing_AssignNewStance(Postura postura)
     {
+        gm.IDPostura = postura;
         gm.RemoveActiveTechniques();
-        gm.posturaDelSueño = posturasDelSueño[(int)gm.IDPostura];
+        gm.posturaDelSueño = posturasDelSueño[(int)postura];
         gm.ApplyTechniques();
     }
 }

@@ -16,12 +16,12 @@ MonoBehaviour:
   techniqueName: Calma ligera
   multVidaMax: 0
   multDmg: 0
-  multConciencia: 0
+  multConciencia: 0.5
   multTGPC: 0
-  multCritProb: 0
+  multCritProb: -10
   multCrit: 0
   multRoboPer: 0
-  multVelAatque: 0
+  multVelAatque: 0.1
   multSpeed: 0
   multPesadillaPer: 0
   desc: placeholder
