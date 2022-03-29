@@ -564,7 +564,6 @@ GameObject:
   m_Component:
   - component: {fileID: 434294511}
   - component: {fileID: 434294512}
-  - component: {fileID: 434294513}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -617,18 +616,8 @@ MonoBehaviour:
   damageToPlayer: 0
   timeToReset: 1
   enableTGPC: 1
---- !u!114 &434294513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 434294510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ce72e3b4e83acb4c85cffba4290c6f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  "posturaDelSue\xF1o": {fileID: 0}
+  IDPostura: 1
 --- !u!1 &508539282
 GameObject:
   m_ObjectHideFlags: 0
@@ -1389,6 +1378,57 @@ MonoBehaviour:
   life: 100
   conciencia: 5
   vida: {fileID: 612257074}
+--- !u!1 &904220407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 904220409}
+  - component: {fileID: 904220408}
+  m_Layer: 0
+  m_Name: InicializadorPosturas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &904220408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904220407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ce72e3b4e83acb4c85cffba4290c6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "posturasDelSue\xF1o":
+  - {fileID: 11400000, guid: 59e8e7c8c5877ab4aa46e03d6bc1a9b0, type: 2}
+  - {fileID: 11400000, guid: ecb233f95c68d804c9a86a814c3f85b9, type: 2}
+  - {fileID: 11400000, guid: 7632563e1976c5a4eb56bfc2daf5aeca, type: 2}
+  - {fileID: 11400000, guid: ce069189f3575dd4bbd3374f6c0ef939, type: 2}
+  - {fileID: 11400000, guid: d80cbb805fb6b5042bb5ca6fe826f4a7, type: 2}
+  - {fileID: 11400000, guid: 7f78b6073c77d4146b5ed8a298fdd4b1, type: 2}
+--- !u!4 &904220409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 904220407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &944882200
 GameObject:
   m_ObjectHideFlags: 0
@@ -1499,7 +1539,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -3093,7 +3133,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.3333334, y: 1}
+    m_SensorSize: {x: 1.2401278, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -3109,7 +3149,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142099911}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
