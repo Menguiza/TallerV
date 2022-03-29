@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ST Recarga rapida
   m_EditorClassIdentifier: 
   activeState: 0
-  techniqueName: 
+  techniqueName: Calma ligera
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
@@ -24,3 +24,4 @@ MonoBehaviour:
   multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
+  desc: placeholder

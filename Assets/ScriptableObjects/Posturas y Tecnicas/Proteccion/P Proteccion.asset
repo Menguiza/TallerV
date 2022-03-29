@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba00caf09907b7747a76e0e5ecfab17d, type: 3}
   m_Name: P Proteccion
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  STs: []
-  DTs: []
+  stanceName: Postura de defensa
+  icon: {fileID: 21300000, guid: a35727e2997497e47a91190b16ca5f70, type: 3}
+  Techniques:
+  - {fileID: 11400000, guid: b4caeb340a2941644b743556ebe3e93e, type: 2}
+  - {fileID: 11400000, guid: a78d11410e46c944592a1e8500a17377, type: 2}
+  desc: placeholder

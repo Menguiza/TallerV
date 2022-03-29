@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 383fc45c9eb00cf48bbe2d152f80692c, type: 3}
-  m_Name: DT CritProb
+  m_Name: ST Base
   m_EditorClassIdentifier: 
-  activeState: 3
-  techniqueName: "Sue\xF1os cr\xEDticos"
+  activeState: 0
+  techniqueName: Capacidad de dormirse
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
   multTGPC: 0
-  multCritProb: 25
+  multCritProb: 0
   multCrit: 0
   multRoboPer: 0
   multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
-  desc: placeholder
+  desc: Eres capaz de dormirte

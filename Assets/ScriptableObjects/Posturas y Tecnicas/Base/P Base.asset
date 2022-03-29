@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ba00caf09907b7747a76e0e5ecfab17d, type: 3}
-  m_Name: "P Da\xF1o"
+  m_Name: P Base
   m_EditorClassIdentifier: 
-  stanceName: Postura del poder
-  icon: {fileID: 21300000, guid: 55f58cf25d88be44ea0be2cfc9a3dd92, type: 3}
-  Techniques:
-  - {fileID: 11400000, guid: 1c11939e80aff404eb36e48f979fa3e1, type: 2}
-  - {fileID: 11400000, guid: 5d0f36a05f89975488074cf18b562ef4, type: 2}
-  desc: placeholder
+  stanceName: "Postura b\xE1sica"
+  icon: {fileID: 0}
+  Techniques: []
+  desc: "La forma m\xE1s basica de dormir y so\xF1ar."

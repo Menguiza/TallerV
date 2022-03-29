@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 383fc45c9eb00cf48bbe2d152f80692c, type: 3}
   m_Name: ST Pesadilla
   m_EditorClassIdentifier: 
-  techniqueName: 
+  activeState: 0
+  techniqueName: Calma oscura
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
@@ -23,3 +24,4 @@ MonoBehaviour:
   multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
+  desc: placeholder

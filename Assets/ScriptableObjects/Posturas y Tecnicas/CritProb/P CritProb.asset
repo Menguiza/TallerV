@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba00caf09907b7747a76e0e5ecfab17d, type: 3}
   m_Name: P CritProb
   m_EditorClassIdentifier: 
-  icon: {fileID: 0}
-  STs: []
-  DTs: []
+  stanceName: "Postura del cr\xEDtico"
+  icon: {fileID: 21300000, guid: e2f5ba37cb1aee543af3ed5d4eef2cd2, type: 3}
+  Techniques:
+  - {fileID: 11400000, guid: 069edf3c9f71d82468eae7976ba78ec7, type: 2}
+  - {fileID: 11400000, guid: d49769dd3e5d3724997b7471a1c84fd7, type: 2}
+  desc: placeholder
