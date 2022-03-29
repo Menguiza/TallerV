@@ -25,13 +25,11 @@ public class Conciencia : MonoBehaviour
         result = Mathf.Max(0, ((float)gm.Player.Conciencia / (float)gm.Player.MaxConciencia));
         img.fillAmount = result;
 
-        text.text = (Math.Round(result, 2) * porcentual + "%");
-
-        units.text = gm.Player.Conciencia.ToString();
-
-        if(gm.Player.Conciencia == 0)
+        if(text != null && units != null)
         {
-            
+            text.text = (Math.Round(result, 2) * porcentual + "%");
+
+            units.text = gm.Player.Conciencia.ToString();
         }
     }
 }
