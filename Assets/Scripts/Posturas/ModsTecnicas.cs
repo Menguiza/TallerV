@@ -6,7 +6,7 @@ using UnityEngine;
 public class ModsTecnicas : ScriptableObject
 {
     //Los estados en los que se aplica la postura
-    enum ActiveState
+    public enum ActiveState
     {
         awake,
         normalDream,
@@ -15,16 +15,17 @@ public class ModsTecnicas : ScriptableObject
     }
 
     [Header("Technique modifier values")]
-    [SerializeField] ActiveState activeState;
-    [SerializeField] string techniqueName;
-    [SerializeField] sbyte multVidaMax;
-    [SerializeField] sbyte multDmg;
-    [SerializeField] float multConciencia;
-    [SerializeField] sbyte multTGPC;
-    [SerializeField] sbyte multCritProb;
-    [SerializeField] float multCrit;
-    [SerializeField] sbyte multRoboPer;
-    [SerializeField] float multVelAatque;
-    [SerializeField] float multSpeed;
-    [SerializeField] sbyte multPesadillaPer;
+    public ActiveState activeState;
+    public string techniqueName;
+    public sbyte multVidaMax;
+    public sbyte multDmg;
+    public float multConciencia;
+    public sbyte multTGPC;
+    public sbyte multCritProb;
+    public float multCrit;
+    public sbyte multRoboPer;
+    public float multVelAatque;
+    public float multSpeed;
+    public sbyte multPesadillaPer;
+    public string desc;
 }
