@@ -7,6 +7,11 @@ public class Test_CambioPostura : MonoBehaviour
     [SerializeField] InicializadorSistemaPosturas.Postura stanceToChange;
     [SerializeField] InicializadorSistemaPosturas isp;
 
+    private void Start()
+    {
+        isp = FindObjectOfType<InicializadorSistemaPosturas>();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerController>() != null)
