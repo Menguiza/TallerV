@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider2();
                 gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
             }
-            else if (hit.collider.GetComponent<TrapContainer>() != null && hit.collider.GetComponent<TrapContainer>().trap.offsetInY <= transform.position.y)
+            else if (hit.collider.GetComponent<TrapContainer>() != null)
             {
                 anim.SetBool("Jump", false);
                 anim.SetTrigger("Knock");
