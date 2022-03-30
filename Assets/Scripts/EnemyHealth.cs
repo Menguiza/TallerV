@@ -15,21 +15,24 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        distance = Vector3.Distance(FindObjectOfType<PlayerController>().transform.position, fadePoint.position);
+        if (FindObjectOfType<PlayerController>() != null)
+        {
+            distance = Vector3.Distance(FindObjectOfType<PlayerController>().transform.position, fadePoint.position);
 
-        if (distance > minDis)
-        {
-            cnvGrp.alpha = 0;
-        }
-        else
-        {
-            if(distance>minDisFade)
+            if (distance > minDis)
             {
-                cnvGrp.alpha = 1;
+                cnvGrp.alpha = 0;
             }
             else
             {
-                cnvGrp.alpha = 0.6f;
+                if (distance > minDisFade)
+                {
+                    cnvGrp.alpha = 1;
+                }
+                else
+                {
+                    cnvGrp.alpha = 0.6f;
+                }
             }
         }
     }
