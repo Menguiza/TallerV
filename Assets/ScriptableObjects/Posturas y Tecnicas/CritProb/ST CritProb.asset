@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ST CritProb
   m_EditorClassIdentifier: 
   activeState: 0
-  techniqueName: Calma
+  techniqueName: Calma enfocada
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0

@@ -23,5 +23,5 @@ MonoBehaviour:
   multRoboPer: 0
   multVelAatque: 0
   multSpeed: 0
-  multPesadillaPer: 0
+  multPesadillaPer: 70
   desc: placeholder

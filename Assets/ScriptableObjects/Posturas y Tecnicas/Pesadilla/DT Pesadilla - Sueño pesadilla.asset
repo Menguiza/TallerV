@@ -18,10 +18,10 @@ MonoBehaviour:
   multDmg: 0
   multConciencia: 0
   multTGPC: 0
-  multCritProb: 0
-  multCrit: 0
+  multCritProb: 40
+  multCrit: 1
   multRoboPer: 0
   multVelAatque: 0
-  multSpeed: 0
+  multSpeed: 0.5
   multPesadillaPer: 0
   desc: placeholder

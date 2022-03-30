@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class GameMaster : MonoBehaviour
@@ -98,11 +99,17 @@ public class GameMaster : MonoBehaviour
     {
         player.Pesadilla = IsNightmare();
 
-        //Debug posturas
-        if (Input.GetKeyDown(KeyCode.C))
+        //Preguntar por los flags de cambio de estado en el jugador
+        if (player.wakeFlag)
         {
-            RemoveActiveTechniques();
-            ApplyTechniques();
+            PlayerWake.Invoke();
+            player.wakeFlag = false;
+        }
+
+        if(player.dreamFlag)
+        {
+            PlayerDream.Invoke();
+            player.dreamFlag = false;
         }
     }
 
@@ -117,6 +124,8 @@ public class GameMaster : MonoBehaviour
     /// </summary>
     public void ApplyTechniques()
     {
+
+
         CheckStance();
         foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
         {
@@ -137,6 +146,7 @@ public class GameMaster : MonoBehaviour
             }
         }
     }
+
     /// <summary>
     /// Agrega un modificador creado a partir de una técnica a la lista de modificadores.
     /// </summary>
@@ -184,6 +194,15 @@ public class GameMaster : MonoBehaviour
     {
         if (posturaDelSueño == null) Debug.LogWarning("|GameMaster -> Sistema de posturas| No se encontró la postura que debería poseer el jugador");
     }
+
+
+
+    #endregion
+
+    #region"Sistema de eventos"
+    public UnityEvent PlayerDream;
+
+    public UnityEvent PlayerWake;
     #endregion
 
     #region"Sistema de modificadores y Estadisticas"

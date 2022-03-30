@@ -15,7 +15,7 @@ MonoBehaviour:
   activeState: 1
   techniqueName: "Maldici\xF3n de pesadilla"
   multVidaMax: 0
-  multDmg: 0
+  multDmg: -7
   multConciencia: 0
   multTGPC: 0
   multCritProb: 0

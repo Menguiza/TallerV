@@ -18,6 +18,10 @@ public class Player
     private byte multPesadilla = 0;
     private bool pesadilla = false;
 
+    //Variables used for "Wake" and "Dream" UnityEvents
+    public bool wakeFlag = false;
+    public bool dreamFlag = false;
+
     [SerializeField]
     private ushort maxConciencia = 100;
 
@@ -93,12 +97,16 @@ public class Player
             {
                 conciencia = 0;
                 Status = GameMaster.estado.Dormido;
+
+                dreamFlag = true;
             }
             else if (value >= maxConciencia)
             {
                 Status = GameMaster.estado.Despierto;
                 conciencia = maxConciencia;
                 pesadilla = false;
+
+                wakeFlag = true;
             }
             else
             {
