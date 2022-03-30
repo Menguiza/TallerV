@@ -19,27 +19,30 @@ public class SpriteStatus : MonoBehaviour
 
     void Update()
     {
-        result = Mathf.Max(0, ((float)gm.Player.Life / (float)gm.Player.MaxLife));
+        if (gm.playerObject != null)
+        {
+            result = Mathf.Max(0, ((float)gm.Player.Life / (float)gm.Player.MaxLife));
 
-        if (result > (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Despierto)
-        {
-            gameObject.GetComponent<Image>().sprite = amoSano;
-        }
-        else if(result > (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Dormido)
-        {
-            gameObject.GetComponent<Image>().sprite = dormido;
-        }
-        else if(result <= (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Despierto)
-        {
-            gameObject.GetComponent<Image>().sprite = amoHerido;
-        }
-        else if(result <= (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Dormido)
-        {
-            gameObject.GetComponent<Image>().sprite = dormidoHerido;
-        }
-        else
-        {
-            gameObject.GetComponent<Image>().sprite = muerto;
+            if (result > (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Despierto)
+            {
+                gameObject.GetComponent<Image>().sprite = amoSano;
+            }
+            else if (result > (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Dormido)
+            {
+                gameObject.GetComponent<Image>().sprite = dormido;
+            }
+            else if (result <= (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Despierto)
+            {
+                gameObject.GetComponent<Image>().sprite = amoHerido;
+            }
+            else if (result <= (float)one / two && result > zero && gm.Player.Status == GameMaster.estado.Dormido)
+            {
+                gameObject.GetComponent<Image>().sprite = dormidoHerido;
+            }
+            else
+            {
+                gameObject.GetComponent<Image>().sprite = muerto;
+            }
         }
     }
 }

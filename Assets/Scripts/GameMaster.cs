@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Events;
 
 [System.Serializable]
@@ -41,7 +42,7 @@ public class GameMaster : MonoBehaviour
     //Variables de utilidad
     byte hundred = 100, one = 1, porcentual = 10, zero = 0, fifty = 50, contador = 0, multTGPC = 1, three = 3;
     float suma = 0f, minConciencia = 0.1f;
-    bool nightmareCalled = false;
+    bool nightmareCalled = false, sceneReloaded = false;
 
     [Header("TGPC")]
 
@@ -76,16 +77,17 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
-        if (instance != null && instance != this)
+        if (instance != null)
         {
-            Destroy(this.gameObject);
-            return;
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
         }
 
-        instance = this;
-        DontDestroyOnLoad(this.gameObject);
-
-        player = new(maxLife,dmg);
+        player = new(maxLife, dmg);
 
         CheckMods();
     }
@@ -93,11 +95,25 @@ public class GameMaster : MonoBehaviour
     private void FixedUpdate()
     {
         Inconciencia();
+
+        if (playerObject == null && player.Life == zero)
+        {
+            player = new Player(maxLife, dmg);
+            Invoke("ReloadScene", one);
+        }
     }
 
     private void Update()
     {
-        player.Pesadilla = IsNightmare();
+        if (player.Status == estado.Dormido)
+        {
+            player.Pesadilla = IsNightmare();
+        }
+        else
+        {
+            player.Pesadilla = false;
+            nightmareCalled = false;
+        }
 
         //Preguntar por los flags de cambio de estado en el jugador
         if (player.wakeFlag)
@@ -112,6 +128,21 @@ public class GameMaster : MonoBehaviour
             player.dreamFlag = false;
         }
     }
+
+    #region"Manejo de Escenas"
+
+    public void ReloadScene()
+    {
+        if (!sceneReloaded)
+        {
+            sceneReloaded = true;
+
+            Scene scene = SceneManager.GetActiveScene();
+            SceneManager.LoadScene(scene.name);
+        }
+    }
+
+    #endregion
 
     #region"Sistema de posturas y técnicas"
     [Header("Postura del sueño")]

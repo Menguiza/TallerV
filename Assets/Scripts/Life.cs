@@ -20,14 +20,18 @@ public class Life : MonoBehaviour
 
     void Update()
     {
-        result = Mathf.Max(0, ((float)gm.Player.Life / (float)gm.Player.MaxLife));
-        gameObject.GetComponent<Image>().fillAmount = result;
-
-        if (text != null && units != null)
+        if (gm.playerObject != null)
         {
-            text.text = (Math.Round(result, 2) * porcentual + "%");
+            result = Mathf.Max(0, ((float)gm.Player.Life / (float)gm.Player.MaxLife));
+            gameObject.GetComponent<Image>().fillAmount = result;
 
-            units.text = gm.Player.Life.ToString();
+            if (text != null && units != null)
+            {
+                text.text = (Math.Round(result, 2) * porcentual + "%");
+
+                units.text = gm.Player.Life.ToString();
+            }
         }
+
     }
 }

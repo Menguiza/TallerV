@@ -22,14 +22,18 @@ public class Conciencia : MonoBehaviour
 
     void Update()
     {
-        result = Mathf.Max(0, ((float)gm.Player.Conciencia / (float)gm.Player.MaxConciencia));
-        img.fillAmount = result;
-
-        if(text != null && units != null)
+        if (gm.playerObject != null)
         {
-            text.text = (Math.Round(result, 2) * porcentual + "%");
+            result = Mathf.Max(0, ((float)gm.Player.Conciencia / (float)gm.Player.MaxConciencia));
+            img.fillAmount = result;
 
-            units.text = gm.Player.Conciencia.ToString();
+            if (text != null && units != null)
+            {
+                text.text = (Math.Round(result, 2) * porcentual + "%");
+
+                units.text = gm.Player.Conciencia.ToString();
+            }
         }
+
     }
 }

@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e54351326dd00114aa363c962979f088, type: 3}
-  m_Name: Trap
+  m_Name: Spikes
   m_EditorClassIdentifier: 
   type: 0
-  offsetInY: 0
-  damage: 0
+  offsetInY: 0.4
+  damage: 10
