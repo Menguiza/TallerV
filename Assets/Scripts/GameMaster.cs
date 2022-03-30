@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class GameMaster : MonoBehaviour
@@ -97,7 +98,112 @@ public class GameMaster : MonoBehaviour
     private void Update()
     {
         player.Pesadilla = IsNightmare();
+
+        //Preguntar por los flags de cambio de estado en el jugador
+        if (player.wakeFlag)
+        {
+            PlayerWake.Invoke();
+            player.wakeFlag = false;
+        }
+
+        if(player.dreamFlag)
+        {
+            PlayerDream.Invoke();
+            player.dreamFlag = false;
+        }
     }
+
+    #region"Sistema de posturas y técnicas"
+    [Header("Postura del sueño")]
+    public PosturaDelSueño posturaDelSueño;
+    public InicializadorSistemaPosturas.Postura IDPostura;
+
+
+    /// <summary>
+    /// Aplica las técnicas de la postura del sueño de acuerdo al estado actual del jugador y el estado activo donde actúa la técnica.
+    /// </summary>
+    public void ApplyTechniques()
+    {
+
+
+        CheckStance();
+        foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
+        {
+            switch(player.Status)
+            {
+                case estado.Despierto:
+                    if (technique.activeState == ModsTecnicas.ActiveState.awake) AddTechnique(technique);
+                    break;
+
+                case estado.Dormido:
+                    if (technique.activeState == ModsTecnicas.ActiveState.anyDream) AddTechnique(technique);
+                    else if (!IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
+                    else if (IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
+                    break;
+                default:
+                    Debug.LogWarning("|GameMaster -> Sistema de posturas| Algo salio mal con el estado del jugador");
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Agrega un modificador creado a partir de una técnica a la lista de modificadores.
+    /// </summary>
+    /// <param name="technique">La técnica que se usará para crear el modificador a agregar</param>
+    void AddTechnique(ModsTecnicas technique)
+    {
+        try
+        {
+            AddMod(technique.techniqueName, technique.multVidaMax, technique.multDmg, technique.multConciencia, technique.multTGPC,
+            technique.multCritProb, technique.multCrit, technique.multRoboPer, technique.multVelAatque, technique.multSpeed, technique.multPesadillaPer);
+        }
+        catch (Exception)
+        {
+            Debug.LogError("|GameMaster -> Sistema de posturas| No se pudo añadir el modificador de la técnica");
+        }
+    }
+
+    /// <summary>
+    /// Busca y remueve todas las técnicas(modificadores) que estén en la lista de modificadores. Este método siempre deberia remover al menos una técnica debido a que el método ApplyTechniques siempre agrega al menos un modificador.
+    /// </summary>
+    public void RemoveActiveTechniques()
+    {
+        CheckStance();
+        bool managedToRemove = false;
+        foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
+        {
+            foreach (Mods mod in mods)
+            {
+                if (Equals(technique.techniqueName, mod.Name))
+                {
+                    mods.Remove(mod);
+                    managedToRemove = true;
+                    break;
+                }
+            }
+        }
+        CheckMods();
+        if (!managedToRemove) Debug.LogWarning("|GameMaster -> Sistema de posturas| No se encontraron modificadores de técnicas a remover");
+    }
+
+    /// <summary>
+    /// Verifica que el GameMaster tenga una postura asignada, si no es así, este método lanza una alerta a la consola.
+    /// </summary>
+    void CheckStance()
+    {
+        if (posturaDelSueño == null) Debug.LogWarning("|GameMaster -> Sistema de posturas| No se encontró la postura que debería poseer el jugador");
+    }
+
+
+
+    #endregion
+
+    #region"Sistema de eventos"
+    public UnityEvent PlayerDream;
+
+    public UnityEvent PlayerWake;
+    #endregion
 
     #region"Sistema de modificadores y Estadisticas"
 
