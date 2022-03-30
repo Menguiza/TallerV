@@ -64,6 +64,17 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("VelocidadAtaque", gm.Player.MultVelAtaque);
     }
 
+    private void FixedUpdate()
+    {
+        if ((characterContrl.collisionFlags & CollisionFlags.Above) != 0)
+        {
+            if(verticalVelocity > zero)
+            {
+                verticalVelocity = zero;
+            }
+        }
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (!died)
