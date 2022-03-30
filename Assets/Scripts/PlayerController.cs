@@ -97,6 +97,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #region "Movimiento"
+
     private void Attack()
     {
         if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !blocking && !airAttack)
@@ -280,6 +282,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    #endregion
+
     #region"Metodos de Utilidad"
     public void ActiveCollider()
     {
@@ -379,6 +383,7 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region "Funciones Carecteristicas Player"
     private uint ProbabilidadCritico(Player player)
     {
         uint daño = player.Damage;
@@ -398,4 +403,5 @@ public class PlayerController : MonoBehaviour
     {
         gm.Player.Life += (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
     }
+    #endregion
 }

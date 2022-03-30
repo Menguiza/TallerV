@@ -38,7 +38,10 @@ public class CastBar : MonoBehaviour
 
     private void FixedUpdate()
     {
-        FillBar();
+        if(gm.playerObject != null)
+        {
+            FillBar();
+        }
     }
 
     void FillBar()

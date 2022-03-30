@@ -14,9 +14,6 @@ public class FollowUi : MonoBehaviour
 
     float distance; //Distancia con respecto al jugador
 
-    [SerializeField]
-    float minDis = 4; //Distancia minima para mostar UI
-
     void Update()
     {
         if(worldPos != null)
@@ -25,15 +22,6 @@ public class FollowUi : MonoBehaviour
             rectTrans.position = screenPos + offset;
 
             distance = Vector3.Distance(FindObjectOfType<PlayerController>().transform.position, worldPos.transform.position);
-
-            if (distance > minDis)
-            {
-                gameObject.GetComponent<Image>().enabled = false;
-            }
-            else
-            {
-                gameObject.GetComponent<Image>().enabled = true;
-            }
         }
         else if(worldPos == null)
         {

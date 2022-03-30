@@ -9,7 +9,7 @@ using UnityEngine.Events;
 public class GameMaster : MonoBehaviour
 {
     //Singleton
-    GameMaster instance;
+    public static GameMaster instance;
 
     [Header("Valores Iniciales (Modificables)")]
 
@@ -77,6 +77,8 @@ public class GameMaster : MonoBehaviour
 
     private void Awake()
     {
+        #region "Singleton"
+
         if (instance != null)
         {
             Destroy(gameObject);
@@ -86,6 +88,8 @@ public class GameMaster : MonoBehaviour
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
+
+        #endregion
 
         player = new(maxLife, dmg);
 
@@ -226,14 +230,14 @@ public class GameMaster : MonoBehaviour
         if (posturaDelSueño == null) Debug.LogWarning("|GameMaster -> Sistema de posturas| No se encontró la postura que debería poseer el jugador");
     }
 
-
-
     #endregion
 
     #region"Sistema de eventos"
     public UnityEvent PlayerDream;
 
     public UnityEvent PlayerWake;
+
+    public UnityEvent OnRoomFinished;
     #endregion
 
     #region"Sistema de modificadores y Estadisticas"

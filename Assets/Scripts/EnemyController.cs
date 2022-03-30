@@ -29,6 +29,7 @@ public class EnemyController : MonoBehaviour
             else if(value<=0)
             {
                 life = 0;
+                GameMaster.instance.OnRoomFinished.Invoke();
                 Destroy(gameObject);
             }
         }
