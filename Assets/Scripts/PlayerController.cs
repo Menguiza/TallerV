@@ -144,6 +144,8 @@ public class PlayerController : MonoBehaviour
             horizontal = zero;
 
             move.z = horizontal;
+
+            anim.SetFloat("Horizontal", zero);
         }
         else if (!characterContrl.isGrounded && !knockBacked && !blocking && !died && !anim.GetBool("Knocked"))
         {
@@ -209,6 +211,7 @@ public class PlayerController : MonoBehaviour
                 else if (!dodge)
                 {
                     horizontal = Input.GetAxisRaw("Horizontal");
+                    anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
                     TurnChar();
                     blocking = false;
                     anim.SetBool("Block", false);
@@ -221,8 +224,6 @@ public class PlayerController : MonoBehaviour
         }
 
         SetGravity();
-
-        anim.SetFloat("Horizontal", Input.GetAxis("Horizontal"));
 
         if (Input.GetButtonDown("Jump") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !died)
         {
