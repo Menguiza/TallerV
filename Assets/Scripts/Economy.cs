@@ -33,9 +33,9 @@ public class Economy : MonoBehaviour
         gems = 0;
     }
 
-    public void Reward()
+    public void Reward(uint add)
     {
-        currency += 1;
-        gems += 1;
+        currency += add;
+        gems += add;
     }
 }

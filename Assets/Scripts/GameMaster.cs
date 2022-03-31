@@ -245,26 +245,22 @@ public class GameMaster : MonoBehaviour
     public void AddMod(string name, sbyte vida, sbyte dmg, float multConciencia, sbyte multTGPC, sbyte critProb, float critMult,
         sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer)
     {
+        mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
 
-        if(mods.Count != zero)
+        CheckMods();
+
+        Debug.Log(mods.Count);
+    }
+
+    public void RemoveMod(string name)
+    {
+        foreach(Mods element in mods)
         {
-            foreach (Mods element in mods)
+            if(element.Name == name)
             {
-                if (element.Name == name)
-                {
-                    return;
-                }
+                mods.Remove(element);
+                return;
             }
-
-            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
-
-            CheckMods();
-        }
-        else if(mods.Count == zero)
-        {
-            mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
-
-            CheckMods();
         }
     }
 
