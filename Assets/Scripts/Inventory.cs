@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Alpha9))
+        if(Input.GetKeyDown(KeyCode.Keypad1))
         {
             ScriptableObject obj = activables[0].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[0].GetComponent<ItemContainer>().itemInfo;

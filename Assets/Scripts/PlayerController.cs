@@ -82,7 +82,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!died)
         {
-            if (hit.collider.CompareTag("Enemy"))
+            if (hit.collider.CompareTag("Enemy") && !anim.GetBool("Knocked"))
             {
                 anim.SetBool("Jump", false);
                 anim.SetTrigger("Knock");
@@ -95,7 +95,7 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider2();
                 gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
             }
-            else if (hit.collider.GetComponent<TrapContainer>() != null)
+            else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
                 anim.SetBool("Jump", false);
                 anim.SetTrigger("Knock");
