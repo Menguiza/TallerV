@@ -326,7 +326,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1195753200, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1753,6 +1753,7 @@ MonoBehaviour:
   multVelAtaqueINP: 0
   speedMultINP: 0
   damageToPlayer: 0
+  sceneReloaded: 0
   timeToReset: 1
   enableTGPC: 1
   "posturaDelSue\xF1o": {fileID: 0}
@@ -2803,7 +2804,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1195753200, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2955,7 +2956,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1195753200, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4271,7 +4272,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1195753200, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6394,7 +6395,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 1195753200, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6876,7 +6877,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1354002948}
-  mierda: {fileID: 11400000, guid: 27e00ceeb4e67434181beca84c61be8d, type: 2}
 --- !u!1001 &1852488254
 PrefabInstance:
   m_ObjectHideFlags: 0
