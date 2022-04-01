@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     Transform attackPoint, attackPoint2;
     [SerializeField]
     LayerMask enemyLayer;
+    [SerializeField]
+    GameObject particles;
 
     CharacterController characterContrl;
     Animator anim;
@@ -39,6 +41,9 @@ public class PlayerController : MonoBehaviour
         gm = FindObjectOfType<GameMaster>();
 
         gm.playerObject = this.gameObject;
+        gm.particles = this.particles;
+
+        particles.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
     }

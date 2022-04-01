@@ -21,6 +21,7 @@ public class GameMaster : MonoBehaviour
     //Referencias Al Jugador
     Player player;
     public GameObject playerObject;
+    public GameObject particles, particlesChild;
 
     //Modificadores
     public List<Mods> mods = new List<Mods>();
@@ -124,12 +125,24 @@ public class GameMaster : MonoBehaviour
         {
             PlayerWake.Invoke();
             player.wakeFlag = false;
+
+            if (particles != null)
+            {
+                particles.GetComponent<ParticleSystem>().Stop();
+                particlesChild.SetActive(false);
+            }
         }
 
         if(player.dreamFlag)
         {
             PlayerDream.Invoke();
             player.dreamFlag = false;
+
+            if(particles != null)
+            {
+                particles.GetComponent<ParticleSystem>().Play();
+                particlesChild.SetActive(true);
+            }
         }
     }
 

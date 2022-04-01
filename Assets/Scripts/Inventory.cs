@@ -35,7 +35,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Keypad1))
+        if(Input.GetKeyDown(KeyCode.Alpha1))
         {
             ScriptableObject obj = activables[0].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[0].GetComponent<ItemContainer>().itemInfo;
@@ -46,6 +46,86 @@ public class Inventory : MonoBehaviour
             }
 
             if(item.use == ItemUse.Tiempo)
+            {
+                item.AddParameters(item.duration);
+            }
+            else
+            {
+                item.Impact();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha2))
+        {
+            ScriptableObject obj = activables[1].GetComponent<ItemContainer>().itemInfo;
+            Item item = activables[1].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            if (item.use == ItemUse.Tiempo)
+            {
+                item.AddParameters(item.duration);
+            }
+            else
+            {
+                item.Impact();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha3))
+        {
+            ScriptableObject obj = activables[2].GetComponent<ItemContainer>().itemInfo;
+            Item item = activables[2].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            if (item.use == ItemUse.Tiempo)
+            {
+                item.AddParameters(item.duration);
+            }
+            else
+            {
+                item.Impact();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha4))
+        {
+            ScriptableObject obj = activables[3].GetComponent<ItemContainer>().itemInfo;
+            Item item = activables[3].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            if (item.use == ItemUse.Tiempo)
+            {
+                item.AddParameters(item.duration);
+            }
+            else
+            {
+                item.Impact();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Alpha5))
+        {
+            ScriptableObject obj = activables[4].GetComponent<ItemContainer>().itemInfo;
+            Item item = activables[4].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
+            {
+                return;
+            }
+
+            if (item.use == ItemUse.Tiempo)
             {
                 item.AddParameters(item.duration);
             }
