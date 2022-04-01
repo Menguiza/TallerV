@@ -54,8 +54,12 @@ public class Item : ScriptableObject
 
     public void Impact()
     {
-        GameMaster.instance.DamagePlayer(-sumVida);
+        GameMaster.instance.Player.Life += (uint)Mathf.Round((GameMaster.instance.maxLife * sumVida)/ 100);
         GameMaster.instance.Player.Conciencia = (ushort)Mathf.Max(0, GameMaster.instance.Player.Conciencia + sumConciencia);
+        if(sumConciencia!=0)
+        {
+            GameMaster.instance.playerObject.GetComponent<Animator>().SetTrigger("Knock");
+        }
         Economy.instance.Reward(sumDinero);
         Inventory.instance.Remove(nombre);
     }

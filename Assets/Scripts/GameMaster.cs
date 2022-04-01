@@ -12,14 +12,12 @@ public class GameMaster : MonoBehaviour
     public static GameMaster instance;
 
     [Header("Valores Iniciales (Modificables)")]
-
-    [SerializeField]
-    private uint maxLife;
     [SerializeField]
     private uint dmg;
     [SerializeField]
     private float multiplicadorConciencia = 1.0f;
-
+    public uint maxLife { get; private set; } = 100;
+    
     //Referencias Al Jugador
     Player player;
     public GameObject playerObject;
