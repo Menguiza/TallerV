@@ -1790,6 +1790,7 @@ GameObject:
   - component: {fileID: 434294511}
   - component: {fileID: 434294512}
   - component: {fileID: 434294513}
+  - component: {fileID: 434294514}
   m_Layer: 0
   m_Name: GameMaster
   m_TagString: Untagged
@@ -1827,6 +1828,8 @@ MonoBehaviour:
   dmg: 10
   multiplicadorConciencia: 1
   playerObject: {fileID: 1702112919}
+  particles: {fileID: 0}
+  particlesChild: {fileID: 0}
   nameINP: Mierdon
   vidaINP: 0
   dmgINP: 0
@@ -1871,6 +1874,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 434294514}
+        m_TargetAssemblyTypeName: ModificadoresEstadoDormido, Assembly-CSharp
+        m_MethodName: AddDreamModifier
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   PlayerWake:
     m_PersistentCalls:
       m_Calls:
@@ -1889,6 +1904,18 @@ MonoBehaviour:
       - m_Target: {fileID: 434294512}
         m_TargetAssemblyTypeName: GameMaster, Assembly-CSharp
         m_MethodName: ApplyTechniques
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 434294514}
+        m_TargetAssemblyTypeName: ModificadoresEstadoDormido, Assembly-CSharp
+        m_MethodName: RemoveDreamModifier
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1920,6 +1947,18 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ce069189f3575dd4bbd3374f6c0ef939, type: 2}
   - {fileID: 11400000, guid: d80cbb805fb6b5042bb5ca6fe826f4a7, type: 2}
   - {fileID: 11400000, guid: 7f78b6073c77d4146b5ed8a298fdd4b1, type: 2}
+--- !u!114 &434294514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 434294510}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62b5605a48872994485b18ecf35cc8d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &443678368
 GameObject:
   m_ObjectHideFlags: 0
@@ -4349,7 +4388,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7363,6 +7402,7 @@ MonoBehaviour:
   enemyLayer:
     serializedVersion: 2
     m_Bits: 8
+  particles: {fileID: 0}
   blocking: 0
   dodgeEnable: 1
   attack: 0
@@ -9739,7 +9779,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142099911}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
