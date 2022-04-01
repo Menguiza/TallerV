@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class ManagerHechizos : MonoBehaviour
 {
+    //Singleton
+    public static ManagerHechizos instance;
+    
     public UnityEvent FirstSpellCast;
     public UnityEvent SecondSpellCast;
     public UnityEvent ThirdSpellCast;
@@ -14,9 +17,31 @@ public class ManagerHechizos : MonoBehaviour
 
     public List<Hechizo> debugSpellData;
 
+    UI_SlotsHechizos slotsHechizos;
+
+    private void Awake()
+    {
+        slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
+
+        if (slotsHechizos == null) Debug.LogWarning("|Manager hechizos| No se pudo encontrar la referencia a SlotsHechizos");
+
+        if (instance != null)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        UpdateSpellSlots();
+    }
+
     public void AddNewSpell(Hechizo hechizo)
     {      
         AddSpell(hechizo);
+        UpdateSpellSlots();
     }
 
     void AddSpell(Hechizo hechizo)
@@ -121,6 +146,8 @@ public class ManagerHechizos : MonoBehaviour
 
         availableSpells.Clear();
         spellsData.Clear();
+
+        UpdateSpellSlots();
     }
 
     public void SwapSpellHotkeyAndInventoryPosition(int selectedOriginalSlot, int newSelectedSlot)
@@ -242,6 +269,8 @@ public class ManagerHechizos : MonoBehaviour
                 break;
         }
         #endregion
+
+        UpdateSpellSlots();
     }
 
     public void SwapLastSpellForNewSpell(Hechizo spell)
@@ -303,6 +332,22 @@ public class ManagerHechizos : MonoBehaviour
         }
         #endregion
 
+        UpdateSpellSlots();
+    }
+
+    public void UpdateSpellSlots()
+    {
+        for (int i = 0; i < slotsHechizos.slotsImages.Length; i++)
+        {
+            if (slotsHechizos.hechizos[i] == null) slotsHechizos.slotsImages[i].color = new Color(0, 0, 0, 0);
+            else slotsHechizos.slotsImages[i].color = Color.white;
+        }
+
+        for (int i = 0; i < spellsData.Count; i++)
+        {
+            slotsHechizos.hechizos[i] = spellsData[i];
+            slotsHechizos.slotsImages[i].sprite = spellsData[i].sprite;
+        }
     }
 
     private void Update()
