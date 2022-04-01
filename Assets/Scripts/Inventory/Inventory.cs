@@ -10,7 +10,6 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
 
-    public List<Item> items_Activos = new List<Item>();
     [SerializeField]
     GameObject content, prefab;
     byte slots = 5, slotsUsados = 0;
@@ -140,7 +139,6 @@ public class Inventory : MonoBehaviour
     {
         if (item.type == ItemType.Activo && slotsUsados < slots)
         {
-            items_Activos.Add(item);
             slotsUsados++;
 
             for (int i = 0; i < activables.Count; i++)
@@ -193,35 +191,25 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Remove(string nombre)
+    public void Remove(Item it)
     {
         foreach (GameObject item in activables)
         {
-            if (item.GetComponent<ItemContainer>().itemInfo.nombre == nombre)
+            if (item.GetComponent<ItemContainer>().itemInfo == it)
             {
                 item.GetComponent<ItemContainer>().itemInfo = null;
-                Debug.Log("removed " + nombre);
+                Debug.Log("removed ");
                 return;
             }
         }
 
         foreach (GameObject item in activosInv)
         {
-            if (item.GetComponent<ItemContainerInv>().itemInfo.nombre == nombre)
+            if (item.GetComponent<ItemContainerInv>().itemInfo == it)
             {
                 item.GetComponent<ItemContainerInv>().itemInfo = null;
-                Debug.Log("removed " + nombre);
+                Debug.Log("removed Inv");
                 return;
-            }
-        }
-
-        foreach (Item item in items_Activos)
-        {
-            if (item.nombre == nombre)
-            {
-                items_Activos.Remove(item);
-                Debug.Log("removed " + nombre);
-                break;
             }
         }
     }
