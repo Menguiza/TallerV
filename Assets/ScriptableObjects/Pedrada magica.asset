@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
+  m_Name: Pedrada magica
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  spellName: "Pedrada m\xE1gica"
+  desc: "Arroja una pedrada m\xE1gica que al impactar contra el escenario o un enemigo
+    estalla haciendo da\xF1o y mucho retroceso."
+  lore: "Este hechizo fue utilizado desde la antig\xFCedad para hacerle da\xF1os
+    a varios enemigos a la vez, tambi\xE9n era usado para destruir fortalezas y murallas."
+  spellDamage: 350
+  impact: "M\xFAltiple, explosi\xF3n"
+  impactEffect: Inflige mucho retroceso y deja aturdidos a los enemigos durante 1
+    segundo.
+  rechargeTime: 30
+  chanellingTime: 2
+  spellContained: 3

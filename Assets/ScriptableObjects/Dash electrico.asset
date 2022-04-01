@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
+  m_Name: Dash electrico
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  spellName: "Dash el\xE9ctrico"
+  desc: "Te desplazas a la velocidad del rayo a una corta distancia da\xF1ando a
+    los enemigos que atravieses"
+  lore: "Fue creado hace mucho tiempo por unos magos cient\xEDficos que estaban estudiando
+    las propiedades de la electricidad."
+  spellDamage: 150
+  impact: "M\xFAltiple, atraviesa"
+  impactEffect: N/A
+  rechargeTime: 8
+  chanellingTime: 0
+  spellContained: 6

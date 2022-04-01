@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
+  m_Name: Espada de luz
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  spellName: Espada de luz
+  desc: "Imbuye tu arma en energia on\xEDrica potenciando su da\xF1o"
+  lore: "Este hechizo era utilizado principalmente por los generales de los distintos
+    clanes antes de la creaci\xF3n de N\xEDfera, es famoso por el gran poder que
+    le proporciona a quien lo invocara. "
+  spellDamage: 0
+  impact: Buff personal
+  impactEffect: "Agrega un modificador que da +100% al da\xF1o infligido durante
+    5 segundos"
+  rechargeTime: 15
+  chanellingTime: 1
+  spellContained: 2

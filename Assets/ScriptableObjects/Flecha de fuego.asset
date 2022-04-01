@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
+  m_Name: Flecha de fuego
+  m_EditorClassIdentifier: 
+  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  spellName: Flecha de fuego
+  desc: "Lanza una flecha de fuego con r\xE1pida velocidad que al impactar a un enemigo
+    le hace mucho da\xF1o y lo quema."
+  lore: Flecha impregnada con magia de fuego, esta era principalmente utilizada para
+    encender residencias en tiempos de guerra.
+  spellDamage: 500
+  impact: "\xDAnico"
+  impactEffect: "Quema al enemigo durante 3 segundos inflingiendole 10 de da\xF1o
+    cada segundo."
+  rechargeTime: 15
+  chanellingTime: 0.3
+  spellContained: 1

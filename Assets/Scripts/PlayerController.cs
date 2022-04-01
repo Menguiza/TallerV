@@ -39,7 +39,10 @@ public class PlayerController : MonoBehaviour
         gm = FindObjectOfType<GameMaster>();
 
         gm.playerObject = this.gameObject;
+
+        gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
     }
+
 
     void Update()
     {
