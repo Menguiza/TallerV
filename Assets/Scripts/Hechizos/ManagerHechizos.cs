@@ -246,6 +246,7 @@ public class ManagerHechizos : MonoBehaviour
 
     public void SwapLastSpellForNewSpell(Hechizo spell)
     {
+        Destroy(availableSpells[2]);
         spellsData[2] = spell;
         ThirdSpellCast.RemoveAllListeners();
         availableSpells.RemoveAt(2);

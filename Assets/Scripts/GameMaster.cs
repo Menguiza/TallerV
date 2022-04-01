@@ -42,7 +42,8 @@ public class GameMaster : MonoBehaviour
     //Variables de utilidad
     byte hundred = 100, one = 1, porcentual = 10, zero = 0, fifty = 50, contador = 0, multTGPC = 1, three = 3;
     float suma = 0f, minConciencia = 0.1f;
-    bool nightmareCalled = false, sceneReloaded = false;
+    bool nightmareCalled = false;
+    public bool sceneReloaded = false;
 
     [Header("TGPC")]
 
@@ -96,11 +97,12 @@ public class GameMaster : MonoBehaviour
         CheckMods();
     }
 
+
     private void FixedUpdate()
     {
         Inconciencia();
 
-        if (playerObject == null && player.Life == zero)
+        if (playerObject == null && player.Life == zero && !sceneReloaded)
         {
             player = new Player(maxLife, dmg);
             Invoke("ReloadScene", one);
