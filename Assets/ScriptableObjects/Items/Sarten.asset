@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4097875dd1468e4478e607341cc960ff, type: 3}
-  m_Name: Item 1
+  m_Name: Sarten
   m_EditorClassIdentifier: 
-  nombre: Martes de Prueba
+  nombre: Sarten
   type: 0
   format: 1
   use: 1
-  icon: {fileID: -120047418, guid: 26f72269ebab7a540accb27a6430a175, type: 3}
+  icon: {fileID: 21300000, guid: 0251655968e068b4783d143a5fd8b0be, type: 3}
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
@@ -27,7 +27,7 @@ MonoBehaviour:
   multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
-  sumVida: -10
-  sumConciencia: 0
+  sumVida: 0
+  sumConciencia: -100
   sumDinero: 0
-  duration: 1
+  duration: 0

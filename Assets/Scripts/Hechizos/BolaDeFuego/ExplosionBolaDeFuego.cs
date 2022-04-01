@@ -31,7 +31,7 @@ public class ExplosionBolaDeFuego : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyController>() != null)
         {
-            other.gameObject.GetComponent<EnemyController>().Life -= (uint)damage;
+            other.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, other.gameObject.GetComponent<EnemyController>().Life - damage);
         }
     }
 }
