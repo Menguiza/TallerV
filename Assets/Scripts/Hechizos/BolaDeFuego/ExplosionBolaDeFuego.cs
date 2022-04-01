@@ -13,18 +13,7 @@ public class ExplosionBolaDeFuego : MonoBehaviour
     private void Awake()
     {
         material = gameObject.GetComponent<MeshRenderer>().material;
-    }
-
-    private void Update()
-    {
-        //Perder alpha progresivamente
-        if (material.color.a <= 0)
-        {
-            Destroy(gameObject);
-        }
-
-        material.color = new Color(material.color.r, material.color.g, material.color.b, material.color.a - (deltaAlpha * Time.deltaTime));
-
+        Destroy(gameObject, 2);
     }
 
     private void OnTriggerEnter(Collider other)

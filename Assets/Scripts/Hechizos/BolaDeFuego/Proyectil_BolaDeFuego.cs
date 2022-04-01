@@ -10,7 +10,7 @@ public class Proyectil_BolaDeFuego : MonoBehaviour
     public void fireballExplode()
     {
         //Zona de explosión
-        GameObject explosion = Instantiate(FireballExplosionVolume, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(FireballExplosionVolume, transform.position + transform.forward * 1.8f, Quaternion.identity);
         explosion.GetComponent<ExplosionBolaDeFuego>().damage = damage;
 
         //Aqui van las particulas --
