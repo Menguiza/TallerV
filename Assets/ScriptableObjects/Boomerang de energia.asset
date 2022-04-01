@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
   m_Name: Boomerang de energia
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  sprite: {fileID: 21300000, guid: 9ce23f213d088cb4fae4705426cba6df, type: 3}
   spellName: Boomerang de energia
   desc: Arroja un boomerang de energia que atraviesa a los enemigos y regresa a ti.
   lore: "Este hechizo fue creado por el clan de los Ausis para cazar. Este clan se
