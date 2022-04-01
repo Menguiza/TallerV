@@ -10,15 +10,20 @@ public class Proyectil_FlechaDeFuego : MonoBehaviour
     {
         //Aqui van las particulas --
 
+        //Separar el trail
+        Destroy(gameObject.transform.GetChild(0).gameObject, 1f);
+
+        gameObject.transform.DetachChildren();
+
         //Siempre Eliminar al final el proyectil
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<EnemyController>() != null)
+        if (other.gameObject.GetComponent<EnemyController>() != null)
         {
-            collision.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, collision.gameObject.GetComponent<EnemyController>().Life - damage);
+            other.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, other.gameObject.GetComponent<EnemyController>().Life - damage);
         }
 
         fireArrowImpact();
