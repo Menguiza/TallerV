@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
   m_Name: Flecha de fuego
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: e2f5ba37cb1aee543af3ed5d4eef2cd2, type: 3}
+  sprite: {fileID: 21300000, guid: 7c01fdfa1554f1f43a0249fe4fa804fc, type: 3}
   spellName: Flecha de fuego
   desc: "Lanza una flecha de fuego con r\xE1pida velocidad que al impactar a un enemigo
     le hace mucho da\xF1o y lo quema."
