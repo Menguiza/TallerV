@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
-    GameObject particles;
+    GameObject particles, particlesChild;
 
     CharacterController characterContrl;
     Animator anim;
@@ -42,6 +42,7 @@ public class PlayerController : MonoBehaviour
 
         gm.playerObject = this.gameObject;
         gm.particles = this.particles;
+        gm.particlesChild = this.particlesChild;
 
         particles.GetComponent<ParticleSystem>().Stop();
 
