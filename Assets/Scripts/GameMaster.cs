@@ -129,7 +129,7 @@ public class GameMaster : MonoBehaviour
             if (particles != null)
             {
                 particles.GetComponent<ParticleSystem>().Stop();
-                particlesChild.SetActive(false);
+                particlesChild.GetComponent<ParticleSystem>().Stop();
             }
         }
 
@@ -141,7 +141,7 @@ public class GameMaster : MonoBehaviour
             if(particles != null)
             {
                 particles.GetComponent<ParticleSystem>().Play();
-                particlesChild.SetActive(true);
+                particlesChild.GetComponent<ParticleSystem>().Play();
             }
         }
     }

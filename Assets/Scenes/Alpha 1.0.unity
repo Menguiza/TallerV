@@ -1417,9 +1417,13 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7298621133248402522, guid: 4709ad3f70aa207468d3cb3ebd8539f8, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 438ad2b74b18f56469dfd7dded9a2582, type: 2}
     - target: {fileID: 7298621133248402596, guid: 4709ad3f70aa207468d3cb3ebd8539f8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4709ad3f70aa207468d3cb3ebd8539f8, type: 3}
@@ -4105,7 +4109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   items_Pasivos: []
-  items_Activos: []
   content: {fileID: 1234469374}
   prefab: {fileID: 1894941241773533984, guid: 36b35882da8774a4c81e2e1fbf486b25, type: 3}
   activables:
@@ -4114,12 +4117,17 @@ MonoBehaviour:
   - {fileID: 663244971}
   - {fileID: 1545930142}
   - {fileID: 1552006009}
-  activosInv: []
+  activosInv:
+  - {fileID: 2132458292}
+  - {fileID: 87760790}
+  - {fileID: 1668001051}
+  - {fileID: 1622719718}
+  - {fileID: 1651657827}
   OnItemCollected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1354002949}
-        m_TargetAssemblyTypeName: UpdateSlots, Assembly-CSharp
+      - m_Target: {fileID: 884595005}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
         m_MethodName: SlotLoad
         m_Mode: 1
         m_Arguments:
@@ -4133,8 +4141,8 @@ MonoBehaviour:
   OnItemChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1354002949}
-        m_TargetAssemblyTypeName: UpdateSlots, Assembly-CSharp
+      - m_Target: {fileID: 884595005}
+        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
         m_MethodName: SlotLoadReverse
         m_Mode: 1
         m_Arguments:
@@ -4773,7 +4781,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6430,7 +6438,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1354002947}
   - component: {fileID: 1354002948}
-  - component: {fileID: 1354002949}
   m_Layer: 5
   m_Name: Inventory
   m_TagString: Untagged
@@ -6475,25 +6482,6 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &1354002949
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1354002946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e977da7088a10c04d951e5b842b987be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slots1: []
-  slots2:
-  - {fileID: 2132458292}
-  - {fileID: 87760790}
-  - {fileID: 1668001051}
-  - {fileID: 1622719718}
-  - {fileID: 1651657827}
 --- !u!1 &1363338575
 GameObject:
   m_ObjectHideFlags: 0
@@ -10566,7 +10554,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142099911}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

@@ -45,6 +45,7 @@ public class PlayerController : MonoBehaviour
         gm.particlesChild = this.particlesChild;
 
         particles.GetComponent<ParticleSystem>().Stop();
+        particlesChild.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
     }
