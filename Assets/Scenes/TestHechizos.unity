@@ -4688,6 +4688,62 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.016346674, y: 0.016385138, z: 0.0040958524}
   m_Center: {x: -0.00001922488, y: 0.0000000023841857, z: 0.0020479287}
+--- !u!1 &1557187557
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1557187559}
+  - component: {fileID: 1557187558}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1557187558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557187557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e01e00b5952f0b4e8a0e0cb796661bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FirstSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  SecondSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  ThirdSpellCast:
+    m_PersistentCalls:
+      m_Calls: []
+  spellsData:
+  - {fileID: 11400000, guid: d5a334e1495b50047b0a7ebf41d5bd5e, type: 2}
+  availableSpells: []
+--- !u!4 &1557187559
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1557187557}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.043784, y: -4.50566, z: -1.9039317}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1587235746
 GameObject:
   m_ObjectHideFlags: 0
@@ -6585,7 +6641,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.7766223, y: 1}
+    m_SensorSize: {x: 1.2401278, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
