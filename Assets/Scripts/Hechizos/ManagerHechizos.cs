@@ -127,26 +127,121 @@ public class ManagerHechizos : MonoBehaviour
     {
         UnityEvent[] spellCastEvents = { FirstSpellCast, SecondSpellCast, ThirdSpellCast };
 
-        print(availableSpells[0]);
-        print(availableSpells[1]);
-        print(availableSpells[2]);
+        //Remover todos los listeners
+        spellCastEvents[selectedOriginalSlot].RemoveAllListeners();
+        spellCastEvents[newSelectedSlot].RemoveAllListeners();
 
         Hechizo tempSpellData = spellsData[selectedOriginalSlot];
         spellsData[selectedOriginalSlot] = spellsData[newSelectedSlot];
         spellsData[newSelectedSlot] = tempSpellData;
 
-        spellCastEvents[selectedOriginalSlot].RemoveAllListeners();
-        spellCastEvents[newSelectedSlot].RemoveAllListeners();
-
         Component tempSpell = availableSpells[selectedOriginalSlot];
         availableSpells[selectedOriginalSlot] = availableSpells[newSelectedSlot];
         availableSpells[newSelectedSlot] = (MonoBehaviour)tempSpell;
 
-        print(availableSpells[0].GetComponent<IHechizo>());
-        print(availableSpells[1].GetComponent<IHechizo>());
-        print(availableSpells[2].GetComponent<IHechizo>());
-        //availableSpells[0].GetComponent<IHechizo>().SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
-        //availableSpells[newSelectedSlot].GetComponent<IHechizo>().SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+        Destroy(availableSpells[selectedOriginalSlot]);
+        Destroy(availableSpells[newSelectedSlot]);
+
+        //Jueputa
+        #region"Agregar los componentes a su nuevas posiciones, instanciadolos de nuevo"
+        switch (spellsData[selectedOriginalSlot].spellContained)
+        {
+            case Hechizo.EHechizo.BolaDeFuego:
+                BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
+                fireball.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = fireball;
+                break;
+
+            case Hechizo.EHechizo.FlechaDeFuego:
+                FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
+                fireArrow.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = fireArrow;
+                break;
+
+            case Hechizo.EHechizo.EspadaDeLuz:
+                EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
+                lightSword.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = lightSword;
+                break;
+
+            case Hechizo.EHechizo.PedradaMagica:
+                PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
+                magicpebble.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = magicpebble;
+                break;
+
+            case Hechizo.EHechizo.BoomerangDeEnergia:
+                BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
+                energyBoomerang.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = energyBoomerang;
+                break;
+
+            case Hechizo.EHechizo.BolaDeAcido:
+                BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
+                acidball.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = acidball;
+                break;
+
+            case Hechizo.EHechizo.DashElectrico:
+                DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
+                electricDash.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
+                availableSpells[selectedOriginalSlot] = electricDash;
+                break;
+
+            default:
+                Debug.LogError("|Manager hechizos| No se pudo encontrar el hechizo");
+                break;
+        }
+
+        switch (spellsData[newSelectedSlot].spellContained)
+        {
+            case Hechizo.EHechizo.BolaDeFuego:
+                BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
+                fireball.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = fireball;
+                break;
+
+            case Hechizo.EHechizo.FlechaDeFuego:
+                FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
+                fireArrow.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = fireArrow;
+                break;
+
+            case Hechizo.EHechizo.EspadaDeLuz:
+                EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
+                lightSword.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = lightSword;
+                break;
+
+            case Hechizo.EHechizo.PedradaMagica:
+                PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
+                magicpebble.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = magicpebble;
+                break;
+
+            case Hechizo.EHechizo.BoomerangDeEnergia:
+                BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
+                energyBoomerang.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = energyBoomerang;
+                break;
+
+            case Hechizo.EHechizo.BolaDeAcido:
+                BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
+                acidball.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = acidball;
+                break;
+
+            case Hechizo.EHechizo.DashElectrico:
+                DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
+                electricDash.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
+                availableSpells[newSelectedSlot] = electricDash;
+                break;
+
+            default:
+                Debug.LogError("|Manager hechizos| No se pudo encontrar el hechizo");
+                break;
+        }
+        #endregion
     }
 
     public void SwapLastSpellForNewSpell(Hechizo spell)
@@ -155,6 +250,7 @@ public class ManagerHechizos : MonoBehaviour
         ThirdSpellCast.RemoveAllListeners();
         availableSpells.RemoveAt(2);
 
+        
         #region"Agregar el componente al final, que contiene IHechizo"
         switch (spell.spellContained)
         {
@@ -279,24 +375,23 @@ public class ManagerHechizos : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.G)) // 2 -> 3
         {
-            SwapSpellHotkeyAndInventoryPosition(2, 3);
+            SwapSpellHotkeyAndInventoryPosition(1, 2);
         }
 
         if (Input.GetKeyDown(KeyCode.H)) // 2 <- 3
         {
-            SwapSpellHotkeyAndInventoryPosition(3, 2);
+            SwapSpellHotkeyAndInventoryPosition(2, 1);
         }
 
         if (Input.GetKeyDown(KeyCode.V)) // 1 -> 3
         {
-            SwapSpellHotkeyAndInventoryPosition(1, 3);
+            SwapSpellHotkeyAndInventoryPosition(0, 2);
         }
 
         if (Input.GetKeyDown(KeyCode.N)) // 1 <- 3
         {
-            SwapSpellHotkeyAndInventoryPosition(3, 1);
+            SwapSpellHotkeyAndInventoryPosition(2, 0);
         }
-
         #endregion
     }
 }
