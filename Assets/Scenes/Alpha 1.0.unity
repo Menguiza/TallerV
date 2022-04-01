@@ -3706,7 +3706,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c4e31ffe5a63794598e31c90a1228e2, type: 2}
+  - {fileID: 2100000, guid: 8ebd112ef900bff42b7bdd368da503ca, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4890,7 +4890,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c4e31ffe5a63794598e31c90a1228e2, type: 2}
+  - {fileID: 2100000, guid: 09a948991bfc9cd44a07e5cc0e938a66, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9082,7 +9082,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3c4e31ffe5a63794598e31c90a1228e2, type: 2}
+  - {fileID: 2100000, guid: a81150df11da20c4ebf665dd1307f8d8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9271,7 +9271,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 1.2401278, y: 1}
+    m_SensorSize: {x: 1.7773756, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -9307,6 +9307,10 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 963194227}
+    - target: {fileID: 7816507967571327398, guid: 3406b189b0d02f941ad9b2ff13111fdc, type: 3}
+      propertyPath: minDis
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 7816507968297696262, guid: 3406b189b0d02f941ad9b2ff13111fdc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -9357,3 +9361,60 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3406b189b0d02f941ad9b2ff13111fdc, type: 3}
+--- !u!1001 &8165660828386489916
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2055246575377382177, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5125722924856408781, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
+      propertyPath: m_Name
+      value: TrailObjectFireArrow
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 55e6899b63203e748b95b77ea88e02aa, type: 3}
