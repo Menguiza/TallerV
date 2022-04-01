@@ -352,23 +352,23 @@ public class ManagerHechizos : MonoBehaviour
 
     private void Update()
     {
-        //Test debugs
-        if (Input.GetKeyDown(KeyCode.Alpha1))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             FirstSpellCast.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha2))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             SecondSpellCast.Invoke();
         }
 
-        if (Input.GetKeyDown(KeyCode.Alpha3))
+        if (Input.GetKeyDown(KeyCode.R))
         {
             ThirdSpellCast.Invoke();
         }
 
         #region"Input para Debug de hechizos"
+        /*
         if (Input.GetKeyDown(KeyCode.Keypad0))
         {
             CleanAllSpells();
@@ -437,7 +437,7 @@ public class ManagerHechizos : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.N)) // 1 <- 3
         {
             SwapSpellHotkeyAndInventoryPosition(2, 0);
-        }
+        }*/
         #endregion
     }
 }
