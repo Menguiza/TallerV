@@ -2,19 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-public class FlechaDeFuego : MonoBehaviour, IHechizo
+
+public class BoomerangEnergia : MonoBehaviour, IHechizo
 {
-    public GameObject fireArrowProyectile;
+    public GameObject boomerangProyectile;
 
     Transform attackPoint;
 
-    float impulseForce = 30f;
+    float impulseForce = 15f;
 
     //Esto habrá que cambiarlo luego
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
-        fireArrowProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/Vfx_Firearrow");
+        boomerangProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/EnergyBoomerang");
     }
 
     public void StartCastingSpell()
@@ -24,15 +25,10 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
 
     public void CastSpell()
     {
-        print("Flecha de fuego casteada");
-        GameObject instance = Instantiate(fireArrowProyectile, attackPoint.position + attackPoint.forward * 1.2f, Quaternion.identity);
-        instance.GetComponent<Proyectil_FlechaDeFuego>().damage = (int)GameMaster.instance.Player.Damage;
+        print("Boomerang de energia casteado");
+        GameObject instance = Instantiate(boomerangProyectile, attackPoint.position, Quaternion.identity);
+        instance.GetComponent<Proyectil_BoomerangEnergia>().damage = (int)GameMaster.instance.Player.Damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
-
-        instance.transform.LookAt(attackPoint.position + attackPoint.forward * 5);
-
-        Destroy(instance, 3);
-
         //Particulas de lanzamiento acá
     }
 
