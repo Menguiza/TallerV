@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
-    GameObject particles;
+    GameObject particles, particlesChild;
 
     CharacterController characterContrl;
     Animator anim;
@@ -42,8 +42,10 @@ public class PlayerController : MonoBehaviour
 
         gm.playerObject = this.gameObject;
         gm.particles = this.particles;
+        gm.particlesChild = this.particlesChild;
 
         particles.GetComponent<ParticleSystem>().Stop();
+        particlesChild.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
     }

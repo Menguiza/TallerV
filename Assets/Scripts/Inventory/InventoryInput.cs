@@ -12,6 +12,8 @@ public class InventoryInput : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     void Update()
@@ -29,11 +31,15 @@ public class InventoryInput : MonoBehaviour
         {
             inventory.alpha = 1;
             Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else
         {
             inventory.alpha = 0;
             Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }

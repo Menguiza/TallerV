@@ -49,7 +49,7 @@ public class Item : ScriptableObject
     void ResetParameter()
     {
         GameMaster.instance.RemoveMod(nombre);
-        Inventory.instance.Remove(nombre);
+        Inventory.instance.Remove(this);
     }
 
     public void Impact()
@@ -61,7 +61,7 @@ public class Item : ScriptableObject
             GameMaster.instance.playerObject.GetComponent<Animator>().SetTrigger("Knock");
         }
         Economy.instance.Reward(sumDinero);
-        Inventory.instance.Remove(nombre);
+        Inventory.instance.Remove(this);
     }
 
     private IEnumerator Delete(float wait)
