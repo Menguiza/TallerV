@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Inventory : MonoBehaviour
 {
@@ -9,12 +10,15 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
 
-    public List<Item> items_Activos = new List<Item>();
     [SerializeField]
     GameObject content, prefab;
     byte slots = 5, slotsUsados = 0;
     [SerializeField]
-    List<GameObject> activables = new List<GameObject>(5);
+    public List<GameObject> activables = new List<GameObject>(5);
+    public List<GameObject> activosInv = new List<GameObject>(5);
+
+    public UnityEvent OnItemCollected;
+    public UnityEvent OnItemChanged;
 
     private void Awake()
     {
@@ -37,10 +41,9 @@ public class Inventory : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Alpha1))
         {
-            ScriptableObject obj = activables[0].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[0].GetComponent<ItemContainer>().itemInfo;
 
-            if (obj == null)
+            if (item == null)
             {
                 return;
             }
@@ -57,10 +60,9 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            ScriptableObject obj = activables[1].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[1].GetComponent<ItemContainer>().itemInfo;
 
-            if (obj == null)
+            if (item == null)
             {
                 return;
             }
@@ -77,10 +79,9 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            ScriptableObject obj = activables[2].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[2].GetComponent<ItemContainer>().itemInfo;
 
-            if (obj == null)
+            if (item == null)
             {
                 return;
             }
@@ -97,10 +98,9 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha4))
         {
-            ScriptableObject obj = activables[3].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[3].GetComponent<ItemContainer>().itemInfo;
 
-            if (obj == null)
+            if (item == null)
             {
                 return;
             }
@@ -117,10 +117,9 @@ public class Inventory : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Alpha5))
         {
-            ScriptableObject obj = activables[4].GetComponent<ItemContainer>().itemInfo;
             Item item = activables[4].GetComponent<ItemContainer>().itemInfo;
 
-            if (obj == null)
+            if (item == null)
             {
                 return;
             }
@@ -140,7 +139,6 @@ public class Inventory : MonoBehaviour
     {
         if (item.type == ItemType.Activo && slotsUsados < slots)
         {
-            items_Activos.Add(item);
             slotsUsados++;
 
             for (int i = 0; i < activables.Count; i++)
@@ -193,26 +191,41 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void Remove(string nombre)
+    public void Remove(Item it)
     {
-        foreach (Item item in items_Activos)
+        foreach (GameObject item in activables)
         {
-            if (item.nombre == nombre)
+            if (item.GetComponent<ItemContainer>().itemInfo == it)
             {
-                items_Activos.Remove(item);
-                break;
+                item.GetComponent<ItemContainer>().itemInfo = null;
+                Debug.Log("removed ");
+                return;
             }
         }
 
-        for (int i = 0; i < activables.Count; i++)
+        foreach (GameObject item in activosInv)
         {
-            Item obj = activables[i].GetComponent<ItemContainer>().itemInfo;
-
-            if (obj.nombre == nombre)
+            if (item.GetComponent<ItemContainerInv>().itemInfo == it)
             {
-                activables[i].GetComponent<ItemContainer>().itemInfo = null;
+                item.GetComponent<ItemContainerInv>().itemInfo = null;
+                Debug.Log("removed Inv");
                 return;
             }
+        }
+    }
+
+    public void SlotLoad()
+    {
+        for (int i = 0; i < activables.Count; i++)
+        {
+            activosInv[i].GetComponent<ItemContainerInv>().itemInfo = activables[i].GetComponent<ItemContainer>().itemInfo;
+        }
+    }
+    public void SlotLoadReverse()
+    {
+        for (int i = 0; i < activosInv.Count; i++)
+        {
+            activables[i].GetComponent<ItemContainer>().itemInfo = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
 }

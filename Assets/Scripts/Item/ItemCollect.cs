@@ -11,6 +11,7 @@ public class ItemCollect : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>() != null && GameMaster.instance.playerObject != null)
         {
             Inventory.instance.AddItem(item);
+            Inventory.instance.OnItemCollected.Invoke();
             Destroy(gameObject);
         }
     }
