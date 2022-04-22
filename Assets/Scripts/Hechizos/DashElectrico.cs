@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class DashElectrico : MonoBehaviour, IHechizo
 {
+    float damage = 1.5f;
+    public float Damage { get => damage; }
+
     public void StartCastingSpell()
     {
 

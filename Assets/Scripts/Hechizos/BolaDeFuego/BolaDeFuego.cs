@@ -8,6 +8,9 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
     [SerializeField] GameObject fireball;
     Transform attackPoint;
 
+    float damage = 3f;
+    public float Damage { get => damage; }
+
     float impulseForce = 10f;
 
     //Esto habrá que cambiarlo luego
@@ -27,7 +30,7 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
         print("Bola de fuego casteada");
 
         GameObject instance = Instantiate(fireball, attackPoint.position + attackPoint.forward, Quaternion.identity);
-        instance.GetComponent<Proyectil_BolaDeFuego>().damage = (int)GameMaster.instance.Player.Damage;
+        instance.GetComponent<Proyectil_BolaDeFuego>().damage = damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
 
         instance.transform.LookAt(attackPoint.position + attackPoint.forward * 5);

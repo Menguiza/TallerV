@@ -339,14 +339,24 @@ public class ManagerHechizos : MonoBehaviour
     {
         for (int i = 0; i < slotsHechizos.slotsImages.Length; i++)
         {
-            if (slotsHechizos.hechizos[i] == null) slotsHechizos.slotsImages[i].color = new Color(0, 0, 0, 0);
-            else slotsHechizos.slotsImages[i].color = Color.white;
+            if (slotsHechizos.hechizos[i] == null)
+            {
+                slotsHechizos.slotsImages[i].color = new Color(0, 0, 0, 0);
+                slotsHechizos.slotsImages2[i].color = new Color(0, 0, 0, 0);
+
+            }
+            else
+            {
+                slotsHechizos.slotsImages[i].color = Color.white;
+                slotsHechizos.slotsImages2[i].color = Color.white;
+            }
         }
 
         for (int i = 0; i < spellsData.Count; i++)
         {
             slotsHechizos.hechizos[i] = spellsData[i];
             slotsHechizos.slotsImages[i].sprite = spellsData[i].sprite;
+            slotsHechizos.slotsImages2[i].sprite = spellsData[i].sprite;
         }
     }
 

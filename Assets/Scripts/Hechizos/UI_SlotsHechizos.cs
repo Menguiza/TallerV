@@ -5,6 +5,6 @@ using UnityEngine.UI;
 
 public class UI_SlotsHechizos : MonoBehaviour
 {
-    public Image[] slotsImages;
+    public Image[] slotsImages, slotsImages2;
     public Hechizo[] hechizos;
 }

@@ -33,9 +33,11 @@ public class GameMaster : MonoBehaviour
     [HideInInspector]
     public sbyte vidaINP, dmgINP, tgpcINP, critProbINP, roboDeVidaINP, multPesadillaINP;
     [HideInInspector]
-    public float multConcienciaINP, critMultINP, multVelAtaqueINP, speedMultINP;
+    public float multConcienciaINP, critMultINP, multVelAtaqueINP, speedMultINP, multDañoRecibidoINP;
     [HideInInspector]
     public int damageToPlayer;
+    [HideInInspector]
+    public DreamCatcher dmrcatcherINP;
     #endregion
 
     //Variables de utilidad
@@ -43,6 +45,8 @@ public class GameMaster : MonoBehaviour
     float suma = 0f, minConciencia = 0.1f;
     bool nightmareCalled = false;
     public bool sceneReloaded = false;
+
+    public Texture2D cursorTexture, cursorTexture2;
 
     [Header("TGPC")]
 
@@ -204,7 +208,7 @@ public class GameMaster : MonoBehaviour
         try
         {
             AddMod(technique.techniqueName, technique.multVidaMax, technique.multDmg, technique.multConciencia, technique.multTGPC,
-            technique.multCritProb, technique.multCrit, technique.multRoboPer, technique.multVelAatque, technique.multSpeed, technique.multPesadillaPer);
+            technique.multCritProb, technique.multCrit, technique.multRoboPer, technique.multVelAatque, technique.multSpeed, technique.multPesadillaPer, technique.multDañoRecibido);
         }
         catch (Exception)
         {
@@ -256,9 +260,9 @@ public class GameMaster : MonoBehaviour
     #region"Sistema de modificadores y Estadisticas"
 
     public void AddMod(string name, sbyte vida, sbyte dmg, float multConciencia, sbyte multTGPC, sbyte critProb, float critMult,
-        sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer)
+        sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer, float multDañoRecibido)
     {
-        mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer));
+        mods.Add(new Mods(name, (sbyte)vida, (sbyte)dmg, multConciencia, (sbyte)multTGPC, critProb, critMult, multRoboPer, multVelAtaque, multSpeed, multPesadillaPer, multDañoRecibido));
 
         CheckMods();
 
@@ -269,9 +273,10 @@ public class GameMaster : MonoBehaviour
     {
         foreach(Mods element in mods)
         {
-            if(element.Name == name)
+            if(Equals(element.Name,name))
             {
                 mods.Remove(element);
+                CheckMods();
                 return;
             }
         }
@@ -289,6 +294,7 @@ public class GameMaster : MonoBehaviour
         float multVelAtaque = one;
         float speedMultResult = one;
         float multPesadillaResult = zero;
+        float multDañoRecibidoResult = one;
 
         uint maxOld = player.MaxLife;
 
@@ -315,6 +321,8 @@ public class GameMaster : MonoBehaviour
                 speedMultResult += element.MultSpeed;
 
                 multPesadillaResult += element.MultPesadillaPer;
+
+                multDañoRecibidoResult += element.MultDañoRecibido;
             }
 
         }
@@ -342,6 +350,8 @@ public class GameMaster : MonoBehaviour
         player.CritProb = (byte)MathF.Max(zero, critProbResult);
 
         player.MultPesadilla = (byte)MathF.Max(zero, multPesadillaResult);
+
+        player.MultDañoRecibido = MathF.Max(one, multDañoRecibidoResult);
     }
 
     public void ResetStats()
@@ -357,6 +367,7 @@ public class GameMaster : MonoBehaviour
         player.MultVelAtaque = one;
         player.SpeedMult = one;
         player.MultPesadilla = zero;
+        player.MultDañoRecibido = one;
         CorrectLife(maxOld, player.MaxLife);
     }
 
@@ -374,13 +385,20 @@ public class GameMaster : MonoBehaviour
 
     #region"Acciones del Jugador"
 
+    public int CalculateSpellDamage(float spellDamage)
+    {
+        int totalDamage = (int)(spellDamage * player.Damage); 
+
+        return totalDamage;
+    }
+
     #endregion
 
     #region"Acciones hacia el jugador"
 
     public void DamagePlayer(int value)
     {
-        int opVida = (int)(player.Life - value);
+        int opVida = (int)(player.Life - (value * player.MultDañoRecibido));
         player.Life = (uint)Mathf.Max(zero, opVida);
 
         int opConci = (int)(player.Conciencia - (value * multiplicadorConciencia));
