@@ -10,6 +10,9 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
 
     float impulseForce = 30f;
 
+    float damage = 5f;
+    public float Damage { get => damage; }
+
     //Esto habrá que cambiarlo luego
     private void Awake()
     {
@@ -26,7 +29,7 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     {
         print("Flecha de fuego casteada");
         GameObject instance = Instantiate(fireArrowProyectile, attackPoint.position + attackPoint.forward * 1.2f, Quaternion.identity);
-        instance.GetComponent<Proyectil_FlechaDeFuego>().damage = (int)GameMaster.instance.Player.Damage;
+        instance.GetComponent<Proyectil_FlechaDeFuego>().damage = damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
 
         instance.transform.LookAt(attackPoint.position + attackPoint.forward * 5);
