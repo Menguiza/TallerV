@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class BolaDeAcido : MonoBehaviour, IHechizo
 {
+    float damage = 2f;
+    public float Damage { get => damage; }
+
     public void StartCastingSpell()
     {
 

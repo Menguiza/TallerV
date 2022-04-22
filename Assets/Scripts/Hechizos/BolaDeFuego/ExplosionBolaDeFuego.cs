@@ -4,15 +4,10 @@ using UnityEngine;
 
 public class ExplosionBolaDeFuego : MonoBehaviour
 {
-    public int damage;
-
-    float deltaAlpha = 0.4f;
-
-    Material material;
+    public float damage;
 
     private void Awake()
     {
-        material = gameObject.GetComponent<MeshRenderer>().material;
         Destroy(gameObject, 2);
     }
 
@@ -20,7 +15,7 @@ public class ExplosionBolaDeFuego : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyController>() != null)
         {
-            other.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, other.gameObject.GetComponent<EnemyController>().Life - damage);
+            other.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }
     }
 }
