@@ -46,6 +46,8 @@ public class GameMaster : MonoBehaviour
     bool nightmareCalled = false;
     public bool sceneReloaded = false;
 
+    public Texture2D cursorTexture, cursorTexture2;
+
     [Header("TGPC")]
 
     public float timeToReset = 1f;

@@ -230,12 +230,18 @@ public class Inventory : MonoBehaviour
 
     public void AddDreamStats()
     {
-        dmrcatcher.AddParameters();
+        if(dmrcatcher != null)
+        {
+            dmrcatcher.AddParameters();
+        }
     }
 
     public void RemoveDreamStats()
     {
-        dmrcatcher.ResetParameter();
+        if (dmrcatcher != null)
+        {
+            dmrcatcher.ResetParameter();
+        }
     }
 
     public void SlotLoad()
