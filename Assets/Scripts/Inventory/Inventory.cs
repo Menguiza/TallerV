@@ -199,7 +199,7 @@ public class Inventory : MonoBehaviour
             {
                 item.GetComponent<ItemContainer>().itemInfo = null;
                 Debug.Log("removed ");
-                return;
+                break;
             }
         }
 
@@ -209,7 +209,7 @@ public class Inventory : MonoBehaviour
             {
                 item.GetComponent<ItemContainerInv>().itemInfo = null;
                 Debug.Log("removed Inv");
-                return;
+                break;
             }
         }
     }
