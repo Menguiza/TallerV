@@ -27,5 +27,6 @@ public class ModsTecnicas : ScriptableObject
     public float multVelAatque;
     public float multSpeed;
     public sbyte multPesadillaPer;
+    public float multDañoRecibido;
     public string desc;
 }

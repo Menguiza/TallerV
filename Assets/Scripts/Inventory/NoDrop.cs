@@ -9,7 +9,7 @@ public class NoDrop : MonoBehaviour, IDropHandler
     {
         if(eventData.pointerDrag != null)
         {
-            if(eventData.pointerDrag.GetComponent<RectTransform>() != null)
+            if(eventData.pointerDrag.GetComponent<RectTransform>() != null && eventData.pointerDrag.GetComponent<DragDrop>() != null)
             {
                 eventData.pointerDrag.GetComponent<RectTransform>().anchoredPosition = eventData.pointerDrag.GetComponent<DragDrop>().position;
             }

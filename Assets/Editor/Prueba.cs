@@ -40,13 +40,15 @@ public class Prueba : Editor
 
         gm.multPesadillaINP = (sbyte)EditorGUILayout.Slider("Nightmare Probability (+%)", gm.multPesadillaINP, -100, 100);
 
+        gm.multDañoRecibidoINP = (float)EditorGUILayout.Slider("Mult. Daño Recibido (+Value)", gm.multDañoRecibidoINP, -10f, 10f);
+
         #endregion
 
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Add Mod"))
         {
-            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP, gm.multPesadillaINP);
+            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP, gm.multPesadillaINP, gm.multDañoRecibidoINP);
             gm.nameINP = "";
         }
 
@@ -72,7 +74,8 @@ public class Prueba : Editor
                 displayMod.Add("Nombre: " + gm.mods[i].Name + " | " + "Vida +% : " + gm.mods[i].MultVidaMax + " | " + "Daño +% : " + gm.mods[i].MultDmg
                     + " | " + "MultConciencia +X : " + gm.mods[i].MultConciencia + " | " + "MultTGPC +X : " + gm.mods[i].MultTGPC + 
                     " | " + "Crit Prob +% : " + gm.mods[i].MultCritProb + " | " + "MultCrit +X : " + gm.mods[i].MultCrit + " | " + "Robo de Vida +% : " + gm.mods[i].MultRoboPer
-                    + " | " + "MultVelAtaque +X : " + gm.mods[i].MultVelAtaque + " | " + "MultSpeed +X : " + gm.mods[i].MultSpeed + " | " +"MultPesadilla +% : " + gm.mods[i].MultPesadillaPer);
+                    + " | " + "MultVelAtaque +X : " + gm.mods[i].MultVelAtaque + " | " + "MultSpeed +X : " + gm.mods[i].MultSpeed + " | " +"MultPesadilla +% : " + gm.mods[i].MultPesadillaPer
+                    + " | " + "MultDañoRecibido +X : " + gm.mods[i].MultDañoRecibido);
             }
 
             for (int i = 0; i < displayMod.Count; i++)
@@ -107,6 +110,24 @@ public class Prueba : Editor
                 gm.DamagePlayer(gm.damageToPlayer);
             }
         }
+
+        EditorGUILayout.Space();
+
+        gm.dmrcatcherINP = (DreamCatcher)EditorGUILayout.ObjectField("Atrapasueños:", gm.dmrcatcherINP, typeof(DreamCatcher), true);
+
+        GUILayout.BeginHorizontal();
+
+        if (GUILayout.Button("Equipar"))
+        {
+            Inventory.instance.AddDreamcatcher(gm.dmrcatcherINP);
+        }
+
+        if (GUILayout.Button("Desquipar"))
+        {
+            Inventory.instance.Remove();
+        }
+
+        GUILayout.EndHorizontal();
 
         EditorGUILayout.Space();
 
