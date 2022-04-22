@@ -19,15 +19,14 @@ public class Mods
     private float multVelAatque;
     private float multSpeed;
     private sbyte multPesadillaPer;
-    private float multDañoRecibido;
 
     //Accesores
-    public string Name
-    {
-        get => name;
+    public string Name 
+    { 
+        get => name; 
         set
         {
-            if (!string.IsNullOrWhiteSpace(value) && !string.IsNullOrEmpty(value))
+            if(!string.IsNullOrWhiteSpace(value) && !string.IsNullOrEmpty(value))
             {
                 name = value;
             }
@@ -37,100 +36,98 @@ public class Mods
             }
         }
     }
-    public bool Utilizado
-    {
-        get => utilizado;
+    public bool Utilizado 
+    { 
+        get => utilizado; 
         set
         {
-            if (value != utilizado)
+            if(value != utilizado)
             {
                 utilizado = value;
             }
         }
     }
     public sbyte MultVidaMax
-    {
-        get => multVidaMax;
+    { 
+        get => multVidaMax; 
         set
         {
             multVidaMax = value;
         }
     }
-    public sbyte MultDmg
-    {
-        get => multDmg;
+    public sbyte MultDmg 
+    { 
+        get => multDmg; 
         set
         {
             multDmg = value;
         }
     }
-    public float MultConciencia
-    {
+    public float MultConciencia 
+    { 
         get => multConciencia;
         set
         {
             multConciencia = value;
         }
     }
-    public sbyte MultTGPC
-    {
-        get => multTGPC;
+    public sbyte MultTGPC 
+    { 
+        get => multTGPC; 
         set
         {
             multTGPC = value;
         }
     }
-    public sbyte MultCritProb
-    {
-        get => multCritProb;
+    public sbyte MultCritProb 
+    { 
+        get => multCritProb; 
         set
         {
             multCritProb = value;
         }
     }
-    public float MultCrit
-    {
-        get => multCrit;
+    public float MultCrit 
+    { 
+        get => multCrit; 
         set
         {
             multCrit = value;
         }
     }
-    public sbyte MultRoboPer
-    {
+    public sbyte MultRoboPer 
+    { 
         get => multRoboPer;
         set
         {
             multRoboPer = value;
         }
     }
-    public float MultVelAtaque
-    {
+    public float MultVelAtaque 
+    { 
         get => multVelAatque;
         set
         {
             multVelAatque = value;
         }
     }
-    public float MultSpeed
-    {
+    public float MultSpeed 
+    { 
         get => multSpeed;
         set
         {
             multSpeed = value;
         }
     }
-    public sbyte MultPesadillaPer
-    {
-        get => multPesadillaPer;
-        set => multPesadillaPer = value;
+    public sbyte MultPesadillaPer 
+    { 
+        get => multPesadillaPer; 
+        set => multPesadillaPer = value; 
     }
-
-    public float MultDañoRecibido { get => multDañoRecibido; set => multDañoRecibido = value; }
 
     //Constructor
     public Mods(string name, sbyte multVidaMax, sbyte multDmg, float multiplicadorConciencia, sbyte multTGPC, sbyte multCritProb, float multCrit
-        , sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer, float multDañoRecibido)
+        , sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer)
     {
         Name = name;
         Utilizado = false;
@@ -145,6 +142,5 @@ public class Mods
         MultVelAtaque = multVelAtaque;
         MultSpeed = multSpeed;
         MultPesadillaPer = multPesadillaPer;
-        MultDañoRecibido = multDañoRecibido;
     }
 }

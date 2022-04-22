@@ -8,7 +8,7 @@ public class ModificadoresEstadoDormido : MonoBehaviour
 
     public void AddDreamModifier()
     {
-        GameMaster.instance.AddMod("Arte del soñador", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0.5f);
+        GameMaster.instance.AddMod("Arte del soñador", 0, 5, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public void RemoveDreamModifier()

@@ -17,7 +17,6 @@ public class Player
     private float speedMult = 1f;
     private byte multPesadilla = 0;
     private bool pesadilla = false;
-    private float multDañoRecibido = 1f;
 
     //Variables used for "Wake" and "Dream" UnityEvents
     public bool wakeFlag = false;
@@ -253,22 +252,6 @@ public class Player
             if (value != pesadilla)
             {
                 pesadilla = value;
-            }
-        }
-    }
-
-    public float MultDañoRecibido 
-    { 
-        get => multDañoRecibido; 
-        set
-        {
-            if (value >= 1)
-            {
-                multDañoRecibido = value;
-            }
-            else
-            {
-                multDañoRecibido = 1;
             }
         }
     }

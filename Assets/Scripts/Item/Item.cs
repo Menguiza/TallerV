@@ -25,7 +25,6 @@ public class Item : ScriptableObject
     public float multVelAatque = 0;
     public float multSpeed = 0;
     public sbyte multPesadillaPer = 0;
-    float multDañoRecibido = 0;
 
     [Header("Impacto")]
 
@@ -38,12 +37,12 @@ public class Item : ScriptableObject
 
     public void AddParameters()
     {
-        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer, multDañoRecibido);
+        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer);
     }
 
     public void AddParameters(float duration)
     {
-        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer, multDañoRecibido);
+        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer);
         Delete(duration);
     }
 

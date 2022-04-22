@@ -9,10 +9,9 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
-    public DreamCatcher dmrcatcher { get; private set; }
 
     [SerializeField]
-    GameObject content, prefab, dmrContainer;
+    GameObject content, prefab;
     byte slots = 5, slotsUsados = 0;
     [SerializeField]
     public List<GameObject> activables = new List<GameObject>(5);
@@ -213,29 +212,6 @@ public class Inventory : MonoBehaviour
                 break;
             }
         }
-    }
-
-    public void Remove()
-    {
-        dmrcatcher.ResetParameter();
-        dmrcatcher = null;
-        Debug.Log("removed dream");
-    }
-
-    public void AddDreamcatcher(DreamCatcher dreamSent)
-    {
-        dmrcatcher = dreamSent;
-        Debug.Log("added dream");
-    }
-
-    public void AddDreamStats()
-    {
-        dmrcatcher.AddParameters();
-    }
-
-    public void RemoveDreamStats()
-    {
-        dmrcatcher.ResetParameter();
     }
 
     public void SlotLoad()
