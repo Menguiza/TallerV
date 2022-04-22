@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class EspadaDeLuz : MonoBehaviour, IHechizo
 {
+    float damage = 5f;
+    public float Damage { get => damage; }
+
     public void StartCastingSpell()
     {
 

@@ -374,6 +374,13 @@ public class GameMaster : MonoBehaviour
 
     #region"Acciones del Jugador"
 
+    public int CalculateSpellDamage(float spellDamage)
+    {
+        int totalDamage = (int)(spellDamage * player.Damage); 
+
+        return totalDamage;
+    }
+
     #endregion
 
     #region"Acciones hacia el jugador"

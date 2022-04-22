@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Proyectil_BolaDeFuego : MonoBehaviour
 {
-    public int damage;
+    public float damage;
     [SerializeField] GameObject FireballExplosionVolume;
 
     public void fireballExplode()
