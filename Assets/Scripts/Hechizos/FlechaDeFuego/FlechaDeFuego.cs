@@ -17,7 +17,7 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
-        fireArrowProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/Vfx_Firearrow");
+        fireArrowProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/FireArrowProyectile");
     }
 
     public void StartCastingSpell()
@@ -28,7 +28,7 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     public void CastSpell()
     {
         print("Flecha de fuego casteada");
-        GameObject instance = Instantiate(fireArrowProyectile, attackPoint.position + attackPoint.forward * 1.2f, Quaternion.identity);
+        GameObject instance = Instantiate(fireArrowProyectile, attackPoint.position, Quaternion.identity);
         instance.GetComponent<Proyectil_FlechaDeFuego>().damage = damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
 

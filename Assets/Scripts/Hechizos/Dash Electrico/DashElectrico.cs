@@ -8,6 +8,14 @@ public class DashElectrico : MonoBehaviour, IHechizo
     float damage = 1.5f;
     public float Damage { get => damage; }
 
+    GameObject player;
+
+    void Awake()
+    {
+        player = GameMaster.instance.playerObject;
+    }
+
+
     public void StartCastingSpell()
     {
 
@@ -15,6 +23,9 @@ public class DashElectrico : MonoBehaviour, IHechizo
 
     public void CastSpell()
     {
+        player.gameObject.AddComponent<FuncionalidadDash>();
+        player.gameObject.GetComponent<FuncionalidadDash>().damage = damage;
+
         print("Dash electrico casteado");
     }
 

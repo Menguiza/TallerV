@@ -19543,7 +19543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7171288346268681378}
   m_Layer: 0
-  m_Name: vfx_Spark_Hit
+  m_Name: Vfx_Explotion
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
