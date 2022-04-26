@@ -40,4 +40,9 @@ public class EnemyController : MonoBehaviour
         result = (float)life / divisor;
         vida.GetComponent<Image>().fillAmount = result;
     }
+
+    public void ReceiveDamage(int damage)
+    {
+        Life = (uint)(Mathf.Max(0, Life - damage));
+    }
 }

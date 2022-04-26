@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Proyectil_FlechaDeFuego : MonoBehaviour
 {
-    public int damage;
+    public float damage;
 
     public void fireArrowImpact()
     {
@@ -18,7 +18,7 @@ public class Proyectil_FlechaDeFuego : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<EnemyController>() != null)
         {
-            collision.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, collision.gameObject.GetComponent<EnemyController>().Life - damage);
+            collision.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }
 
         fireArrowImpact();

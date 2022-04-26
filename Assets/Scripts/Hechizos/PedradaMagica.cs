@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 public class PedradaMagica : MonoBehaviour, IHechizo
 {
+    float damage = 3.5f;
+    public float Damage { get => damage; }
+
     public void StartCastingSpell()
     {
 

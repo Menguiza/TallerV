@@ -9,6 +9,9 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     Transform attackPoint;
 
+    float damage = 1.7f;
+    public float Damage { get => damage; }
+
     float impulseForce = 15f;
 
     //Esto habrá que cambiarlo luego
@@ -27,7 +30,7 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
     {
         print("Boomerang de energia casteado");
         GameObject instance = Instantiate(boomerangProyectile, attackPoint.position, Quaternion.identity);
-        instance.GetComponent<Proyectil_BoomerangEnergia>().damage = (int)GameMaster.instance.Player.Damage;
+        instance.GetComponent<Proyectil_BoomerangEnergia>().damage = damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
         //Particulas de lanzamiento acá
     }

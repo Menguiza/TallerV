@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Proyectil_BoomerangEnergia : MonoBehaviour
 {
-    public int damage;
+    public float damage;
+    
     float returningForce = 15f;
 
     float minTimeBeforeReturn = 1.20f;
@@ -55,7 +56,7 @@ public class Proyectil_BoomerangEnergia : MonoBehaviour
     {
         if (other.gameObject.GetComponent<EnemyController>() != null)
         {
-            other.gameObject.GetComponent<EnemyController>().Life = (uint)Mathf.Max(0, other.gameObject.GetComponent<EnemyController>().Life - damage);
+            other.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }
     }
 }
