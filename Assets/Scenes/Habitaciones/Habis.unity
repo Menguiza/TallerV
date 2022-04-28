@@ -1386,8 +1386,12 @@ MonoBehaviour:
   critMultINP: 0
   multVelAtaqueINP: 0
   speedMultINP: 0
+  "multDa\xF1oRecibidoINP": 0
   damageToPlayer: 0
+  dmrcatcherINP: {fileID: 0}
   sceneReloaded: 0
+  cursorTexture: {fileID: 0}
+  cursorTexture2: {fileID: 0}
   timeToReset: 1
   enableTGPC: 1
   "posturaDelSue\xF1o": {fileID: 0}
@@ -3221,6 +3225,7 @@ MonoBehaviour:
   items_Pasivos: []
   content: {fileID: 1234469374}
   prefab: {fileID: 1894941241773533984, guid: 36b35882da8774a4c81e2e1fbf486b25, type: 3}
+  dmrContainer: {fileID: 0}
   activables:
   - {fileID: 1431655316}
   - {fileID: 443678368}
@@ -3595,7 +3600,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -4709,6 +4714,7 @@ MonoBehaviour:
   - {fileID: 2015216959}
   - {fileID: 1759282470}
   - {fileID: 1964675280}
+  slotsImages2: []
   hechizos:
   - {fileID: 0}
   - {fileID: 0}
@@ -7617,7 +7623,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142099911}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
