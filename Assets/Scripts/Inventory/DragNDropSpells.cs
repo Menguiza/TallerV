@@ -64,7 +64,7 @@ public class DragNDropSpells : MonoBehaviour, IPointerDownHandler, IBeginDragHan
     {
         if (eventData.pointerDrag != null)
         {
-            if (ManagerHechizos.instance.spellsData.Count != 0)
+            if (ManagerHechizos.instance.spellsData.Length != 0)
             {
 
             }

@@ -413,6 +413,7 @@ public class PlayerController : MonoBehaviour
     public void SpellCast()
     {
         SpellMethod.CastSpell();
+        ManagerHechizos.instance.EndSpellCast();
     }
 
     #endregion
