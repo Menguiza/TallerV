@@ -13,7 +13,8 @@ public class Hechizo : ScriptableObject
         PedradaMagica = 3,
         BoomerangDeEnergia = 4,
         BolaDeAcido = 5,
-        DashElectrico = 6
+        DashElectrico = 6,
+        NA = -1
     }
 
     public Sprite sprite;
