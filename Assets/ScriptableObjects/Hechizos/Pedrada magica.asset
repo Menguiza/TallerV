@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
   m_Name: Pedrada magica
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  sprite: {fileID: 21300000, guid: 71441ebc7a57c324eb68ad1af1e0e365, type: 3}
   spellName: "Pedrada m\xE1gica"
   desc: "Arroja una pedrada m\xE1gica que al impactar contra el escenario o un enemigo
     estalla haciendo da\xF1o y mucho retroceso."

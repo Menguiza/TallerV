@@ -21,7 +21,7 @@ public class Proyectil_BolaDeFuego : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
         fireballExplode();
     }

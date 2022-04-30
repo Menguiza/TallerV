@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
   m_Name: Bola de acido
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  sprite: {fileID: 21300000, guid: 0ce0bbc93b5f8e84aa61014788d0554d, type: 3}
   spellName: Bola de acido
   desc: "Lanza una bola de \xE1cido que ralentiza y hace da\xF1o al impactar."
   lore: "Este es un hechizo moderno utilizado para quitarle el \xF3xido a las armas

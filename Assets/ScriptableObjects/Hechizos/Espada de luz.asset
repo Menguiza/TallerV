@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 60b5b105cbe193b42ba8d8c0293eee90, type: 3}
   m_Name: Espada de luz
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: f3f49712fac5ae643980fee49365f223, type: 3}
+  sprite: {fileID: 21300000, guid: 48c758653e5b4794f9a488fd55b9ab14, type: 3}
   spellName: Espada de luz
   desc: "Imbuye tu arma en energia on\xEDrica potenciando su da\xF1o"
   lore: "Este hechizo era utilizado principalmente por los generales de los distintos

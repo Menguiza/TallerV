@@ -14,11 +14,11 @@ public class Proyectil_FlechaDeFuego : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.gameObject.GetComponent<EnemyController>() != null)
+        if (collider.gameObject.GetComponent<EnemyController>() != null)
         {
-            collision.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+            collider.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }
 
         fireArrowImpact();

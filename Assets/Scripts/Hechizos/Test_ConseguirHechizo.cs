@@ -12,7 +12,6 @@ public class Test_ConseguirHechizo : MonoBehaviour
         {
             ManagerHechizos.instance.AddNewSpell(spellContained);
             ManagerHechizos.instance.UpdateSpellSlots();
-            Destroy(gameObject);
         }
     }
 }
