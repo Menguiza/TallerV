@@ -20,7 +20,7 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         fireball = (GameObject)Resources.Load("Prefabs/Hechizos/FireballProyectile");
-        animator = GameObject.Find("Amo").GetComponent<Animator>();
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
     public void StartCastingSpell()
