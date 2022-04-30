@@ -14,16 +14,19 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
     float damage = 2f;
     public float Damage { get => damage; }
 
+    Animator animator;
+
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         acidBallProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/AcidBallProyectile");
+        animator = GameObject.Find("Amo").GetComponent<Animator>();
     }
 
 
     public void StartCastingSpell()
     {
-
+        animator.SetTrigger("QuickCast Spell");
     }
 
     public void CastSpell()

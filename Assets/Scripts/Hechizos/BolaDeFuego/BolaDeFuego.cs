@@ -13,16 +13,21 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
 
     float impulseForce = 10f;
 
+    Animator animator;
+
     //Esto habrá que cambiarlo luego
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         fireball = (GameObject)Resources.Load("Prefabs/Hechizos/FireballProyectile");
+        animator = GameObject.Find("Amo").GetComponent<Animator>();
     }
 
     public void StartCastingSpell()
     {
+        animator.SetTrigger("QuickCast Spell");
 
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -42,6 +47,6 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }
