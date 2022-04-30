@@ -405,6 +405,18 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
+    #region"Hechizos"
+
+    // Reference 
+    public IHechizo SpellMethod;
+
+    public void SpellCast()
+    {
+        SpellMethod.CastSpell();
+    }
+
+    #endregion
+
     #region "Funciones Carecteristicas Player"
     private uint ProbabilidadCritico(Player player)
     {

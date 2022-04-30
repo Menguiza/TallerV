@@ -3,50 +3,50 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class BolaDeFuego : MonoBehaviour, IHechizo
+public class BolaDeAcido : MonoBehaviour, IHechizo
 {
-    [SerializeField] GameObject fireball;
+    public GameObject acidBallProyectile;
+
+    float impulseForce = 15f;
+
     Transform attackPoint;
 
-    float damage = 3f;
+    float damage = 2f;
     public float Damage { get => damage; }
-
-    float impulseForce = 10f;
 
     Animator animator;
 
-    //Esto habrá que cambiarlo luego
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
-        fireball = (GameObject)Resources.Load("Prefabs/Hechizos/FireballProyectile");
+        acidBallProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/AcidBallProyectile");
         animator = GameObject.Find("Amo").GetComponent<Animator>();
     }
+
 
     public void StartCastingSpell()
     {
         animator.SetTrigger("QuickCast Spell");
-
-        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
     {
-        print("Bola de fuego casteada");
-
-        GameObject instance = Instantiate(fireball, attackPoint.position, Quaternion.identity);
-        instance.GetComponent<Proyectil_BolaDeFuego>().damage = damage;
+        //Proyectil real instanciado
+        GameObject instance = Instantiate(acidBallProyectile, attackPoint.position, Quaternion.identity);
+        instance.GetComponent<Proyectil_BolaDeAcido>().damage = damage;
         instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
 
         instance.transform.LookAt(attackPoint.position + attackPoint.forward * 5);
 
-        Destroy(instance, 10);
+        Destroy(instance, 3);
 
-        //Particulas de lanzamiento acá
+        //Particulas de lanzamiento acá 
+
+        print("Bola de ácido casteada");
     }
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(StartCastingSpell);
+        spellCastEvent.AddListener(CastSpell);
     }
 }
