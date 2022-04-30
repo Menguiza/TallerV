@@ -16,7 +16,7 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         Pesadilla = 5
     }
 
-    private void Start()
+    private void Awake()
     {
         
         if (GameObject.Find("GameMaster").TryGetComponent<GameMaster>(out GameMaster gameMaster) == false)
@@ -28,6 +28,7 @@ public class InicializadorSistemaPosturas : MonoBehaviour
 
         //Inicializa la postura
         gm.posturaDelSueño = posturasDelSueño[(int)gm.IDPostura];
+        gm.RemoveActiveTechniques();
         gm.ApplyTechniques();
     }
 
