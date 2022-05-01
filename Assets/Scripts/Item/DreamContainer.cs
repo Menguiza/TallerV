@@ -8,6 +8,11 @@ public class DreamContainer : MonoBehaviour
     [SerializeField]
     Image icon;
 
+    private void Awake()
+    {
+        Inventory.instance.dmrContainer = this.gameObject;
+    }
+
     // Update is called once per frame
     void Update()
     {

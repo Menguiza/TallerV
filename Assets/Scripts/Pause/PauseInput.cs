@@ -2,48 +2,44 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryInput : MonoBehaviour
+public class PauseInput : MonoBehaviour
 {
     [SerializeField]
-    CanvasGroup inventory;
-    Animator anim;
+    CanvasGroup pauseMenu;
     bool toggle = false;
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        if(Input.GetButtonDown("Inventory"))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             toggle = !toggle;
             ActiveCursor(toggle);
         }
 
-        anim.SetBool("Abierto", toggle);
+        pauseMenu.interactable = toggle;
+        pauseMenu.blocksRaycasts = toggle;
 
-        inventory.interactable = toggle;
-        inventory.blocksRaycasts = toggle;
-
-        if (inventory.interactable)
+        if (pauseMenu.interactable)
         {
-            inventory.alpha = 1;
+            pauseMenu.alpha = 1;
             Time.timeScale = 0;
         }
         else
         {
-            inventory.alpha = 0;
+            pauseMenu.alpha = 0;
             Time.timeScale = 1;
         }
     }
 
     void ActiveCursor(bool callBack)
     {
-        if (callBack)
+        if(callBack)
         {
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
@@ -53,5 +49,20 @@ public class InventoryInput : MonoBehaviour
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+    }
+
+    public void CloseGame()
+    {
+        Application.Quit();
+    }
+
+    public void ManualSave()
+    {
+        Debug.Log("Guardado");
+    }
+
+    public void MainMenu()
+    {
+        Debug.Log("Transladando a lobby");
     }
 }
