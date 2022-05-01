@@ -12,7 +12,7 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
     Transform attackPoint;
 
     float damage = 2f;
-    public float Damage { get => damage; }
+    public float Damage { get => damage; set => damage = value; }
 
     Animator animator;
 

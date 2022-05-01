@@ -10,8 +10,8 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
 
     float impulseForce = 30f;
 
-    float damage = 5f;
-    public float Damage { get => damage; }
+    float damage;
+    public float Damage { get => damage; set => damage = value; }
 
     Animator animator;
 

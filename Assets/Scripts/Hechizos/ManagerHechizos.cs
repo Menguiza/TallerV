@@ -25,21 +25,32 @@ public class ManagerHechizos : MonoBehaviour
 
     private void Awake()
     {
+        print("I'm being called");
         slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
+        print("Somethin is happening here");
+        print(slotsHechizos);
+        print(slotsHechizos == null);
 
         if (slotsHechizos == null) Debug.LogWarning("|Manager hechizos| No se pudo encontrar la referencia a SlotsHechizos");
 
         if (instance != null)
         {
+            print("Destroyed instance");
             Destroy(gameObject);
         }
         else
         {
+            print("Assigned instace");
             instance = this;
             DontDestroyOnLoad(gameObject);
         }
 
         UpdateSpellSlots();
+    }
+
+    private void OnEnable()
+    {
+        print("I'm being enabled");
     }
 
     int GetIndex_of_NearestEmptySpellSlot()
@@ -114,42 +125,56 @@ public class ManagerHechizos : MonoBehaviour
                     BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
                     fireball.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = fireball;
+
+                    fireball.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
                     FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
                     fireArrow.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = fireArrow;
+
+                    fireArrow.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
                     EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
                     lightSword.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = lightSword;
+
+                    lightSword.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
                     PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
                     magicpebble.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = magicpebble;
+
+                    magicpebble.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
                     BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
                     energyBoomerang.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = energyBoomerang;
+
+                    energyBoomerang.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
                     BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
                     acidball.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = acidball;
+
+                    acidball.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
                     DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
                     electricDash.SubscribeToEvent(ue);
                     availableSpells[index_NearestEmptySpellSlot] = electricDash;
+
+                    electricDash.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 default:
@@ -205,7 +230,6 @@ public class ManagerHechizos : MonoBehaviour
         //Jueputa
         #region"Agregar los componentes a su nuevas posiciones, instanciadolos de nuevo"
 
-
         if (spellsData[selectedOriginalSlot] != null)
         {
             switch (spellsData[selectedOriginalSlot].spellContained)
@@ -214,42 +238,56 @@ public class ManagerHechizos : MonoBehaviour
                     BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
                     fireball.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = fireball;
+
+                    fireball.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
                     FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
                     fireArrow.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = fireArrow;
+
+                    fireArrow.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
                     EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
                     lightSword.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = lightSword;
+
+                    lightSword.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
                     PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
                     magicpebble.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = magicpebble;
+
+                    magicpebble.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
                     BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
                     energyBoomerang.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = energyBoomerang;
+
+                    energyBoomerang.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
                     BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
                     acidball.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = acidball;
+
+                    acidball.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
                     DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
                     electricDash.SubscribeToEvent(spellCastEvents[selectedOriginalSlot]);
                     availableSpells[selectedOriginalSlot] = electricDash;
+
+                    electricDash.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 default:
@@ -266,42 +304,56 @@ public class ManagerHechizos : MonoBehaviour
                     BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
                     fireball.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = fireball;
+
+                    fireball.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
                     FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
                     fireArrow.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = fireArrow;
+
+                    fireArrow.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
                     EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
                     lightSword.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = lightSword;
+
+                    lightSword.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
                     PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
                     magicpebble.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = magicpebble;
+
+                    magicpebble.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
                     BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
                     energyBoomerang.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = energyBoomerang;
+
+                    energyBoomerang.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
                     BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
                     acidball.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = acidball;
+
+                    acidball.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
                     DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
                     electricDash.SubscribeToEvent(spellCastEvents[newSelectedSlot]);
                     availableSpells[newSelectedSlot] = electricDash;
+
+                    electricDash.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                     break;
 
                 default:
@@ -311,6 +363,7 @@ public class ManagerHechizos : MonoBehaviour
         }
         
         #endregion
+
         UpdateSpellSlots();
     }
 
@@ -331,42 +384,56 @@ public class ManagerHechizos : MonoBehaviour
                 BolaDeFuego fireball = gameObject.AddComponent<BolaDeFuego>();
                 fireball.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = fireball;
+
+                fireball.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.FlechaDeFuego:
                 FlechaDeFuego fireArrow = gameObject.AddComponent<FlechaDeFuego>();
                 fireArrow.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = fireArrow;
+
+                fireArrow.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.EspadaDeLuz:
                 EspadaDeLuz lightSword = gameObject.AddComponent<EspadaDeLuz>();
                 lightSword.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = lightSword;
+
+                lightSword.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.PedradaMagica:
                 PedradaMagica magicpebble = gameObject.AddComponent<PedradaMagica>();
                 magicpebble.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = magicpebble;
+
+                magicpebble.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.BoomerangDeEnergia:
                 BoomerangEnergia energyBoomerang = gameObject.AddComponent<BoomerangEnergia>();
                 energyBoomerang.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = energyBoomerang;
+
+                energyBoomerang.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.BolaDeAcido:
                 BolaDeAcido acidball = gameObject.AddComponent<BolaDeAcido>();
                 acidball.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = acidball;
+
+                acidball.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             case Hechizo.EHechizo.DashElectrico:
                 DashElectrico electricDash = gameObject.AddComponent<DashElectrico>();
                 electricDash.SubscribeToEvent(ThirdSpellCast);
                 availableSpells[lastIndex] = electricDash;
+
+                electricDash.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
                 break;
 
             default:
@@ -408,29 +475,6 @@ public class ManagerHechizos : MonoBehaviour
 
     private void Update()
     {
-
-        if (!castingSpell)
-        {
-            if (Input.GetKeyDown(KeyCode.Q) && spellsData[0] != null)
-            {
-                FirstSpellCast.Invoke();
-                StartSpellCast();
-            }
-
-            if (Input.GetKeyDown(KeyCode.E) && spellsData[1] != null)
-            {
-                SecondSpellCast.Invoke();
-                StartSpellCast();
-            }
-
-            if (Input.GetKeyDown(KeyCode.R) && spellsData[2] != null)
-            {
-                ThirdSpellCast.Invoke();
-                StartSpellCast();
-            }
-        }
-
-        
         #region"Input para Debug de hechizos"
 
         /*

@@ -8,8 +8,8 @@ public class BolaDeFuego : MonoBehaviour, IHechizo
     [SerializeField] GameObject fireball;
     Transform attackPoint;
 
-    float damage = 3f;
-    public float Damage { get => damage; }
+    float damage;
+    public float Damage { get => damage; set => damage = value; }
 
     float impulseForce = 10f;
 

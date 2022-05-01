@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class EspadaDeLuz : MonoBehaviour, IHechizo
 {
-    float damage = 1f;
+    float damage;
     float buffDuration = 5f;
-    public float Damage { get => damage; }
+    public float Damage { get => damage; set => damage = value; }
 
     Animator animator;
 

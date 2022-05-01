@@ -11,19 +11,24 @@ public class PedradaMagica : MonoBehaviour, IHechizo
 
     Transform attackPoint;
 
-    float damage = 2f;
-    public float Damage { get => damage; }
+    float damage;
+    public float Damage { get => damage; set => damage = value; }
+
+    Animator animator;
 
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         magicPebbleProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/MagicPebbleProyectile");
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
 
     public void StartCastingSpell()
     {
+        animator.SetTrigger("QuickCast Spell");
 
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -44,6 +49,6 @@ public class PedradaMagica : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }

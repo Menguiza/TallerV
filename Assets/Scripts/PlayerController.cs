@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
         if (!died)
         {
+            Cast();
             Attack();
         }
 
@@ -101,6 +102,9 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider();
                 InactiveCollider2();
                 gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+
+                // Hechizos
+                ManagerHechizos.instance.EndSpellCast();
             }
             else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
@@ -114,6 +118,9 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider();
                 InactiveCollider2();
                 gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage);
+
+                // Hechizos
+                ManagerHechizos.instance.EndSpellCast();
             }
         }
     }
@@ -122,7 +129,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !blocking && !airAttack)
+        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !ManagerHechizos.instance.castingSpell && !dodge && !knockBacked && !blocking && !airAttack)
         {
             anim.SetTrigger("Punch");
 
@@ -137,6 +144,29 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void Cast()
+    {
+        if (characterContrl.isGrounded && !ManagerHechizos.instance.castingSpell && !attack && !dodge && !knockBacked && !blocking && !airAttack)
+        {
+            if (Input.GetKeyDown(KeyCode.Q) && ManagerHechizos.instance.spellsData[0] != null)
+            {
+                ManagerHechizos.instance.FirstSpellCast.Invoke();
+                ManagerHechizos.instance.StartSpellCast();
+            }
+            else if (Input.GetKeyDown(KeyCode.E) && ManagerHechizos.instance.spellsData[1] != null)
+            {
+                ManagerHechizos.instance.SecondSpellCast.Invoke();
+                ManagerHechizos.instance.StartSpellCast();
+            }
+            else if (Input.GetKeyDown(KeyCode.R) && ManagerHechizos.instance.spellsData[2] != null)
+            {
+                ManagerHechizos.instance.ThirdSpellCast.Invoke();
+                ManagerHechizos.instance.StartSpellCast();
+            }
+        }
+        
+    }
+
     private void OnDrawGizmosSelected()
     {
         if (attackPoint == null)
@@ -149,7 +179,7 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
-        if (attack && !knockBacked || died)
+        if ((attack || ManagerHechizos.instance.castingSpell) && !knockBacked || died)
         {
             horizontal = zero;
 
@@ -235,7 +265,7 @@ public class PlayerController : MonoBehaviour
 
         SetGravity();
 
-        if (Input.GetButtonDown("Jump") && characterContrl.isGrounded && !attack && !dodge && !knockBacked && !died)
+        if (Input.GetButtonDown("Jump") && characterContrl.isGrounded && !ManagerHechizos.instance.castingSpell &&!attack && !dodge && !knockBacked && !died)
         {
             verticalVelocity = jumpFoce;
             anim.SetBool("Jump", true);
