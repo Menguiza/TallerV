@@ -9,21 +9,26 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     Transform attackPoint;
 
-    float damage = 1.7f;
-    public float Damage { get => damage; }
+    float damage;
+    public float Damage { get => damage; set => damage = value; }
 
     float impulseForce = 15f;
+
+    Animator animator;
 
     //Esto habrá que cambiarlo luego
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         boomerangProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/EnergyBoomerang");
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
     public void StartCastingSpell()
     {
+        animator.SetTrigger("InstantCast Spell");
 
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -37,6 +42,6 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }

@@ -7,4 +7,9 @@ public class UI_SlotsHechizos : MonoBehaviour
 {
     public Image[] slotsImages, slotsImages2;
     public Hechizo[] hechizos;
+
+    private void OnDestroy()
+    {
+        print("I've been destryed");
+    }
 }
