@@ -13,16 +13,21 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     float damage = 5f;
     public float Damage { get => damage; }
 
+    Animator animator;
+
     //Esto habrá que cambiarlo luego
     private void Awake()
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         fireArrowProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/FireArrowProyectile");
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
     public void StartCastingSpell()
     {
+        animator.SetTrigger("InstantCast Spell");
 
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -41,6 +46,6 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }

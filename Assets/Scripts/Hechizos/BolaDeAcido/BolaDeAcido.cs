@@ -20,13 +20,15 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         acidBallProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/AcidBallProyectile");
-        animator = GameObject.Find("Amo").GetComponent<Animator>();
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
 
     public void StartCastingSpell()
     {
         animator.SetTrigger("QuickCast Spell");
+
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -47,6 +49,6 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }

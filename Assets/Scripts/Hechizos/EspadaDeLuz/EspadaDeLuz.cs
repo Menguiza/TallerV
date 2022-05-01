@@ -9,9 +9,18 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
     float buffDuration = 5f;
     public float Damage { get => damage; }
 
+    Animator animator;
+
+    private void Awake()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+    }
+
     public void StartCastingSpell()
     {
+        animator.SetTrigger("BuffCast Spell");
 
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
@@ -30,6 +39,6 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }

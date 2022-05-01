@@ -411,26 +411,26 @@ public class ManagerHechizos : MonoBehaviour
 
         if (!castingSpell)
         {
-            
+            if (Input.GetKeyDown(KeyCode.Q) && spellsData[0] != null)
+            {
+                FirstSpellCast.Invoke();
+                StartSpellCast();
+            }
+
+            if (Input.GetKeyDown(KeyCode.E) && spellsData[1] != null)
+            {
+                SecondSpellCast.Invoke();
+                StartSpellCast();
+            }
+
+            if (Input.GetKeyDown(KeyCode.R) && spellsData[2] != null)
+            {
+                ThirdSpellCast.Invoke();
+                StartSpellCast();
+            }
         }
 
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            FirstSpellCast.Invoke();
-            StartSpellCast();
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            SecondSpellCast.Invoke();
-            StartSpellCast();
-        }
-
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            ThirdSpellCast.Invoke();
-            StartSpellCast();
-        }
+        
         #region"Input para Debug de hechizos"
 
         /*

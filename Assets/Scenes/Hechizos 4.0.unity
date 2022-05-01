@@ -5563,7 +5563,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -6820,9 +6820,16 @@ MonoBehaviour:
   ThirdSpellCast:
     m_PersistentCalls:
       m_Calls: []
-  spellsData: []
-  availableSpells: []
+  spellsData:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  availableSpells:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   debugSpellData: []
+  castingSpell: 0
 --- !u!4 &1239515621
 Transform:
   m_ObjectHideFlags: 0
@@ -11195,7 +11202,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 2.9624646, y: 1}
+    m_SensorSize: {x: 3.1901042, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -11211,7 +11218,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2142099911}
-  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.07449427, w: 0.70317185}
+  m_LocalRotation: {x: 0.07449427, y: -0.7031718, z: 0.074494265, w: 0.70317185}
   m_LocalPosition: {x: 7, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
