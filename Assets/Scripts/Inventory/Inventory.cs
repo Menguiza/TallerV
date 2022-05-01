@@ -12,7 +12,8 @@ public class Inventory : MonoBehaviour
     public DreamCatcher dmrcatcher { get; private set; }
 
     [SerializeField]
-    GameObject content, prefab, dmrContainer;
+    public GameObject content, prefab, dmrContainer;
+
     byte slots = 5, slotsUsados = 0;
     [SerializeField]
     public List<GameObject> activables = new List<GameObject>(5);

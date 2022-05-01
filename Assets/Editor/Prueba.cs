@@ -157,5 +157,12 @@ public class Prueba : Editor
         }
 
         #endregion
+
+        EditorGUILayout.Space();
+
+        if (GUILayout.Button("Reload Scene"))
+        {
+            gm.ReloadScene();
+        }
     }
 }

@@ -16,6 +16,13 @@ public class ItemContainerInv : MonoBehaviour
         {
             icon.sprite = itemInfo.icon;
         }
+
+        int result;
+
+        if (int.TryParse(gameObject.name, out result))
+        {
+            Inventory.instance.activosInv[result - 1] = gameObject;
+        }
     }
 
     private void Update()

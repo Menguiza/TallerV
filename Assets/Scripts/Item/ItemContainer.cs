@@ -18,6 +18,14 @@ public class ItemContainer : MonoBehaviour
             icon.sprite = itemInfo.icon;
         }
         counter = 1;
+
+        int result;
+
+        if(int.TryParse(gameObject.name, out result))
+        {
+            Inventory.instance.activables[result - 1] = gameObject;
+        }
+        
     }
 
     private void Update()
