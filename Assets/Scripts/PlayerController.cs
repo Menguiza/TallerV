@@ -11,7 +11,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
-    GameObject particles, particlesChild;
+    GameObject particles, particlesChild; 
+    public Transform feetHeight { get; private set; }
 
     CharacterController characterContrl;
     Animator anim;
@@ -33,6 +34,11 @@ public class PlayerController : MonoBehaviour
     float horizontal, verticalVelocity;
 
     Vector3 move = Vector3.zero;
+
+    private void Awake()
+    {
+        feetHeight = transform.GetChild(0);
+    }
 
     private void Start()
     {
@@ -81,6 +87,7 @@ public class PlayerController : MonoBehaviour
             if(verticalVelocity > zero)
             {
                 verticalVelocity = zero;
+                move.y = 0;
             }
         }
     }
@@ -100,7 +107,15 @@ public class PlayerController : MonoBehaviour
                 ResetAnimDodge2();
                 InactiveCollider();
                 InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+
+                if(hit.collider.GetComponent<EnemyController>() != null)
+                {
+                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+                }
+                else if(hit.collider.GetComponent<VespulaFerus>() != null)
+                {
+                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg);
+                }
             }
             else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
@@ -244,6 +259,7 @@ public class PlayerController : MonoBehaviour
         else if (knockBacked && characterContrl.isGrounded && !died)
         {
             verticalVelocity = jumpFoce;
+            knockBacked = false;
             move.y = verticalVelocity;
         }
 
@@ -314,15 +330,32 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+
+            if(enemy.gameObject.GetComponent<EnemyController>() != null)
+            {
+                uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
+                enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            }
+            else if(enemy.gameObject.GetComponent<VespulaFerus>() != null)
+            {
+                uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<VespulaFerus>().health - dañoAplicar);
+                enemy.gameObject.GetComponent<VespulaFerus>().health = result;
+            }
+
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                if(enemy.gameObject.GetComponent<VespulaFerus>() != null)
+                {
+                    gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<VespulaFerus>().health;
+                }
+                else 
+                {
+                    gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                }
             }
         }
     }
@@ -334,15 +367,32 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+
+            if (enemy.gameObject.GetComponent<EnemyController>() != null)
+            {
+                uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
+                enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            }
+            else if (enemy.gameObject.GetComponent<VespulaFerus>() != null)
+            {
+                uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<VespulaFerus>().health - dañoAplicar);
+                enemy.gameObject.GetComponent<VespulaFerus>().health = result;
+            }
+
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                if (enemy.gameObject.GetComponent<VespulaFerus>() != null)
+                {
+                    gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<VespulaFerus>().health;
+                }
+                else
+                {
+                    gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                }
             }
         }
     }
