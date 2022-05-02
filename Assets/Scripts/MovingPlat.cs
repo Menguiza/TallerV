@@ -8,7 +8,7 @@ public class MovingPlat : MonoBehaviour
     Transform dest;
 
     [SerializeField]
-    float speed, distance, travelTime = 3;
+    float distance, travelTime = 3;
 
     Vector3 tempPos, move;
 
@@ -34,15 +34,6 @@ public class MovingPlat : MonoBehaviour
         if (player.feetHeight.position.y > transform.position.y && dist <= distance)
         {
             player.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
-        }
-    }
-
-    void ResetDest()
-    {
-        if (transform.position == dest.position)
-        {
-            dest.position = tempPos;
-            tempPos = transform.position;
         }
     }
 }
