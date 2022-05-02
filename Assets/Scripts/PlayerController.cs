@@ -148,23 +148,22 @@ public class PlayerController : MonoBehaviour
     {
         if (characterContrl.isGrounded && !ManagerHechizos.instance.castingSpell && !attack && !dodge && !knockBacked && !blocking && !airAttack)
         {
-            if (Input.GetKeyDown(KeyCode.Q) && ManagerHechizos.instance.spellsData[0] != null)
+            if (Input.GetKeyDown(KeyCode.Q) && ManagerHechizos.instance.spellsData[0] != null && !(ManagerHechizos.instance.availableSpells[0] as IHechizo).IsOnCD)
             {
                 ManagerHechizos.instance.FirstSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();
             }
-            else if (Input.GetKeyDown(KeyCode.E) && ManagerHechizos.instance.spellsData[1] != null)
+            else if (Input.GetKeyDown(KeyCode.E) && ManagerHechizos.instance.spellsData[1] != null && !(ManagerHechizos.instance.availableSpells[1] as IHechizo).IsOnCD)
             {
                 ManagerHechizos.instance.SecondSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();
             }
-            else if (Input.GetKeyDown(KeyCode.R) && ManagerHechizos.instance.spellsData[2] != null)
+            else if (Input.GetKeyDown(KeyCode.R) && ManagerHechizos.instance.spellsData[2] != null && !(ManagerHechizos.instance.availableSpells[2] as IHechizo).IsOnCD)
             {
                 ManagerHechizos.instance.ThirdSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();
             }
-        }
-        
+        }   
     }
 
     private void OnDrawGizmosSelected()

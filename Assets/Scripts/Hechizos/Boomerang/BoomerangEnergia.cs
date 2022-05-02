@@ -9,8 +9,19 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     Transform attackPoint;
 
+    // IHechizo propiedades ---- >
     float damage;
     public float Damage { get => damage; set => damage = value; }
+
+    float remainingCD;
+    public float RemainingCD { get => remainingCD; set => remainingCD = value; }
+
+    float CD_Time;
+    public float CDTime { get => CD_Time; set => CD_Time = value; }
+
+    bool isOnCD;
+    public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
+    // < ----
 
     float impulseForce = 15f;
 
@@ -24,6 +35,19 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        if (remainingCD >= 0)
+        {
+            remainingCD -= Time.deltaTime;
+
+            if (remainingCD < 0)
+            {
+                isOnCD = false;
+            }
+        }
+    }
+
     public void StartCastingSpell()
     {
         animator.SetTrigger("InstantCast Spell");
@@ -33,6 +57,9 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     public void CastSpell()
     {
+        IsOnCD = true;
+        remainingCD = CDTime;
+
         print("Boomerang de energia casteado");
         GameObject instance = Instantiate(boomerangProyectile, attackPoint.position, Quaternion.identity);
         instance.GetComponent<Proyectil_BoomerangEnergia>().damage = damage;

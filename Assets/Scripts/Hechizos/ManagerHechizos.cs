@@ -127,6 +127,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = fireball;
 
                     fireball.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireball.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
@@ -135,6 +136,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = fireArrow;
 
                     fireArrow.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireArrow.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
@@ -143,6 +145,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = lightSword;
 
                     lightSword.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    lightSword.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
@@ -151,6 +154,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = magicpebble;
 
                     magicpebble.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    magicpebble.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
@@ -159,6 +163,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = energyBoomerang;
 
                     energyBoomerang.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    energyBoomerang.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
@@ -167,6 +172,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = acidball;
 
                     acidball.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    acidball.CDTime = hechizo.rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
@@ -175,6 +181,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[index_NearestEmptySpellSlot] = electricDash;
 
                     electricDash.Damage = (float)Math.Round(hechizo.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    electricDash.CDTime = hechizo.rechargeTime;
                     break;
 
                 default:
@@ -240,6 +247,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = fireball;
 
                     fireball.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireball.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
@@ -248,6 +256,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = fireArrow;
 
                     fireArrow.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireArrow.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
@@ -256,6 +265,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = lightSword;
 
                     lightSword.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    lightSword.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
@@ -264,6 +274,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = magicpebble;
 
                     magicpebble.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    magicpebble.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
@@ -272,6 +283,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = energyBoomerang;
 
                     energyBoomerang.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    energyBoomerang.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
@@ -280,6 +292,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = acidball;
 
                     acidball.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    acidball.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
@@ -288,6 +301,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[selectedOriginalSlot] = electricDash;
 
                     electricDash.Damage = (float)Math.Round(spellsData[selectedOriginalSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    electricDash.CDTime = spellsData[selectedOriginalSlot].rechargeTime;
                     break;
 
                 default:
@@ -306,6 +320,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = fireball;
 
                     fireball.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireball.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.FlechaDeFuego:
@@ -314,6 +329,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = fireArrow;
 
                     fireArrow.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    fireArrow.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.EspadaDeLuz:
@@ -322,6 +338,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = lightSword;
 
                     lightSword.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    lightSword.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.PedradaMagica:
@@ -330,6 +347,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = magicpebble;
 
                     magicpebble.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    magicpebble.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BoomerangDeEnergia:
@@ -338,6 +356,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = energyBoomerang;
 
                     energyBoomerang.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    energyBoomerang.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.BolaDeAcido:
@@ -346,6 +365,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = acidball;
 
                     acidball.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    acidball.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 case Hechizo.EHechizo.DashElectrico:
@@ -354,6 +374,7 @@ public class ManagerHechizos : MonoBehaviour
                     availableSpells[newSelectedSlot] = electricDash;
 
                     electricDash.Damage = (float)Math.Round(spellsData[newSelectedSlot].spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                    electricDash.CDTime = spellsData[newSelectedSlot].rechargeTime;
                     break;
 
                 default:
@@ -386,6 +407,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = fireball;
 
                 fireball.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                fireball.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.FlechaDeFuego:
@@ -394,6 +416,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = fireArrow;
 
                 fireArrow.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                fireArrow.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.EspadaDeLuz:
@@ -402,6 +425,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = lightSword;
 
                 lightSword.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                lightSword.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.PedradaMagica:
@@ -410,6 +434,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = magicpebble;
 
                 magicpebble.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                magicpebble.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.BoomerangDeEnergia:
@@ -418,6 +443,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = energyBoomerang;
 
                 energyBoomerang.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                energyBoomerang.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.BolaDeAcido:
@@ -426,6 +452,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = acidball;
 
                 acidball.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                acidball.CDTime = spell.rechargeTime;
                 break;
 
             case Hechizo.EHechizo.DashElectrico:
@@ -434,6 +461,7 @@ public class ManagerHechizos : MonoBehaviour
                 availableSpells[lastIndex] = electricDash;
 
                 electricDash.Damage = (float)Math.Round(spell.spellDamage * 0.01f, 2, MidpointRounding.ToEven);
+                electricDash.CDTime = spell.rechargeTime;
                 break;
 
             default:

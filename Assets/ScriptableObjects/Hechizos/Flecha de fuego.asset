@@ -22,6 +22,6 @@ MonoBehaviour:
   impact: "\xDAnico"
   impactEffect: "Quema al enemigo durante 3 segundos inflingiendole 10 de da\xF1o
     cada segundo."
-  rechargeTime: 15
+  rechargeTime: 8
   chanellingTime: 0.3
   spellContained: 1
