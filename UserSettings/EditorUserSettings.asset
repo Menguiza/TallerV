@@ -6,22 +6,34 @@ EditorUserSettings:
   serializedVersion: 4
   m_ConfigSettings:
     RecentlyUsedSceneGuid-0:
-      value: 00060d5506505b595b59097445260f44104e4f28757e73317c2d4e37b1b2666e
-      flags: 0
-    RecentlyUsedSceneGuid-1:
-      value: 53550207070c5e0c0e56587a41715d444e4e4d7a2f297765752a1e35e4b6326a
-      flags: 0
-    RecentlyUsedSceneGuid-2:
       value: 55530d5704535e580c5a5c7646250d4412151b72797a20362e704467b7b66468
       flags: 0
-    RecentlyUsedSceneGuid-3:
-      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
-      flags: 0
-    RecentlyUsedSceneGuid-4:
+    RecentlyUsedSceneGuid-1:
       value: 5102025204000a0c0c5a097246200d44414f4a2e2f2b25337f784e37b6b1606d
       flags: 0
-    RecentlyUsedSceneGuid-5:
+    RecentlyUsedSceneGuid-2:
       value: 00050c5504040d025f5c5f2614255e4410154d7b7e7f7f607c7a4831bbb2673a
+      flags: 0
+    RecentlyUsedSceneGuid-3:
+      value: 5603065404040a085d585872147b5d4443161e287e2a27662b2b4867e3b96039
+      flags: 0
+    RecentlyUsedSceneGuid-4:
+      value: 5454510450055802545e5b7a46275e441715492c752a75687f791e35b2b26d3d
+      flags: 0
+    RecentlyUsedSceneGuid-5:
+      value: 5a5757560101590a5d0c0e24427b5d44434e4c7a7b7a23677f2b4565b7b5353a
+      flags: 0
+    RecentlyUsedSceneGuid-6:
+      value: 5600010706575c585e5f087140755d44144e4a29747d23617e784862b0b8676c
+      flags: 0
+    RecentlyUsedSceneGuid-7:
+      value: 5503020253500b095d0c0d7211710a444f161d7c7d2b7066752f4f66bae36d6c
+      flags: 0
+    RecentlyUsedSceneGuid-8:
+      value: 000451055d0c5d0e5e0a547446760c4447151d792e7825647e2b4965e4b1633b
+      flags: 0
+    RecentlyUsedSceneGuid-9:
+      value: 0704025301030a58555d58744926094446164b782f7f7e687c7f1b35b5b7356f
       flags: 0
     UnityEditor.ShaderGraph.Blackboard:
       value: 18135939215a0a5004000b0e15254b524c030a3f2964643d120d1230e9e93a3fd6e826abbd3c3e302a07a37e0901373ae01e0008f707250d171df81a53a5405d41895ac825e0100ec20313c0d91cddccd3d0c7efcca9bd80908fecb0f9cfddf1eff4e7a1b1eae482f0fdaee1e1928b86d888ed909c968797a7cf
