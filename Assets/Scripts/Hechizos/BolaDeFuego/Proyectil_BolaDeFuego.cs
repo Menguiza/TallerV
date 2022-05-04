@@ -7,6 +7,9 @@ public class Proyectil_BolaDeFuego : MonoBehaviour
     public float damage;
     [SerializeField] GameObject FireballExplosionVolume;
 
+    [SerializeField] GameObject trailF;
+    [SerializeField] GameObject particles;
+
     public void fireballExplode()
     {
         //Zona de explosión
@@ -16,6 +19,18 @@ public class Proyectil_BolaDeFuego : MonoBehaviour
         //Aqui van las particulas --
 
         //Separar el trail
+        
+        trailF.GetComponent<TrailRenderer>().emitting = false;
+        var emmision = particles.GetComponent<ParticleSystem>().emission;
+        emmision.enabled = false;
+
+        trailF.transform.SetParent(null);
+        particles.transform.SetParent(null);
+
+        
+
+        Destroy(trailF, 4f);
+        Destroy(particles, 4f);
 
         //Siempre Eliminar al final el proyectil
         Destroy(gameObject);
