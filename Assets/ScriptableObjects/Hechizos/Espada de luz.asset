@@ -18,7 +18,7 @@ MonoBehaviour:
   lore: "Este hechizo era utilizado principalmente por los generales de los distintos
     clanes antes de la creaci\xF3n de N\xEDfera, es famoso por el gran poder que
     le proporciona a quien lo invocara. "
-  spellDamage: 0
+  spellDamage: 100
   impact: Buff personal
   impactEffect: "Agrega un modificador que da +100% al da\xF1o infligido durante
     5 segundos"

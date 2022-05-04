@@ -16,6 +16,9 @@ public class Proyectil_BoomerangEnergia : MonoBehaviour
     Transform returnTarget;
     bool hasBegunReturn;
 
+    [SerializeField] GameObject boomerangTrail1;
+    [SerializeField] GameObject boomerangTrail2;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -49,6 +52,22 @@ public class Proyectil_BoomerangEnergia : MonoBehaviour
         if (Vector3.Distance(transform.position, returnTarget.position) <= 1.5f && currentTimeSinceLaunch > minTimeBeforeReturn)
         {
             Destroy(gameObject);
+
+            // VFX --- >
+            boomerangTrail1.transform.SetParent(GameMaster.instance.playerObject.transform);
+            boomerangTrail2.transform.SetParent(GameMaster.instance.playerObject.transform);
+
+            boomerangTrail1.transform.localPosition = Vector3.up;
+            boomerangTrail2.transform.localPosition = Vector3.up;
+
+            var emmision = boomerangTrail1.GetComponent<ParticleSystem>().emission;
+            emmision.enabled = false;
+            emmision = boomerangTrail2.GetComponent<ParticleSystem>().emission;
+            emmision.enabled = false;
+
+            Destroy(boomerangTrail1, 2f);
+            Destroy(boomerangTrail2, 2f);
+            // < ---
         }
     }
 

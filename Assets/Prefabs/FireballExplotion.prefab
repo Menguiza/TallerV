@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
+  fireballExplotion: {fileID: 6301198175330073916}
 --- !u!54 &-3882580357838901310
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -189,5 +190,10 @@ PrefabInstance:
 --- !u!4 &6301198175330073915 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7171288346268681378, guid: 259262f32d3709a4f8b481d98099f8f9, type: 3}
+  m_PrefabInstance: {fileID: 3816750774778411417}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6301198175330073916 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7171288346268681381, guid: 259262f32d3709a4f8b481d98099f8f9, type: 3}
   m_PrefabInstance: {fileID: 3816750774778411417}
   m_PrefabAsset: {fileID: 0}

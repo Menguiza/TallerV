@@ -22,6 +22,6 @@ MonoBehaviour:
   spellDamage: 300
   impact: "M\xFAltiple, explosi\xF3n"
   impactEffect: "Retroceso peque\xF1o"
-  rechargeTime: 20
+  rechargeTime: 15
   chanellingTime: 0.75
   spellContained: 0
