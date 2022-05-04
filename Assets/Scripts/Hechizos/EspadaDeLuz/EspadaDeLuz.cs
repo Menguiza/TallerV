@@ -23,6 +23,8 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
 
     Animator animator;
 
+    GameObject[] VFX_Espada; // Implementar por medio de ResourcesLoad o por Activación de la particula previamente puesta en Escena
+
     private void Awake()
     {
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
