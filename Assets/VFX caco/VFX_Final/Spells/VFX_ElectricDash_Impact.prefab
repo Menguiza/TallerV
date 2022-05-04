@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 2800596175700497576}
   - component: {fileID: 2800596175700497579}
   m_Layer: 0
-  m_Name: VFX_impact_LN
+  m_Name: VFX_ElectricDash_Impact
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
