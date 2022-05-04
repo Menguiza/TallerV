@@ -6,9 +6,14 @@ public class DashExplotion : MonoBehaviour
 {
     public float damage;
 
+    [SerializeField] GameObject impactExplotion;
+
     private void Awake()
     {
         Destroy(gameObject, 0.5f);
+
+        impactExplotion.transform.SetParent(GameMaster.instance.gameObject.transform);
+        Destroy(impactExplotion, 4f);
     }
 
     private void OnTriggerEnter(Collider other)
