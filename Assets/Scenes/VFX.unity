@@ -2430,6 +2430,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3541995330200122294, guid: f212b6eed4181e646b096e0eae127bad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3541995331222893494, guid: f212b6eed4181e646b096e0eae127bad, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
     - target: {fileID: 3541995331969208531, guid: f212b6eed4181e646b096e0eae127bad, type: 3}
       propertyPath: m_Name
       value: Boomerang EN
