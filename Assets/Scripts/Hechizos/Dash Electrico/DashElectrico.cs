@@ -23,11 +23,16 @@ public class DashElectrico : MonoBehaviour, IHechizo
 
     Animator animator;
 
+    GameObject TrailVFX;
+    GameObject trail;
+
     void Awake()
     {
         player = GameMaster.instance.playerObject;
 
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+
+        TrailVFX = (GameObject)Resources.Load("Prefabs/VFX_Hechizos/VFX_ElectricDash_Trail");
     }
 
     void Update()
@@ -59,11 +64,21 @@ public class DashElectrico : MonoBehaviour, IHechizo
         player.gameObject.AddComponent<FuncionalidadDash>();
         player.gameObject.GetComponent<FuncionalidadDash>().damage = damage;
 
+        trail = Instantiate(TrailVFX, player.transform.position + Vector3.up, Quaternion.identity, player.transform);
+        Invoke(nameof(DeactiveTrailEmission), 0.1f);
+        Destroy(trail, 3f);
+
         print("Dash electrico casteado");
     }
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
         spellCastEvent.AddListener(StartCastingSpell);
+    }
+
+    void DeactiveTrailEmission()
+    {
+        var emmision = trail.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().emission;
+        emmision.enabled = false;
     }
 }

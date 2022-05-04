@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using System;
+using UnityEngine.SceneManagement;
 
 public class ManagerHechizos : MonoBehaviour
 {
@@ -23,7 +24,7 @@ public class ManagerHechizos : MonoBehaviour
     // Variable de control
     public bool castingSpell = false;
 
-    private void Awake()
+    private void Start()
     {
         print("I'm being called");
         slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
@@ -52,6 +53,7 @@ public class ManagerHechizos : MonoBehaviour
     {
         print("I'm being enabled");
     }
+
 
     int GetIndex_of_NearestEmptySpellSlot()
     {
