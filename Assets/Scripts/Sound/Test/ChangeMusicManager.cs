@@ -2,6 +2,7 @@ using System.Net.Sockets;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class ChangeMusicManager : MonoBehaviour
 {
@@ -10,28 +11,19 @@ public class ChangeMusicManager : MonoBehaviour
     [SerializeField] float volumeSpeed, timeSlide;
     bool callAwake = false, callDreamer = false;
 
-    void Awake()
+    void Start()
     {
         awaken = transform.GetChild(0).gameObject;
         awakenSC = awaken.GetComponent<AudioSource>();
         dreamer = transform.GetChild(1).gameObject;
         dreamerSC = dreamer.GetComponent<AudioSource>();
+
+        GameMaster.instance.PlayerDream.AddListener(AwakenVolume);
+        GameMaster.instance.PlayerWake.AddListener(DreamerVolume);
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F) && !callAwake && awakenSC.volume > 0)
-        {
-            callAwake = true;
-            StartCoroutine(AwakenManager());
-        }  
-        
-        if (Input.GetKeyDown(KeyCode.G) && !callDreamer && dreamerSC.volume > 0)
-        {
-            callDreamer = true;
-            StartCoroutine(DreamerManager());
-        }
-    }
+    //!callAwake && awakenSC.volume > 0
+    //!callDreamer && dreamerSC.volume > 0
 
     IEnumerator AwakenManager()
     {
@@ -55,5 +47,24 @@ public class ChangeMusicManager : MonoBehaviour
         }
         callDreamer = false;
         yield return null;
+    }
+
+    void DreamerVolume()
+    {
+        if(!callDreamer && dreamerSC.volume > 0)
+        {
+            callDreamer = true;
+            StartCoroutine(DreamerManager());
+        }
+        
+    }
+
+    void AwakenVolume()
+    {
+        if(!callAwake && awakenSC.volume > 0)
+        {
+            callAwake = true;
+            StartCoroutine(AwakenManager());
+        }
     }
 }
