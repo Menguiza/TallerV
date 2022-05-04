@@ -6791,6 +6791,7 @@ MonoBehaviour:
   spellsData: []
   availableSpells: []
   debugSpellData: []
+  castingSpell: 0
 --- !u!1001 &210718878
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11249,7 +11250,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332308497}
-  m_LocalRotation: {x: 0.07449425, y: -0.70317185, z: 0.07449425, w: 0.7031718}
+  m_LocalRotation: {x: 0.07449425, y: -0.7031718, z: 0.074494235, w: 0.7031719}
   m_LocalPosition: {x: 6.6400003, y: 9.139999, z: -51.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -18884,6 +18885,56 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 8236f2029de26564f918d2b446ebf73b, type: 3}
   m_PrefabInstance: {fileID: 529215206}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &529773913
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 529773915}
+  - component: {fileID: 529773914}
+  m_Layer: 0
+  m_Name: RoomManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &529773914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529773913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e506486cb89d0744af0da353f6c7192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rooms:
+  - {fileID: 11400000, guid: 68b3995baab3055498e0b2b7312f6525, type: 2}
+  objetoINP:
+  - {fileID: 2807097785294483744, guid: 8f0e3ed616f020d46a376c18515947fb, type: 3}
+  spawnsINP:
+  - {fileID: 0}
+--- !u!4 &529773915
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 529773913}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &530410363
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44299,7 +44350,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1406431472}
-  m_LocalRotation: {x: 0.07449424, y: -0.70317185, z: 0.07449425, w: 0.7031718}
+  m_LocalRotation: {x: 0.07449425, y: -0.7031718, z: 0.074494235, w: 0.7031719}
   m_LocalPosition: {x: 6.6400003, y: 9.139999, z: -51.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -44337,7 +44388,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 2
-    m_SensorSize: {x: 10.693548, y: 1}
+    m_SensorSize: {x: 3.1488764, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -50489,7 +50540,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1588141306}
-  m_LocalRotation: {x: 0.07449424, y: -0.70317185, z: 0.07449425, w: 0.7031718}
+  m_LocalRotation: {x: 0.07449425, y: -0.7031718, z: 0.074494235, w: 0.7031719}
   m_LocalPosition: {x: 18.990934, y: 9.282961, z: -50.989777}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -59112,11 +59163,11 @@ MonoBehaviour:
   damageToPlayer: 0
   dmrcatcherINP: {fileID: 0}
   sceneReloaded: 0
-  cursorTexture: {fileID: 0}
-  cursorTexture2: {fileID: 0}
+  cursorTexture: {fileID: 2800000, guid: 19b4c8a53c60ad647abf07d0dd2b5203, type: 3}
+  cursorTexture2: {fileID: 2800000, guid: ea98b3aa3e1636140a186ca9ebbd2084, type: 3}
   timeToReset: 1
   enableTGPC: 1
-  "posturaDelSue\xF1o": {fileID: 0}
+  "posturaDelSue\xF1o": {fileID: 11400000, guid: 59e8e7c8c5877ab4aa46e03d6bc1a9b0, type: 2}
   IDPostura: 0
   PlayerDream:
     m_PersistentCalls:
