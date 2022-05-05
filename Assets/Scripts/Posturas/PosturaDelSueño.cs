@@ -20,4 +20,5 @@ public class PosturaDelSueño : ScriptableObject
     public List<ModsTecnicas> Techniques;
     public string desc;
     public Rarity rarity;
+    public int gemCost;
 }

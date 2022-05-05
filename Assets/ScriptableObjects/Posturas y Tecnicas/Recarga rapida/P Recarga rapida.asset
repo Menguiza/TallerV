@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba00caf09907b7747a76e0e5ecfab17d, type: 3}
   m_Name: P Recarga rapida
   m_EditorClassIdentifier: 
-  stanceName: Postura de la velocidad
+  stanceName: Postura de velocidad
   icon: {fileID: 21300000, guid: 9ce23f213d088cb4fae4705426cba6df, type: 3}
   Techniques:
   - {fileID: 11400000, guid: a5b9649a0ec20a143af9935d6f789f68, type: 2}
   - {fileID: 11400000, guid: 0700b5796d01bab45bd7418347d82e6a, type: 2}
-  desc: placeholder
+  desc: Postura creada por Finz del clan Desterios, enfocada en la destreza y agilidad
   rarity: 2
+  gemCost: 70

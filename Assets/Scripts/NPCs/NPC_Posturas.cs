@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class NPC_Posturas : MonoBehaviour, IVendorNPC
 {
@@ -11,10 +13,26 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
     [SerializeField] GameObject vendorUI;
     [SerializeField] GameObject[] setStanceUI;
     [SerializeField] GameObject[] buyStanceUI;
+    [SerializeField] TextMeshProUGUI[] descUI;
+    [SerializeField] TextMeshProUGUI[] costUI;
+    [SerializeField] TextMeshProUGUI[] nameUI;
+    [SerializeField] Image[] iconUI;
 
-    void Awake()
+    void Start()
     {
         boughtStances = new bool[sleepStances.Length];
+
+        // Inicializar UI de costos basándose en los datos de cada ScriptableObject de las posturas
+        // Inicializar UI de desc                                        ^
+        for (int i = 0; i < sleepStances.Length; i++)
+        {
+            costUI[i].text = sleepStancesData[i].gemCost.ToString();
+            descUI[i].text = sleepStancesData[i].desc;
+            nameUI[i].text = sleepStancesData[i].stanceName;
+            iconUI[i].sprite = sleepStancesData[i].icon;
+            DisplaySetButton(i, boughtStances[i]);
+            DisplayBuyButton(i, !boughtStances[i]);
+        }
     }
 
     public void RetrieveBoughtStancesData()
@@ -37,14 +55,24 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
         buyStanceUI[stanceIndex].SetActive(state);
     }
     
-
+    //Debug
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.M))
+        {
+            Economy.instance.Reward(500);
+        }
+    }
 
     #region"MetodosDeIVendorNPC"
     public void Buy(int stanceIndex)
     {
-        boughtStances[stanceIndex] = true;
-        DisplaySetButton(stanceIndex, true);
-        DisplayBuyButton(stanceIndex, false);
+        if (Economy.instance.gems >= sleepStancesData[stanceIndex].gemCost)
+        {
+            boughtStances[stanceIndex] = true;
+            DisplaySetButton(stanceIndex, true);
+            DisplayBuyButton(stanceIndex, false);
+        }   
     }
 
     public void OpenStore()
