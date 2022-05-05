@@ -15,6 +15,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject particles, particlesChild;
 
+    public GameObject espada;
+    public GameObject espadaDeLuz;
+
     CharacterController characterContrl;
     Animator anim;
 

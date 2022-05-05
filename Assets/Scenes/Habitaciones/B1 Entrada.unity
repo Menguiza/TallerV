@@ -11132,6 +11132,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cfbe507fa2001ab49bade7ea994c4bbb, type: 3}
+--- !u!114 &921069960 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5196616375761486503, guid: 2f8f32e53bd87dc40b923fe8c80173e7, type: 3}
+  m_PrefabInstance: {fileID: 502810609}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff937db4134d17747a9ba90d835adf48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &923947916
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15976,68 +15987,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ab785ca0dc1786d4c8a50fc8ffa26b3e, type: 3}
   m_PrefabInstance: {fileID: 1283812334}
   m_PrefabAsset: {fileID: 0}
---- !u!1001 &1296262475
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 1362888817}
-    m_Modifications:
-    - target: {fileID: 6967796988526279898, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_Name
-      value: Fairy
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
---- !u!4 &1296262476 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6967796988526279899, guid: c4ba63d2ffd876f43a474f61cda3d567, type: 3}
-  m_PrefabInstance: {fileID: 1296262475}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1298926334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16910,38 +16859,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1362888816
+--- !u!1 &1362888816 stripped
 GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1871786470903623324, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+  m_PrefabInstance: {fileID: 1871786470082848492}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1362888817}
-  m_Layer: 0
-  m_Name: NPC Rogue Fairy
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1362888817
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1362888816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10, y: 6.28, z: 9.91}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1296262476}
-  m_Father: {fileID: 0}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1379307863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23562,6 +23484,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: ab785ca0dc1786d4c8a50fc8ffa26b3e, type: 3}
   m_PrefabInstance: {fileID: 2115680513}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2116074971 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115543719246572163, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2120821639
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24072,6 +24005,111 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 400000, guid: 4231d19d7f2efd14784e971101809ab5, type: 3}
   m_PrefabInstance: {fileID: 2136361760}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1871786470082848492
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1871786470903623324, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_Name
+      value: NPC Rogue Fairy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 7.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 13.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623325, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: NPCPhrase
+      value: 
+      objectReference: {fileID: 2116074971}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: RogueFairyUI
+      value: 
+      objectReference: {fileID: 7115543720465756326}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: inventoryInput
+      value: 
+      objectReference: {fileID: 921069960}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: desc.Array.data[0]
+      value: 
+      objectReference: {fileID: 7115543720465756323}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: desc.Array.data[1]
+      value: 
+      objectReference: {fileID: 7115543720465756320}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: desc.Array.data[2]
+      value: 
+      objectReference: {fileID: 7115543720465756317}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellIcons.Array.data[0]
+      value: 
+      objectReference: {fileID: 7115543720465756325}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellIcons.Array.data[1]
+      value: 
+      objectReference: {fileID: 7115543720465756322}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellIcons.Array.data[2]
+      value: 
+      objectReference: {fileID: 7115543720465756319}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellNames.Array.data[0]
+      value: 
+      objectReference: {fileID: 7115543720465756324}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellNames.Array.data[1]
+      value: 
+      objectReference: {fileID: 7115543720465756321}
+    - target: {fileID: 1871786470903623326, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
+      propertyPath: spellNames.Array.data[2]
+      value: 
+      objectReference: {fileID: 7115543720465756318}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ea54a20ea6a8463458ef4604eaa7b634, type: 3}
 --- !u!1001 &7115543720465756316
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24102,6 +24140,10 @@ PrefabInstance:
     - target: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
       propertyPath: m_Name
       value: Rogue Fairy UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7115543720523921210, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
       propertyPath: m_Pivot.x
@@ -24189,3 +24231,120 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+--- !u!114 &7115543720465756317 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398181495108413, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756318 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398182853353547, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756319 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398182757158952, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756320 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398183034406473, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756321 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398181708305727, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756322 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4937398181737948508, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756323 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115543720589020447, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756324 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115543719229955689, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7115543720465756325 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7115543719460400650, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &7115543720465756326 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+  m_PrefabInstance: {fileID: 7115543720465756316}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &7115543720465756331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7115543720465756326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1852f856149ec848a16940ba7885457, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vendorNPC: {fileID: 1362888816}

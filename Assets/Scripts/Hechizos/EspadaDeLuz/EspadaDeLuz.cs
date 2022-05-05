@@ -23,8 +23,6 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
 
     Animator animator;
 
-    GameObject[] VFX_Espada; // Implementar por medio de ResourcesLoad o por Activación de la particula previamente puesta en Escena
-
     private void Awake()
     {
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
@@ -58,12 +56,24 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
         sbyte totalValue = (sbyte)(10 * damage); // 10 equivale a +100%
         GameMaster.instance.AddMod("Espada de luz", 0,  totalValue, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Invoke(nameof(RemoveSpellEfect), buffDuration);
+        Invoke(nameof(StopEmittingParticles), 4f);
+
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.GetComponent<MeshRenderer>().enabled = true;
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Play();
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>().Play();
 
         print("Espada de luz casteado");
     }
 
+    void StopEmittingParticles()
+    {
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Stop();
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>().Stop();
+    }
+
     void RemoveSpellEfect()
     {
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.GetComponent<MeshRenderer>().enabled = false;
         GameMaster.instance.RemoveMod("Espada de luz");
     }
 

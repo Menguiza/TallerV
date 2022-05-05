@@ -1147,6 +1147,8 @@ MonoBehaviour:
     m_Bits: 8
   particles: {fileID: 4321970093133198678}
   particlesChild: {fileID: 4321970093517001688}
+  espada: {fileID: 5978945778499332821}
+  espadaDeLuz: {fileID: 885566625239980002}
   blocking: 0
   dodgeEnable: 1
   attack: 0
@@ -1791,6 +1793,7 @@ Transform:
   m_Children:
   - {fileID: 5829000607776060686}
   - {fileID: 6463416626610335855}
+  - {fileID: 504960111386463576}
   m_Father: {fileID: 2025305503895364160}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1826,6 +1829,97 @@ Transform:
   m_Father: {fileID: 8090264608464362257}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &281439369
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4557759069604131710}
+    m_Modifications:
+    - target: {fileID: 1511116525, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: lengthInSec
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1511116525, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2029056066, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.015
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.122
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.004
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.66800547
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5152983
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5266888
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.10409293
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 35.366
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 263.956
+      objectReference: {fileID: 0}
+    - target: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -56.738
+      objectReference: {fileID: 0}
+    - target: {fileID: 885566624975338347, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_Name
+      value: Espada de Luz
+      objectReference: {fileID: 0}
+    - target: {fileID: 885566624975338347, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1678389482383415998, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8513403732447113332, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+--- !u!4 &504960111386463576 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 504960111641944529, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+  m_PrefabInstance: {fileID: 281439369}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &885566625239980002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 885566624975338347, guid: f76f5fb0aa146554ba456aa5aee68ad7, type: 3}
+  m_PrefabInstance: {fileID: 281439369}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6823887636027885436
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1971,6 +2065,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48acfba2ae3a56e4fa6f4b735c964fd3, type: 3}
+--- !u!1 &5978945778499332821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 885566624975338347, guid: 48acfba2ae3a56e4fa6f4b735c964fd3, type: 3}
+  m_PrefabInstance: {fileID: 6823887636761842110}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &6463416626610335855 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 504960111641944529, guid: 48acfba2ae3a56e4fa6f4b735c964fd3, type: 3}
