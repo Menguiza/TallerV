@@ -1157,6 +1157,7 @@ MonoBehaviour:
   resetDodgeTime: 2
   gravity: 25
   attackRange: 0.3
+  interactionVolumeCollider: {fileID: 2230608281853884125, guid: cb39d71f7f691044885d42292fe3de24, type: 3}
 --- !u!1 &6355345499092363522
 GameObject:
   m_ObjectHideFlags: 0
