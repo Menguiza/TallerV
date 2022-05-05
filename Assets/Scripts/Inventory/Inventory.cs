@@ -259,4 +259,16 @@ public class Inventory : MonoBehaviour
             activables[i].GetComponent<ItemContainer>().itemInfo = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
+
+    public void TimeChange(bool toggle)
+    {
+        if(toggle)
+        {
+            Time.timeScale = 0;
+        }
+        else
+        {
+            Time.timeScale = 1;
+        }
+    }
 }

@@ -18,10 +18,11 @@ public class InventoryInput : MonoBehaviour
 
     void Update()
     {
-        if(Input.GetButtonDown("Inventory"))
+        if(Input.GetButtonDown("Inventory") && Time.timeScale != 0 || Input.GetButtonDown("Inventory") && inventory.alpha == 1)
         {
             toggle = !toggle;
             ActiveCursor(toggle);
+            Inventory.instance.TimeChange(toggle);
         }
 
         anim.SetBool("Abierto", toggle);
@@ -32,12 +33,10 @@ public class InventoryInput : MonoBehaviour
         if (inventory.interactable)
         {
             inventory.alpha = 1;
-            Time.timeScale = 0;
         }
         else
         {
             inventory.alpha = 0;
-            Time.timeScale = 1;
         }
     }
 
