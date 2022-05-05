@@ -14,11 +14,10 @@ public enum Postura
 
 public class InicializadorSistemaPosturas : MonoBehaviour
 {
-    GameMaster gm;
     public List<PosturaDelSueño> posturasDelSueño;
 
 
-    private void Awake()
+    private void Start()
     {
         
         if (GameObject.Find("GameMaster").TryGetComponent<GameMaster>(out GameMaster gameMaster) == false)
@@ -26,19 +25,18 @@ public class InicializadorSistemaPosturas : MonoBehaviour
             Debug.LogWarning("|Sistema de posturas| No se logró acceder al GameMaster");
             return;
         }
-        gm = GameObject.Find("GameMaster").GetComponent<GameMaster>();
 
         //Inicializa la postura
-        gm.posturaDelSueño = posturasDelSueño[(int)gm.IDPostura];
-        gm.RemoveActiveTechniques();
-        gm.ApplyTechniques();
+        GameMaster.instance.posturaDelSueño = posturasDelSueño[(int)GameMaster.instance.IDPostura];
+        GameMaster.instance.RemoveActiveTechniques();
+        GameMaster.instance.ApplyTechniques();
     }
 
     public void AssignNewStance(Postura postura)
     {
-        gm.IDPostura = postura;
-        gm.RemoveActiveTechniques();
-        gm.posturaDelSueño = posturasDelSueño[(int)postura];
-        gm.ApplyTechniques();
+        GameMaster.instance.IDPostura = postura;
+        GameMaster.instance.RemoveActiveTechniques();
+        GameMaster.instance.posturaDelSueño = posturasDelSueño[(int)postura];
+        GameMaster.instance.ApplyTechniques();
     }
 }

@@ -15,7 +15,6 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
     void Awake()
     {
         boughtStances = new bool[sleepStances.Length];
-        print(boughtStances[0]);
     }
 
     public void RetrieveBoughtStancesData()

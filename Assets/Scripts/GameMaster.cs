@@ -95,7 +95,7 @@ public class GameMaster : MonoBehaviour
 
         #endregion
 
-        player = new(maxLife, dmg);
+        player = new Player(maxLife, dmg);
 
         CheckMods();
     }

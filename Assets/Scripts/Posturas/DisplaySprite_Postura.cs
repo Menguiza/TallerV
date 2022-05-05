@@ -5,12 +5,10 @@ using UnityEngine.UI;
 
 public class DisplaySprite_Postura : MonoBehaviour
 {
-    GameMaster gm;
     Sprite stanceSprite;
 
     private void Start()
     {
-        gm = FindObjectOfType<GameMaster>();
         GetStanceSprite();
     }
 
@@ -23,7 +21,7 @@ public class DisplaySprite_Postura : MonoBehaviour
 
     void GetStanceSprite()
     {
-        stanceSprite = gm.posturaDelSueño.icon;
+        stanceSprite = GameMaster.instance.posturaDelSueño.icon;
     }
 
     public void SetStanceSprite()
