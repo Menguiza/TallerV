@@ -11,8 +11,19 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
 
     Transform attackPoint;
 
-    float damage = 2f;
-    public float Damage { get => damage; }
+    // IHechizo propiedades ---- >
+    float damage;
+    public float Damage { get => damage; set => damage = value; }
+
+    float remainingCD;
+    public float RemainingCD { get => remainingCD; set => remainingCD = value; }
+
+    float CD_Time;
+    public float CDTime { get => CD_Time; set => CD_Time = value; }
+
+    bool isOnCD;
+    public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
+    // < ----
 
     Animator animator;
 
@@ -20,17 +31,34 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
     {
         attackPoint = GameObject.Find("AttackPoint (1)").transform;
         acidBallProyectile = (GameObject)Resources.Load("Prefabs/Hechizos/AcidBallProyectile");
-        animator = GameObject.Find("Amo").GetComponent<Animator>();
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 
+    void Update()
+    {
+        if (remainingCD >= 0)
+        {
+            remainingCD -= Time.deltaTime;
+
+            if (remainingCD < 0)
+            {
+                isOnCD = false;
+            }
+        }
+    }
 
     public void StartCastingSpell()
     {
         animator.SetTrigger("QuickCast Spell");
+
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
     }
 
     public void CastSpell()
     {
+        IsOnCD = true;
+        remainingCD = CDTime;
+
         //Proyectil real instanciado
         GameObject instance = Instantiate(acidBallProyectile, attackPoint.position, Quaternion.identity);
         instance.GetComponent<Proyectil_BolaDeAcido>().damage = damage;
@@ -47,6 +75,6 @@ public class BolaDeAcido : MonoBehaviour, IHechizo
 
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
-        spellCastEvent.AddListener(CastSpell);
+        spellCastEvent.AddListener(StartCastingSpell);
     }
 }
