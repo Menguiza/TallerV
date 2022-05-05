@@ -1059,6 +1059,7 @@ GameObject:
   - component: {fileID: 6823887637396766604}
   - component: {fileID: 6823887637396766606}
   - component: {fileID: 6823887637396766607}
+  - component: {fileID: 1433589330738204250}
   m_Layer: 0
   m_Name: Amo
   m_TagString: Untagged
@@ -1160,6 +1161,14 @@ MonoBehaviour:
   gravity: 25
   attackRange: 0.3
   interactionVolumeCollider: {fileID: 2230608281853884125, guid: cb39d71f7f691044885d42292fe3de24, type: 3}
+--- !u!81 &1433589330738204250
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940872942502788633}
+  m_Enabled: 1
 --- !u!1 &6355345499092363522
 GameObject:
   m_ObjectHideFlags: 0
