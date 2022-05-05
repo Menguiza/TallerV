@@ -2,19 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum Postura
+{
+    Base = 0,
+    Daño = 1,
+    Proteccion = 2,
+    Critico = 3,
+    Recarga = 4,
+    Pesadilla = 5
+}
+
 public class InicializadorSistemaPosturas : MonoBehaviour
 {
     GameMaster gm;
     public List<PosturaDelSueño> posturasDelSueño;
-    public enum Postura
-    {
-        Base = 0,
-        Daño = 1,
-        Proteccion = 2,
-        Critico = 3,
-        Recarga = 4,
-        Pesadilla = 5
-    }
+
 
     private void Awake()
     {
@@ -32,10 +34,7 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         gm.ApplyTechniques();
     }
 
-    /// <summary>
-    /// |Unicamente para la Alpha| Asigna una nueva postura, limpiando rastros de la anterior e inicializando los efectos de la postura.
-    /// </summary>
-    public void Testing_AssignNewStance(Postura postura)
+    public void AssignNewStance(Postura postura)
     {
         gm.IDPostura = postura;
         gm.RemoveActiveTechniques();

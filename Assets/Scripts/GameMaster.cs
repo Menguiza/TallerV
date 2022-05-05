@@ -168,7 +168,7 @@ public class GameMaster : MonoBehaviour
     #region"Sistema de posturas y técnicas"
     [Header("Postura del sueño")]
     public PosturaDelSueño posturaDelSueño;
-    public InicializadorSistemaPosturas.Postura IDPostura;
+    public Postura IDPostura;
 
 
     /// <summary>
