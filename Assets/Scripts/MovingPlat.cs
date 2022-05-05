@@ -29,12 +29,11 @@ public class MovingPlat : MonoBehaviour
             Mathf.Cos(Time.time / travelTime * Mathf.PI * 2) * -.5f + .5f);
         rb.MovePosition(move);
 
-        /*
         float dist = Vector3.Distance(player.feetHeight.position, transform.position);
 
         if (player.feetHeight.position.y > transform.position.y && dist <= distance)
         {
             player.GetComponent<CharacterController>().Move(rb.velocity * Time.deltaTime);
-        }*/
+        }
     }
 }

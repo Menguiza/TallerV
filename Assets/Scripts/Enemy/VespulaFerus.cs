@@ -31,7 +31,7 @@ public class VespulaFerus : MonoBehaviour
 
     private void Awake()
     {
-        player = GameObject.Find("KK").transform;
+        player = GameObject.FindObjectOfType<PlayerController>().transform;
         agent = GetComponent<NavMeshAgent>();
         parent = transform.parent;
         agent.updateRotation = false;
