@@ -46,7 +46,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 0
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -302,6 +302,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8142ccbcc44daa84b8dac497281addcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  awaken: {fileID: 0}
-  dreamer: {fileID: 0}
-  volumeSpeed: 0.5
+  awaken: {fileID: 4427613346989831235}
+  dreamer: {fileID: 2431830730248803198}
+  volumeSpeed: 0.2
+  timeSlide: 0.6
