@@ -9,20 +9,18 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 383fc45c9eb00cf48bbe2d152f80692c, type: 3}
-  m_Name: DT Recarga rapida
+  m_Script: {fileID: 11500000, guid: 6ca047b121386c54ba0ac1bb67b08607, type: 3}
+  m_Name: "Atrapasue\xF1os"
   m_EditorClassIdentifier: 
-  activeState: 3
-  techniqueName: "Sue\xF1os fugaces"
+  nombre: "Atrapasue\xF1os"
+  icon: {fileID: 21300000, guid: 4e3444893c4fb8f44b0b4d3c958d5e2e, type: 3}
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
-  multTGPC: 2
-  multCritProb: -25
+  multTGPC: 0
+  multCritProb: 0
   multCrit: 0
-  multRoboPer: 0
-  multVelAatque: 0.5
+  multRoboPer: 40
+  multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
-  "multDa\xF1oRecibido": 0
-  desc: placeholder
