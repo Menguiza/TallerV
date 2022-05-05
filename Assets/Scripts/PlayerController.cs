@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 3;
     [SerializeField]
     Transform attackPoint, attackPoint2;
+    public Transform feetHeight { get; private set; }
+
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
@@ -48,6 +50,8 @@ public class PlayerController : MonoBehaviour
         particlesChild.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
+
+        feetHeight = transform.GetChild(0);
     }
 
 
@@ -101,7 +105,15 @@ public class PlayerController : MonoBehaviour
                 ResetAnimDodge2();
                 InactiveCollider();
                 InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+
+                if(hit.collider.GetComponent<VespulaFerus>() != null)
+                {
+                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg);
+                }
+                else if(hit.collider.GetComponent<EnemyController>() != null)
+                {
+                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+                }
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
