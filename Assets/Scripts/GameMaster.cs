@@ -396,12 +396,12 @@ public class GameMaster : MonoBehaviour
 
     #region"Acciones hacia el jugador"
 
-    public void DamagePlayer(int value)
+    public void DamagePlayer(int damageAmount, int conscienceAmount)
     {
-        int opVida = (int)(player.Life - (value * player.MultDañoRecibido));
+        int opVida = (int)(player.Life - (damageAmount * player.MultDañoRecibido));
         player.Life = (uint)Mathf.Max(zero, opVida);
 
-        int opConci = (int)(player.Conciencia - (value * multiplicadorConciencia));
+        int opConci = (int)(player.Conciencia - (conscienceAmount * multiplicadorConciencia));
         player.Conciencia = (ushort)Mathf.Max(zero,opConci);
     }
 

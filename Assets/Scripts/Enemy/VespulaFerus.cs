@@ -109,7 +109,7 @@ public class VespulaFerus : MonoBehaviour
 
             if(playerhited)
             {
-                GameMaster.instance.DamagePlayer(dmg);
+                GameMaster.instance.DamagePlayer(dmg, dmg);
             }
 
             ///End of attack code

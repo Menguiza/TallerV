@@ -103,11 +103,11 @@ public class Prueba : Editor
             if(gm.playerObject.GetComponent<PlayerController>().blocking)
             {
                 gm.playerObject.GetComponent<PlayerController>().OnHitBlock();
-                gm.DamagePlayer(gm.damageToPlayer/2);
+                gm.DamagePlayer(gm.damageToPlayer/2, gm.damageToPlayer / 2);
             }
             else
             {
-                gm.DamagePlayer(gm.damageToPlayer);
+                gm.DamagePlayer(gm.damageToPlayer, gm.damageToPlayer / 2);
             }
         }
 

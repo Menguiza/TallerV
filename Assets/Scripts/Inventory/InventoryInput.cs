@@ -40,7 +40,7 @@ public class InventoryInput : MonoBehaviour
         }
     }
 
-    void ActiveCursor(bool callBack)
+    public void ActiveCursor(bool callBack)
     {
         if (callBack)
         {

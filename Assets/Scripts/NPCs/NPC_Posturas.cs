@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NPC_Posturas : MonoBehaviour, IVendorNPC
+public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
 {
     [SerializeField] PosturaDelSueño[] sleepStancesData;
     [SerializeField] Postura[] sleepStances;
@@ -18,12 +18,17 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
     [SerializeField] TextMeshProUGUI[] nameUI;
     [SerializeField] Image[] iconUI;
 
+    [SerializeField] InventoryInput inventoryInput;
+
+    bool isStoreOpen;
+    public bool IsStoreOpen { get => isStoreOpen; set => isStoreOpen = value; }
+
     void Start()
     {
         boughtStances = new bool[sleepStances.Length];
+        boughtStances[0] = true;
 
-        // Inicializar UI de costos basándose en los datos de cada ScriptableObject de las posturas
-        // Inicializar UI de desc                                        ^
+        // Inicializar UI basándose en los datos de cada ScriptableObject de las posturas                                    ^
         for (int i = 0; i < sleepStances.Length; i++)
         {
             costUI[i].text = sleepStancesData[i].gemCost.ToString();
@@ -35,7 +40,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
         }
     }
 
-    public void RetrieveBoughtStancesData()
+    public void RetrieveBoughtStancesData(bool[] boughtStances)
     {
         // Recuperar la información de algún contenedor estático
     }
@@ -60,7 +65,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
     {
         if (Input.GetKeyDown(KeyCode.M))
         {
-            Economy.instance.Reward(500);
+            Economy.instance.RewardGems(500);
         }
     }
 
@@ -72,6 +77,8 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
             boughtStances[stanceIndex] = true;
             DisplaySetButton(stanceIndex, true);
             DisplayBuyButton(stanceIndex, false);
+
+            Economy.instance.SpendGems((uint)sleepStancesData[stanceIndex].gemCost);
         }   
     }
 
@@ -79,17 +86,27 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC
     {
         vendorUI.SetActive(true);
 
-        // Mostrar los SetButtons correctos basado en si la postura ya está comprada
+        // Mostrar los botones correctos basado en si la postura ya está comprada
         for (int i = 0; i < sleepStances.Length; i++)
         {
             DisplaySetButton(i, boughtStances[i]);
             DisplayBuyButton(i, !boughtStances[i]);
         }
+
+        inventoryInput.ActiveCursor(true);
+        Inventory.instance.TimeChange(true);
+
+        isStoreOpen = true;
     }
 
     public void CloseStore()
     {
         vendorUI.SetActive(false);
+
+        inventoryInput.ActiveCursor(false);
+        Inventory.instance.TimeChange(false);
+
+        isStoreOpen = false;
     }
     #endregion
 }

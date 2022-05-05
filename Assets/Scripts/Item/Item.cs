@@ -61,7 +61,7 @@ public class Item : ScriptableObject
         {
             GameMaster.instance.playerObject.GetComponent<Animator>().SetTrigger("Knock");
         }
-        Economy.instance.Reward(sumDinero);
+        Economy.instance.RewardCurrency(sumDinero);
         Inventory.instance.Remove(this);
     }
 

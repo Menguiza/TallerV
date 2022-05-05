@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Interact();
         Move();
 
         if (!died)
@@ -108,11 +109,11 @@ public class PlayerController : MonoBehaviour
 
                 if(hit.collider.GetComponent<VespulaFerus>() != null)
                 {
-                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg);
+                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg, hit.collider.GetComponent<VespulaFerus>().dmg);
                 }
                 else if(hit.collider.GetComponent<EnemyController>() != null)
                 {
-                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia, (int)hit.collider.GetComponent<EnemyController>().conciencia);
                 }
 
                 // Hechizos
@@ -129,7 +130,7 @@ public class PlayerController : MonoBehaviour
                 ResetAnimDodge2();
                 InactiveCollider();
                 InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage);
+                gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage, (int)hit.collider.GetComponent<TrapContainer>().trap.damage);
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
@@ -457,6 +458,18 @@ public class PlayerController : MonoBehaviour
         ManagerHechizos.instance.EndSpellCast();
     }
 
+    #endregion
+
+    #region"Interaccion"
+    [SerializeField] GameObject interactionVolumeCollider;
+
+    public void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && Time.timeScale != 0)
+        {
+            Instantiate(interactionVolumeCollider, transform.position + Vector3.up, Quaternion.identity);
+        }
+    }
     #endregion
 
     #region "Funciones Carecteristicas Player"
