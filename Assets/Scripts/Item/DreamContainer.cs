@@ -8,7 +8,7 @@ public class DreamContainer : MonoBehaviour
     [SerializeField]
     Image icon;
 
-    private void Awake()
+    private void Start()
     {
         Inventory.instance.dmrContainer = this.gameObject;
     }

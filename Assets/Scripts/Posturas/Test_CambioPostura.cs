@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Test_CambioPostura : MonoBehaviour
 {
-    [SerializeField] InicializadorSistemaPosturas.Postura stanceToChange;
+    [SerializeField] Postura stanceToChange;
     [SerializeField] InicializadorSistemaPosturas isp;
 
     private void Start()
@@ -16,7 +16,7 @@ public class Test_CambioPostura : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null)
         {
-            isp.Testing_AssignNewStance(stanceToChange);
+            isp.AssignNewStance(stanceToChange);
         }
     }
 }

@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private float speed = 3;
     [SerializeField]
     Transform attackPoint, attackPoint2;
+    public Transform feetHeight { get; private set; }
+
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
@@ -48,11 +50,14 @@ public class PlayerController : MonoBehaviour
         particlesChild.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
+
+        feetHeight = transform.GetChild(0);
     }
 
 
     void Update()
     {
+        Interact();
         Move();
 
         if (!died)
@@ -101,7 +106,15 @@ public class PlayerController : MonoBehaviour
                 ResetAnimDodge2();
                 InactiveCollider();
                 InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia);
+
+                if(hit.collider.GetComponent<VespulaFerus>() != null)
+                {
+                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg, hit.collider.GetComponent<VespulaFerus>().dmg);
+                }
+                else if(hit.collider.GetComponent<EnemyController>() != null)
+                {
+                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia, (int)hit.collider.GetComponent<EnemyController>().conciencia);
+                }
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
@@ -117,7 +130,7 @@ public class PlayerController : MonoBehaviour
                 ResetAnimDodge2();
                 InactiveCollider();
                 InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage);
+                gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage, (int)hit.collider.GetComponent<TrapContainer>().trap.damage);
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
@@ -445,6 +458,18 @@ public class PlayerController : MonoBehaviour
         ManagerHechizos.instance.EndSpellCast();
     }
 
+    #endregion
+
+    #region"Interaccion"
+    [SerializeField] GameObject interactionVolumeCollider;
+
+    public void Interact()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && Time.timeScale != 0)
+        {
+            Instantiate(interactionVolumeCollider, transform.position + Vector3.up, Quaternion.identity);
+        }
+    }
     #endregion
 
     #region "Funciones Carecteristicas Player"

@@ -95,7 +95,7 @@ public class GameMaster : MonoBehaviour
 
         #endregion
 
-        player = new(maxLife, dmg);
+        player = new Player(maxLife, dmg);
 
         CheckMods();
     }
@@ -168,7 +168,7 @@ public class GameMaster : MonoBehaviour
     #region"Sistema de posturas y técnicas"
     [Header("Postura del sueño")]
     public PosturaDelSueño posturaDelSueño;
-    public InicializadorSistemaPosturas.Postura IDPostura;
+    public Postura IDPostura;
 
 
     /// <summary>
@@ -396,12 +396,12 @@ public class GameMaster : MonoBehaviour
 
     #region"Acciones hacia el jugador"
 
-    public void DamagePlayer(int value)
+    public void DamagePlayer(int damageAmount, int conscienceAmount)
     {
-        int opVida = (int)(player.Life - (value * player.MultDañoRecibido));
+        int opVida = (int)(player.Life - (damageAmount * player.MultDañoRecibido));
         player.Life = (uint)Mathf.Max(zero, opVida);
 
-        int opConci = (int)(player.Conciencia - (value * multiplicadorConciencia));
+        int opConci = (int)(player.Conciencia - (conscienceAmount * multiplicadorConciencia));
         player.Conciencia = (ushort)Mathf.Max(zero,opConci);
     }
 

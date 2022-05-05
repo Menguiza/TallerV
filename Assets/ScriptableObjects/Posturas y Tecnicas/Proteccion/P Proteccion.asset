@@ -17,4 +17,6 @@ MonoBehaviour:
   Techniques:
   - {fileID: 11400000, guid: b4caeb340a2941644b743556ebe3e93e, type: 2}
   - {fileID: 11400000, guid: a78d11410e46c944592a1e8500a17377, type: 2}
-  desc: placeholder
+  desc: Postura creada por el clan Calmos, enfocada en la tranquilidad
+  rarity: 0
+  gemCost: 30

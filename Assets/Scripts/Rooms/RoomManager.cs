@@ -54,8 +54,8 @@ public class RoomManager : MonoBehaviour
     {
         foreach (RoomSpawners element in room.data)
         {
-            Instantiate(element.objects[RandomInt(element.objects.Count - 1)], element.spawns[RandomInt(element.spawns.Count - 1)], Quaternion.identity);
-            
+            GameObject selected = element.objects[RandomInt(element.objects.Count)];
+            GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
         }
     }
 

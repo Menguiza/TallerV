@@ -16,24 +16,23 @@ public class PauseInput : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 || Input.GetKeyDown(KeyCode.Escape) && pauseMenu.alpha == 1)
         {
             toggle = !toggle;
             ActiveCursor(toggle);
+            Inventory.instance.TimeChange(toggle);
         }
 
         pauseMenu.interactable = toggle;
         pauseMenu.blocksRaycasts = toggle;
 
-        if (pauseMenu.interactable)
+        if (toggle)
         {
             pauseMenu.alpha = 1;
-            Time.timeScale = 0;
         }
         else
         {
             pauseMenu.alpha = 0;
-            Time.timeScale = 1;
         }
     }
 
