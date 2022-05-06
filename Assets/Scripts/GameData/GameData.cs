@@ -8,7 +8,6 @@ using System.IO;
 public static class GameData
 {
     #region"Saved currency"
-    public static int Currency = 0;
     public static int Gems = 0;
     #endregion
 
@@ -38,7 +37,6 @@ public static class GameData
             FileStream file = File.Create(Application.persistentDataPath + "/DwizardSave.dat");
             GameDataSave data = new GameDataSave();
 
-            data.savedCurrency = Currency;
             data.savedGems = Gems;
 
             data.savedBoughtStance0 = boughtStance0;
@@ -75,7 +73,6 @@ public static class GameData
                 GameDataSave data = (GameDataSave)bf.Deserialize(file);
                 file.Close();
 
-                Currency = data.savedCurrency;
                 Gems = data.savedGems;
 
                 boughtStance0 = data.savedBoughtStance0;
@@ -109,7 +106,6 @@ public static class GameData
             {
                 File.Delete(Application.persistentDataPath + "/DwizardSave.dat");
 
-                Currency = 0;
                 Gems = 0;
 
                 boughtStance0 = 0;
@@ -137,12 +133,6 @@ public static class GameData
     #endregion
 
     #region"Retreive methods"
-    public static int RetreiveCurrency()
-    {
-        int retreivedCurrency = Currency;
-        return retreivedCurrency;
-    }
-
     public static int RetreiveGems()
     {
         int retreivedGems = Gems;
