@@ -111,9 +111,9 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider();
                 InactiveCollider2();
 
-                if(hit.collider.GetComponent<VespulaFerus>() != null)
+                if(hit.collider.GetComponent<IEnemy>() != null)
                 {
-                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg, hit.collider.GetComponent<VespulaFerus>().dmg);
+                    gm.DamagePlayer(hit.collider.GetComponent<IEnemy>().Damage, hit.collider.GetComponent<IEnemy>().Conciencia);
                 }
                 else if(hit.collider.GetComponent<EnemyController>() != null)
                 {
@@ -376,15 +376,14 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            enemy.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
             }
         }
 
@@ -399,15 +398,14 @@ public class PlayerController : MonoBehaviour
         foreach (Collider enemy in hitEnemies)
         {
             uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            enemy.gameObject.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
             }
         }
     }

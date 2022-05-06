@@ -32,7 +32,6 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         step = speed * Time.deltaTime;
-        Debug.Log(destination);
         transform.position = Vector3.MoveTowards(transform.position, destination, step);
         transform.LookAt(destination);
 
@@ -40,7 +39,7 @@ public class Bullet : MonoBehaviour
 
         if(hit)
         {
-            GameMaster.instance.DamagePlayer(parent.dmg, parent.dmg);
+            GameMaster.instance.DamagePlayer(parent.Damage, parent.Conciencia);
             Destroy(gameObject);
         }
 

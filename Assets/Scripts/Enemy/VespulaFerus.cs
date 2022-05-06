@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class VespulaFerus : MonoBehaviour
+public class VespulaFerus : MonoBehaviour, IEnemy
 {
     public Transform player, parent;
 
@@ -10,7 +10,11 @@ public class VespulaFerus : MonoBehaviour
 
     float step;
 
-    public int dmg = 1;
+    [SerializeField]
+    int dmg = 1, conciencia = 1;
+
+    public int Damage { get => dmg; set => dmg = value; }
+    public int Conciencia { get => conciencia; set => conciencia = value; }
 
     //Patroling
     public Vector3 walkPoint, fixedPivot;
@@ -132,13 +136,7 @@ public class VespulaFerus : MonoBehaviour
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
+    public void DestroyEnemy()
     {
         Destroy(gameObject);
     }
@@ -149,5 +147,12 @@ public class VespulaFerus : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public void ReceiveDamage(int dmg)
+    {
+        health -= dmg;
+
+        if (health <= 0) DestroyEnemy();
     }
 }
