@@ -15,14 +15,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject particles, particlesChild;
 
-    [Header("Amo - sounds")]
-    [SerializeField] AudioClip amoSteps;
-    [SerializeField] AudioClip jumpHop;
-    [SerializeField] AudioClip jumpLand;
-    [SerializeField] AudioClip roll;
-    [SerializeField] AudioClip swordSwing;
-    [SerializeField] AudioClip death;
-
     public GameObject espada;
     public GameObject espadaDeLuz;
 
@@ -236,6 +228,8 @@ public class PlayerController : MonoBehaviour
                 {
                     move.z += dodgeForce * Time.deltaTime;
                 }
+
+                RollSound();
             }
             else if (!dodge && horizontal != zero && anim.GetBool("Jump"))
             {
@@ -263,6 +257,8 @@ public class PlayerController : MonoBehaviour
                 {
                     move.z += dodgeForce * Time.deltaTime;
                 }
+
+                RollSound();
             }
             else
             {
@@ -293,6 +289,8 @@ public class PlayerController : MonoBehaviour
             verticalVelocity = jumpFoce;
             anim.SetBool("Jump", true);
             move.y = verticalVelocity;
+
+            JumpHopSound();
         }
         else if (knockBacked && characterContrl.isGrounded && !died)
         {
@@ -378,6 +376,9 @@ public class PlayerController : MonoBehaviour
                 gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
             }
         }
+
+        // SFX
+        SwordSwing();
     }
 
     public void ActiveCollider2()
@@ -506,5 +507,37 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region"Sonidos del jugador"
+    [Header("Amo - sounds")]
+    [SerializeField] AudioClip amoSteps;
+    [SerializeField] AudioClip jumpHop;
+    [SerializeField] AudioClip jumpLand;
+    [SerializeField] AudioClip roll;
+    [SerializeField] AudioClip swordSwing;
+    [SerializeField] AudioClip death;
+
+    public void StepSound()
+    {
+        SoundManager.instance.PlayClip(amoSteps);
+    }
+
+    public void JumpHopSound()
+    {
+        SoundManager.instance.PlayClip(jumpHop);
+    }
+
+    public void RollSound()
+    {
+        SoundManager.instance.PlayClip(roll);
+    }
+
+    public void SwordSwing()
+    {
+        SoundManager.instance.PlayClip(swordSwing);
+    }
+
+    public void DeathSound()
+    {
+        SoundManager.instance.PlayClip(death);
+    }
     #endregion
 }

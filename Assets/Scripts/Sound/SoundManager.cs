@@ -8,13 +8,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource audioSource;
 
-    [Header("Amo - sounds")]
-    [SerializeField] AudioClip amoSteps;
-    [SerializeField] AudioClip jumpHop;
-    [SerializeField] AudioClip jumpLand;
-    [SerializeField] AudioClip roll;
-    [SerializeField] AudioClip swordSwing;
-    [SerializeField] AudioClip death;
+
 
 
 
