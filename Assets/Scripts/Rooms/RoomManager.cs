@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
+    public UnityEvent onChangeScene;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();

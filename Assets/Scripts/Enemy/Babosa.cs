@@ -147,7 +147,7 @@ public class Babosa : MonoBehaviour, IEnemy
         }
         else
         {
-            GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, 3), ForceMode.Impulse);
+            GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, -3), ForceMode.Impulse);
         }
     }
 
