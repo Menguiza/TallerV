@@ -1398,6 +1398,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   debugSpellData: []
+  spellCastSpeedMultiplier: 1
   castingSpell: 0
 --- !u!4 &444230582
 Transform:
@@ -3332,6 +3333,9 @@ MonoBehaviour:
   OnRoomFinished:
     m_PersistentCalls:
       m_Calls: []
+  RunEnd:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1160701349
 Transform:
   m_ObjectHideFlags: 0
@@ -3530,6 +3534,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6823887637396766607, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
+      propertyPath: getHit
+      value: 
+      objectReference: {fileID: 8300000, guid: b326cec779913b54c8d09e1624a0046d, type: 3}
+    - target: {fileID: 6823887637396766607, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
+      propertyPath: onHitVFX
+      value: 
+      objectReference: {fileID: 1756917352542586541, guid: b075fa1113032344788e2312bf0b3e2b, type: 3}
+    - target: {fileID: 6823887637396766607, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
+      propertyPath: swordSwing
+      value: 
+      objectReference: {fileID: 8300000, guid: 739f05c4c9653b547b9630edd2348a8a, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
 --- !u!1 &1193606073 stripped
@@ -5947,7 +5963,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5955,7 +5971,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6012,7 +6028,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.y
@@ -6020,7 +6036,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
