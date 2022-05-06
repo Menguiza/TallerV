@@ -15,6 +15,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject particles, particlesChild;
 
+    [Header("Amo - sounds")]
+    [SerializeField] AudioClip amoSteps;
+    [SerializeField] AudioClip jumpHop;
+    [SerializeField] AudioClip jumpLand;
+    [SerializeField] AudioClip roll;
+    [SerializeField] AudioClip swordSwing;
+    [SerializeField] AudioClip death;
+
     public GameObject espada;
     public GameObject espadaDeLuz;
 
@@ -495,5 +503,8 @@ public class PlayerController : MonoBehaviour
     {
         gm.Player.Life += (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
     }
+    #endregion
+
+    #region"Sonidos del jugador"
     #endregion
 }
