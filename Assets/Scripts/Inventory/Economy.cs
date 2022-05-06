@@ -28,9 +28,8 @@ public class Economy : MonoBehaviour
 
         #endregion
 
-        currency = 0;
-
-        gems = 0;
+        currency = (uint)GameData.RetreiveCurrency();
+        gems = (uint)GameData.RetreiveGems();
     }
 
     public void RewardCurrency(uint add)
