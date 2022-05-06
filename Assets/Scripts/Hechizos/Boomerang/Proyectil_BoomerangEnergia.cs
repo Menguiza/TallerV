@@ -73,7 +73,11 @@ public class Proyectil_BoomerangEnergia : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyController>() != null)
+        if (other.gameObject.GetComponent<IEnemy>() != null)
+        {
+            other.gameObject.GetComponent<IEnemy>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+        }
+        else if (other.gameObject.GetComponent<EnemyController>() != null)
         {
             other.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }

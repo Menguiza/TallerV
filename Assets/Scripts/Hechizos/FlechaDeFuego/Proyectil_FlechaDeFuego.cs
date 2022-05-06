@@ -16,7 +16,11 @@ public class Proyectil_FlechaDeFuego : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.GetComponent<EnemyController>() != null)
+        if (collider.gameObject.GetComponent<IEnemy>() != null)
+        {
+            collider.gameObject.GetComponent<IEnemy>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+        }
+        else if (collider.gameObject.GetComponent<EnemyController>() != null)
         {
             collider.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }

@@ -18,7 +18,11 @@ public class ExplosionBolaDeFuego : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyController>() != null)
+        if (GetComponent<Collider>().gameObject.GetComponent<IEnemy>() != null)
+        {
+            GetComponent<Collider>().gameObject.GetComponent<IEnemy>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+        }
+        else if (other.gameObject.GetComponent<EnemyController>() != null)
         {
             other.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
         }
