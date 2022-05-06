@@ -21,6 +21,8 @@ public class ManagerHechizos : MonoBehaviour
 
     UI_SlotsHechizos slotsHechizos;
 
+    public float spellCastSpeedMultiplier = 1;
+
     // Variable de control
     public bool castingSpell = false;
 
