@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
             died = true;
             anim.SetTrigger("Died");
             Destroy(gameObject, delay);
+
+            // Evento de muerte
+            GameMaster.instance.RunEnd.Invoke();
+            // No debería ir asi 
+            GameData.SaveGameData();
         }
 
         anim.SetFloat("VelocidadAtaque", gm.Player.MultVelAtaque);

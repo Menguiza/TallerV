@@ -19,20 +19,16 @@ public class ManagerHechizos : MonoBehaviour
 
     public Hechizo[] debugSpellData;
 
-    UI_SlotsHechizos slotsHechizos;
+    public UI_SlotsHechizos slotsHechizos;
 
     public float spellCastSpeedMultiplier = 1;
 
     // Variable de control
     public bool castingSpell = false;
 
-    private void Start()
+    private void Awake()
     {
-        print("I'm being called");
-        slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
-        print("Somethin is happening here");
-        print(slotsHechizos);
-        print(slotsHechizos == null);
+        if (slotsHechizos == null) slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
 
         if (slotsHechizos == null) Debug.LogWarning("|Manager hechizos| No se pudo encontrar la referencia a SlotsHechizos");
 
@@ -49,6 +45,8 @@ public class ManagerHechizos : MonoBehaviour
         }
 
         UpdateSpellSlots();
+
+        if (GameMaster.instance.IDPostura == Postura.Recarga) spellCastSpeedMultiplier = 2;
     }
 
     private void OnEnable()
