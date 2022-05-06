@@ -1060,7 +1060,7 @@ GameObject:
   - component: {fileID: 6823887637396766606}
   - component: {fileID: 6823887637396766607}
   - component: {fileID: 1433589330738204250}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Amo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
