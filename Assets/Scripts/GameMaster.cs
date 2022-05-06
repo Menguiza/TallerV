@@ -255,6 +255,8 @@ public class GameMaster : MonoBehaviour
     public UnityEvent PlayerWake;
 
     public UnityEvent OnRoomFinished;
+
+    public UnityEvent RunEnd;
     #endregion
 
     #region"Sistema de modificadores y Estadisticas"
