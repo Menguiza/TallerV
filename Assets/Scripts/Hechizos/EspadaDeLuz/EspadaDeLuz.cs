@@ -32,7 +32,7 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
     {
         if (remainingCD >= 0)
         {
-            remainingCD -= Time.deltaTime;
+            remainingCD -= Time.deltaTime * ManagerHechizos.instance.spellCastSpeedMultiplier;
 
             if (remainingCD < 0)
             {

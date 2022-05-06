@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: P Base
   m_EditorClassIdentifier: 
   stanceName: "Postura b\xE1sica"
-  icon: {fileID: 21300000, guid: c1ec62edf324d724cb90b89947008fd7, type: 3}
+  icon: {fileID: 21300000, guid: cface53a28bfa504db3799df09fcff78, type: 3}
   Techniques:
   - {fileID: 11400000, guid: 48c528845c850d84e96de462f10f1ba0, type: 2}
   - {fileID: 11400000, guid: b67569f38b33ac146a347b59c9e9de0d, type: 2}
