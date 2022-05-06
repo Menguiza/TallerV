@@ -6,6 +6,8 @@ public class GameInitializer : MonoBehaviour
 {
     private void Start()
     {
-        Economy.instance.RewardGems((uint)GameData.RetreiveGems()); 
+        Economy.instance.RewardGems((uint)GameData.RetreiveGems());
+
+        GameData.LoadGameData();
     }
 }

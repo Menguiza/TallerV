@@ -29,6 +29,17 @@ public class Economy : MonoBehaviour
         #endregion
     }
 
+    private void Start()
+    {
+        GameMaster.instance.RunEnd.AddListener(SaveGems);
+        print("Se guardaron las gemas en el GameData");
+    }
+
+    void SaveGems()
+    {
+        GameData.Gems = (int)gems;
+    }
+
     public void RewardCurrency(uint add)
     {
         currency += add;

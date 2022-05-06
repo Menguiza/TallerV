@@ -91,6 +91,8 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
         GameData.boughtStance3 = boughtStances[3] == false ? 0 : 1;
         GameData.boughtStance4 = boughtStances[4] == false ? 0 : 1;
         GameData.boughtStance5 = boughtStances[5] == false ? 0 : 1;
+
+        GameData.SaveGameData();
     }
 
     public void OpenStore()

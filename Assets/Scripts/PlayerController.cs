@@ -78,6 +78,11 @@ public class PlayerController : MonoBehaviour
             died = true;
             anim.SetTrigger("Died");
             Destroy(gameObject, delay);
+
+            // Evento de muerte
+            GameMaster.instance.RunEnd.Invoke();
+            // No debería ir asi 
+            GameData.SaveGameData();
         }
 
         anim.SetFloat("VelocidadAtaque", gm.Player.MultVelAtaque);
@@ -92,6 +97,14 @@ public class PlayerController : MonoBehaviour
                 verticalVelocity = zero;
             }
         }
+    }
+
+    [SerializeField] GameObject onHitVFX;
+
+    void CreateOnHitParticle()
+    {
+        GameObject instance = Instantiate(onHitVFX, transform.position + Vector3.up, Quaternion.identity);
+        Destroy(instance, 2f);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -122,6 +135,8 @@ public class PlayerController : MonoBehaviour
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
+                CreateOnHitParticle();
+                GetHitSound();
             }
             else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
@@ -139,6 +154,8 @@ public class PlayerController : MonoBehaviour
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
+                CreateOnHitParticle();
+                GetHitSound();
             }
         }
     }
@@ -523,6 +540,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] AudioClip roll;
     [SerializeField] AudioClip swordSwing;
     [SerializeField] AudioClip death;
+    [SerializeField] AudioClip getHit;
 
     public void StepSound()
     {
@@ -547,6 +565,11 @@ public class PlayerController : MonoBehaviour
     public void DeathSound()
     {
         SoundManager.instance.PlayClip(death);
+    }
+
+    public void GetHitSound()
+    {
+        SoundManager.instance.PlayClip(getHit);
     }
     #endregion
 }
