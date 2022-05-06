@@ -32,7 +32,6 @@ public class Economy : MonoBehaviour
     private void Start()
     {
         GameMaster.instance.RunEnd.AddListener(SaveGems);
-        print("Se guardaron las gemas en el GameData");
     }
 
     void SaveGems()
