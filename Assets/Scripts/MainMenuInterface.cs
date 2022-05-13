@@ -18,7 +18,8 @@ public class MainMenuInterface : MonoBehaviour
 
     private void Update()
     {
-        if ( Input.GetKeyDown(KeyCode.R) && Input.GetKeyDown(KeyCode.P))
+        // Debug
+        if ( Input.GetKeyDown(KeyCode.P))
         {
             GameData.ResetSaveFile();
         }
