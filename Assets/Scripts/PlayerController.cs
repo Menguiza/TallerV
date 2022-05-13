@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 3;
-    [SerializeField]
-    Transform attackPoint, attackPoint2;
+
+    public Transform attackPoint, attackPoint2;
     public Transform feetHeight { get; private set; }
 
     [SerializeField]
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour
             Destroy(gameObject, delay);
 
             // Evento de muerte
-            GameMaster.instance.RunEnd.Invoke();
+            GameMaster.instance.OnRunEnd.Invoke();
             // No debería ir asi 
             GameData.SaveGameData();
         }

@@ -5,9 +5,8 @@ using UnityEngine.Events;
 
 public class BoomerangEnergia : MonoBehaviour, IHechizo
 {
-    public GameObject boomerangProyectile;
-
-    Transform attackPoint;
+    GameObject boomerangProyectile;
+    float impulseForce = 15f;
 
     // IHechizo propiedades ---- >
     float damage;
@@ -21,11 +20,13 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
 
     bool isOnCD;
     public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
-    // < ----
-
-    float impulseForce = 15f;
 
     Animator animator;
+    public Animator AnimatorReference { get => animator; set => animator = value; }
+
+    Transform attackPoint;
+    public Transform AttackPointReference { get => attackPoint; set => attackPoint = value; }
+    // < ----
 
     //Esto habrá que cambiarlo luego
     private void Awake()
@@ -70,5 +71,11 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
         spellCastEvent.AddListener(StartCastingSpell);
+    }
+
+    public void SetVitalReferences()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+        attackPoint = GameMaster.instance.playerObject.GetComponent<PlayerController>().attackPoint2;
     }
 }

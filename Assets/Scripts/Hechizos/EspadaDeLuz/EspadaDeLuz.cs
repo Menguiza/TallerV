@@ -5,6 +5,8 @@ using UnityEngine.Events;
 
 public class EspadaDeLuz : MonoBehaviour, IHechizo
 {
+    float buffDuration = 5f;
+
     // IHechizo propiedades ---- >
     float damage;
     public float Damage { get => damage; set => damage = value; }
@@ -17,11 +19,13 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
 
     bool isOnCD;
     public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
-    // < ----
-
-    float buffDuration = 5f;
 
     Animator animator;
+    public Animator AnimatorReference { get => animator; set => animator = value; }
+
+    Transform attackPoint; // No se necesita su uso aquí, sin embargo lo implementa por ser IHechizo
+    public Transform AttackPointReference { get => attackPoint; set => attackPoint = value; }
+    // < ----
 
     private void Awake()
     {
@@ -80,5 +84,10 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
         spellCastEvent.AddListener(StartCastingSpell);
+    }
+
+    public void SetVitalReferences()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
     }
 }

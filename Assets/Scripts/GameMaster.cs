@@ -17,7 +17,9 @@ public class GameMaster : MonoBehaviour
     [SerializeField]
     private float multiplicadorConciencia = 1.0f;
     public uint maxLife { get; private set; } = 100;
-    
+
+    public GameObject DamagePopUp;
+
     //Referencias Al Jugador
     Player player;
     public GameObject playerObject;
@@ -256,7 +258,7 @@ public class GameMaster : MonoBehaviour
 
     public UnityEvent OnRoomFinished;
 
-    public UnityEvent RunEnd;
+    public UnityEvent OnRunEnd;
     #endregion
 
     #region"Sistema de modificadores y Estadisticas"
@@ -400,11 +402,21 @@ public class GameMaster : MonoBehaviour
 
     public void DamagePlayer(int damageAmount, int conscienceAmount)
     {
-        int opVida = (int)(player.Life - (damageAmount * player.MultDañoRecibido));
+        int deltaVida = (int)(damageAmount * player.MultDañoRecibido);
+        int opVida = (int)(player.Life - (deltaVida));
         player.Life = (uint)Mathf.Max(zero, opVida);
 
-        int opConci = (int)(player.Conciencia - (conscienceAmount * multiplicadorConciencia));
+        int deltaConsciencia = (int)(conscienceAmount * multiplicadorConciencia);
+        int opConci = (int)(player.Conciencia - (deltaConsciencia));
         player.Conciencia = (ushort)Mathf.Max(zero,opConci);
+        
+        // Damage pop up
+        GameObject popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 1.5f, DamagePopUp.transform.rotation);
+        popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, deltaVida);
+
+        // Conscience pop up
+        popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 2f, DamagePopUp.transform.rotation);
+        popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.conscience, deltaConsciencia);
     }
 
     void Inconciencia()

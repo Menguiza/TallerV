@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class DashElectrico : MonoBehaviour, IHechizo
 {
+    GameObject player;
+    GameObject TrailVFX;
+    GameObject trail;
+
     // IHechizo propiedades ---- >
     float damage;
     public float Damage { get => damage; set => damage = value; }
@@ -17,21 +21,18 @@ public class DashElectrico : MonoBehaviour, IHechizo
 
     bool isOnCD;
     public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
-    // < ----
-
-    GameObject player;
 
     Animator animator;
+    public Animator AnimatorReference { get => animator; set => animator = value; }
 
-    GameObject TrailVFX;
-    GameObject trail;
+    Transform attackPoint;
+    public Transform AttackPointReference { get => attackPoint; set => attackPoint = value; }
+    // < ----
 
     void Awake()
     {
         player = GameMaster.instance.playerObject;
-
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
-
         TrailVFX = (GameObject)Resources.Load("Prefabs/VFX_Hechizos/VFX_ElectricDash_Trail");
     }
 
@@ -80,5 +81,12 @@ public class DashElectrico : MonoBehaviour, IHechizo
     {
         var emmision = trail.transform.GetChild(0).GetChild(0).GetComponent<ParticleSystem>().emission;
         emmision.enabled = false;
+    }
+
+    public void SetVitalReferences()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+        attackPoint = GameMaster.instance.playerObject.GetComponent<PlayerController>().attackPoint2;
+        player = GameMaster.instance.playerObject;
     }
 }
