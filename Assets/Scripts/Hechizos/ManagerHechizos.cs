@@ -49,6 +49,7 @@ public class ManagerHechizos : MonoBehaviour
         if (GameMaster.instance.IDPostura == Postura.Recarga) spellCastSpeedMultiplier = 2;
 
         Invoke(nameof(SubscribeToOnChangeSceneEvent), 0.5f);
+        Invoke(nameof(SubscribeToOnRoomFinished), 0.5f);
     }
 
     int GetIndex_of_NearestEmptySpellSlot()
@@ -597,7 +598,7 @@ public class ManagerHechizos : MonoBehaviour
     {
         for (int i = 0; i < availableSpells.Length; i++)
         {
-            (availableSpells[i] as IHechizo).SetVitalReferences();
+            if (availableSpells[i] != null) (availableSpells[i] as IHechizo).SetVitalReferences();
         }
     }
 
@@ -610,5 +611,11 @@ public class ManagerHechizos : MonoBehaviour
     void SubscribeToOnChangeSceneEvent()
     {
         RoomManager.instance.onChangeScene.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
+    }
+
+    void SubscribeToOnRoomFinished()
+    {
+        GameMaster.instance.OnRoomFinished.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
+        GameMaster.instance.OnRoomFinished.AddListener(CleanAllSpells);
     }
 }

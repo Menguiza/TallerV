@@ -108,7 +108,7 @@ public static class GameData
 
                 Gems = 0;
 
-                boughtStance0 = 0;
+                boughtStance0 = 1;
                 boughtStance1 = 0;
                 boughtStance2 = 0;
                 boughtStance3 = 0;

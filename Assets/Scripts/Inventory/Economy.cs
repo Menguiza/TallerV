@@ -39,6 +39,12 @@ public class Economy : MonoBehaviour
         GameData.Gems = (int)gems;
     }
 
+    public void ResetCurrencyAndGems()
+    {
+        currency = 0;
+        gems = 0;
+    }
+
     public void RewardCurrency(uint add)
     {
         currency += add;

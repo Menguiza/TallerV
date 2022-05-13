@@ -49,6 +49,7 @@ public class DamagePopUp : MonoBehaviour
                 break;
 
             case AttackType.conscience:
+                PopUp.fontSize = 0.3f;
                 PopUp.color = new Color(0.82f, 0.15f, 0.71f, 1);
                 break;
         }
