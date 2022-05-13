@@ -365,6 +365,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 100
+  damage: 5
+  consciencia: 15
   conciencia: 5
   vida: {fileID: 7816507968409334388}
 --- !u!1 &7816507968409334388

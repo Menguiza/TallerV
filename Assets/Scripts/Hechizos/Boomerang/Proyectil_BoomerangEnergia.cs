@@ -75,11 +75,11 @@ public class Proyectil_BoomerangEnergia : MonoBehaviour
     {
         if (other.gameObject.GetComponent<IEnemy>() != null)
         {
-            other.gameObject.GetComponent<IEnemy>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
-        }
-        else if (other.gameObject.GetComponent<EnemyController>() != null)
-        {
-            other.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+            int spellDamage = GameMaster.instance.CalculateSpellDamage(damage);
+
+            other.gameObject.GetComponent<IEnemy>().ReceiveDamage(spellDamage);
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, other.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, spellDamage);
         }
     }
 }

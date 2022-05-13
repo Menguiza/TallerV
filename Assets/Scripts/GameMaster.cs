@@ -411,11 +411,11 @@ public class GameMaster : MonoBehaviour
         player.Conciencia = (ushort)Mathf.Max(zero,opConci);
         
         // Damage pop up
-        GameObject popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 1.5f, DamagePopUp.transform.rotation);
+        GameObject popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 1.5f + Vector3.right, DamagePopUp.transform.rotation);
         popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, deltaVida);
 
         // Conscience pop up
-        popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 2f, DamagePopUp.transform.rotation);
+        popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 2f + Vector3.right, DamagePopUp.transform.rotation);
         popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.conscience, deltaConsciencia);
     }
 

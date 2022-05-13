@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour, IEnemy
 {
     [SerializeField]
     uint life = 100;
+
+    [SerializeField] int damage;
+    public int Damage { get => damage; set => damage = value; }
+
+    [SerializeField] int consciencia;
+    public int Conciencia { get => consciencia; set => consciencia = value; }
 
     public uint conciencia = 5;
 
@@ -44,5 +50,10 @@ public class EnemyController : MonoBehaviour
     public void ReceiveDamage(int damage)
     {
         Life = (uint)(Mathf.Max(0, Life - damage));
+    }
+
+    public void DestroyEnemy()
+    {
+        // ?
     }
 }

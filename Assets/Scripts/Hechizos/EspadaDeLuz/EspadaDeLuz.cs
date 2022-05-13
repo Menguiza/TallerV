@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
 
 public class EspadaDeLuz : MonoBehaviour, IHechizo
 {
@@ -89,5 +90,18 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
     public void SetVitalReferences()
     {
         animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+    }
+
+    void OnDestroy()
+    {
+        try
+        {
+            StopEmittingParticles();
+            RemoveSpellEfect();
+        }
+        catch (Exception)
+        {
+
+        }
     }
 }

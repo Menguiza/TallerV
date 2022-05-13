@@ -30,6 +30,10 @@ public class UpdateTimerUI : MonoBehaviour
                 }
                 
             }
+            else
+            {
+                displayTimers[i].text = "";
+            }
         }
     }
 }

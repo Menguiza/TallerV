@@ -392,7 +392,26 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
-            uint dañoAplicar = ProbabilidadCritico(gm.Player);
+            bool isCritical = ProbabilidadCritico(gm.Player);
+            uint dañoAplicar = 0;
+
+            if (isCritical)
+            {
+                dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult);
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.critic, (int)dañoAplicar);
+            }
+            else
+            {
+                dañoAplicar = gm.Player.Damage;
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, (int)dañoAplicar);
+            }
+
             enemy.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
@@ -414,7 +433,12 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
-            uint dañoAplicar = ProbabilidadCritico(gm.Player);
+            bool isCritical = ProbabilidadCritico(gm.Player);
+            uint dañoAplicar = 0;
+
+            if (isCritical) dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult); // Posiblemente puede buggearse al depender del GM?
+            else dañoAplicar = gm.Player.Damage;
+
             enemy.gameObject.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
@@ -511,19 +535,19 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region "Funciones Carecteristicas Player"
-    private uint ProbabilidadCritico(Player player)
+    private bool ProbabilidadCritico(Player player)
     {
-        uint daño = player.Damage;
+        bool isCritic = false;
 
         float rnd = Random.Range(zero, hundred);
 
         if (rnd < player.CritProb || rnd == hundred)
         {
-            daño = (uint)(player.Damage * player.CritMult);
+            isCritic = true;
             Debug.Log("Fue Critico");
         }
 
-        return daño;
+        return isCritic;
     }
 
     void RoboDeVida(uint dañoAplicar)
