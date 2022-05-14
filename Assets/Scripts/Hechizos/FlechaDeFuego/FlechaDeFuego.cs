@@ -4,10 +4,7 @@ using UnityEngine;
 using UnityEngine.Events;
 public class FlechaDeFuego : MonoBehaviour, IHechizo
 {
-    public GameObject fireArrowProyectile;
-
-    Transform attackPoint;
-
+    GameObject fireArrowProyectile;
     float impulseForce = 30f;
 
     // IHechizo propiedades ---- >
@@ -22,9 +19,13 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
 
     bool isOnCD;
     public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
-    // < ----
 
     Animator animator;
+    public Animator AnimatorReference { get => animator; set => animator = value; }
+
+    Transform attackPoint;
+    public Transform AttackPointReference { get => attackPoint; set => attackPoint = value; }
+    // < ----
 
     //Esto habrá que cambiarlo luego
     private void Awake()
@@ -38,7 +39,7 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     {
         if (remainingCD >= 0)
         {
-            remainingCD -= Time.deltaTime;
+            remainingCD -= Time.deltaTime * ManagerHechizos.instance.spellCastSpeedMultiplier;
 
             if (remainingCD < 0)
             {
@@ -74,5 +75,11 @@ public class FlechaDeFuego : MonoBehaviour, IHechizo
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
         spellCastEvent.AddListener(StartCastingSpell);
+    }
+
+    public void SetVitalReferences()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+        attackPoint = GameMaster.instance.playerObject.GetComponent<PlayerController>().attackPoint2;
     }
 }

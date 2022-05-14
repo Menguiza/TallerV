@@ -19,18 +19,16 @@ public class ManagerHechizos : MonoBehaviour
 
     public Hechizo[] debugSpellData;
 
-    UI_SlotsHechizos slotsHechizos;
+    public UI_SlotsHechizos slotsHechizos;
+
+    public float spellCastSpeedMultiplier = 1;
 
     // Variable de control
     public bool castingSpell = false;
 
-    private void Start()
+    private void Awake()
     {
-        print("I'm being called");
-        slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
-        print("Somethin is happening here");
-        print(slotsHechizos);
-        print(slotsHechizos == null);
+        if (slotsHechizos == null) slotsHechizos = FindObjectOfType<UI_SlotsHechizos>();
 
         if (slotsHechizos == null) Debug.LogWarning("|Manager hechizos| No se pudo encontrar la referencia a SlotsHechizos");
 
@@ -47,13 +45,12 @@ public class ManagerHechizos : MonoBehaviour
         }
 
         UpdateSpellSlots();
-    }
 
-    private void OnEnable()
-    {
-        print("I'm being enabled");
-    }
+        if (GameMaster.instance.IDPostura == Postura.Recarga) spellCastSpeedMultiplier = 2;
 
+        Invoke(nameof(SubscribeToOnChangeSceneEvent), 0.5f);
+        Invoke(nameof(SubscribeToOnRoomFinished), 0.5f);
+    }
 
     int GetIndex_of_NearestEmptySpellSlot()
     {
@@ -595,5 +592,30 @@ public class ManagerHechizos : MonoBehaviour
     public void StartSpellCast()
     {
         castingSpell = true;
+    }
+
+    void ReInitializeSpellVitalReferences()
+    {
+        for (int i = 0; i < availableSpells.Length; i++)
+        {
+            if (availableSpells[i] != null) (availableSpells[i] as IHechizo).SetVitalReferences();
+        }
+    }
+
+    void OnChangeSceneInvokeReInitializeSpellVitalReferences()
+    {
+        Invoke(nameof(ReInitializeSpellVitalReferences), 0.3f);
+        Invoke(nameof(UpdateSpellSlots), 0.3f);
+    }
+
+    void SubscribeToOnChangeSceneEvent()
+    {
+        RoomManager.instance.onChangeScene.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
+    }
+
+    void SubscribeToOnRoomFinished()
+    {
+        GameMaster.instance.OnRoomFinished.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
+        GameMaster.instance.OnRoomFinished.AddListener(CleanAllSpells);
     }
 }

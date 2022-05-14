@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PauseInput : MonoBehaviour
 {
@@ -62,6 +63,10 @@ public class PauseInput : MonoBehaviour
 
     public void MainMenu()
     {
+        toggle = !toggle;
+        Inventory.instance.TimeChange(toggle);
+
+        SceneManager.LoadScene(1);
         Debug.Log("Transladando a lobby");
     }
 }

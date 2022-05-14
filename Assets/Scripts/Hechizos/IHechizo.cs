@@ -9,8 +9,11 @@ public interface IHechizo
     float RemainingCD { get; }
     float CDTime { get; }
     bool IsOnCD { get; }
+    Animator AnimatorReference { get; }
+    Transform AttackPointReference { get; }
 
     void StartCastingSpell();
     void CastSpell();
     void SubscribeToEvent(UnityEvent spellCastEvent);
+    void SetVitalReferences();
 }

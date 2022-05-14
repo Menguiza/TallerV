@@ -5,11 +5,8 @@ using UnityEngine.Events;
 
 public class PedradaMagica : MonoBehaviour, IHechizo
 {
-    public GameObject magicPebbleProyectile;
-
+    GameObject magicPebbleProyectile;
     float impulseForce = 8f;
-
-    Transform attackPoint;
 
     // IHechizo propiedades ---- >
     float damage;
@@ -23,9 +20,13 @@ public class PedradaMagica : MonoBehaviour, IHechizo
 
     bool isOnCD;
     public bool IsOnCD { get => isOnCD; set => isOnCD = value; }
-    // < ----
 
     Animator animator;
+    public Animator AnimatorReference { get => animator; set => animator = value; }
+
+    Transform attackPoint;
+    public Transform AttackPointReference { get => attackPoint; set => attackPoint = value; }
+    // < ----
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class PedradaMagica : MonoBehaviour, IHechizo
     {
         if (remainingCD >= 0)
         {
-            remainingCD -= Time.deltaTime;
+            remainingCD -= Time.deltaTime * ManagerHechizos.instance.spellCastSpeedMultiplier;
 
             if (remainingCD < 0)
             {
@@ -77,5 +78,11 @@ public class PedradaMagica : MonoBehaviour, IHechizo
     public void SubscribeToEvent(UnityEvent spellCastEvent)
     {
         spellCastEvent.AddListener(StartCastingSpell);
+    }
+
+    public void SetVitalReferences()
+    {
+        animator = GameMaster.instance.playerObject.GetComponent<Animator>();
+        attackPoint = GameMaster.instance.playerObject.GetComponent<PlayerController>().attackPoint2;
     }
 }

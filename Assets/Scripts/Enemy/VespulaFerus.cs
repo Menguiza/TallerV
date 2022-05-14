@@ -1,20 +1,23 @@
 using UnityEngine;
-using UnityEngine.AI;
 
-public class VespulaFerus : MonoBehaviour
+public class VespulaFerus : MonoBehaviour, IEnemy
 {
-    public NavMeshAgent agent;
+    public Transform player, parent;
 
-    public Transform player, parent, attackPoint;
+    public LayerMask whatIsPlayer;
 
-    public LayerMask whatIsGround, whatIsPlayer;
+    public float health, speed;
 
-    public float health, offset, attackRad;
+    float step;
 
-    public int dmg = 1;
+    [SerializeField]
+    int dmg = 1, conciencia = 1;
+
+    public int Damage { get => dmg; set => dmg = value; }
+    public int Conciencia { get => conciencia; set => conciencia = value; }
 
     //Patroling
-    public Vector3 walkPoint;
+    public Vector3 walkPoint, fixedPivot;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -24,30 +27,30 @@ public class VespulaFerus : MonoBehaviour
 
     //States
     public float sightRange, attackRange;
-    public bool playerInSightRange, playerInAttackRange, playerhited;
+    public bool playerInSightRange, playerInAttackRange;
 
-    Vector3 vectorFixed;
     public Animator anim;
+
+    public GameObject bullet;
+
+    Quaternion rotation;
 
     private void Awake()
     {
         player = GameObject.FindObjectOfType<PlayerController>().transform;
-        agent = GetComponent<NavMeshAgent>();
         parent = transform.parent;
-        agent.updateRotation = false;
     }
 
     private void Update()
     {
-        vectorFixed = new Vector3(transform.position.x, transform.position.y + offset, transform.position.z);
+        step = speed * Time.deltaTime;
 
         //Check for sight and attack range
-        playerInSightRange = Physics.CheckSphere(vectorFixed, sightRange, whatIsPlayer);
-        playerInAttackRange = Physics.CheckSphere(vectorFixed, attackRange, whatIsPlayer);
+        playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
+        playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
         if (!playerInSightRange && !playerInAttackRange)
         {
-            transform.rotation = Quaternion.LookRotation(agent.velocity.normalized);
             Patroling();
         }
 
@@ -57,18 +60,27 @@ public class VespulaFerus : MonoBehaviour
 
     private void Patroling()
     {
-        agent.speed = 1;
-
         if (!walkPointSet) SearchWalkPoint();
 
         if (walkPointSet)
-            agent.SetDestination(walkPoint);
+            transform.position = Vector3.MoveTowards(transform.position, walkPoint, step);
 
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude < 1f)
             walkPointSet = false;
+
+        if(transform.position.z > walkPoint.z)
+        {
+            rotation = Quaternion.Euler(0, 180, 0);
+            transform.rotation = rotation;
+        }
+        else
+        {
+            rotation = Quaternion.Euler(0, 0, 0);
+            transform.rotation = rotation;
+        }
     }
     private void SearchWalkPoint()
     {
@@ -80,24 +92,24 @@ public class VespulaFerus : MonoBehaviour
         {
             walkPoint = parent.position;
         }
-
-        if (Physics.Raycast(walkPoint, -transform.up, 2f, whatIsGround))
             walkPointSet = true;
     }
 
     private void ChasePlayer()
     {
-        if(!alreadyAttacked)
+        transform.LookAt(player);
+
+        if (!alreadyAttacked)
         {
-            agent.speed = 3.5f;
-            agent.SetDestination(player.position);
+            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
         }
     }
 
+    
     private void AttackPlayer()
     {
         //Make sure enemy doesn't move
-        agent.SetDestination(transform.position);
+        transform.position = Vector3.MoveTowards(transform.position, transform.position, step);
 
         transform.LookAt(player);
 
@@ -105,31 +117,26 @@ public class VespulaFerus : MonoBehaviour
         {
             ///Attack code here
             anim.SetTrigger("Attack");
-            playerhited = Physics.CheckSphere(attackPoint.position, attackRad, whatIsPlayer);
 
-            if(playerhited)
-            {
-                GameMaster.instance.DamagePlayer(dmg, dmg);
-            }
+            fixedPivot = transform.position;
+            fixedPivot.y = fixedPivot.y + 0.6f;
+
+            Instantiate(bullet, fixedPivot, Quaternion.identity, transform);
 
             ///End of attack code
             alreadyAttacked = true;
             Invoke(nameof(ResetAttack), timeBetweenAttacks);
         }
     }
+    
+
     private void ResetAttack()
     {
         anim.ResetTrigger("Attack");
         alreadyAttacked = false;
     }
 
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-
-        if (health <= 0) Invoke(nameof(DestroyEnemy), 0.5f);
-    }
-    private void DestroyEnemy()
+    public void DestroyEnemy()
     {
         Destroy(gameObject);
     }
@@ -137,10 +144,15 @@ public class VespulaFerus : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(vectorFixed, attackRange);
+        Gizmos.DrawWireSphere(transform.position, attackRange);
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(vectorFixed, sightRange);
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(attackPoint.position, attackRad);
+        Gizmos.DrawWireSphere(transform.position, sightRange);
+    }
+
+    public void ReceiveDamage(int dmg)
+    {
+        health -= dmg;
+
+        if (health <= 0) DestroyEnemy();
     }
 }

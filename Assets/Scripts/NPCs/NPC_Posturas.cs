@@ -25,10 +25,11 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
 
     void Start()
     {
-        boughtStances = new bool[sleepStances.Length];
-        boughtStances[0] = true;
+        boughtStances = new bool[6];
 
-        // Inicializar UI basándose en los datos de cada ScriptableObject de las posturas                                    ^
+        RetrieveBoughtStancesData(GameData.RetreiveBoughtStances());
+
+        // Inicializar UI basándose en los datos de cada ScriptableObject de las posturas
         for (int i = 0; i < sleepStances.Length; i++)
         {
             costUI[i].text = sleepStancesData[i].gemCost.ToString();
@@ -40,9 +41,12 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
         }
     }
 
-    public void RetrieveBoughtStancesData(bool[] boughtStances)
+    public void RetrieveBoughtStancesData(bool[] boughtStancesData)
     {
-        // Recuperar la información de algún contenedor estático
+        for (int i = 0; i < boughtStancesData.Length; i++)
+        {
+            boughtStances[i] = boughtStancesData[i];
+        }
     }
 
     public void SetStance(int stanceIndex)
@@ -79,7 +83,16 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
             DisplayBuyButton(stanceIndex, false);
 
             Economy.instance.SpendGems((uint)sleepStancesData[stanceIndex].gemCost);
-        }   
+        }
+
+        GameData.boughtStance0 = boughtStances[0] == false ? 0 : 1;
+        GameData.boughtStance1 = boughtStances[1] == false ? 0 : 1;
+        GameData.boughtStance2 = boughtStances[2] == false ? 0 : 1;
+        GameData.boughtStance3 = boughtStances[3] == false ? 0 : 1;
+        GameData.boughtStance4 = boughtStances[4] == false ? 0 : 1;
+        GameData.boughtStance5 = boughtStances[5] == false ? 0 : 1;
+
+        GameData.SaveGameData();
     }
 
     public void OpenStore()

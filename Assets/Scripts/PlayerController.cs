@@ -6,8 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField]
     private float speed = 3;
-    [SerializeField]
-    Transform attackPoint, attackPoint2;
+
+    public Transform attackPoint, attackPoint2;
     public Transform feetHeight { get; private set; }
 
     [SerializeField]
@@ -15,12 +15,15 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     GameObject particles, particlesChild;
 
+    public GameObject espada;
+    public GameObject espadaDeLuz;
+
     CharacterController characterContrl;
     Animator anim;
 
     GameMaster gm;
 
-    bool airAttack = false, dodge = false, knockBacked = false, died = false;
+    bool airAttack = false, dodge = false, dodgeAir = false, knockBacked = false, died = false;
     public bool blocking = false, dodgeEnable = true, attack = false;
 
     //Variables Utilidad
@@ -75,6 +78,11 @@ public class PlayerController : MonoBehaviour
             died = true;
             anim.SetTrigger("Died");
             Destroy(gameObject, delay);
+
+            // Evento de muerte
+            GameMaster.instance.OnRunEnd.Invoke();
+            // No debería ir asi 
+            GameData.SaveGameData();
         }
 
         anim.SetFloat("VelocidadAtaque", gm.Player.MultVelAtaque);
@@ -91,13 +99,22 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [SerializeField] GameObject onHitVFX;
+
+    void CreateOnHitParticle()
+    {
+        GameObject instance = Instantiate(onHitVFX, transform.position + Vector3.up, Quaternion.identity);
+        Destroy(instance, 2f);
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (!died)
         {
             if (hit.collider.CompareTag("Enemy") && !anim.GetBool("Knocked"))
             {
-                anim.SetBool("Jump", false);
+                anim.SetBool("Fall", false);
+                anim.ResetTrigger("Jump");
                 anim.SetTrigger("Knock");
                 anim.SetBool("Knocked", true);
                 move = -transform.forward * knockBackForce;
@@ -107,9 +124,9 @@ public class PlayerController : MonoBehaviour
                 InactiveCollider();
                 InactiveCollider2();
 
-                if(hit.collider.GetComponent<VespulaFerus>() != null)
+                if(hit.collider.GetComponent<IEnemy>() != null)
                 {
-                    gm.DamagePlayer(hit.collider.GetComponent<VespulaFerus>().dmg, hit.collider.GetComponent<VespulaFerus>().dmg);
+                    gm.DamagePlayer(hit.collider.GetComponent<IEnemy>().Damage, hit.collider.GetComponent<IEnemy>().Conciencia);
                 }
                 else if(hit.collider.GetComponent<EnemyController>() != null)
                 {
@@ -118,10 +135,13 @@ public class PlayerController : MonoBehaviour
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
+                CreateOnHitParticle();
+                GetHitSound();
             }
             else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
-                anim.SetBool("Jump", false);
+                anim.SetBool("Fall", false);
+                anim.ResetTrigger("Jump");
                 anim.SetTrigger("Knock");
                 anim.SetBool("Knocked", true);
                 move = -transform.forward * knockBackForce;
@@ -134,6 +154,8 @@ public class PlayerController : MonoBehaviour
 
                 // Hechizos
                 ManagerHechizos.instance.EndSpellCast();
+                CreateOnHitParticle();
+                GetHitSound();
             }
         }
     }
@@ -191,6 +213,8 @@ public class PlayerController : MonoBehaviour
 
     private void Move()
     {
+        anim.SetBool("Fall", !characterContrl.isGrounded);
+
         if ((attack || ManagerHechizos.instance.castingSpell) && !knockBacked || died)
         {
             horizontal = zero;
@@ -206,9 +230,9 @@ public class PlayerController : MonoBehaviour
                 horizontal = Input.GetAxisRaw("Horizontal");
             }
 
-            if (Input.GetButtonDown("Dodge") && !dodge && horizontal != zero && !attack && dodgeEnable)
+            if (Input.GetButtonDown("Dodge") && horizontal != zero && !attack && dodgeEnable)
             {
-                dodge = true;
+                dodgeAir = true;
                 dodgeEnable = false;
                 anim.SetTrigger("DodgeAir");
 
@@ -225,12 +249,14 @@ public class PlayerController : MonoBehaviour
                 {
                     move.z += dodgeForce * Time.deltaTime;
                 }
+
+                RollSound();
             }
-            else if (!dodge && horizontal != zero && anim.GetBool("Jump"))
+            else if (!dodgeAir && !dodge && horizontal != zero && anim.GetBool("Fall"))
             {
                 TurnChar();
             }
-            else if (dodge)
+            else if (dodge || dodgeAir)
             {
                 TurnCharDash();
             }
@@ -252,6 +278,8 @@ public class PlayerController : MonoBehaviour
                 {
                     move.z += dodgeForce * Time.deltaTime;
                 }
+
+                RollSound();
             }
             else
             {
@@ -280,8 +308,11 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && characterContrl.isGrounded && !ManagerHechizos.instance.castingSpell &&!attack && !dodge && !knockBacked && !died)
         {
             verticalVelocity = jumpFoce;
-            anim.SetBool("Jump", true);
+            anim.SetBool("Fall", true);
+            anim.SetTrigger("Jump");
             move.y = verticalVelocity;
+
+            JumpHopSound();
         }
         else if (knockBacked && characterContrl.isGrounded && !died)
         {
@@ -292,7 +323,13 @@ public class PlayerController : MonoBehaviour
         if (characterContrl.isGrounded && verticalVelocity < zero)
         {
             anim.SetBool("Knocked", false);
-            anim.SetBool("Jump", false);
+            anim.SetBool("Fall", false);
+            anim.ResetTrigger("Jump");
+
+            if(dodgeAir)
+            {
+                dodgeAir = false;
+            }
         }
 
         characterContrl.Move(move * Time.deltaTime);
@@ -355,18 +392,39 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
-            uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            bool isCritical = ProbabilidadCritico(gm.Player);
+            uint dañoAplicar = 0;
+
+            if (isCritical)
+            {
+                dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult);
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.critic, (int)dañoAplicar);
+            }
+            else
+            {
+                dañoAplicar = gm.Player.Damage;
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, (int)dañoAplicar);
+            }
+
+            enemy.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
             }
         }
+
+        // SFX
+        SwordSwing();
     }
 
     public void ActiveCollider2()
@@ -375,16 +433,20 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
-            uint dañoAplicar = ProbabilidadCritico(gm.Player);
-            uint result = (uint)Mathf.Max(0, enemy.gameObject.GetComponent<EnemyController>().Life - dañoAplicar);
-            enemy.gameObject.GetComponent<EnemyController>().Life = result;
+            bool isCritical = ProbabilidadCritico(gm.Player);
+            uint dañoAplicar = 0;
+
+            if (isCritical) dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult); // Posiblemente puede buggearse al depender del GM?
+            else dañoAplicar = gm.Player.Damage;
+
+            enemy.gameObject.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<EnemyController>().conciencia;
+                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
             }
         }
     }
@@ -420,7 +482,7 @@ public class PlayerController : MonoBehaviour
     public void ResetAnimDodge()
     {
         anim.ResetTrigger("DodgeAir");
-        dodge = false;
+        dodgeAir = false;
     }
     public void ResetAnimDodge2()
     {
@@ -473,24 +535,65 @@ public class PlayerController : MonoBehaviour
     #endregion
 
     #region "Funciones Carecteristicas Player"
-    private uint ProbabilidadCritico(Player player)
+    private bool ProbabilidadCritico(Player player)
     {
-        uint daño = player.Damage;
+        bool isCritic = false;
 
         float rnd = Random.Range(zero, hundred);
 
         if (rnd < player.CritProb || rnd == hundred)
         {
-            daño = (uint)(player.Damage * player.CritMult);
+            isCritic = true;
             Debug.Log("Fue Critico");
         }
 
-        return daño;
+        return isCritic;
     }
 
     void RoboDeVida(uint dañoAplicar)
     {
         gm.Player.Life += (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
+    }
+    #endregion
+
+    #region"Sonidos del jugador"
+    [Header("Amo - sounds")]
+    [SerializeField] AudioClip amoSteps;
+    [SerializeField] AudioClip jumpHop;
+    [SerializeField] AudioClip jumpLand;
+    [SerializeField] AudioClip roll;
+    [SerializeField] AudioClip swordSwing;
+    [SerializeField] AudioClip death;
+    [SerializeField] AudioClip getHit;
+
+    public void StepSound()
+    {
+        SoundManager.instance.PlayClip(amoSteps);
+    }
+
+    public void JumpHopSound()
+    {
+        SoundManager.instance.PlayClip(jumpHop);
+    }
+
+    public void RollSound()
+    {
+        SoundManager.instance.PlayClip(roll);
+    }
+
+    public void SwordSwing()
+    {
+        SoundManager.instance.PlayClip(swordSwing);
+    }
+
+    public void DeathSound()
+    {
+        SoundManager.instance.PlayClip(death);
+    }
+
+    public void GetHitSound()
+    {
+        SoundManager.instance.PlayClip(getHit);
     }
     #endregion
 }

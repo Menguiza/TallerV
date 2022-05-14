@@ -20,10 +20,15 @@ public class Proyectil_BolaDeAcido : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.gameObject.GetComponent<EnemyController>() != null)
+        if (collider.gameObject.GetComponent<IEnemy>() != null)
         {
-            collider.gameObject.GetComponent<EnemyController>().ReceiveDamage(GameMaster.instance.CalculateSpellDamage(damage));
+            int spellDamage = GameMaster.instance.CalculateSpellDamage(damage);
+
+            collider.gameObject.GetComponent<IEnemy>().ReceiveDamage(spellDamage);
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, collider.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, spellDamage);
         }
+        
 
         acidBallImpact();
     }

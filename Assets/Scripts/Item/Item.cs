@@ -61,6 +61,18 @@ public class Item : ScriptableObject
         {
             GameMaster.instance.playerObject.GetComponent<Animator>().SetTrigger("Knock");
         }
+
+        if (sumVida != 0)
+        {
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, GameMaster.instance.playerObject.transform.position + Vector3.up * 1.5f, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.heal, sumVida);
+        }
+        else if (sumConciencia != 0)
+        {
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, GameMaster.instance.playerObject.transform.position + Vector3.up * 1.5f, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.conscience, -sumConciencia);
+        }
+
         Economy.instance.RewardCurrency(sumDinero);
         Inventory.instance.Remove(this);
     }
