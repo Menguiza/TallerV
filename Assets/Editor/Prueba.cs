@@ -137,7 +137,7 @@ public class Prueba : Editor
         {
             GUILayout.Label("Player Stats", EditorStyles.boldLabel);
 
-            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult, multPesadilla;
+            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult, multPesadilla, multDañoRecibido;
             bool pesadilla;
 
             maxLife = EditorGUILayout.TextField("Vida Maxima: ", gm.Player.MaxLife.ToString());
@@ -154,6 +154,8 @@ public class Prueba : Editor
             speedMult = EditorGUILayout.TextField("Mult. Velocidad: ", gm.Player.SpeedMult.ToString());
             multPesadilla = EditorGUILayout.TextField("Mult. Pesadilla: ", gm.Player.MultPesadilla.ToString());
             pesadilla = EditorGUILayout.Toggle("Pesadilla: ", gm.Player.Pesadilla);
+            multDañoRecibido = EditorGUILayout.TextField("Mult. daño recibido: ", gm.Player.MultDañoRecibido.ToString());
+            
         }
 
         #endregion

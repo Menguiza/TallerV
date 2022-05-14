@@ -262,13 +262,13 @@ public class Player
         get => multDañoRecibido; 
         set
         {
-            if (value >= 1)
+            if (value >= 0.25f)
             {
                 multDañoRecibido = value;
             }
             else
             {
-                multDañoRecibido = 1;
+                multDañoRecibido = 0.25f;
             }
         }
     }
