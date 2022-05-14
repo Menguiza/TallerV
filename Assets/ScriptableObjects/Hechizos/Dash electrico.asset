@@ -21,6 +21,6 @@ MonoBehaviour:
   spellDamage: 150
   impact: "M\xFAltiple, atraviesa"
   impactEffect: N/A
-  rechargeTime: 4
+  rechargeTime: 3
   chanellingTime: 0
   spellContained: 6

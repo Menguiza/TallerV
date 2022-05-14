@@ -21,6 +21,6 @@ MonoBehaviour:
   impact: "\xDAnico"
   impactEffect: Ralentiza al enemigo durante 5 segundos, reduciendo 40% de su velocidad
     de movimiento.
-  rechargeTime: 8
+  rechargeTime: 4
   chanellingTime: 0.5
   spellContained: 5

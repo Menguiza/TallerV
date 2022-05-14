@@ -22,6 +22,6 @@ MonoBehaviour:
   impact: Buff personal
   impactEffect: "Agrega un modificador que da +100% al da\xF1o infligido durante
     5 segundos"
-  rechargeTime: 15
+  rechargeTime: 8
   chanellingTime: 1
   spellContained: 2

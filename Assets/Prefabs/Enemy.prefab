@@ -364,7 +364,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34fb96f7e5e1e154d9f1f1f786a3fb36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 400
   damage: 5
   consciencia: 15
   conciencia: 5
