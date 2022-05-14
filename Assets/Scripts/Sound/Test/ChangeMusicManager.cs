@@ -33,7 +33,6 @@ public class ChangeMusicManager : MonoBehaviour
             dreamerSC.volume += volumeSpeed;
             yield return new WaitForSeconds(timeSlide);
         }
-        callAwake = false;
         yield return null;
     }
 
@@ -45,26 +44,19 @@ public class ChangeMusicManager : MonoBehaviour
             dreamerSC.volume -= volumeSpeed;
             yield return new WaitForSeconds(timeSlide);
         }
-        callDreamer = false;
         yield return null;
     }
 
     void DreamerVolume()
     {
-        if(!callDreamer && dreamerSC.volume > 0)
-        {
-            callDreamer = true;
+            StopAllCoroutines();
             StartCoroutine(DreamerManager());
-        }
         
     }
 
     void AwakenVolume()
     {
-        if(!callAwake && awakenSC.volume > 0)
-        {
-            callAwake = true;
+            StopAllCoroutines();
             StartCoroutine(AwakenManager());
-        }
     }
 }
