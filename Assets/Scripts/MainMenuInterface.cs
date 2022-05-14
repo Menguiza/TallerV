@@ -14,6 +14,7 @@ public class MainMenuInterface : MonoBehaviour
     {
         if (File.Exists(Application.persistentDataPath + "/DwizardSave.dat")) continueButton.interactable = true;
         else continueButton.interactable = false;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void Update()
@@ -31,8 +32,7 @@ public class MainMenuInterface : MonoBehaviour
         GameData.SaveGameData(); 
         SceneManager.LoadScene(2);
         GameData.LoadGameData();
-        Economy.instance.ResetCurrencyAndGems();
-        Economy.instance.RewardGems((uint)GameData.RetreiveGems());
+        StartCoroutine(InitializeOnNextFrame());
     }
 
     public void ContinuarPartida()
@@ -41,12 +41,20 @@ public class MainMenuInterface : MonoBehaviour
         {
             SceneManager.LoadScene(2);
             GameData.LoadGameData();
-            Economy.instance.RewardGems((uint)GameData.RetreiveGems());
+            StartCoroutine(InitializeOnNextFrame());
         }
     }
 
     public void Salir()
     {
         Application.Quit();
+    }
+
+    IEnumerator InitializeOnNextFrame()
+    {
+        yield return null;
+        Economy.instance.ResetCurrencyAndGems();
+        Economy.instance.RewardGems((uint)GameData.RetreiveGems());
+        Destroy(gameObject);
     }
 }
