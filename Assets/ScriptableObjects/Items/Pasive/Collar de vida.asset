@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4097875dd1468e4478e607341cc960ff, type: 3}
+  m_Name: Collar de vida
+  m_EditorClassIdentifier: 
+  nombre: Collar de vida
+  type: 2
+  format: 0
+  use: 1
+  icon: {fileID: 21300000, guid: aebe7c1a774cb8c49bf76fade698843b, type: 3}
+  multVidaMax: 10
+  multDmg: 0
+  multConciencia: 0
+  multTGPC: 0
+  multCritProb: 0
+  multCrit: 0
+  multRoboPer: 0
+  multVelAatque: 0
+  multSpeed: 0
+  multPesadillaPer: 0
+  "multDa\xF1oRecibido": 0
+  sumVida: 0
+  sumConciencia: 0
+  sumDinero: 0
+  duration: 0

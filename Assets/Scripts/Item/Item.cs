@@ -25,7 +25,7 @@ public class Item : ScriptableObject
     public float multVelAatque = 0;
     public float multSpeed = 0;
     public sbyte multPesadillaPer = 0;
-    float multDañoRecibido = 0;
+    public float multDañoRecibido = 0;
 
     [Header("Impacto")]
 

@@ -98,7 +98,6 @@ public class GameMaster : MonoBehaviour
         #endregion
 
         player = new Player(maxLife, dmg);
-
         CheckMods();
     }
 
@@ -328,7 +327,6 @@ public class GameMaster : MonoBehaviour
 
                 multDañoRecibidoResult += element.MultDañoRecibido;
             }
-
         }
 
         player.MaxLife = (uint)MathF.Max(one, maxLifeResult);
@@ -355,7 +353,7 @@ public class GameMaster : MonoBehaviour
 
         player.MultPesadilla = (byte)MathF.Max(zero, multPesadillaResult);
 
-        player.MultDañoRecibido = MathF.Max(one, multDañoRecibidoResult);
+        player.MultDañoRecibido = MathF.Max(-one, multDañoRecibidoResult);
     }
 
     public void ResetStats()

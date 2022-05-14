@@ -413,6 +413,7 @@ public class PlayerController : MonoBehaviour
             }
 
             enemy.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
+
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
@@ -552,7 +553,15 @@ public class PlayerController : MonoBehaviour
 
     void RoboDeVida(uint dañoAplicar)
     {
-        gm.Player.Life += (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
+        dañoAplicar = (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
+
+        if (dañoAplicar != 0)
+        {
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, GameMaster.instance.playerObject.transform.position + Vector3.up * 1.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.heal, (int)dañoAplicar);
+        }
+        
+        gm.Player.Life += dañoAplicar;
     }
     #endregion
 
