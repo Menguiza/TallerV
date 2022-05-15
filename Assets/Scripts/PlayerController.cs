@@ -367,6 +367,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TurnCharLeft()
+    {
+        transform.rotation = new Quaternion(zero, -fullTurn, zero, zero);
+        move = -transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+    }
+
+    public void TurnCharRight()
+    {
+        transform.rotation = new Quaternion(zero, zero, zero, zero);
+        move = transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+    }
+
     void TurnCharDash()
     {
         if (horizontal < zero)
