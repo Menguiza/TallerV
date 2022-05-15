@@ -6,11 +6,19 @@ public class SpellCastDirectionTracker : MonoBehaviour
 {
     Vector3 screenPos;
     Vector3 worldPos;
-    [SerializeField] Transform refObject;
+    [SerializeField] Transform refTransformMouseObject;
+    public static Transform refTransformMouse;
 
     private void Start()
     {
         screenPos.z = Vector3.Distance(GameMaster.instance.playerObject.transform.position, Camera.main.transform.position);
+        refTransformMouse = Instantiate(refTransformMouseObject, transform.position, Quaternion.identity);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(worldPos, 0.5f);
     }
 
     void Update()
@@ -18,8 +26,8 @@ public class SpellCastDirectionTracker : MonoBehaviour
         screenPos = new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPos.z);
         
         worldPos = Camera.main.ScreenToWorldPoint(screenPos);
-        refObject.position = worldPos;
+        refTransformMouse.position = worldPos;
 
-        print("SP (X:" + screenPos.x + " Y:" + screenPos.y + ") WP (X:" + worldPos.x + " Y:" + worldPos.y + " Z:" + worldPos.z + ")");
+        //print("SP (X:" + screenPos.x + " Y:" + screenPos.y + ") WP (X:" + worldPos.x + " Y:" + worldPos.y + " Z:" + worldPos.z + ")");
     }
 }

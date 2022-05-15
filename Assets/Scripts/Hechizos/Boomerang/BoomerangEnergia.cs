@@ -49,11 +49,45 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
         }
     }
 
+    float xDir;
+    float yDir;
+    float zDir;
+    Vector3 direction;
+
     public void StartCastingSpell()
     {
         animator.SetTrigger("InstantCast Spell");
 
-        GameMaster.instance.playerObject.GetComponent<PlayerController>().SpellMethod = this;
+        PlayerController player = GameMaster.instance.playerObject.GetComponent<PlayerController>();
+        player.SpellMethod = this;
+
+        // El jugador mira a la derecha
+        if (player.attackPoint.position.z > (player.transform.position.z))
+        {
+            if (!(SpellCastDirectionTracker.refTransformMouse.position.z > player.attackPoint2.position.z)) // Pero mira a la izquierda
+            {
+                player.TurnCharLeft();
+            }
+        }
+        else // El jugador mira a la izquierda
+        {
+            if (!(SpellCastDirectionTracker.refTransformMouse.position.z < player.attackPoint2.position.z)) // Pero mira a la derecha
+            {
+                player.TurnCharRight();
+            }
+        }
+
+
+
+        xDir = 0;
+        yDir = SpellCastDirectionTracker.refTransformMouse.position.y - player.attackPoint2.position.y;
+        zDir = SpellCastDirectionTracker.refTransformMouse.position.z - player.attackPoint2.position.z;
+        direction = new Vector3(xDir, yDir, zDir).normalized;
+
+        float minDistance = Vector3.Distance(player.attackPoint2.position, player.transform.position);
+        float distanceFromPlayer = Vector3.Distance(SpellCastDirectionTracker.refTransformMouse.position, player.transform.position);
+
+        if (distanceFromPlayer <= minDistance) direction = -direction;
     }
 
     public void CastSpell()
@@ -64,7 +98,8 @@ public class BoomerangEnergia : MonoBehaviour, IHechizo
         print("Boomerang de energia casteado");
         GameObject instance = Instantiate(boomerangProyectile, attackPoint.position, Quaternion.identity);
         instance.GetComponent<Proyectil_BoomerangEnergia>().damage = damage;
-        instance.GetComponent<Rigidbody>().AddForce((attackPoint.forward) * impulseForce, ForceMode.Impulse);
+
+        instance.GetComponent<Rigidbody>().AddForce(direction * impulseForce, ForceMode.Impulse);
         //Particulas de lanzamiento acá
     }
 
