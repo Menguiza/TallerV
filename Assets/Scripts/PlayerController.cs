@@ -367,6 +367,18 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void TurnCharLeft()
+    {
+        transform.rotation = new Quaternion(zero, -fullTurn, zero, zero);
+        move = -transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+    }
+
+    public void TurnCharRight()
+    {
+        transform.rotation = new Quaternion(zero, zero, zero, zero);
+        move = transform.forward * horizontal * (speed * gm.Player.SpeedMult);
+    }
+
     void TurnCharDash()
     {
         if (horizontal < zero)
@@ -413,6 +425,7 @@ public class PlayerController : MonoBehaviour
             }
 
             enemy.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
+
             RoboDeVida(dañoAplicar);
 
             gm.enableTGPC = false;
@@ -436,8 +449,22 @@ public class PlayerController : MonoBehaviour
             bool isCritical = ProbabilidadCritico(gm.Player);
             uint dañoAplicar = 0;
 
-            if (isCritical) dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult); // Posiblemente puede buggearse al depender del GM?
-            else dañoAplicar = gm.Player.Damage;
+            if (isCritical)
+            {
+                dañoAplicar = (uint)(gm.Player.Damage * gm.Player.CritMult);
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.critic, (int)dañoAplicar);
+            }
+            else
+            {
+                dañoAplicar = gm.Player.Damage;
+
+                // Damage pop up
+                GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, enemy.transform.position + Vector3.up * 0.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+                popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.normal, (int)dañoAplicar);
+            }
 
             enemy.gameObject.GetComponent<IEnemy>().ReceiveDamage((int)dañoAplicar);
             RoboDeVida(dañoAplicar);
@@ -552,7 +579,15 @@ public class PlayerController : MonoBehaviour
 
     void RoboDeVida(uint dañoAplicar)
     {
-        gm.Player.Life += (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
+        dañoAplicar = (uint)((gm.Player.RoboVida / (float)hundred) * dañoAplicar);
+
+        if (dañoAplicar != 0)
+        {
+            GameObject popUpInstace = Instantiate(GameMaster.instance.DamagePopUp, GameMaster.instance.playerObject.transform.position + Vector3.up * 1.5f + Vector3.right, GameMaster.instance.DamagePopUp.transform.rotation);
+            popUpInstace.GetComponent<DamagePopUp>().SetText(AttackType.heal, (int)dañoAplicar);
+        }
+        
+        gm.Player.Life += dañoAplicar;
     }
     #endregion
 

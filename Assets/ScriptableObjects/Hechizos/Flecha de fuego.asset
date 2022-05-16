@@ -18,10 +18,10 @@ MonoBehaviour:
     le hace mucho da\xF1o y lo quema."
   lore: Flecha impregnada con magia de fuego, esta era principalmente utilizada para
     encender residencias en tiempos de guerra.
-  spellDamage: 500
+  spellDamage: 400
   impact: "\xDAnico"
   impactEffect: "Quema al enemigo durante 3 segundos inflingiendole 10 de da\xF1o
     cada segundo."
-  rechargeTime: 8
+  rechargeTime: 4
   chanellingTime: 0.3
   spellContained: 1

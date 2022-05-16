@@ -22,6 +22,6 @@ MonoBehaviour:
   impact: "M\xFAltiple, explosi\xF3n"
   impactEffect: Inflige mucho retroceso y deja aturdidos a los enemigos durante 1
     segundo.
-  rechargeTime: 10
+  rechargeTime: 4
   chanellingTime: 2
   spellContained: 3

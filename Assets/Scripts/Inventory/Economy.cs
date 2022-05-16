@@ -53,6 +53,8 @@ public class Economy : MonoBehaviour
     public void RewardGems(uint add)
     {
         gems += add;
+        SaveGems();
+        GameData.SaveGameData();
     }
 
     public void SpendCurrency(uint add)
@@ -64,5 +66,7 @@ public class Economy : MonoBehaviour
     {
         gems -= add;
         GameData.Gems = (int)gems;
+        SaveGems();
+        GameData.SaveGameData();
     }
 }

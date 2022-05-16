@@ -759,7 +759,7 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.37652904
+      - time: 0.35943502
         functionName: ActiveCollider
         data: 
         objectReferenceParameter: {fileID: 11500000, guid: 51db411664d25374f8298b1332945cbe, type: 3}
