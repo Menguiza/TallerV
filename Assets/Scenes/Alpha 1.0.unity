@@ -152,6 +152,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e506486cb89d0744af0da353f6c7192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  onChangeScene:
+    m_PersistentCalls:
+      m_Calls: []
   rooms: []
   objetoINP:
   - {fileID: 2807097785294483744, guid: 8f0e3ed616f020d46a376c18515947fb, type: 3}
@@ -574,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dmg: 10
   multiplicadorConciencia: 1
+  DamagePopUp: {fileID: 8968149253577952293, guid: 152384acb72caa24dae097e361a633ff, type: 3}
   playerObject: {fileID: 1079563799}
   particles: {fileID: 1475916362}
   particlesChild: {fileID: 2000026714}
@@ -679,7 +683,7 @@ MonoBehaviour:
   OnRoomFinished:
     m_PersistentCalls:
       m_Calls: []
-  RunEnd:
+  OnRunEnd:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &206503294
@@ -3452,7 +3456,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3460,7 +3464,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3482,10 +3486,6 @@ PrefabInstance:
       propertyPath: m_LookAt
       value: 
       objectReference: {fileID: 1079563800}
-    - target: {fileID: 7419230066456176975, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
-      propertyPath: m_Lens.m_SensorSize.x
-      value: 2.0498443
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
 --- !u!1 &1302372157
@@ -5033,7 +5033,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.y
@@ -5041,7 +5041,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206479
+      value: 0.02206481
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5061,7 +5061,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310173, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: far clip plane
-      value: 100
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
