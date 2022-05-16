@@ -12,14 +12,12 @@ public class PauseLowPass : MonoBehaviour
     {
         if (!isPaused && Input.GetKeyDown(KeyCode.Escape)) 
         {
-            print("a");
             paused.TransitionTo(0);
             isPaused = true;
         }
 
         else if (isPaused && Input.GetKeyDown(KeyCode.Escape))
         {
-            print("b");
             unpaused.TransitionTo(0);
             isPaused = false;
         }
