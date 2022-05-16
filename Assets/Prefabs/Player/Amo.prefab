@@ -4508,6 +4508,7 @@ GameObject:
   - component: {fileID: 6823887637396766607}
   - component: {fileID: 1433589330738204250}
   - component: {fileID: 1580843076}
+  - component: {fileID: 1645330346}
   m_Layer: 6
   m_Name: Amo
   m_TagString: Player
@@ -4614,7 +4615,7 @@ MonoBehaviour:
   jumpHop: {fileID: 8300000, guid: 730db03195cc54645a35b0bf983674e7, type: 3}
   jumpLand: {fileID: 8300000, guid: e7f940f1351e9b648b47f88aa9f3bc54, type: 3}
   roll: {fileID: 8300000, guid: d2f38b1f897126f4b8a33e3af6d63dcd, type: 3}
-  swordSwing: {fileID: 8300000, guid: 739f05c4c9653b547b9630edd2348a8a, type: 3}
+  swordSwing: {fileID: 8300000, guid: 252bc8e5adea1fc4d8522caa15ba7fa4, type: 3}
   death: {fileID: 8300000, guid: b4728da5f390f624881bfed902e7d1c8, type: 3}
   getHit: {fileID: 8300000, guid: b326cec779913b54c8d09e1624a0046d, type: 3}
 --- !u!81 &1433589330738204250
@@ -4721,6 +4722,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1645330346
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5940872942502788633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ff23cf773035049b2f47173b74c991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  refTransformMouseObject: {fileID: 3745235498222380512, guid: faf91a36b1c49bd438a97ee408ae2d8f, type: 3}
 --- !u!1 &6355345499092363522
 GameObject:
   m_ObjectHideFlags: 0
