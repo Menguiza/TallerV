@@ -3539,10 +3539,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6823887637396766607, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
-      propertyPath: swordSwing
-      value: 
-      objectReference: {fileID: 8300000, guid: 252bc8e5adea1fc4d8522caa15ba7fa4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a1cbbd8d43577439f070c28db01df3, type: 3}
 --- !u!1 &1193606073 stripped
@@ -4550,19 +4546,6 @@ Transform:
   m_Father: {fileID: 795112600}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1645330346
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1193606076}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ff23cf773035049b2f47173b74c991, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  refTransformMouseObject: {fileID: 3745235498222380512, guid: faf91a36b1c49bd438a97ee408ae2d8f, type: 3}
 --- !u!1001 &1768595391
 PrefabInstance:
   m_ObjectHideFlags: 0
