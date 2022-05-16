@@ -4608,7 +4608,7 @@ MonoBehaviour:
   delay: 3
   resetDodgeTime: 2
   gravity: 25
-  attackRange: 0.5
+  attackRange: 0.6
   onHitVFX: {fileID: 1756917352542586541, guid: b075fa1113032344788e2312bf0b3e2b, type: 3}
   interactionVolumeCollider: {fileID: 2230608281853884125, guid: cb39d71f7f691044885d42292fe3de24, type: 3}
   amoSteps: {fileID: 8300000, guid: 1024f162c0cfbe84a842b2e989309ecf, type: 3}
