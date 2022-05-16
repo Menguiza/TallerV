@@ -145,7 +145,8 @@ public class Babosa : MonoBehaviour, IEnemy
     {
         anim.SetTrigger("Die");
         gameObject.GetComponent<Collider>().enabled = false;
-        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
+        gameObject.GetComponent<Rigidbody>().isKinematic = true;
         Destroy(gameObject, 1.6f);
     }
 

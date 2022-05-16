@@ -4,7 +4,7 @@ public class VespulaFerus : MonoBehaviour, IEnemy
 {
     public Transform player, parent;
 
-    public LayerMask whatIsPlayer;
+    public LayerMask whatIsPlayer, whatsMe;
 
     public float health, speed;
 
@@ -17,7 +17,7 @@ public class VespulaFerus : MonoBehaviour, IEnemy
     public int Conciencia { get => conciencia; set => conciencia = value; }
 
     //Patroling
-    public Vector3 walkPoint, fixedPivot;
+    public Vector3 walkPoint, fixedPivot, origin, collision;
     bool walkPointSet;
     public float walkPointRange;
 
@@ -39,6 +39,7 @@ public class VespulaFerus : MonoBehaviour, IEnemy
     {
         player = GameObject.FindObjectOfType<PlayerController>().transform;
         parent = transform.parent;
+        origin = parent.position;
     }
 
     private void Update()
@@ -52,6 +53,11 @@ public class VespulaFerus : MonoBehaviour, IEnemy
         if (!playerInSightRange && !playerInAttackRange)
         {
             Patroling();
+        }
+
+        if(playerInSightRange)
+        {
+            transform.LookAt(player);
         }
 
         if (playerInSightRange && !playerInAttackRange) ChasePlayer();
@@ -84,34 +90,30 @@ public class VespulaFerus : MonoBehaviour, IEnemy
     }
     private void SearchWalkPoint()
     {
-        if(transform.position.z == parent.position.z)
+        if(transform.position.z == origin.z)
         {
             walkPoint = new Vector3(transform.position.x, transform.position.y, transform.position.z + walkPointRange);
         }
         else
         {
-            walkPoint = parent.position;
+            walkPoint = origin;
         }
             walkPointSet = true;
     }
 
     private void ChasePlayer()
     {
-        transform.LookAt(player);
-
-        if (!alreadyAttacked)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.position, step);
-        }
+        transform.position = Vector3.MoveTowards(transform.position, player.position, step);
     }
 
     
     private void AttackPlayer()
     {
-        //Make sure enemy doesn't move
-        transform.position = Vector3.MoveTowards(transform.position, transform.position, step);
+        collision = transform.position;
+        collision.y = player.position.y + 0.6f;
 
-        transform.LookAt(player);
+        //Make sure enemy doesn't move
+        transform.position = Vector3.MoveTowards(transform.position, collision, step);
 
         if (!alreadyAttacked)
         {

@@ -140,14 +140,19 @@ MonoBehaviour:
   whatIsPlayer:
     serializedVersion: 2
     m_Bits: 64
+  whatsMe:
+    serializedVersion: 2
+    m_Bits: 8
   health: 8
   speed: 3
   dmg: 4
   conciencia: 7
   walkPoint: {x: 0, y: 0, z: 0}
   fixedPivot: {x: 0, y: 0, z: 0}
+  origin: {x: 0, y: 0, z: 0}
+  collision: {x: 0, y: 0, z: 0}
   walkPointRange: 5
-  timeBetweenAttacks: 10
+  timeBetweenAttacks: 3
   sightRange: 10
   attackRange: 4
   playerInSightRange: 0
