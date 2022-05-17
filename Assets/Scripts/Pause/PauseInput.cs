@@ -9,6 +9,9 @@ public class PauseInput : MonoBehaviour
     CanvasGroup pauseMenu;
     bool toggle = false;
 
+    [SerializeField] GameObject guideCanvas;
+    [SerializeField] GameObject soundCanvas;
+
     private void Awake()
     {
         //Cursor.lockState = CursorLockMode.Locked;
@@ -19,9 +22,19 @@ public class PauseInput : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 || Input.GetKeyDown(KeyCode.Escape) && pauseMenu.alpha == 1)
         {
+            if (guideCanvas.activeInHierarchy || soundCanvas.activeInHierarchy)
+            {
+                guideCanvas.SetActive(false);
+                soundCanvas.SetActive(false);
+                return;
+            }
+
             toggle = !toggle;
             ActiveCursor(toggle);
             Inventory.instance.TimeChange(toggle);
+
+            guideCanvas.SetActive(false);
+            soundCanvas.SetActive(false);
         }
 
         pauseMenu.interactable = toggle;
@@ -59,7 +72,16 @@ public class PauseInput : MonoBehaviour
         toggle = !toggle;
         Inventory.instance.TimeChange(toggle);
 
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
         Debug.Log("Transladando a lobby");
+    }
+
+    public void ToActualMainMenu()
+    {
+        toggle = !toggle;
+        Inventory.instance.TimeChange(toggle);
+
+        SceneManager.LoadScene(1);
+        Debug.Log("Transladando al menu principal");
     }
 }
