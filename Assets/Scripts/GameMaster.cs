@@ -23,7 +23,8 @@ public class GameMaster : MonoBehaviour
     //Referencias Al Jugador
     Player player;
     public GameObject playerObject;
-    public GameObject particles, particlesChild;
+    public GameObject sleepParticle;
+    public GameObject sleepParticlePrefab;
 
     //Modificadores
     public List<Mods> mods = new List<Mods>();
@@ -135,10 +136,15 @@ public class GameMaster : MonoBehaviour
             player.Pesadilla = false;
             nightmareCalled = false;
 
-            if (particles != null)
+            if (sleepParticle != null)
             {
-                particles.GetComponent<ParticleSystem>().Stop();
-                particlesChild.GetComponent<ParticleSystem>().Stop();
+                sleepParticle.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
+
+                ParticleSystem[] particles = sleepParticle.transform.GetChild(0).GetComponentsInChildren<ParticleSystem>();
+                for (int i = 0; i < particles.Length; i++)
+                {
+                    particles[i].Stop();
+                }
             }
         }
 
@@ -152,10 +158,15 @@ public class GameMaster : MonoBehaviour
             
             print(player.Pesadilla + " on Event call");
 
-            if (particles != null)
+            if (sleepParticle != null)
             {
-                particles.GetComponent<ParticleSystem>().Play();
-                particlesChild.GetComponent<ParticleSystem>().Play();
+                sleepParticle.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+
+                ParticleSystem[] particles = sleepParticle.transform.GetChild(0).GetComponentsInChildren<ParticleSystem>();
+                for (int i = 0; i < particles.Length; i++)
+                {
+                    particles[i].Play();
+                }
             }
         }
     }

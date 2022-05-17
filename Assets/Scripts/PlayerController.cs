@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     LayerMask enemyLayer;
     [SerializeField]
-    GameObject particles, particlesChild;
+    GameObject particles;
 
     public GameObject espada;
     public GameObject espadaDeLuz;
@@ -46,11 +46,9 @@ public class PlayerController : MonoBehaviour
         gm = FindObjectOfType<GameMaster>();
 
         gm.playerObject = this.gameObject;
-        gm.particles = this.particles;
-        gm.particlesChild = this.particlesChild;
+        gm.sleepParticle = this.particles;
 
         particles.GetComponent<ParticleSystem>().Stop();
-        particlesChild.GetComponent<ParticleSystem>().Stop();
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
 
