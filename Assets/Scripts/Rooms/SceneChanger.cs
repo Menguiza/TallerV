@@ -25,7 +25,6 @@ public class SceneChanger : MonoBehaviour
         if(transform.childCount<=0)
         {
             SceneManager.LoadScene(index);
-            Economy.instance.RewardGems(50);
         }
     }
 }

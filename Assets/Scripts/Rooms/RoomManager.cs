@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
-    public UnityEvent onChangeScene;
+    public UnityEvent onChangeScene, onRoomFinished;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();
@@ -54,22 +55,21 @@ public class RoomManager : MonoBehaviour
 
     void SetUpRoom(Room room)
     {
-        foreach (RoomSpawners element in room.data)
+        if(room != null)
         {
-            GameObject selected = element.objects[RandomInt(element.objects.Count)];
-            GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
-        }
-    }
-
-    void SetUpRoom(Room room, EnemyController enemy)
-    {
-        foreach (RoomSpawners element in room.data)
-        {
-            foreach(GameObject obj in element.objects)
+            foreach (RoomSpawners element in room.data)
             {
-                if(obj.GetComponent<EnemyController>() == enemy)
+                GameObject selected = element.objects[RandomInt(element.objects.Count)];
+
+                if (selected.GetComponent<IEnemy>() != null)
                 {
-                    Instantiate(obj, element.spawns[RandomInt(element.spawns.Count - 1)], Quaternion.identity);
+                    GameObject enemy = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
+
+                    enemy.transform.parent = FindObjectOfType<SceneChanger>().transform;
+                }
+                else
+                {
+                    GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
                 }
             }
         }
@@ -77,7 +77,24 @@ public class RoomManager : MonoBehaviour
 
     Room SelectRoom()
     {
-        return rooms[RandomInt(rooms.Count - 1)];
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            return rooms[0];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        {
+            return rooms[1];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            return rooms[2];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            return rooms[3];
+        }
+
+        return null;
     }
 
     int RandomInt(int max)
