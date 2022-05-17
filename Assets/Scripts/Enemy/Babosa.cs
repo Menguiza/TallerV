@@ -14,6 +14,8 @@ public class Babosa : MonoBehaviour, IEnemy
 
     [SerializeField]
     int dmg = 1, conciencia = 1;
+    [SerializeField]
+    float force = 40, distance = 1f;
 
     public int Damage { get => dmg; set => dmg = value; }
     public int Conciencia { get => conciencia; set => conciencia = value; }
@@ -49,7 +51,14 @@ public class Babosa : MonoBehaviour, IEnemy
         playerInSightRange = Physics.CheckSphere(transform.position, sightRange, whatIsPlayer);
         playerInAttackRange = Physics.CheckSphere(transform.position, attackRange, whatIsPlayer);
 
-        anim.SetBool("Moving", !playerInAttackRange);
+        if(playerInSightRange && !alreadyAttacked)
+        {
+            anim.SetBool("Moving", true);
+        }
+        else
+        {
+            anim.SetBool("Moving", false);
+        }
 
         if (!playerInSightRange && !playerInAttackRange)
         {
@@ -94,11 +103,13 @@ public class Babosa : MonoBehaviour, IEnemy
     {
         Turn();
 
-        if (!alreadyAttacked)
-        {
-            walkPoint = player.position;
-            walkPoint.y = 0;
+        float apart = Vector3.Distance(player.position, transform.position);
 
+        walkPoint = player.position;
+        walkPoint.y = 0;
+
+        if (!alreadyAttacked && apart >= distance)
+        {
             transform.position = Vector3.MoveTowards(transform.position, walkPoint, step);
         }
     }
@@ -132,7 +143,10 @@ public class Babosa : MonoBehaviour, IEnemy
 
     public void DestroyEnemy()
     {
-        Destroy(gameObject);
+        anim.SetTrigger("Die");
+        gameObject.GetComponent<Collider>().enabled = false;
+        gameObject.GetComponent<Rigidbody>().useGravity = false;
+        Destroy(gameObject, 1.6f);
     }
 
     public void ReceiveDamage(int dmg)
@@ -141,14 +155,9 @@ public class Babosa : MonoBehaviour, IEnemy
 
         if (health <= 0) DestroyEnemy();
 
-        if (transform.position.z > player.position.z)
-        {
-            GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, 3), ForceMode.Impulse);
-        }
-        else
-        {
-            GetComponent<Rigidbody>().AddForce(new Vector3(0, 2, -3), ForceMode.Impulse);
-        }
+        Vector3 moveDir = transform.position - player.position;
+
+        gameObject.GetComponent<Rigidbody>().AddForce(moveDir.normalized * (float)force);
     }
 
     void Turn()
