@@ -17,16 +17,8 @@ public class FadeScreen : MonoBehaviour
         StartCoroutine(FadeWhite());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.J)) StartCoroutine(FadeWhite());
-        if (Input.GetKeyDown(KeyCode.K)) StartCoroutine(FadeBlack());
-    }
-
     IEnumerator FadeWhite()
     {
-        StopCoroutine(FadeBlack());
-
         while (fadePanel.color.a != 0)
         {
             float newAlpha = (float)Math.Round(fadePanel.color.a - Time.deltaTime/fadeTime, 3);
@@ -42,8 +34,6 @@ public class FadeScreen : MonoBehaviour
 
     IEnumerator FadeBlack()
     {
-        StopCoroutine(FadeWhite());
-
         while (fadePanel.color.a != 1)
         {
             float newAlpha = (float)Math.Round(fadePanel.color.a + Time.deltaTime/fadeTime, 3);

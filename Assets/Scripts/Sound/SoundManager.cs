@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class SoundManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource audioSource;
 
-
+    [SerializeField] AudioMixerSnapshot paused, unpaused;
 
 
 
@@ -43,17 +44,14 @@ public class SoundManager : MonoBehaviour
     }
     #endregion
 
-    #region"Spells - SFX"
-    #endregion
+    public void SetPauseMusic()
+    {
+        paused.TransitionTo(0);
+    }
 
-    #region"Spells - Cast sounds"
-    #endregion
-
-    #region"Fairy"
-    #endregion
-
-    #region"Enemy"
-    #endregion
-
+    public void SetUnpausedMusic()
+    {
+        unpaused.TransitionTo(0);
+    }
     #endregion
 }
