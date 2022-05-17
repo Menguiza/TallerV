@@ -271,7 +271,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 3
+  outlineWidth: 5
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 587366007896238738, guid: 5a298cbb138023c4cb4c20a2fb445704, type: 3}
@@ -1671,7 +1671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 3
+  outlineWidth: 5
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 587366007896238738, guid: 5a298cbb138023c4cb4c20a2fb445704, type: 3}
@@ -3201,7 +3201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   outlineMode: 0
   outlineColor: {r: 0, g: 0, b: 0, a: 1}
-  outlineWidth: 3
+  outlineWidth: 5
   precomputeOutline: 1
   bakeKeys:
   - {fileID: 587366007896238738, guid: 5a298cbb138023c4cb4c20a2fb445704, type: 3}
