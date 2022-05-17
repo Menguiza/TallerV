@@ -2,17 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemCrate : MonoBehaviour
+public class ItemCrate : MonoBehaviour, IEnemy
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] int health;
+
+    [SerializeField] int damage;
+    public int Damage { get => damage; set => damage = value; }
+
+    [SerializeField] int conciencia;
+    public int Conciencia { get => conciencia; set => conciencia = value; }
+
+    [SerializeField] GameObject CrateExplotion;
+
+    public void DestroyEnemy()
     {
-        
+        // Otorgar un objeto
+        Inventory.instance.AddItem(Inventory.instance.GenerateRandomItem());
+        Inventory.instance.OnItemCollected.Invoke();
+
+        GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
+        Destroy(instance, 4f);
+
+        Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ReceiveDamage(int dmg)
     {
-        
+        health -= dmg;
+        if (health <= 0) DestroyEnemy();
     }
 }

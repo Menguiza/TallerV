@@ -11,8 +11,8 @@ public class PauseInput : MonoBehaviour
 
     private void Awake()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     void Update()
@@ -39,16 +39,9 @@ public class PauseInput : MonoBehaviour
 
     void ActiveCursor(bool callBack)
     {
-        if(callBack)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        // Si, ya no hace nada esto
+        // No, no voy a quitar el metodo
+        // Perdoname Gio
     }
 
     public void CloseGame()

@@ -12,8 +12,8 @@ public class InventoryInput : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        //Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.visible = false;
     }
 
     void Update()
@@ -42,15 +42,8 @@ public class InventoryInput : MonoBehaviour
 
     public void ActiveCursor(bool callBack)
     {
-        if (callBack)
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
+        // Si, esto ahora no hará nada ya que el cursor siempre será visible
+        // No, no quiero borrar esto porque me tocaria arreglar un par de cosas que no estoy dispuesto a arreglar
+        // Gracias
     }
 }

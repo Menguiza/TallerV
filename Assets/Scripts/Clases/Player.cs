@@ -105,7 +105,7 @@ public class Player
             {
                 Status = GameMaster.estado.Despierto;
                 conciencia = maxConciencia;
-                pesadilla = false;
+                //pesadilla = false;
 
                 wakeFlag = true;
             }
@@ -250,10 +250,12 @@ public class Player
         get => pesadilla;
         set
         {
+            /*
             if (value != pesadilla)
             {
                 pesadilla = value;
-            }
+            }*/
+            pesadilla = value;
         }
     }
 

@@ -115,6 +115,7 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (player.Status == estado.Dormido)
         {
             player.Pesadilla = IsNightmare();
@@ -123,13 +124,16 @@ public class GameMaster : MonoBehaviour
         {
             player.Pesadilla = false;
             nightmareCalled = false;
-        }
+        }*/
 
         //Preguntar por los flags de cambio de estado en el jugador
         if (player.wakeFlag)
         {
             PlayerWake.Invoke();
             player.wakeFlag = false;
+
+            player.Pesadilla = false;
+            nightmareCalled = false;
 
             if (particles != null)
             {
@@ -140,10 +144,15 @@ public class GameMaster : MonoBehaviour
 
         if(player.dreamFlag)
         {
-            PlayerDream.Invoke();
+            player.Pesadilla = IsNightmare();
             player.dreamFlag = false;
+            PlayerDream.Invoke();
+            
 
-            if(particles != null)
+            
+            print(player.Pesadilla + " on Event call");
+
+            if (particles != null)
             {
                 particles.GetComponent<ParticleSystem>().Play();
                 particlesChild.GetComponent<ParticleSystem>().Play();
@@ -177,8 +186,8 @@ public class GameMaster : MonoBehaviour
     /// </summary>
     public void ApplyTechniques()
     {
-
-
+        print(player.Pesadilla + " on ApplyTech");
+        
         CheckStance();
         foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
         {
@@ -189,9 +198,15 @@ public class GameMaster : MonoBehaviour
                     break;
 
                 case estado.Dormido:
+
+                    print(technique.techniqueName);
+                    print(technique.activeState == ModsTecnicas.ActiveState.anyDream);
+                    print(!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream);
+                    print(player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream);
+
                     if (technique.activeState == ModsTecnicas.ActiveState.anyDream) AddTechnique(technique);
-                    else if (!IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
-                    else if (IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
+                    else if (!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
+                    else if (player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
                     break;
                 default:
                     Debug.LogWarning("|GameMaster -> Sistema de posturas| Algo salio mal con el estado del jugador");
@@ -459,7 +474,7 @@ public class GameMaster : MonoBehaviour
             }
         }
 
-        return player.Pesadilla;
+        return false;
     }
 
     #endregion

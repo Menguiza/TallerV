@@ -16,6 +16,7 @@ MonoBehaviour:
   type: 2
   format: 0
   use: 1
+  rarity: 2
   icon: {fileID: 21300000, guid: a86dc8fe26f9b8c4c98adbdd5d0fff73, type: 3}
   multVidaMax: 0
   multDmg: 0
