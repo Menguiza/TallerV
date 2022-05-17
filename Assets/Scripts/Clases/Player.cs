@@ -18,6 +18,7 @@ public class Player
     private byte multPesadilla = 0;
     private bool pesadilla = false;
     private float multDañoRecibido = 1f;
+    private float multHechizos = 1f;
 
     //Variables used for "Wake" and "Dream" UnityEvents
     public bool wakeFlag = false;
@@ -271,6 +272,22 @@ public class Player
             else
             {
                 multDañoRecibido = 0.25f;
+            }
+        }
+    }
+
+    public float MultHechizos
+    {
+        get => multHechizos;
+        set
+        {
+            if (value >= 1)
+            {
+                multHechizos = value;
+            }
+            else
+            {
+                multHechizos = 1;
             }
         }
     }

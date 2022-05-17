@@ -42,13 +42,15 @@ public class Prueba : Editor
 
         gm.multDañoRecibidoINP = (float)EditorGUILayout.Slider("Mult. Daño Recibido (+Value)", gm.multDañoRecibidoINP, -10f, 10f);
 
+        gm.multHechizosINP = (float)EditorGUILayout.Slider("Mult. Vel. Hechizos (+Value)", gm.multHechizosINP, -10f, 10f);
+
         #endregion
 
         GUILayout.BeginHorizontal();
 
         if (GUILayout.Button("Add Mod"))
         {
-            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP, gm.multPesadillaINP, gm.multDañoRecibidoINP);
+            gm.AddMod(gm.nameINP, gm.vidaINP, gm.dmgINP, gm.multConcienciaINP, gm.tgpcINP, gm.critProbINP, gm.critMultINP, gm.roboDeVidaINP, gm.multVelAtaqueINP, gm.speedMultINP, gm.multPesadillaINP, gm.multDañoRecibidoINP, gm.multHechizosINP);
             gm.nameINP = "";
         }
 
@@ -75,7 +77,7 @@ public class Prueba : Editor
                     + " | " + "MultConciencia +X : " + gm.mods[i].MultConciencia + " | " + "MultTGPC +X : " + gm.mods[i].MultTGPC + 
                     " | " + "Crit Prob +% : " + gm.mods[i].MultCritProb + " | " + "MultCrit +X : " + gm.mods[i].MultCrit + " | " + "Robo de Vida +% : " + gm.mods[i].MultRoboPer
                     + " | " + "MultVelAtaque +X : " + gm.mods[i].MultVelAtaque + " | " + "MultSpeed +X : " + gm.mods[i].MultSpeed + " | " +"MultPesadilla +% : " + gm.mods[i].MultPesadillaPer
-                    + " | " + "MultDañoRecibido +X : " + gm.mods[i].MultDañoRecibido);
+                    + " | " + "MultDañoRecibido +X : " + gm.mods[i].MultDañoRecibido + " | " + "MultVelHechizos +X : " + gm.mods[i].MultHechizos);
             }
 
             for (int i = 0; i < displayMod.Count; i++)
@@ -137,7 +139,7 @@ public class Prueba : Editor
         {
             GUILayout.Label("Player Stats", EditorStyles.boldLabel);
 
-            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult, multPesadilla, multDañoRecibido;
+            string maxLife, life, maxConciencia, conciencia, damage, status, tGPC, critProb, critMult, roboDeVida, multVelAtaque, speedMult, multPesadilla, multDañoRecibido, multHechizos;
             bool pesadilla;
 
             maxLife = EditorGUILayout.TextField("Vida Maxima: ", gm.Player.MaxLife.ToString());
@@ -155,7 +157,8 @@ public class Prueba : Editor
             multPesadilla = EditorGUILayout.TextField("Mult. Pesadilla: ", gm.Player.MultPesadilla.ToString());
             pesadilla = EditorGUILayout.Toggle("Pesadilla: ", gm.Player.Pesadilla);
             multDañoRecibido = EditorGUILayout.TextField("Mult. daño recibido: ", gm.Player.MultDañoRecibido.ToString());
-            
+            multHechizos = EditorGUILayout.TextField("Mult. vel. Hechizos: ", gm.Player.MultHechizos.ToString());
+
         }
 
         #endregion

@@ -23,8 +23,8 @@ public class ModificadoresEstadoDormido : MonoBehaviour
         yield return null;
 
         print(GameMaster.instance.Player.Pesadilla + " pre");
-        if (GameMaster.instance.Player.Pesadilla) GameMaster.instance.AddMod("Caos de pesadilla", 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 2f);
-        else GameMaster.instance.AddMod("Arte del soñador", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 1f);
+        if (GameMaster.instance.Player.Pesadilla) GameMaster.instance.AddMod("Caos de pesadilla", 0, 20, 0, 0, 0, 0, 0, 0, 0, 0, 2f, 0);
+        else GameMaster.instance.AddMod("Arte del soñador", 0, 10, 0, 0, 0, 0, 0, 0, 0, 0, 1f, 0);
         print(GameMaster.instance.Player.Pesadilla + " post");
         StopCoroutine(ApplyDreamModifierOnNextFrame());
     }
