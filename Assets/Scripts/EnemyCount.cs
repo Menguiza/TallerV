@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class EnemyCount : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class EnemyCount : MonoBehaviour
 
         if(int.Parse(text.text) == 0)
         {
-            me.GetComponentInParent<CanvasGroup>().alpha = 0;
+            me.GetComponent<CanvasGroup>().alpha = 0;
 
             if(!llamado)
             {
@@ -27,7 +28,7 @@ public class EnemyCount : MonoBehaviour
         }
         else
         { 
-            me.GetComponentInParent<CanvasGroup>().alpha = 1;
+            me.GetComponent<CanvasGroup>().alpha = 1;
         }
     }
 
@@ -35,6 +36,9 @@ public class EnemyCount : MonoBehaviour
     {
         llamado = true;
         GameMaster.instance.OnRoomFinished?.Invoke();
-        continuar.GetComponent<CanvasGroup>().alpha = 1;
+        if(SceneManager.GetActiveScene().buildIndex != 4)
+        {
+            continuar.GetComponent<CanvasGroup>().alpha = 1;
+        }
     }
 }
