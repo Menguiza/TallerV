@@ -250,6 +250,7 @@ public class GameMaster : MonoBehaviour
     {
         CheckStance();
         bool managedToRemove = false;
+        if (posturaDelSueño == null) return;
         foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
         {
             foreach (Mods mod in mods)
