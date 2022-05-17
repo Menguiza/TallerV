@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum ItemRarity
+{
+    common = 0,
+    rare = 1,
+    dreamer = 2,
+    forgotten = 3
+}
+
+
 [CreateAssetMenu(fileName = "Item", menuName = "ScriptableObjects/Item", order = 1)]
 public class Item : ScriptableObject
 {
@@ -11,6 +20,7 @@ public class Item : ScriptableObject
     public ItemType type;
     public ItemFormat format;
     public ItemUse use;
+    public ItemRarity rarity;
     public Sprite icon;
 
     [Header("Parametros")]

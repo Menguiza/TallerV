@@ -274,4 +274,63 @@ public class Inventory : MonoBehaviour
             Time.timeScale = 1;
         }
     }
+
+    #region"Generación de Items"
+
+    [Header("Item arrays")]
+    [SerializeField] Item[] commonItems;
+    [SerializeField] Item[] rareItems;
+    [SerializeField] Item[] dreamerItems;
+    [SerializeField] Item[] forgottenItems;
+
+
+    public Item GenerateRandomItem()
+    {
+        Item item;
+        int chanceNumber = GenerateRandomChance();
+
+        if (chanceNumber < 40) item = GenerateRandomCommonItem();
+        else if (chanceNumber < 70) item = GenerateRandomRareItem();
+        else if (chanceNumber < 90) item = GenerateRandomDreamerItem();
+        else item = GenerateRandomForgottenItem();
+
+        return item;
+    }
+
+    Item GenerateRandomCommonItem()
+    {
+        Item item = commonItems[GenerateRandomArrayIndex(commonItems.Length)];
+        return item;
+    }
+
+    Item GenerateRandomRareItem()
+    {
+        Item item = rareItems[GenerateRandomArrayIndex(rareItems.Length)];
+        return item;
+    }
+
+    Item GenerateRandomDreamerItem()
+    {
+        Item item = dreamerItems[GenerateRandomArrayIndex(dreamerItems.Length)];     
+        return item;
+    }
+
+    Item GenerateRandomForgottenItem()
+    {
+        Item item = forgottenItems[GenerateRandomArrayIndex(forgottenItems.Length)];       
+        return item;
+    }
+
+    int GenerateRandomChance()
+    {
+        int randomChance = Random.Range(1, 101);
+        return randomChance;
+    }
+
+    int GenerateRandomArrayIndex(int size)
+    {
+        int randomArrayIndex = Random.Range(0, size);
+        return randomArrayIndex;
+    }
+    #endregion
 }

@@ -23,7 +23,8 @@ public class GameMaster : MonoBehaviour
     //Referencias Al Jugador
     Player player;
     public GameObject playerObject;
-    public GameObject particles, particlesChild;
+    public GameObject sleepParticle;
+    public GameObject sleepParticlePrefab;
 
     //Modificadores
     public List<Mods> mods = new List<Mods>();
@@ -115,6 +116,7 @@ public class GameMaster : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (player.Status == estado.Dormido)
         {
             player.Pesadilla = IsNightmare();
@@ -123,7 +125,7 @@ public class GameMaster : MonoBehaviour
         {
             player.Pesadilla = false;
             nightmareCalled = false;
-        }
+        }*/
 
         //Preguntar por los flags de cambio de estado en el jugador
         if (player.wakeFlag)
@@ -131,22 +133,40 @@ public class GameMaster : MonoBehaviour
             PlayerWake.Invoke();
             player.wakeFlag = false;
 
-            if (particles != null)
+            player.Pesadilla = false;
+            nightmareCalled = false;
+
+            if (sleepParticle != null)
             {
-                particles.GetComponent<ParticleSystem>().Stop();
-                particlesChild.GetComponent<ParticleSystem>().Stop();
+                sleepParticle.transform.GetChild(0).GetComponent<ParticleSystem>().Stop();
+
+                ParticleSystem[] particles = sleepParticle.transform.GetChild(0).GetComponentsInChildren<ParticleSystem>();
+                for (int i = 0; i < particles.Length; i++)
+                {
+                    particles[i].Stop();
+                }
             }
         }
 
         if(player.dreamFlag)
         {
-            PlayerDream.Invoke();
+            player.Pesadilla = IsNightmare();
             player.dreamFlag = false;
+            PlayerDream.Invoke();
+            
 
-            if(particles != null)
+            
+            print(player.Pesadilla + " on Event call");
+
+            if (sleepParticle != null)
             {
-                particles.GetComponent<ParticleSystem>().Play();
-                particlesChild.GetComponent<ParticleSystem>().Play();
+                sleepParticle.transform.GetChild(0).GetComponent<ParticleSystem>().Play();
+
+                ParticleSystem[] particles = sleepParticle.transform.GetChild(0).GetComponentsInChildren<ParticleSystem>();
+                for (int i = 0; i < particles.Length; i++)
+                {
+                    particles[i].Play();
+                }
             }
         }
     }
@@ -177,8 +197,8 @@ public class GameMaster : MonoBehaviour
     /// </summary>
     public void ApplyTechniques()
     {
-
-
+        print(player.Pesadilla + " on ApplyTech");
+        
         CheckStance();
         foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
         {
@@ -189,9 +209,15 @@ public class GameMaster : MonoBehaviour
                     break;
 
                 case estado.Dormido:
+
+                    print(technique.techniqueName);
+                    print(technique.activeState == ModsTecnicas.ActiveState.anyDream);
+                    print(!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream);
+                    print(player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream);
+
                     if (technique.activeState == ModsTecnicas.ActiveState.anyDream) AddTechnique(technique);
-                    else if (!IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
-                    else if (IsNightmare() && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
+                    else if (!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
+                    else if (player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
                     break;
                 default:
                     Debug.LogWarning("|GameMaster -> Sistema de posturas| Algo salio mal con el estado del jugador");
@@ -459,7 +485,7 @@ public class GameMaster : MonoBehaviour
             }
         }
 
-        return player.Pesadilla;
+        return false;
     }
 
     #endregion

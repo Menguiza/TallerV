@@ -30,6 +30,8 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         GameMaster.instance.posturaDelSueño = posturasDelSueño[(int)GameMaster.instance.IDPostura];
         GameMaster.instance.RemoveActiveTechniques();
         GameMaster.instance.ApplyTechniques();
+
+        
     }
 
     public void AssignNewStance(Postura postura)
@@ -38,5 +40,36 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         GameMaster.instance.RemoveActiveTechniques();
         GameMaster.instance.posturaDelSueño = posturasDelSueño[(int)postura];
         GameMaster.instance.ApplyTechniques();
+        
+        if (GameMaster.instance.sleepParticle.transform.childCount > 0)
+        {
+            Destroy(GameMaster.instance.sleepParticle.transform.GetChild(0).gameObject);
+        }
+
+        print(postura);
+
+        switch (postura)
+        {
+            case Postura.Base:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_Normal");
+                break;
+            case Postura.Daño:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_Power");
+                break;
+            case Postura.Proteccion:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_Protection");
+                break;
+            case Postura.Critico:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_Crit");
+                break;
+            case Postura.Recarga:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_FR");
+                break;
+            case Postura.Pesadilla:
+                GameMaster.instance.sleepParticlePrefab = (GameObject)Resources.Load("Prefabs/Posturas/F_Sleep_Nightmare");
+                break;
+        }
+
+        Instantiate(GameMaster.instance.sleepParticlePrefab, GameMaster.instance.sleepParticle.transform.position, Quaternion.identity, GameMaster.instance.sleepParticle.transform);
     }
 }
