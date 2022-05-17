@@ -59,7 +59,7 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
         remainingCD = CDTime;
 
         sbyte totalValue = (sbyte)(10 * damage); // 10 equivale a +100%
-        GameMaster.instance.AddMod("Espada de luz", 0,  totalValue, 0, 0, 0, 0, 0, 0, 0, 0, 0);
+        GameMaster.instance.AddMod("Espada de luz", 0,  totalValue, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         Invoke(nameof(RemoveSpellEfect), buffDuration);
         Invoke(nameof(StopEmittingParticles), 4f);
 

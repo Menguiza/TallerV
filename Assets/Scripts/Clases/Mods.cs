@@ -20,6 +20,7 @@ public class Mods
     private float multSpeed;
     private sbyte multPesadillaPer;
     private float multDañoRecibido;
+    private float multHechizos;
 
     //Accesores
     public string Name
@@ -127,10 +128,11 @@ public class Mods
     }
 
     public float MultDañoRecibido { get => multDañoRecibido; set => multDañoRecibido = value; }
+    public float MultHechizos { get => multHechizos; set => multHechizos = value; }
 
     //Constructor
     public Mods(string name, sbyte multVidaMax, sbyte multDmg, float multiplicadorConciencia, sbyte multTGPC, sbyte multCritProb, float multCrit
-        , sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer, float multDañoRecibido)
+        , sbyte multRoboPer, float multVelAtaque, float multSpeed, sbyte multPesadillaPer, float multDañoRecibido, float multHechizos)
     {
         Name = name;
         Utilizado = false;
@@ -146,5 +148,6 @@ public class Mods
         MultSpeed = multSpeed;
         MultPesadillaPer = multPesadillaPer;
         MultDañoRecibido = multDañoRecibido;
+        MultHechizos = multHechizos;
     }
 }

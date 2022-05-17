@@ -28,5 +28,6 @@ public class Stats : MonoBehaviour
         dataPrefb[6].text = "x" + GameMaster.instance.Player.SpeedMult.ToString();
         dataPrefb[7].text = GameMaster.instance.Player.MultPesadilla + "%";
         dataPrefb[8].text = "x" + GameMaster.instance.Player.MultDañoRecibido.ToString();
+        dataPrefb[9].text = "x" + GameMaster.instance.Player.MultHechizos.ToString();
     }
 }

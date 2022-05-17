@@ -22,11 +22,12 @@ public class DreamCatcher : ScriptableObject
     public float multVelAatque = 0;
     public float multSpeed = 0;
     public sbyte multPesadillaPer = 0;
-    float multDañoRecibido = 0;
+    public float multDañoRecibido = 0;
+    public float multHechizos = 0;
 
     public void AddParameters()
     {
-        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer, multDañoRecibido);
+        GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer, multDañoRecibido, multHechizos);
     }
 
     public void ResetParameter()
