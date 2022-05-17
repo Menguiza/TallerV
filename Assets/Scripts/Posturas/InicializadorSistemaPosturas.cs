@@ -30,6 +30,8 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         GameMaster.instance.posturaDelSueño = posturasDelSueño[(int)GameMaster.instance.IDPostura];
         GameMaster.instance.RemoveActiveTechniques();
         GameMaster.instance.ApplyTechniques();
+
+        
     }
 
     public void AssignNewStance(Postura postura)
@@ -43,6 +45,8 @@ public class InicializadorSistemaPosturas : MonoBehaviour
         {
             Destroy(GameMaster.instance.sleepParticle.transform.GetChild(0).gameObject);
         }
+
+        print(postura);
 
         switch (postura)
         {

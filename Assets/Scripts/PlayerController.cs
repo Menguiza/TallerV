@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         gm.playerObject = this.gameObject;
         gm.sleepParticle = this.particles;
 
-        particles.GetComponent<ParticleSystem>().Stop();
+        gm.gameObject.GetComponent<InicializadorSistemaPosturas>().AssignNewStance(gm.IDPostura);
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
 

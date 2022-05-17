@@ -50,7 +50,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 1
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -1305,9 +1305,9 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.4952259, g: 0, b: 1, a: 0.19607843}
-        key1: {r: 0.6871626, g: 0, b: 0.6981132, a: 0.19607843}
-        key2: {r: 0.4347639, g: 0, b: 1, a: 0.19607843}
+        key0: {r: 0, g: 0.7999966, b: 1, a: 0.19607843}
+        key1: {r: 0, g: 0.69803923, b: 0.684643, a: 0.19607843}
+        key2: {r: 0, g: 1, b: 1, a: 0.19607843}
         key3: {r: 0.9037093, g: 0.3443396, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
@@ -1315,7 +1315,7 @@ ParticleSystem:
         key7: {r: 0, g: 0, b: 0, a: 0}
         ctime0: 0
         ctime1: 31611
-        ctime2: 65342
+        ctime2: 65535
         ctime3: 65535
         ctime4: 0
         ctime5: 0
@@ -4824,7 +4824,7 @@ GameObject:
   - component: {fileID: 1492520972623973978}
   - component: {fileID: 1492520972623973981}
   m_Layer: 6
-  m_Name: F_Sleep_Nightmare
+  m_Name: F_Sleep_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4865,7 +4865,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -6120,62 +6120,62 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.39401925, g: 0, b: 0.7372549, a: 0.47058824}
-        key1: {r: 0.33774376, g: 0, b: 1, a: 1}
-        key2: {r: 0.7581997, g: 0, b: 1, a: 0.039215688}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0, g: 0.8305149, b: 1, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
+        key2: {r: 1, g: 0.32348293, b: 0, a: 1}
+        key3: {r: 1, g: 0.9584457, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 32768
+        ctime0: 0
         ctime1: 65535
-        ctime2: 65535
-        ctime3: 0
+        ctime2: 28142
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 32382
-        atime2: 65535
-        atime3: 0
+        atime1: 65535
+        atime2: 34695
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 0.6528621, g: 0, b: 1, a: 0.47058824}
-        key1: {r: 1, g: 0, b: 0.7928457, a: 1}
-        key2: {r: 0, g: 0, b: 0, a: 0.039215688}
-        key3: {r: 0, g: 0, b: 0, a: 0}
+        key0: {r: 0, g: 1, b: 0.805177, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
+        key2: {r: 1, g: 0.32348293, b: 0, a: 1}
+        key3: {r: 1, g: 0.9584457, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
         key5: {r: 0, g: 0, b: 0, a: 0}
         key6: {r: 0, g: 0, b: 0, a: 0}
         key7: {r: 0, g: 0, b: 0, a: 0}
-        ctime0: 32768
+        ctime0: 0
         ctime1: 65535
-        ctime2: 0
-        ctime3: 0
+        ctime2: 28142
+        ctime3: 65535
         ctime4: 0
         ctime5: 0
         ctime6: 0
         ctime7: 0
         atime0: 0
-        atime1: 33153
-        atime2: 65535
-        atime3: 0
+        atime1: 65535
+        atime2: 34695
+        atime3: 65535
         atime4: 0
         atime5: 0
         atime6: 0
         atime7: 0
         m_Mode: 0
         m_NumColorKeys: 2
-        m_NumAlphaKeys: 3
+        m_NumAlphaKeys: 2
   UVModule:
     serializedVersion: 2
     enabled: 0
@@ -9576,7 +9576,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b6deb8b589e799479ecf14da3c5278d, type: 2}
+  - {fileID: 2100000, guid: 20a94c60a7b89c441aed38f04f3ff54e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9677,7 +9677,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -10990,8 +10990,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.6713352, g: 0, b: 1, a: 1}
-        key1: {r: 0.7581997, g: 0, b: 1, a: 0.039215688}
+        key0: {r: 0, g: 0.8305149, b: 1, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -11019,8 +11019,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.13757396, b: 1, a: 1}
-        key1: {r: 1, g: 0, b: 0.7928457, a: 0.039215688}
+        key0: {r: 0, g: 1, b: 0.805177, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -14547,7 +14547,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -15860,8 +15860,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.6713352, g: 0, b: 1, a: 1}
-        key1: {r: 0.7581997, g: 0, b: 1, a: 0.039215688}
+        key0: {r: 0, g: 0.8305149, b: 1, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -15889,8 +15889,8 @@ ParticleSystem:
         m_NumAlphaKeys: 2
       minGradient:
         serializedVersion: 2
-        key0: {r: 0, g: 0.13757396, b: 1, a: 1}
-        key1: {r: 1, g: 0, b: 0.7928457, a: 0.039215688}
+        key0: {r: 0, g: 1, b: 0.805177, a: 1}
+        key1: {r: 0, g: 1, b: 1, a: 0.039215688}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -19316,7 +19316,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 6b6deb8b589e799479ecf14da3c5278d, type: 2}
+  - {fileID: 2100000, guid: 20a94c60a7b89c441aed38f04f3ff54e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
