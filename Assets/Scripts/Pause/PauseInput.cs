@@ -35,6 +35,9 @@ public class PauseInput : MonoBehaviour
 
             guideCanvas.SetActive(false);
             soundCanvas.SetActive(false);
+
+            if (toggle) SoundManager.instance.SetPauseMusic();
+            else SoundManager.instance.SetUnpausedMusic();
         }
 
         pauseMenu.interactable = toggle;
