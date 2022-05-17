@@ -7,7 +7,9 @@ using UnityEngine.SceneManagement;
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
-    public UnityEvent onChangeScene, onRoomFinished;
+    public UnityEvent onChangeScene;
+    int[] indexes = new int[5];
+    int count = 0;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();
@@ -35,7 +37,21 @@ public class RoomManager : MonoBehaviour
 
         #endregion
 
-        if(rooms.Count !=0)
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            count = 0;
+            indexes = SetUpIndexes();
+
+            FindObjectOfType<SceneChanger>().index = indexes[count];
+            count++;
+        }
+        else
+        {
+            FindObjectOfType<SceneChanger>().index = indexes[count];
+            count++;
+        }
+
+        if (rooms.Count !=0)
         {
             SetUpRoom(SelectRoom());
         }
@@ -77,24 +93,55 @@ public class RoomManager : MonoBehaviour
 
     Room SelectRoom()
     {
-        if(SceneManager.GetActiveScene().buildIndex == 0)
+        if(SceneManager.GetActiveScene().buildIndex == 5)
         {
             return rooms[0];
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 1)
+        else if (SceneManager.GetActiveScene().buildIndex == 6)
         {
             return rooms[1];
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        else if (SceneManager.GetActiveScene().buildIndex == 7)
         {
             return rooms[2];
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        else if (SceneManager.GetActiveScene().buildIndex == 8)
         {
             return rooms[3];
         }
 
         return null;
+    }
+
+    int[] SetUpIndexes()
+    {
+        int[] indexes = new int[5];
+
+        for(int i = 0; i<3; i++)
+        {
+            int rnd = RandomInt(4);
+
+            switch(rnd)
+            {
+                case 0:
+                    indexes[i] = 5;
+                    break;
+                case 1:
+                    indexes[i] = 6;
+                    break;
+                case 2:
+                    indexes[i] = 7;
+                    break;
+                case 3:
+                    indexes[i] = 8;
+                    break;
+            }
+        }
+
+        indexes[3] = 2;
+        indexes[4] = 9;
+
+        return indexes;
     }
 
     int RandomInt(int max)

@@ -16,8 +16,13 @@ public class SceneChanger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            RoomManager.instance.onChangeScene?.Invoke();
+            Invoke("ChangeScene", 0.5f);
         }
+    }
+
+    void ChangeScene()
+    {
+        RoomManager.instance.onChangeScene?.Invoke();
     }
 
     void CanChange()
