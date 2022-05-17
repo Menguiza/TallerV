@@ -10,6 +10,7 @@ public class EnergyBarrier : MonoBehaviour
     private void Start()
     {
         boxCollider = GetComponent<BoxCollider>();
+        GameMaster.instance.OnRoomFinished.AddListener(DestroyBarrier);
     }
 
     public void DestroyBarrier()
