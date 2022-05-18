@@ -44,5 +44,5 @@ Material:
     - _NormalSpeed: {r: 0, g: 0, b: 0, a: 0}
     - _VornoiSpeed: {r: 0.3, g: 0, b: 0, a: 0}
     - _Voronoi: {r: 1, g: 0.59063005, b: 0, a: 1}
-    - _VoronoiTiling: {r: 1.5, g: 1, b: 0, a: 0}
+    - _VoronoiTiling: {r: -1.5, g: 1, b: 0, a: 0}
   m_BuildTextureStacks: []
