@@ -21,22 +21,7 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
 
     void Start()
     {
-        //Initialize store
-        shopItems = new Item[6];
-
-        shopItems[0] = Inventory.instance.GenerateRandomItem(ItemType.Activo);
-        shopItems[1] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
-        shopItems[2] = Inventory.instance.GenerateRandomItem(ItemType.Activo);
-        shopItems[3] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
-        shopItems[4] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
-        shopItems[5] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
-
-        for (int i = 0; i < shopItems.Length; i++)
-        {
-            NameText[i].text = shopItems[i].nombre;
-            CostText[i].text = shopItems[i].price.ToString();
-            Icons[i].sprite = shopItems[i].icon;
-        }
+        StartCoroutine(InitializeOnNextFrame());
     }
 
     void Update()
@@ -73,5 +58,29 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
         ShopUI.SetActive(true);
         Inventory.instance.TimeChange(true);
         SoundManager.instance.SetPauseMusic();
+    }
+
+    IEnumerator InitializeOnNextFrame()
+    {
+        yield return null;
+
+        //Initialize store
+        shopItems = new Item[6];
+
+        shopItems[0] = Inventory.instance.GenerateRandomItem(ItemType.Activo);
+        shopItems[1] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
+        shopItems[2] = Inventory.instance.GenerateRandomItem(ItemType.Activo);
+        shopItems[3] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
+        shopItems[4] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
+        shopItems[5] = Inventory.instance.GenerateRandomItem(ItemType.Pasivo);
+
+        for (int i = 0; i < shopItems.Length; i++)
+        {
+            NameText[i].text = shopItems[i].nombre;
+            CostText[i].text = shopItems[i].price.ToString();
+            Icons[i].sprite = shopItems[i].icon;
+        }
+
+        StopCoroutine(InitializeOnNextFrame());
     }
 }

@@ -268,7 +268,6 @@ GameObject:
   - component: {fileID: 43420568}
   - component: {fileID: 8653442044966428450}
   - component: {fileID: 7691686949203551711}
-  - component: {fileID: 684610307}
   m_Layer: 0
   m_Name: BG_Music
   m_TagString: Untagged
@@ -420,17 +419,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &684610307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8065017977215463636}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 393ef5c614bd14644aa83f036a5f5bc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  paused: {fileID: 24500006, guid: fd282ee32cc00484288956e33fac4237, type: 2}
-  unpaused: {fileID: 5866883925277678467, guid: fd282ee32cc00484288956e33fac4237, type: 2}

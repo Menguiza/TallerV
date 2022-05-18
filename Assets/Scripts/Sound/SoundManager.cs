@@ -28,6 +28,7 @@ public class SoundManager : MonoBehaviour
         #endregion
 
         audioSource = GetComponent<AudioSource>();
+        SetUnpausedMusic();
     }
 
     #region"Sound methods"
