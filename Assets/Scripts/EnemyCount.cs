@@ -15,7 +15,10 @@ public class EnemyCount : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        text.text = FindObjectOfType<SceneChanger>().transform.childCount.ToString();
+        if(FindObjectOfType<SceneChanger>() != null)
+        {
+            text.text = FindObjectOfType<SceneChanger>().transform.childCount.ToString();
+        }
 
         if(int.Parse(text.text) == 0)
         {
