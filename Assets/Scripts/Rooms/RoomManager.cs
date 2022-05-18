@@ -163,36 +163,21 @@ public class RoomManager : MonoBehaviour
 
     void AssignReward()
     {
-        if(count<3 && (SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9))
+        if(SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8)
         {
             GameObject popUp = Instantiate(rewardPopUp, GameMaster.instance.playerObject.transform.position, Quaternion.identity);
-            popUp.GetComponent<PlaceHolders>().coins.text = rewards[count].coins.ToString();
-            popUp.GetComponent<PlaceHolders>().gems.text = rewards[count].gems.ToString();
-            popUp.GetComponent<PlaceHolders>().icon = rewards[count].Give();
+            popUp.GetComponent<PlaceHolders>().coins.text = rewards[count-2].coins.ToString();
+            popUp.GetComponent<PlaceHolders>().gems.text = rewards[count-2].gems.ToString();
+            popUp.GetComponent<PlaceHolders>().icon = rewards[count-2].Give();
             Destroy(popUp, 5f);
         }
-    }
-
-    void InitializeRoomOnNextFrame()
-    {
-        StartCoroutine(InitializeRoomOnNextFrameCoroutine());
-    }
-
-    IEnumerator InitializeRoomOnNextFrameCoroutine()
-    {
-        for (int i = 0; i < rooms.Count; i++)
+        else if(SceneManager.GetActiveScene().buildIndex == 9)
         {
-            if (SceneManager.GetActiveScene().buildIndex == indexes[i])
-            {
-                SetUpRoom(SelectRoom());
-                StopCoroutine(InitializeRoomOnNextFrameCoroutine());
-
-                break;
-            }
+            GameObject popUp = Instantiate(rewardPopUp, GameMaster.instance.playerObject.transform.position, Quaternion.identity);
+            popUp.GetComponent<PlaceHolders>().coins.text = rewards[rewards.Count-1].coins.ToString();
+            popUp.GetComponent<PlaceHolders>().gems.text = rewards[rewards.Count - 1].gems.ToString();
+            popUp.GetComponent<PlaceHolders>().icon = rewards[rewards.Count - 1].Give();
+            Destroy(popUp, 5f);
         }
-
-        StopCoroutine(InitializeRoomOnNextFrameCoroutine());
-
-        yield return null;
     }
 }
