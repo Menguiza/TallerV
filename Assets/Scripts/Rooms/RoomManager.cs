@@ -8,11 +8,14 @@ public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
     public UnityEvent onChangeScene;
+    public GameObject rewardPopUp;
     int[] indexes = new int[5];
     int count = 0;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();
+    [SerializeField]
+    List<RewardInfo> rewards = new List<RewardInfo>();
 
     #region "Inputs Editor"
 
@@ -57,16 +60,9 @@ public class RoomManager : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
+        GameMaster.instance.OnRoomFinished.AddListener(AssignReward);
     }
 
     void SetUpRoom(Room room)
@@ -138,7 +134,7 @@ public class RoomManager : MonoBehaviour
             }
         }
 
-        indexes[3] = 2;
+        indexes[3] = 10;
         indexes[4] = 9;
 
         return indexes;
@@ -148,5 +144,17 @@ public class RoomManager : MonoBehaviour
     {
         int rnd = Random.Range(0, max);
         return rnd;
+    }
+
+    void AssignReward()
+    {
+        if(count<3 && (SceneManager.GetActiveScene().buildIndex == 5 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7 || SceneManager.GetActiveScene().buildIndex == 8 || SceneManager.GetActiveScene().buildIndex == 9))
+        {
+            GameObject popUp = Instantiate(rewardPopUp, GameMaster.instance.playerObject.transform.position, Quaternion.identity);
+            popUp.GetComponent<PlaceHolders>().coins.text = rewards[count].coins.ToString();
+            popUp.GetComponent<PlaceHolders>().gems.text = rewards[count].gems.ToString();
+            popUp.GetComponent<PlaceHolders>().icon = rewards[count].Give();
+            Destroy(popUp, 5f);
+        }
     }
 }
