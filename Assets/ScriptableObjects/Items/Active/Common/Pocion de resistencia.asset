@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4097875dd1468e4478e607341cc960ff, type: 3}
-  m_Name: Pocion de Vida
+  m_Name: Pocion de resistencia
   m_EditorClassIdentifier: 
-  nombre: Pocion de Vida
-  type: 0
+  nombre: Pocion de resistencia
+  type: 1
   format: 1
-  use: 1
-  icon: {fileID: 21300000, guid: a7928c4f9a0e9c94eb9a2022fd8c24f2, type: 3}
+  use: 0
+  rarity: 0
+  icon: {fileID: 21300000, guid: db174df8096e7f64b92ce5184b2fa162, type: 3}
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
@@ -27,7 +28,9 @@ MonoBehaviour:
   multVelAatque: 0
   multSpeed: 0
   multPesadillaPer: 0
-  sumVida: 40
+  "multDa\xF1oRecibido": -0.2
+  multHechizos: 0
+  sumVida: 0
   sumConciencia: 0
   sumDinero: 0
-  duration: 0
+  duration: 15

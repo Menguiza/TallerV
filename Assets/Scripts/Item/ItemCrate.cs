@@ -16,8 +16,14 @@ public class ItemCrate : MonoBehaviour, IEnemy
 
     public void DestroyEnemy()
     {
+        int randomChance = Random.Range(1, 101);
+        ItemType itemType;
+
+        if (randomChance < 1) itemType = ItemType.Pasivo;
+        else itemType = ItemType.Activo;
+
         // Otorgar un objeto
-        Inventory.instance.AddItem(Inventory.instance.GenerateRandomItem());
+        Inventory.instance.AddItem(Inventory.instance.GenerateRandomItem(itemType));
         Inventory.instance.OnItemCollected.Invoke();
 
         GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
