@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterContrl;
     Animator anim;
+    public AudioSource playerAudioSource;
 
     GameMaster gm;
 
@@ -53,6 +54,8 @@ public class PlayerController : MonoBehaviour
         gm.gameObject.GetComponent<InicializadorSistemaPosturas>().AssignNewStance(gm.IDPostura);
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
+
+        playerAudioSource = GetComponent<AudioSource>();
 
         feetHeight = transform.GetChild(0);
     }
@@ -614,32 +617,32 @@ public class PlayerController : MonoBehaviour
 
     public void StepSound()
     {
-        SoundManager.instance.PlayClip(amoSteps);
+        playerAudioSource.PlayOneShot(amoSteps);
     }
 
     public void JumpHopSound()
     {
-        SoundManager.instance.PlayClip(jumpHop);
+        playerAudioSource.PlayOneShot(jumpHop);
     }
 
     public void RollSound()
     {
-        SoundManager.instance.PlayClip(roll);
+        playerAudioSource.PlayOneShot(roll);
     }
 
     public void SwordSwing()
     {
-        SoundManager.instance.PlayClip(swordSwing);
+        playerAudioSource.PlayOneShot(swordSwing);
     }
 
     public void DeathSound()
     {
-        SoundManager.instance.PlayClip(death);
+        playerAudioSource.PlayOneShot(death);
     }
 
     public void GetHitSound()
     {
-        SoundManager.instance.PlayClip(getHit);
+        playerAudioSource.PlayOneShot(getHit);
     }
     #endregion
 }
