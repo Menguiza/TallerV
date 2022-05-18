@@ -41,6 +41,11 @@ public class Inventory : MonoBehaviour
 
         OnItemCollected.AddListener(SlotLoad);
         OnItemChanged.AddListener(SlotLoadReverse);
+
+        for(int i = 0; i<5; i++)
+        {
+            items_Activos.Add(null);
+        }
     }
 
     private void Update()
@@ -294,9 +299,46 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    void UpdateUi()
+    public void UpdateUi()
     {
+        foreach(Item item in items_Pasivos)
+        {
+            bool stack = false;
 
+            if (item.format == ItemFormat.Stackeable)
+            {
+                if (items_Pasivos.Count != 0)
+                {
+                    foreach (Item element in items_Pasivos)
+                    {
+                        if (element.nombre == item.nombre)
+                        {
+                            stack = true;
+                        }
+                    }
+
+                    if (stack)
+                    {
+                        foreach (Transform child in content.transform)
+                        {
+                            if (child.GetComponent<ItemContainer>().itemInfo.nombre == item.nombre)
+                            {
+                                child.GetComponent<ItemContainer>().counter++;
+                                return;
+                            }
+                        }
+                    }
+                }
+            }
+
+            GameObject pasivo = Instantiate(prefab, content.transform);
+            pasivo.GetComponent<ItemContainer>().itemInfo = item;
+        }
+
+        for(int i = 0; i<items_Activos.Count; i++)
+        {
+            activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
+        }
     }
 
     #region"Generación de Items"
