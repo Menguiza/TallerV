@@ -10,11 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 551b97e4e875fb943a183b1bf179a331, type: 3}
-  m_Name: RoomSpawners
+  m_Name: Babosa3
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 2807097785294483744, guid: 8f0e3ed616f020d46a376c18515947fb, type: 3}
+  - {fileID: 1243993575051167470, guid: 22297ba80ca5bd449a6278ccf6c3093e, type: 3}
   spawns:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 3, z: 2}
-  - {x: 0, y: 3, z: 2}
+  - {x: 10.75, y: 0.18, z: 2.59}
