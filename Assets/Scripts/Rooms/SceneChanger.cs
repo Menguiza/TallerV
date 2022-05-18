@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public int index;
-    [SerializeField] bool markedAsInitializer, markedAsLoader;
+    [SerializeField] bool markedAsInitializer, markedAsLoader, markedAsLobbyExit;
 
     private void Start()
     {
@@ -20,6 +20,10 @@ public class SceneChanger : MonoBehaviour
             {
                 Inventory.instance.InvokeWithDelay();
             }
+        }
+        if (markedAsLobbyExit)
+        {
+            SoundManager.instance.SetLobbyMusic();
         }
     }
 
@@ -36,6 +40,10 @@ public class SceneChanger : MonoBehaviour
     void ChangeScene()
     {
         RoomManager.instance.onChangeScene?.Invoke();
+        if (markedAsLobbyExit)
+        {
+            SoundManager.instance.SetForestMusic();
+        }
     }
 
     void CanChange()

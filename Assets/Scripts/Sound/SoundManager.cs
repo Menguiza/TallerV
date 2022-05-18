@@ -38,7 +38,7 @@ public class SoundManager : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(SubscribeToRunEnd());
+
     }
 
     #region"Sound methods"
