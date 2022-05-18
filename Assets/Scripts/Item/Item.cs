@@ -22,6 +22,7 @@ public class Item : ScriptableObject
     public ItemUse use;
     public ItemRarity rarity;
     public Sprite icon;
+    public int price;
 
     [Header("Parametros")]
 
