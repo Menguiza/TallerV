@@ -39,25 +39,6 @@ public class RoomManager : MonoBehaviour
         }
 
         #endregion
-
-        if(SceneManager.GetActiveScene().buildIndex == 4)
-        {
-            count = 0;
-            indexes = SetUpIndexes();
-
-            FindObjectOfType<SceneChanger>().index = indexes[count];
-            count++;
-        }
-        else if (count != 0)
-        {
-            FindObjectOfType<SceneChanger>().index = indexes[count];
-            count++;
-        }
-
-        if (rooms.Count !=0)
-        {
-            SetUpRoom(SelectRoom());
-        }
     }
 
     public void GenerateRandomRun()
@@ -65,12 +46,23 @@ public class RoomManager : MonoBehaviour
         count = 0;
         indexes = SetUpIndexes();
         SetUpRoom(SelectRoom());
+        FindObjectOfType<SceneChanger>().index = indexes[count];
+        count++;
+    }
+
+    public void UpdateInfo()
+    {
+        if(count!=0)
+        {
+            SetUpRoom(SelectRoom());
+            FindObjectOfType<SceneChanger>().index = indexes[count];
+            count++;
+        }
     }
 
     private void Start()
     {
         GameMaster.instance.OnRoomFinished.AddListener(AssignReward);
-        //onChangeScene.AddListener(InitializeRoomOnNextFrame);
     }
 
     void SetUpRoom(Room room)
@@ -188,8 +180,6 @@ public class RoomManager : MonoBehaviour
 
     IEnumerator InitializeRoomOnNextFrameCoroutine()
     {
-        yield return null;
-
         for (int i = 0; i < rooms.Count; i++)
         {
             if (SceneManager.GetActiveScene().buildIndex == indexes[i])
@@ -202,5 +192,7 @@ public class RoomManager : MonoBehaviour
         }
 
         StopCoroutine(InitializeRoomOnNextFrameCoroutine());
+
+        yield return null;
     }
 }

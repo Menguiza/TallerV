@@ -12,4 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f44eabffc8cdfd749981d3c228e45ec8, type: 3}
   m_Name: Room B6
   m_EditorClassIdentifier: 
-  data: []
+  data:
+  - {fileID: 11400000, guid: e7bf695f76738054b9351ffb4509f33f, type: 2}
+  - {fileID: 11400000, guid: df9878843aa683c43a9af58c544a0cd3, type: 2}
+  - {fileID: 11400000, guid: 5ccd774a4c0cc5741bbd67d8fc9bb4d6, type: 2}
+  - {fileID: 11400000, guid: 3a675773ee31ada4b80d9d6ca01245fd, type: 2}
+  - {fileID: 11400000, guid: 1737578369605c448a8862cacf96624e, type: 2}
+  - {fileID: 11400000, guid: 8f59398838b48c7409ead63c8b4fc430, type: 2}
