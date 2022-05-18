@@ -18,6 +18,7 @@ MonoBehaviour:
   use: 0
   rarity: 1
   icon: {fileID: 21300000, guid: 1190df0c65dbb5f42a0b0b9d8cf6cbba, type: 3}
+  price: 30
   multVidaMax: 0
   multDmg: 0
   multConciencia: -0.25

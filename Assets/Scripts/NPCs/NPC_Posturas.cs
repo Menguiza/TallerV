@@ -108,7 +108,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
 
         inventoryInput.ActiveCursor(true);
         Inventory.instance.TimeChange(true);
-
+        SoundManager.instance.SetPauseMusic();
         isStoreOpen = true;
     }
 
@@ -118,7 +118,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
 
         inventoryInput.ActiveCursor(false);
         Inventory.instance.TimeChange(false);
-
+        SoundManager.instance.SetUnpausedMusic();
         isStoreOpen = false;
     }
     #endregion

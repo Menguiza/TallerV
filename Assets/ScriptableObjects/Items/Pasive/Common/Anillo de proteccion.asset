@@ -16,7 +16,9 @@ MonoBehaviour:
   type: 2
   format: 0
   use: 1
+  rarity: 0
   icon: {fileID: 21300000, guid: e28e552fbdef4624f9542192aec5dee4, type: 3}
+  price: 20
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0
@@ -28,6 +30,7 @@ MonoBehaviour:
   multSpeed: 0
   multPesadillaPer: 0
   "multDa\xF1oRecibido": -0.1
+  multHechizos: 0
   sumVida: 0
   sumConciencia: 0
   sumDinero: 0
