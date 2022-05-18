@@ -67,6 +67,8 @@ public class EspadaDeLuz : MonoBehaviour, IHechizo
         GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(2).gameObject.GetComponent<ParticleSystem>().Play();
         GameMaster.instance.playerObject.GetComponent<PlayerController>().espadaDeLuz.transform.GetChild(3).gameObject.GetComponent<ParticleSystem>().Play();
 
+        SoundManager.instance.PlayLightSwordSound();
+
         print("Espada de luz casteado");
     }
 

@@ -11,6 +11,8 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioMixerSnapshot paused, unpaused;
 
+    [SerializeField] AudioClip lightSwordSound;
+
 
 
     void Awake()
@@ -36,6 +38,11 @@ public class SoundManager : MonoBehaviour
     public void PlayClip(AudioClip audioClip)
     {
         audioSource.PlayOneShot(audioClip);
+    }
+
+    public void PlayLightSwordSound()
+    {
+        PlayClip(lightSwordSound);
     }
 
     #region "Amo - sounds"

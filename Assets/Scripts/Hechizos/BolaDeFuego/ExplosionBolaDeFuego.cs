@@ -10,7 +10,7 @@ public class ExplosionBolaDeFuego : MonoBehaviour
 
     private void Awake()
     {
-        Destroy(gameObject, 2);
+        Destroy(gameObject, 0.05f);
 
         fireballExplotion.transform.SetParent(null);
         Destroy(fireballExplotion, 4f);

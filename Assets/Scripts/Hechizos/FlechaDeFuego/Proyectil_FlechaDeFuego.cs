@@ -6,9 +6,13 @@ public class Proyectil_FlechaDeFuego : MonoBehaviour
 {
     public float damage;
 
+    [SerializeField] GameObject fireArrowExplotion;
+
     public void fireArrowImpact()
     {
         //Aqui van las particulas --
+        GameObject instance = Instantiate(fireArrowExplotion, transform.position, Quaternion.identity);
+        Destroy(instance, 4f);
 
         //Siempre Eliminar al final el proyectil
         Destroy(gameObject);

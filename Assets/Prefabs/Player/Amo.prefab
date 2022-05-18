@@ -4643,12 +4643,12 @@ MonoBehaviour:
   onHitVFX: {fileID: 1756917352542586541, guid: b075fa1113032344788e2312bf0b3e2b, type: 3}
   interactionVolumeCollider: {fileID: 2230608281853884125, guid: cb39d71f7f691044885d42292fe3de24, type: 3}
   amoSteps: {fileID: 8300000, guid: 1024f162c0cfbe84a842b2e989309ecf, type: 3}
-  jumpHop: {fileID: 8300000, guid: 730db03195cc54645a35b0bf983674e7, type: 3}
-  jumpLand: {fileID: 8300000, guid: e7f940f1351e9b648b47f88aa9f3bc54, type: 3}
-  roll: {fileID: 8300000, guid: d2f38b1f897126f4b8a33e3af6d63dcd, type: 3}
+  jumpHop: {fileID: 8300000, guid: 975077c89a8516342a8c7af1330fc6ea, type: 3}
+  jumpLand: {fileID: 8300000, guid: b9d3fffa5518133449df08ac24f27d53, type: 3}
+  roll: {fileID: 8300000, guid: e4ae48f94ae65194b8f982fba3acbacd, type: 3}
   swordSwing: {fileID: 8300000, guid: 252bc8e5adea1fc4d8522caa15ba7fa4, type: 3}
-  death: {fileID: 8300000, guid: b4728da5f390f624881bfed902e7d1c8, type: 3}
-  getHit: {fileID: 8300000, guid: b326cec779913b54c8d09e1624a0046d, type: 3}
+  death: {fileID: 8300000, guid: 50178c4001e044a409c09fdd74abcb86, type: 3}
+  getHit: {fileID: 8300000, guid: 69b9547ddd401fc4ab4be88d8a9dd027, type: 3}
 --- !u!81 &1433589330738204250
 AudioListener:
   m_ObjectHideFlags: 0

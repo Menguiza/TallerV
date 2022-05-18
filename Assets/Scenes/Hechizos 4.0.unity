@@ -971,6 +971,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8653442044966428450, guid: 29a680db88e3b0949a26068fc0c9899a, type: 3}
+      propertyPath: lightSwordSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a3abee9aed703c64f939c6a626537bbb, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29a680db88e3b0949a26068fc0c9899a, type: 3}
 --- !u!1 &310073418
