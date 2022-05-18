@@ -12,7 +12,11 @@ public class SceneChanger : MonoBehaviour
     {
         RoomManager.instance.onChangeScene.AddListener(CanChange);
         if (markedAsInitializer) RoomManager.instance.GenerateRandomRun();
-        if (markedAsLoader) RoomManager.instance.UpdateInfo();
+        if (markedAsLoader)
+        {
+            RoomManager.instance.UpdateInfo();
+            Inventory.instance.UpdateUi();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
