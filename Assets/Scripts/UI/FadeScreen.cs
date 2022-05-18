@@ -17,7 +17,7 @@ public class FadeScreen : MonoBehaviour
         StartCoroutine(FadeWhite());
     }
 
-    IEnumerator FadeWhite()
+    public IEnumerator FadeWhite()
     {
         while (fadePanel.color.a != 0)
         {
@@ -32,7 +32,7 @@ public class FadeScreen : MonoBehaviour
         StopCoroutine(FadeWhite());
     }
 
-    IEnumerator FadeBlack()
+    public IEnumerator FadeBlack()
     {
         while (fadePanel.color.a != 1)
         {

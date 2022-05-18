@@ -74,6 +74,7 @@ public class PauseInput : MonoBehaviour
     {
         toggle = !toggle;
         Inventory.instance.TimeChange(toggle);
+        GameMaster.instance.OnRunEnd.Invoke();
 
         SceneManager.LoadScene(2);
         Debug.Log("Transladando a lobby");

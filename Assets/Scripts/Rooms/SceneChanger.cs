@@ -19,6 +19,9 @@ public class SceneChanger : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            
+            FadeScreen fs = FindObjectOfType<FadeScreen>();
+            fs.StartCoroutine(fs.FadeBlack());
             Invoke("ChangeScene", 0.5f);
         }
     }

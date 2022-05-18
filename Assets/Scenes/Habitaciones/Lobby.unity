@@ -36095,6 +36095,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   index: 4
   markedAsInitializer: 0
+  markedAsLoader: 0
 --- !u!1001 &1740107445
 PrefabInstance:
   m_ObjectHideFlags: 0

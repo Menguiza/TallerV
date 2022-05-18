@@ -1942,7 +1942,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9dd7c11e5bfa16488baf24ba6a456f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fadeTime: 0.5
+  fadeTime: 0.4
 --- !u!1 &257611633831312281
 GameObject:
   m_ObjectHideFlags: 0
@@ -11953,7 +11953,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 12173320165988437}
         m_TargetAssemblyTypeName: PauseInput, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
