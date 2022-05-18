@@ -45,6 +45,11 @@ public class Babosa : MonoBehaviour, IEnemy
 
     private void Update()
     {
+        if(health<=0)
+        {
+            return;
+        }
+
         step = speed * Time.deltaTime;
 
         //Check for sight and attack range
@@ -146,6 +151,7 @@ public class Babosa : MonoBehaviour, IEnemy
         anim.SetTrigger("Die");
         gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
         gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
         gameObject.GetComponent<Collider>().enabled = false;
         Destroy(gameObject, 1.6f);
     }
