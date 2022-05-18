@@ -31,7 +31,7 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
 
     public void Buy(int itemIndex)
     {
-        if (shopItems[itemIndex].price > Economy.instance.currency)
+        if (shopItems[itemIndex].price <= Economy.instance.currency)
         {
             BoughtPanels[itemIndex].SetActive(true);
 
