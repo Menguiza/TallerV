@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
-    List<Item> items_Activos = new List<Item>(5);
+    Item[] items_Activos = new Item[5];
     public DreamCatcher dmrcatcher { get; private set; }
 
     [SerializeField]
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i<5; i++)
         {
-            items_Activos.Add(null);
+            items_Activos[i] = null;
         }
     }
 
@@ -275,7 +275,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activables.Count; i++)
         {
             activosInv[i].GetComponent<ItemContainerInv>().itemInfo = activables[i].GetComponent<ItemContainer>().itemInfo;
-            items_Activos[i] = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
+            items_Activos[i] = activables[i].GetComponent<ItemContainer>().itemInfo;
         }
     }
     public void SlotLoadReverse()
@@ -283,7 +283,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activosInv.Count; i++)
         {
             activables[i].GetComponent<ItemContainer>().itemInfo = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
-            items_Activos[i] = activables[i].GetComponent<ItemContainerInv>().itemInfo;
+            items_Activos[i] = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
 
@@ -301,7 +301,7 @@ public class Inventory : MonoBehaviour
 
     public void UpdateUi()
     {
-        foreach(Item item in items_Pasivos)
+        foreach (Item item in items_Pasivos)
         {
             bool stack = false;
 
@@ -333,11 +333,11 @@ public class Inventory : MonoBehaviour
 
             GameObject pasivo = Instantiate(prefab, content.transform);
             pasivo.GetComponent<ItemContainer>().itemInfo = item;
-        }
 
-        for(int i = 0; i<items_Activos.Count; i++)
-        {
-            activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
+            for (int i = 0; i < activosInv.Count; i++)
+            {
+                activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
+            }
         }
     }
 

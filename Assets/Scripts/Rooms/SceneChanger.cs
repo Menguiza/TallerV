@@ -15,7 +15,12 @@ public class SceneChanger : MonoBehaviour
         if (markedAsLoader)
         {
             RoomManager.instance.UpdateInfo();
-            Inventory.instance.UpdateUi();
+
+            if(RoomManager.instance.count > 2)
+            {
+                Inventory.instance.UpdateUi();
+                Inventory.instance.OnItemCollected?.Invoke();
+            }     
         }
     }
 
