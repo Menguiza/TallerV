@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3859,7 +3859,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff46962bbc3c9c41bd26751ab745a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmg: 4
+  dmg: 3
   multiplicadorConciencia: 1
   DamagePopUp: {fileID: 8968149253577952293, guid: 152384acb72caa24dae097e361a633ff, type: 3}
   playerObject: {fileID: 1193606076}
@@ -3871,7 +3871,7 @@ MonoBehaviour:
   tgpcINP: 0
   critProbINP: 0
   roboDeVidaINP: 0
-  multPesadillaINP: 100
+  multPesadillaINP: 0
   multConcienciaINP: 0
   critMultINP: 0
   multVelAtaqueINP: 0

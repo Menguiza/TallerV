@@ -79,13 +79,13 @@ public class RoomManager : MonoBehaviour
 
                 if (selected.GetComponent<IEnemy>() != null)
                 {
-                    GameObject enemy = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
+                    GameObject enemy = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], selected.transform.rotation);
 
                     enemy.transform.parent = FindObjectOfType<SceneChanger>().transform;
                 }
                 else
                 {
-                    GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
+                    GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], selected.transform.rotation);
                 }
             }
         }

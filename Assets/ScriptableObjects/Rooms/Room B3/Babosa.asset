@@ -9,8 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f44eabffc8cdfd749981d3c228e45ec8, type: 3}
-  m_Name: B3
+  m_Script: {fileID: 11500000, guid: 551b97e4e875fb943a183b1bf179a331, type: 3}
+  m_Name: Babosa
   m_EditorClassIdentifier: 
-  data:
-  - {fileID: 11400000, guid: 8823bfa16a438df4b8ea25100cfdcbec, type: 2}
+  objects:
+  - {fileID: 1243993575051167470, guid: 22297ba80ca5bd449a6278ccf6c3093e, type: 3}
+  spawns:
+  - {x: 11.7, y: 6.2, z: 50.99}
+  - {x: 11.7, y: 6.2, z: 31.13}

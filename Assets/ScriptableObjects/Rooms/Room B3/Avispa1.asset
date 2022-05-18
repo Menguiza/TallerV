@@ -10,11 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 551b97e4e875fb943a183b1bf179a331, type: 3}
-  m_Name: Ambience
+  m_Name: Avispa1
   m_EditorClassIdentifier: 
   objects:
-  - {fileID: 100000, guid: 4489c65cfe3381945bb0fb513021f03c, type: 3}
+  - {fileID: 910635725486160310, guid: 989693db28ab63f499dbef336d95b978, type: 3}
   spawns:
-  - {x: 8.76, y: 6.23, z: 0}
-  - {x: 8.76, y: 6.23, z: -3.21}
-  - {x: 8.76, y: 6.23, z: 2.74}
+  - {x: 11.7, y: 6.79, z: 23.619999}
+  - {x: 11.7, y: 9.276, z: -5.67}

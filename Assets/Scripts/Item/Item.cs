@@ -55,7 +55,8 @@ public class Item : ScriptableObject
     public void AddParameters(float duration)
     {
         GameMaster.instance.AddMod(nombre, multVidaMax, multDmg, multConciencia, multTGPC, multCritProb, multCrit, multRoboPer, multVelAatque, multSpeed, multPesadillaPer, multDañoRecibido, multHechizos);
-        Delete(duration);
+        Inventory.instance.Remove(this);
+        Inventory.instance.StartShit(duration, this);
     }
 
     void ResetParameter()
@@ -88,10 +89,11 @@ public class Item : ScriptableObject
         Inventory.instance.Remove(this);
     }
 
-    private IEnumerator Delete(float wait)
+    public IEnumerator Delete(float wait)
     {
         yield return new WaitForSeconds(wait);
 
+        Debug.Log("Reset");
         ResetParameter();
 
         yield return null;
