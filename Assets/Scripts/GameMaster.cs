@@ -315,7 +315,7 @@ public class GameMaster : MonoBehaviour
     public void CheckMods()
     {
         float maxLifeResult = maxLife;
-        float dmgResult = dmg;
+        float dmgResult = one;
         float multConcienciaResult = one;
         float tgpcResult = one;
         float critProbResult = zero;
@@ -333,9 +333,9 @@ public class GameMaster : MonoBehaviour
         {
             foreach (Mods element in mods)
             {
-                maxLifeResult += Mathf.Round((maxLife * (element.MultVidaMax * porcentual)) / hundred);
+                maxLifeResult += Mathf.Round((maxLifeResult * (element.MultVidaMax * porcentual)) / hundred);
 
-                dmgResult += Mathf.Round((dmg * (element.MultDmg * porcentual)) / hundred);
+                dmgResult += element.MultDmg;
 
                 multConcienciaResult += element.MultConciencia;
 
@@ -363,7 +363,7 @@ public class GameMaster : MonoBehaviour
 
         CorrectLife(maxOld, player.MaxLife);
 
-        player.Damage = (uint)MathF.Max(zero, dmgResult);
+        player.Damage = (uint)MathF.Max(one, dmg + Mathf.Round((player.Damage * (dmgResult * porcentual)) / hundred));
 
         MultiplicadorConciencia = MathF.Max(minConciencia, multConcienciaResult);
 

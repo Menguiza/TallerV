@@ -196,6 +196,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void StartShit(float secs, Item it)
+    {
+        StartCoroutine(it.Delete(secs));
+    }
+
     public void Remove(Item it)
     {
         foreach (GameObject item in activables)
