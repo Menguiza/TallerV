@@ -25,4 +25,5 @@ MonoBehaviour:
   multSpeed: 0
   multPesadillaPer: 0
   "multDa\xF1oRecibido": 0
+  multHechizos: 1.5
   desc: placeholder

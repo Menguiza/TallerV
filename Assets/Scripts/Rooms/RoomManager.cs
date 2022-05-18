@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class RoomManager : MonoBehaviour
 {
     public static RoomManager instance;
     public UnityEvent onChangeScene;
+    int[] indexes = new int[5];
+    int count = 0;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();
@@ -34,7 +37,21 @@ public class RoomManager : MonoBehaviour
 
         #endregion
 
-        if(rooms.Count !=0)
+        if(SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            count = 0;
+            indexes = SetUpIndexes();
+
+            FindObjectOfType<SceneChanger>().index = indexes[count];
+            count++;
+        }
+        else
+        {
+            FindObjectOfType<SceneChanger>().index = indexes[count];
+            count++;
+        }
+
+        if (rooms.Count !=0)
         {
             SetUpRoom(SelectRoom());
         }
@@ -54,22 +71,21 @@ public class RoomManager : MonoBehaviour
 
     void SetUpRoom(Room room)
     {
-        foreach (RoomSpawners element in room.data)
+        if(room != null)
         {
-            GameObject selected = element.objects[RandomInt(element.objects.Count)];
-            GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
-        }
-    }
-
-    void SetUpRoom(Room room, EnemyController enemy)
-    {
-        foreach (RoomSpawners element in room.data)
-        {
-            foreach(GameObject obj in element.objects)
+            foreach (RoomSpawners element in room.data)
             {
-                if(obj.GetComponent<EnemyController>() == enemy)
+                GameObject selected = element.objects[RandomInt(element.objects.Count)];
+
+                if (selected.GetComponent<IEnemy>() != null)
                 {
-                    Instantiate(obj, element.spawns[RandomInt(element.spawns.Count - 1)], Quaternion.identity);
+                    GameObject enemy = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
+
+                    enemy.transform.parent = FindObjectOfType<SceneChanger>().transform;
+                }
+                else
+                {
+                    GameObject temp = Instantiate(selected, element.spawns[RandomInt(element.spawns.Count)], Quaternion.identity);
                 }
             }
         }
@@ -77,7 +93,55 @@ public class RoomManager : MonoBehaviour
 
     Room SelectRoom()
     {
-        return rooms[RandomInt(rooms.Count - 1)];
+        if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            return rooms[0];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            return rooms[1];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            return rooms[2];
+        }
+        else if (SceneManager.GetActiveScene().buildIndex == 8)
+        {
+            return rooms[3];
+        }
+
+        return null;
+    }
+
+    int[] SetUpIndexes()
+    {
+        int[] indexes = new int[5];
+
+        for(int i = 0; i<3; i++)
+        {
+            int rnd = RandomInt(4);
+
+            switch(rnd)
+            {
+                case 0:
+                    indexes[i] = 5;
+                    break;
+                case 1:
+                    indexes[i] = 6;
+                    break;
+                case 2:
+                    indexes[i] = 7;
+                    break;
+                case 3:
+                    indexes[i] = 8;
+                    break;
+            }
+        }
+
+        indexes[3] = 2;
+        indexes[4] = 9;
+
+        return indexes;
     }
 
     int RandomInt(int max)
