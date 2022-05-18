@@ -404,6 +404,8 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
+            if (enemy.GetComponent<IEnemy>() == null) continue; // Controlar la excepción de pegarle a algo que no es un enemigo
+
             bool isCritical = ProbabilidadCritico(gm.Player);
             uint dañoAplicar = 0;
 
@@ -446,6 +448,8 @@ public class PlayerController : MonoBehaviour
 
         foreach (Collider enemy in hitEnemies)
         {
+            if (enemy.GetComponent<IEnemy>() == null) continue; // Controlar la excepción de pegarle a algo que no es un enemigo
+
             bool isCritical = ProbabilidadCritico(gm.Player);
             uint dañoAplicar = 0;
 
@@ -475,6 +479,7 @@ public class PlayerController : MonoBehaviour
             {
                 gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
             }
+
         }
     }
 

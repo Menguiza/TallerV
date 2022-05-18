@@ -155,6 +155,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   anim: {fileID: 1235228558}
   bullet: {fileID: 1238512039075247377, guid: e0bcf7119dd66684093ae905ac6c9155, type: 3}
+  GetHitParticle: {fileID: 1756917352542586541, guid: 2b9c7b0cc9d91b449807d783e80e8290, type: 3}
 --- !u!135 &2987172186202623499
 SphereCollider:
   m_ObjectHideFlags: 0

@@ -459,6 +459,7 @@ MonoBehaviour:
   playerInAttackRange: 0
   playerHitted: 0
   anim: {fileID: 1159474664155968642}
+  GetHitParticle: {fileID: 1756917352542586541, guid: 2b9c7b0cc9d91b449807d783e80e8290, type: 3}
 --- !u!135 &551442818
 SphereCollider:
   m_ObjectHideFlags: 0
