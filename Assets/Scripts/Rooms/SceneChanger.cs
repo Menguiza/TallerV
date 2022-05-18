@@ -6,12 +6,13 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public int index;
-    [SerializeField] bool markedAsInitializer;
+    [SerializeField] bool markedAsInitializer, markedAsLoader;
 
     private void Start()
     {
         RoomManager.instance.onChangeScene.AddListener(CanChange);
         if (markedAsInitializer) RoomManager.instance.GenerateRandomRun();
+        if (markedAsLoader) RoomManager.instance.UpdateInfo();
     }
 
     private void OnTriggerEnter(Collider other)
