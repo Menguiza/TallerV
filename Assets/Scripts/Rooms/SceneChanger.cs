@@ -6,20 +6,31 @@ using UnityEngine.SceneManagement;
 public class SceneChanger : MonoBehaviour
 {
     public int index;
-    [SerializeField] bool markedAsInitializer, markedAsLoader;
+    [SerializeField] bool markedAsInitializer, markedAsLoader, markedAsLobbyExit;
 
     private void Start()
     {
         RoomManager.instance.onChangeScene.AddListener(CanChange);
         if (markedAsInitializer) RoomManager.instance.GenerateRandomRun();
-        if (markedAsLoader) RoomManager.instance.UpdateInfo();
+        if (markedAsLoader)
+        {
+            RoomManager.instance.UpdateInfo();
+
+            if(RoomManager.instance.count > 2)
+            {
+                Inventory.instance.InvokeWithDelay();
+            }
+        }
+        if (markedAsLobbyExit)
+        {
+            SoundManager.instance.SetLobbyMusic();
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
-        {
-            
+        {            
             FadeScreen fs = FindObjectOfType<FadeScreen>();
             fs.StartCoroutine(fs.FadeBlack());
             Invoke("ChangeScene", 0.5f);
@@ -29,6 +40,10 @@ public class SceneChanger : MonoBehaviour
     void ChangeScene()
     {
         RoomManager.instance.onChangeScene?.Invoke();
+        if (markedAsLobbyExit)
+        {
+            SoundManager.instance.SetForestMusic();
+        }
     }
 
     void CanChange()

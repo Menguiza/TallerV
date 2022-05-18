@@ -20,4 +20,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8881bdadd01801345ba65aacffc3732e, type: 2}
   desc: Esta postura fue creada para aprovecharse del poder y terror de las pesadillas
   rarity: 3
-  gemCost: 100
+  gemCost: 20

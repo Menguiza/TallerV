@@ -36,9 +36,16 @@ public class VespulaSpawner : MonoBehaviour, IEnemy
         Instantiate(prefab, transform.position, Quaternion.identity, transform);
     }
 
+
+    [SerializeField] GameObject GetHitParticle;
+
     public void ReceiveDamage(int dmg)
     {
         health -= dmg;
+
+        //VFX
+        GameObject instanceParticle = Instantiate(GetHitParticle, transform.position + Vector3.up, Quaternion.identity);
+        Destroy(instanceParticle, 4f);
 
         if (health <= 0) DestroyEnemy();
     }

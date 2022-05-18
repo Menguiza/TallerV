@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 
 public class SoundManager : MonoBehaviour
 {
@@ -13,7 +14,9 @@ public class SoundManager : MonoBehaviour
 
     [SerializeField] AudioClip lightSwordSound;
 
-
+    [SerializeField] AudioSource battleForestAwaken;
+    [SerializeField] AudioSource battleForestDreamer;
+    [SerializeField] AudioSource lobbyTheme;
 
     void Awake()
     {
@@ -31,6 +34,11 @@ public class SoundManager : MonoBehaviour
 
         audioSource = GetComponent<AudioSource>();
         SetUnpausedMusic();
+    }
+
+    private void Start()
+    {
+
     }
 
     #region"Sound methods"
@@ -62,4 +70,26 @@ public class SoundManager : MonoBehaviour
         unpaused.TransitionTo(0);
     }
     #endregion
+
+    public void SetForestMusic()
+    {
+        battleForestAwaken.volume = 1;
+
+        battleForestDreamer.volume = 0;
+        lobbyTheme.volume = 0;
+    }
+
+    public void SetLobbyMusic()
+    {
+        lobbyTheme.volume = 1;
+
+        battleForestAwaken.volume = 0;
+        battleForestDreamer.volume = 0;
+    }
+
+    IEnumerator SubscribeToRunEnd()
+    {
+        yield return null;
+        GameMaster.instance.OnRunEnd.AddListener(SetLobbyMusic);
+    }
 }

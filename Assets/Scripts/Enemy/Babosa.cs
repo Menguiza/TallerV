@@ -160,9 +160,15 @@ public class Babosa : MonoBehaviour, IEnemy
         Destroy(gameObject, 1.6f);
     }
 
+    [SerializeField] GameObject GetHitParticle;
+
     public void ReceiveDamage(int dmg)
     {
         health -= dmg;
+
+        //VFX
+        GameObject instanceParticle = Instantiate(GetHitParticle, transform.position + Vector3.up/2, Quaternion.identity);
+        Destroy(instanceParticle, 4f);
 
         if (health <= 0) DestroyEnemy();
 
