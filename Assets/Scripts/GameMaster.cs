@@ -437,9 +437,20 @@ public class GameMaster : MonoBehaviour
         int opVida = (int)(player.Life - (deltaVida));
         player.Life = (uint)Mathf.Max(zero, opVida);
 
-        int deltaConsciencia = (int)(conscienceAmount * multiplicadorConciencia);
-        int opConci = (int)(player.Conciencia - (deltaConsciencia));
-        player.Conciencia = (ushort)Mathf.Max(zero,opConci);
+        int deltaConsciencia;
+
+        if (player.Status != estado.Dormido)
+        {
+            deltaConsciencia = (int)(conscienceAmount * multiplicadorConciencia);
+            int opConci = (int)(player.Conciencia - (deltaConsciencia));
+            player.Conciencia = (ushort)Mathf.Max(zero, opConci);
+        }
+        else
+        {
+            deltaConsciencia = (int)(conscienceAmount * multiplicadorConciencia);
+            int opConci = (int)(player.Conciencia + (deltaConsciencia));
+            player.Conciencia = (ushort)Mathf.Max(zero, opConci);
+        }
         
         // Damage pop up
         GameObject popUpInstace = Instantiate(DamagePopUp, playerObject.transform.position + Vector3.up * 1.5f + Vector3.right, DamagePopUp.transform.rotation);
