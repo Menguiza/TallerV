@@ -39,7 +39,7 @@ public class EnemyCount : MonoBehaviour
     {
         llamado = true;
         GameMaster.instance.OnRoomFinished?.Invoke();
-        if(SceneManager.GetActiveScene().buildIndex != 4)
+        if(SceneManager.GetActiveScene().buildIndex != 4 && SceneManager.GetActiveScene().buildIndex != 2)
         {
             continuar.GetComponent<CanvasGroup>().alpha = 1;
         }
