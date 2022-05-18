@@ -9,6 +9,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
+    List<Item> items_Activos = new List<Item>(5);
     public DreamCatcher dmrcatcher { get; private set; }
 
     [SerializeField]
@@ -37,6 +38,9 @@ public class Inventory : MonoBehaviour
         }
 
         #endregion
+
+        OnItemCollected.AddListener(SlotLoad);
+        OnItemChanged.AddListener(SlotLoadReverse);
     }
 
     private void Update()
@@ -181,6 +185,7 @@ public class Inventory : MonoBehaviour
                             {
                                 child.GetComponent<ItemContainer>().counter++;
                                 item.AddParameters();
+                                items_Pasivos.Add(item);
                                 return;
                             }
                         }
@@ -203,14 +208,21 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item it)
     {
+        int count = 0;
+
         foreach (GameObject item in activables)
         {
             if (item.GetComponent<ItemContainer>().itemInfo == it)
             {
                 item.GetComponent<ItemContainer>().itemInfo = null;
+
+                items_Activos[count] = null;
+
                 Debug.Log("removed ");
                 break;
             }
+
+            count++;
         }
 
         foreach (GameObject item in activosInv)
@@ -258,6 +270,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activables.Count; i++)
         {
             activosInv[i].GetComponent<ItemContainerInv>().itemInfo = activables[i].GetComponent<ItemContainer>().itemInfo;
+            items_Activos[i] = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
     public void SlotLoadReverse()
@@ -265,6 +278,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activosInv.Count; i++)
         {
             activables[i].GetComponent<ItemContainer>().itemInfo = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
+            items_Activos[i] = activables[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
 
@@ -278,6 +292,11 @@ public class Inventory : MonoBehaviour
         {
             Time.timeScale = 1;
         }
+    }
+
+    void UpdateUi()
+    {
+
     }
 
     #region"Generación de Items"

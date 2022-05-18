@@ -20,6 +20,7 @@ public class RewardInfo : ScriptableObject
         {
             item = Inventory.instance.GenerateRandomItem(type);
             Inventory.instance.AddItem(item);
+            Inventory.instance.OnItemCollected?.Invoke();
             return item.icon;
         }
 

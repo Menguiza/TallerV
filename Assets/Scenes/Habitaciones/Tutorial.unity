@@ -13865,7 +13865,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206481
+      value: 0.02206479
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.y
@@ -13873,7 +13873,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206481
+      value: 0.02206479
       objectReference: {fileID: 0}
     - target: {fileID: 7419230066456176974, guid: 3d3d8220fb8722d47b3515dfee0ebb21, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -16108,6 +16108,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 2
+  markedAsInitializer: 0
+  markedAsLoader: 0
 --- !u!65 &1162633058
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16906,34 +16908,10 @@ MonoBehaviour:
   - {fileID: 0}
   OnItemCollected:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1220441739}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: SlotLoad
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   OnItemChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1220441739}
-        m_TargetAssemblyTypeName: Inventory, Assembly-CSharp
-        m_MethodName: SlotLoadReverse
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   commonPassiveItems:
   - {fileID: 11400000, guid: 2e6f394a8722759419fd5bfbdfa93b63, type: 2}
   - {fileID: 11400000, guid: 49d86c1878368ff46af7999989bf5806, type: 2}
@@ -24646,7 +24624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.02206481
+      value: 0.02206479
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.y
@@ -24654,7 +24632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.02206481
+      value: 0.02206479
       objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
