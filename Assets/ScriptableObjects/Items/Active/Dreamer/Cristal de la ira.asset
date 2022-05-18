@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4097875dd1468e4478e607341cc960ff, type: 3}
+  m_Name: Cristal de la ira
+  m_EditorClassIdentifier: 
+  nombre: Cristal de la ira
+  type: 1
+  format: 1
+  use: 0
+  rarity: 2
+  icon: {fileID: 21300000, guid: bd9add604ccaf17498a65cbff5e34735, type: 3}
+  multVidaMax: 0
+  multDmg: 20
+  multConciencia: 0
+  multTGPC: 0
+  multCritProb: 0
+  multCrit: 0
+  multRoboPer: 0
+  multVelAatque: 0
+  multSpeed: 0
+  multPesadillaPer: 0
+  "multDa\xF1oRecibido": 0
+  multHechizos: 0
+  sumVida: 0
+  sumConciencia: 0
+  sumDinero: 0
+  duration: 999

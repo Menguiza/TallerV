@@ -142,7 +142,7 @@ public class Inventory : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        if (item.type == ItemType.Activo && slotsUsados < slots)
+        if ((item.type == ItemType.Activo || item.type == ItemType.Tiempo) && slotsUsados < slots)
         {
             slotsUsados++;
 
@@ -277,47 +277,70 @@ public class Inventory : MonoBehaviour
 
     #region"Generación de Items"
 
-    [Header("Item arrays")]
-    [SerializeField] Item[] commonItems;
-    [SerializeField] Item[] rareItems;
-    [SerializeField] Item[] dreamerItems;
-    [SerializeField] Item[] forgottenItems;
+    [Header("Passive Item arrays")]
+    [SerializeField] Item[] commonPassiveItems;
+    [SerializeField] Item[] rarePassiveItems;
+    [SerializeField] Item[] dreamerPassiveItems;
+    [SerializeField] Item[] forgottenPassiveItems;
 
+    [Header("Active Item arrays")]
+    [SerializeField] Item[] commonActiveItems;
+    [SerializeField] Item[] rareActiveItems;
+    [SerializeField] Item[] dreamerActiveItems;
+    [SerializeField] Item[] forgottenActiveItems;
 
-    public Item GenerateRandomItem()
+    public Item GenerateRandomItem(ItemType type)
     {
         Item item;
         int chanceNumber = GenerateRandomChance();
 
-        if (chanceNumber < 40) item = GenerateRandomCommonItem();
-        else if (chanceNumber < 70) item = GenerateRandomRareItem();
-        else if (chanceNumber < 90) item = GenerateRandomDreamerItem();
-        else item = GenerateRandomForgottenItem();
+        if (chanceNumber < 40) item = GenerateRandomCommonItem(type);
+        else if (chanceNumber < 70) item = GenerateRandomRareItem(type);
+        else if (chanceNumber < 90) item = GenerateRandomDreamerItem(type);
+        else item = GenerateRandomForgottenItem(type);
+
+        print(item.nombre);
 
         return item;
     }
 
-    Item GenerateRandomCommonItem()
+    Item GenerateRandomCommonItem(ItemType type)
     {
-        Item item = commonItems[GenerateRandomArrayIndex(commonItems.Length)];
+        Item item;
+
+        if (type == ItemType.Pasivo) item = commonPassiveItems[GenerateRandomArrayIndex(commonPassiveItems.Length)]; 
+        else item = commonActiveItems[GenerateRandomArrayIndex(commonActiveItems.Length)];
+
         return item;
     }
 
-    Item GenerateRandomRareItem()
+    Item GenerateRandomRareItem(ItemType type)
     {
-        Item item = rareItems[GenerateRandomArrayIndex(rareItems.Length)];
+        Item item;
+
+        if (type == ItemType.Pasivo) item = rarePassiveItems[GenerateRandomArrayIndex(rarePassiveItems.Length)];
+        else item = rareActiveItems[GenerateRandomArrayIndex(rareActiveItems.Length)];
+
         return item;
     }
 
-    Item GenerateRandomDreamerItem()
+    Item GenerateRandomDreamerItem(ItemType type)
     {
-        Item item = dreamerItems[GenerateRandomArrayIndex(dreamerItems.Length)];     
+        Item item;
+        
+        if (type == ItemType.Pasivo) item = dreamerPassiveItems[GenerateRandomArrayIndex(dreamerPassiveItems.Length)];
+        else item = dreamerActiveItems[GenerateRandomArrayIndex(dreamerActiveItems.Length)];
+
         return item;
     }
 
-    Item GenerateRandomForgottenItem()
+    Item GenerateRandomForgottenItem(ItemType type)
     {
-        Item item = forgottenItems[GenerateRandomArrayIndex(forgottenItems.Length)];       
+        Item item;
+        
+        if (type == ItemType.Pasivo) item = forgottenPassiveItems[GenerateRandomArrayIndex(forgottenPassiveItems.Length)];
+        else item = forgottenActiveItems[GenerateRandomArrayIndex(forgottenActiveItems.Length)];
+
         return item;
     }
 

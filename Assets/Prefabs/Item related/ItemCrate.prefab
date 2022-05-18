@@ -63,6 +63,7 @@ MonoBehaviour:
   damage: 0
   conciencia: 0
   CrateExplotion: {fileID: 1736343522864360117, guid: 84aa25acbb0853b4fa78f25b393a5274, type: 3}
+  itemType: 2
 --- !u!1001 &994289919997548702
 PrefabInstance:
   m_ObjectHideFlags: 0
