@@ -84,6 +84,7 @@ public class NPC_RogueFairy : MonoBehaviour, IVendorNPC, IInteractive
 
         inventoryInput.ActiveCursor(true);
         Inventory.instance.TimeChange(true);
+        SoundManager.instance.SetPauseMusic();
     }
 
     public void CloseStore()
@@ -93,5 +94,6 @@ public class NPC_RogueFairy : MonoBehaviour, IVendorNPC, IInteractive
 
         inventoryInput.ActiveCursor(false);
         Inventory.instance.TimeChange(false);
+        SoundManager.instance.SetUnpausedMusic();
     }
 }

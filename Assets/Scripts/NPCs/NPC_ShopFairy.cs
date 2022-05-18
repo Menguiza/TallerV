@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class NPC_ShopFairy : MonoBehaviour, IVendorNPC
+public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
 {
     Item[] shopItems;
 
@@ -39,6 +39,11 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC
         }
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.L)) Economy.instance.RewardCurrency(200);
+    }
+
     public void Buy(int itemIndex)
     {
         if (shopItems[itemIndex].price > Economy.instance.currency)
@@ -55,11 +60,18 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC
 
     public void CloseStore()
     {
-        ShopUI.SetActive(false);
+        ShopUI.SetActive(false); 
+        Inventory.instance.TimeChange(false);
+        SoundManager.instance.SetUnpausedMusic();
+
+        isStoreOpen = false;
     }
 
     public void OpenStore()
     {
+        isStoreOpen = true;
         ShopUI.SetActive(true);
+        Inventory.instance.TimeChange(true);
+        SoundManager.instance.SetPauseMusic();
     }
 }
