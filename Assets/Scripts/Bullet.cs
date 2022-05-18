@@ -9,6 +9,8 @@ public class Bullet : MonoBehaviour
 
     [SerializeField]
     float speed;
+    [SerializeField]
+    ParticleSystem particle;
 
     public LayerMask whatIsPlayer;
 
@@ -21,6 +23,7 @@ public class Bullet : MonoBehaviour
         destination = FindObjectOfType<PlayerController>().transform.position;
         destination.y = destination.y + 1f;
         parent = transform.GetComponentInParent<VespulaFerus>();
+        particle.Stop();
     }
 
     public void Start()
@@ -40,6 +43,9 @@ public class Bullet : MonoBehaviour
         if(hit)
         {
             GameMaster.instance.DamagePlayer(parent.Damage, parent.Conciencia);
+            particle.Play();
+            particle.transform.parent = null;
+            Destroy(particle.gameObject, 1f);
             Destroy(gameObject);
         }
 
@@ -47,7 +53,12 @@ public class Bullet : MonoBehaviour
 
         //Walkpoint reached
         if (distanceToWalkPoint.magnitude <= 0f)
+        {
+            particle.Play();
+            particle.transform.parent = null;
+            Destroy(particle.gameObject, 1f);
             Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()
