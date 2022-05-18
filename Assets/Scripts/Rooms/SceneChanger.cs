@@ -18,8 +18,7 @@ public class SceneChanger : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if(other.gameObject.CompareTag("Player"))
-        {
-            
+        {            
             FadeScreen fs = FindObjectOfType<FadeScreen>();
             fs.StartCoroutine(fs.FadeBlack());
             Invoke("ChangeScene", 0.5f);
