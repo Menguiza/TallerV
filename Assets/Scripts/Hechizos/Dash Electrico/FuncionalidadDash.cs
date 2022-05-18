@@ -14,6 +14,9 @@ public class FuncionalidadDash : MonoBehaviour
     private void Awake()
     {
         explotion = (GameObject)Resources.Load("Prefabs/Hechizos/LightningArrivalExplotion");
+        GameMaster.instance.playerObject.GetComponent<CharacterController>().detectCollisions = false;
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().Gravity = 0;
+        GameMaster.instance.playerObject.GetComponent<PlayerController>().isPerformingElectricDash = true;
     }
 
     private void FixedUpdate()
@@ -22,6 +25,10 @@ public class FuncionalidadDash : MonoBehaviour
         if (timeSinceStart < timeTillStop) transform.Translate(Vector3.forward * 40 * Time.fixedDeltaTime);
         else
         {
+            GameMaster.instance.playerObject.GetComponent<CharacterController>().detectCollisions = true;
+            GameMaster.instance.playerObject.GetComponent<PlayerController>().Gravity = 25;
+            GameMaster.instance.playerObject.GetComponent<PlayerController>().isPerformingElectricDash = false;
+
             GameObject exp = Instantiate(explotion, transform.position, Quaternion.identity);
             exp.GetComponent<DashExplotion>().damage = damage;
             Destroy(this);

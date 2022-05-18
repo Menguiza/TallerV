@@ -421,6 +421,8 @@ public class GameMaster : MonoBehaviour
 
     #region"Acciones hacia el jugador"
 
+    public bool invulnerable = false;
+
     public void DamagePlayer(int damageAmount, int conscienceAmount)
     {
         int deltaVida = (int)(damageAmount * player.MultDañoRecibido);

@@ -37,6 +37,8 @@ public class PlayerController : MonoBehaviour
     float gravity = 9.8f, attackRange = 1f;
     float horizontal, verticalVelocity;
 
+    public float Gravity { get => gravity; set => gravity = value; }
+
     Vector3 move = Vector3.zero;
 
     private void Start()
@@ -55,10 +57,12 @@ public class PlayerController : MonoBehaviour
         feetHeight = transform.GetChild(0);
     }
 
+    public bool isPerformingElectricDash = false;
 
     void Update()
     {
         if (Time.timeScale == 0) return;
+        if (isPerformingElectricDash) return;
 
         Interact();
         Move();
@@ -107,9 +111,11 @@ public class PlayerController : MonoBehaviour
         Destroy(instance, 2f);
     }
 
+    
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!died)
+        if (!died && !isPerformingElectricDash)
         {
             if (hit.collider.CompareTag("Enemy") && !anim.GetBool("Knocked"))
             {
