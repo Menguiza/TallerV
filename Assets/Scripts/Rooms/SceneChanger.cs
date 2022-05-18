@@ -18,9 +18,8 @@ public class SceneChanger : MonoBehaviour
 
             if(RoomManager.instance.count > 2)
             {
-                Inventory.instance.UpdateUi();
-                Inventory.instance.OnItemCollected?.Invoke();
-            }     
+                Inventory.instance.InvokeWithDelay();
+            }
         }
     }
 
