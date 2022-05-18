@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b67569f38b33ac146a347b59c9e9de0d, type: 2}
   desc: "La forma m\xE1s basica de dormir y so\xF1ar."
   rarity: 0
-  gemCost: 10
+  gemCost: 5

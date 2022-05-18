@@ -40653,6 +40653,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   rewardPopUp: {fileID: 7530328223265623447, guid: 8ecf30fb590b0524da9ca09f2183f2fe, type: 3}
+  count: 0
   rooms:
   - {fileID: 11400000, guid: 0aa7cb6278d81544a97a496d486e8bef, type: 2}
   - {fileID: 11400000, guid: 0c867535752bd39449770c231555ce21, type: 2}
