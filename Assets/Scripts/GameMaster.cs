@@ -178,9 +178,7 @@ public class GameMaster : MonoBehaviour
         if (!sceneReloaded)
         {
             sceneReloaded = true;
-
-            Scene scene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(scene.name);
+            SceneManager.LoadScene(2);
         }
     }
 

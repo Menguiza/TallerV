@@ -58,8 +58,6 @@ public class RoomManager : MonoBehaviour
         {
             SetUpRoom(SelectRoom());
         }
-
-        Debug.LogWarning("Awakened");
     }
 
     public void GenerateRandomRun()
@@ -77,8 +75,6 @@ public class RoomManager : MonoBehaviour
 
     void SetUpRoom(Room room)
     {
-        print("I was wetup");
-
         if(room != null)
         {
             foreach (RoomSpawners element in room.data)
@@ -124,12 +120,11 @@ public class RoomManager : MonoBehaviour
     int[] SetUpIndexes()
     {
         int[] indexes = new int[5];
+        List<int> randoms = RandomListInt(4, 3);
 
         for(int i = 0; i<3; i++)
         {
-            int rnd = RandomInt(4);
-
-            switch(rnd)
+            switch(randoms[i])
             {
                 case 0:
                     indexes[i] = 5;
@@ -156,6 +151,22 @@ public class RoomManager : MonoBehaviour
     {
         int rnd = Random.Range(0, max);
         return rnd;
+    }
+
+    List<int> RandomListInt(int max, int limit)
+    {
+        List<int> listNumbers = new List<int>(limit);
+        int number;
+        for (int i = 0; i < limit; i++)
+        {
+            do
+            {
+                number = Random.Range(0, max);
+            } while (listNumbers.Contains(number));
+            listNumbers.Add(number);
+        }
+
+        return listNumbers;
     }
 
     void AssignReward()
