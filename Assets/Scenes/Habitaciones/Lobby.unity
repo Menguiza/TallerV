@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028384, g: 0.225714, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028401, g: 0.22571425, b: 0.30692324, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6619,30 +6619,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
-    - target: {fileID: 935106322802529626, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 25c7cb7e6e70d6e458a4efcea2e5ecb6, type: 3}
-    - target: {fileID: 935106323303577824, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: bcb02b5e71bba84488ec21659f43a96f, type: 3}
-    - target: {fileID: 935106323439170482, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 5a181b8ff4f7a01458dcbd76b5e67371, type: 3}
-    - target: {fileID: 935106323457526282, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 36eb7b502ccabf041a9a722c9c5dc4cc, type: 3}
-    - target: {fileID: 935106323520956956, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 43dc46cc222e64f40b9711de1c0857c0, type: 3}
-    - target: {fileID: 935106323810127862, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: c8d61fdfe31320d4eab39bfde010abc4, type: 3}
     - target: {fileID: 2636388963182655892, guid: 2ab066b969012f649a783035e7ae7421, type: 3}
       propertyPath: m_text
       value: 
@@ -36118,6 +36094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   index: 4
+  markedAsInitializer: 0
 --- !u!1001 &1740107445
 PrefabInstance:
   m_ObjectHideFlags: 0

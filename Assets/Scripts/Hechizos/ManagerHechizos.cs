@@ -613,9 +613,6 @@ public class ManagerHechizos : MonoBehaviour
 
     void SubscribeToOnRoomFinisheAndRunEnd()
     {
-        GameMaster.instance.OnRoomFinished.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
-        GameMaster.instance.OnRoomFinished.AddListener(CleanAllSpells);
-
         GameMaster.instance.OnRunEnd.AddListener(OnChangeSceneInvokeReInitializeSpellVitalReferences);
         GameMaster.instance.OnRunEnd.AddListener(CleanAllSpells);
     }
