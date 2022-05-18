@@ -34,12 +34,10 @@ public class ManagerHechizos : MonoBehaviour
 
         if (instance != null)
         {
-            print("Destroyed instance");
             Destroy(gameObject);
         }
         else
         {
-            print("Assigned instace");
             instance = this;
             DontDestroyOnLoad(gameObject);
         }

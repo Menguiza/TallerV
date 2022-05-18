@@ -48,7 +48,7 @@ public class RoomManager : MonoBehaviour
             FindObjectOfType<SceneChanger>().index = indexes[count];
             count++;
         }
-        else
+        else if (count != 0)
         {
             FindObjectOfType<SceneChanger>().index = indexes[count];
             count++;
@@ -58,15 +58,27 @@ public class RoomManager : MonoBehaviour
         {
             SetUpRoom(SelectRoom());
         }
+
+        Debug.LogWarning("Awakened");
+    }
+
+    public void GenerateRandomRun()
+    {
+        count = 0;
+        indexes = SetUpIndexes();
+        SetUpRoom(SelectRoom());
     }
 
     private void Start()
     {
         GameMaster.instance.OnRoomFinished.AddListener(AssignReward);
+        //onChangeScene.AddListener(InitializeRoomOnNextFrame);
     }
 
     void SetUpRoom(Room room)
     {
+        print("I was wetup");
+
         if(room != null)
         {
             foreach (RoomSpawners element in room.data)
@@ -156,5 +168,28 @@ public class RoomManager : MonoBehaviour
             popUp.GetComponent<PlaceHolders>().icon = rewards[count].Give();
             Destroy(popUp, 5f);
         }
+    }
+
+    void InitializeRoomOnNextFrame()
+    {
+        StartCoroutine(InitializeRoomOnNextFrameCoroutine());
+    }
+
+    IEnumerator InitializeRoomOnNextFrameCoroutine()
+    {
+        yield return null;
+
+        for (int i = 0; i < rooms.Count; i++)
+        {
+            if (SceneManager.GetActiveScene().buildIndex == indexes[i])
+            {
+                SetUpRoom(SelectRoom());
+                StopCoroutine(InitializeRoomOnNextFrameCoroutine());
+
+                break;
+            }
+        }
+
+        StopCoroutine(InitializeRoomOnNextFrameCoroutine());
     }
 }

@@ -196,9 +196,7 @@ public class GameMaster : MonoBehaviour
     /// Aplica las técnicas de la postura del sueño de acuerdo al estado actual del jugador y el estado activo donde actúa la técnica.
     /// </summary>
     public void ApplyTechniques()
-    {
-        print(player.Pesadilla + " on ApplyTech");
-        
+    {        
         CheckStance();
         foreach (ModsTecnicas technique in posturaDelSueño.Techniques)
         {
@@ -209,12 +207,6 @@ public class GameMaster : MonoBehaviour
                     break;
 
                 case estado.Dormido:
-
-                    print(technique.techniqueName);
-                    print(technique.activeState == ModsTecnicas.ActiveState.anyDream);
-                    print(!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream);
-                    print(player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream);
-
                     if (technique.activeState == ModsTecnicas.ActiveState.anyDream) AddTechnique(technique);
                     else if (!player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.normalDream) AddTechnique(technique);
                     else if (player.Pesadilla && technique.activeState == ModsTecnicas.ActiveState.nightmareDream) AddTechnique(technique);
