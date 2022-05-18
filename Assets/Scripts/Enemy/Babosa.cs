@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Babosa : MonoBehaviour, IEnemy
 {
-    public Transform player, attackPoint, destiny;
+    public Transform player, attackPoint;
 
     public LayerMask whatIsPlayer;
 
@@ -39,8 +39,8 @@ public class Babosa : MonoBehaviour, IEnemy
     private void Awake()
     {
         player = GameObject.FindObjectOfType<PlayerController>().transform;
-        destiny.parent = null;
         original = transform.position;
+        SearchWalkPoint();
     }
 
     private void Update()
@@ -84,7 +84,7 @@ public class Babosa : MonoBehaviour, IEnemy
         Vector3 distanceToWalkPoint = transform.position - walkPoint;
 
         //Walkpoint reached
-        if (distanceToWalkPoint.magnitude <= 0f)
+        if (distanceToWalkPoint.magnitude <= 0.1f)
             walkPointSet = false;
 
         Turn();
@@ -92,9 +92,13 @@ public class Babosa : MonoBehaviour, IEnemy
 
     private void SearchWalkPoint()
     {
-        if(transform.position == original)
+        Vector3 distanceToWalkPoint = transform.position - original;
+
+        //Walkpoint reached
+        if (distanceToWalkPoint.magnitude <= 0.1f)
         {
-            walkPoint = destiny.position;
+            walkPoint = original;
+            walkPoint.z = walkPoint.z + 6;
         }
         else
         {
