@@ -299,7 +299,7 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UpdateUi()
+    void UpdateUi()
     {
         foreach (Item item in items_Pasivos)
         {
@@ -333,12 +333,24 @@ public class Inventory : MonoBehaviour
 
             GameObject pasivo = Instantiate(prefab, content.transform);
             pasivo.GetComponent<ItemContainer>().itemInfo = item;
+        }
 
-            for (int i = 0; i < activosInv.Count; i++)
+        for (int i = 0; i < activables.Count; i++)
+        {
+            ScriptableObject obj = activables[i].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
             {
                 activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
             }
         }
+
+        OnItemCollected?.Invoke();
+    }
+
+    public void InvokeWithDelay()
+    {
+        Invoke("UpdateUi", 0.1f);
     }
 
     #region"Generación de Items"
