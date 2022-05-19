@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class ChangeMusicManager : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class ChangeMusicManager : MonoBehaviour
     AudioSource awakenSC, dreamerSC;
     [SerializeField] float volumeSpeed, timeSlide;
     bool callAwake = false, callDreamer = false;
+
+    [SerializeField] bool markedAsBossSoundManager;
 
     void Start()
     {
@@ -27,6 +30,11 @@ public class ChangeMusicManager : MonoBehaviour
 
     IEnumerator AwakenManager()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 9 && !markedAsBossSoundManager)
+        {
+            yield break;
+        }
+
         while (awakenSC.volume > 0)
         {
             awakenSC.volume -= volumeSpeed;
@@ -38,6 +46,11 @@ public class ChangeMusicManager : MonoBehaviour
 
     IEnumerator DreamerManager()
     {
+        if (SceneManager.GetActiveScene().buildIndex == 9 && !markedAsBossSoundManager)
+        {
+            yield break;
+        }
+
         while (dreamerSC.volume > 0)
         {
             awakenSC.volume += volumeSpeed;
@@ -58,5 +71,14 @@ public class ChangeMusicManager : MonoBehaviour
     {
             StopAllCoroutines();
             StartCoroutine(AwakenManager());
+    }
+
+    private void OnDisable()
+    {
+        if (markedAsBossSoundManager)
+        {
+            GameMaster.instance.PlayerDream.RemoveListener(AwakenVolume);
+            GameMaster.instance.PlayerWake.RemoveListener(DreamerVolume);
+        }      
     }
 }

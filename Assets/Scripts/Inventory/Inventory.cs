@@ -72,7 +72,7 @@ public class Inventory : MonoBehaviour
              
                 if (item.hasUseParticle)
                 {
-                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up * 2, Quaternion.identity);
                     Destroy(pInstance, 4f);
                 }
             }
@@ -98,7 +98,7 @@ public class Inventory : MonoBehaviour
 
                 if (item.hasUseParticle)
                 {
-                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up * 2, Quaternion.identity);
                     Destroy(pInstance, 4f);
                 }
             }
@@ -124,7 +124,7 @@ public class Inventory : MonoBehaviour
 
                 if (item.hasUseParticle)
                 {
-                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up * 2, Quaternion.identity);
                     Destroy(pInstance, 4f);
                 }
             }
@@ -150,7 +150,7 @@ public class Inventory : MonoBehaviour
 
                 if (item.hasUseParticle)
                 {
-                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up * 2, Quaternion.identity);
                     Destroy(pInstance, 4f);
                 }
             }
@@ -176,7 +176,7 @@ public class Inventory : MonoBehaviour
 
                 if (item.hasUseParticle)
                 {
-                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up * 2, Quaternion.identity);
                     Destroy(pInstance, 4f);
                 }
             }

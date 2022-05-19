@@ -87,6 +87,13 @@ public class SoundManager : MonoBehaviour
         battleForestDreamer.volume = 0;
     }
 
+    public void StopAllThemesOnSoundManager()
+    {
+        lobbyTheme.volume = 0;
+        battleForestAwaken.volume = 0;
+        battleForestDreamer.volume = 0;
+    }
+
     IEnumerator SubscribeToRunEnd()
     {
         yield return null;
