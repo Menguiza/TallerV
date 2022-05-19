@@ -142,7 +142,7 @@ MonoBehaviour:
   health: 8
   speed: 3
   dmg: 4
-  conciencia: 7
+  conciencia: 8
   walkPoint: {x: 0, y: 0, z: 0}
   fixedPivot: {x: 0, y: 0, z: 0}
   origin: {x: 0, y: 0, z: 0}
