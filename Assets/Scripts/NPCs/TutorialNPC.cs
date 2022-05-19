@@ -23,9 +23,14 @@ public class TutorialNPC : MonoBehaviour, IInteractive, IVendorNPC
     [SerializeField] GameObject tutSection6;
     [SerializeField] GameObject tutSection7;
 
+    [SerializeField] AudioClip talk;
+    AudioSource audioSource;
+
     void Start()
     {
         textNPC.text = "Llegaste! Oh poderoso humano, soy Nerva! necesitamos tu ayuda\nUsa 'F' para interatuar!";
+
+        audioSource = GetComponent<AudioSource>();
 
         phrases = new string[9]
         {
@@ -39,6 +44,8 @@ public class TutorialNPC : MonoBehaviour, IInteractive, IVendorNPC
             "Debes derrotar a todos los enemigos de la sala para salir de esta, derrota a este slime!", // S7 Objetivo
             "Por último, usa 'Escape' para abrir la pausa si en algún momento necesitas respirar, ajustar o ver los controles" // S8 Final
         };
+
+        audioSource.PlayOneShot(talk);
     }
 
     public void OpenStore()
@@ -82,12 +89,14 @@ public class TutorialNPC : MonoBehaviour, IInteractive, IVendorNPC
     {
         textNPC.text = "Para moverte en este mundo, usa 'A' 'D' y 'Espacio' para moverte hacia los lados y saltar";
         tutSection1.SetActive(true);
+        audioSource.PlayOneShot(talk);
     }
 
     public void SetStage2()
     {
         textNPC.text = "Usa 'Shift' para rodar, puede ayudarte a desplazarte pero NO te protegerá del daño"; // S2 Dash
         tutSection2.SetActive(true);
+        audioSource.PlayOneShot(talk);
     }
 
     [SerializeField] Hechizo hechizo;
@@ -96,27 +105,32 @@ public class TutorialNPC : MonoBehaviour, IInteractive, IVendorNPC
         textNPC.text = "Toma esta bola de fuego, usala con 'Q', apunta con el 'Mouse' y lánzala a esa caja!\nCuando tengas más hechizos los podrás usar con 'Q, W, E'";
         ManagerHechizos.instance.AddNewSpell(hechizo);
         tutSection3.SetActive(true);
+        audioSource.PlayOneShot(talk);
     }
 
     public void SetStage4()
     {
         textNPC.text = "Oh, conseguiste un objeto activo! Usalo con '1'\n Cuando tengas más objetos activos los´podrás usar con '1, 2, 3, 4, 5'";
+        audioSource.PlayOneShot(talk);
     }
 
     public void SetStage5()
     {
         textNPC.text = "Al quedar insconciente empiezas a soñar y eres más poderoso! Tu consciencia se irá recuperando con el tiempo. Ahora Pégale a esa odiosa caja usando 'Click izquierdo'! ";
         tutSection4.SetActive(true);
+        audioSource.PlayOneShot(talk);
     }
 
     public void SetStage6()
     {
         textNPC.text = "Usa 'Tab' para abrir tu inventario y ver tus estadísticas";
+        audioSource.PlayOneShot(talk);
     }
     public void SetStage7()
     {
         textNPC.text = "Debes derrotar a todos los enemigos de la sala para salir de esta, derrota a este slime!";
         tutSection5.SetActive(true);
+        audioSource.PlayOneShot(talk);
     }
 
     #endregion
