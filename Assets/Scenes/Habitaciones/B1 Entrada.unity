@@ -28347,6 +28347,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1013938338}
     m_Modifications:
+    - target: {fileID: 4146210854878096824, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
+      propertyPath: vendorNPC
+      value: 
+      objectReference: {fileID: 1362888816}
     - target: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
       propertyPath: m_Name
       value: Rogue Fairy UI
