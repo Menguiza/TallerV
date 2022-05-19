@@ -69,6 +69,12 @@ public class Inventory : MonoBehaviour
                 {
                     item.Impact();
                 }
+             
+                if (item.hasUseParticle)
+                {
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(pInstance, 4f);
+                }
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
@@ -83,10 +89,17 @@ public class Inventory : MonoBehaviour
                 if (item.use == ItemUse.Tiempo)
                 {
                     item.AddParameters(item.duration);
+                    
                 }
                 else
                 {
                     item.Impact();
+                }
+
+                if (item.hasUseParticle)
+                {
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(pInstance, 4f);
                 }
             }
 
@@ -102,10 +115,17 @@ public class Inventory : MonoBehaviour
                 if (item.use == ItemUse.Tiempo)
                 {
                     item.AddParameters(item.duration);
+                    
                 }
                 else
                 {
                     item.Impact();
+                }
+
+                if (item.hasUseParticle)
+                {
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(pInstance, 4f);
                 }
             }
 
@@ -121,10 +141,17 @@ public class Inventory : MonoBehaviour
                 if (item.use == ItemUse.Tiempo)
                 {
                     item.AddParameters(item.duration);
+                    
                 }
                 else
                 {
                     item.Impact();
+                }
+
+                if (item.hasUseParticle)
+                {
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(pInstance, 4f);
                 }
             }
 
@@ -140,10 +167,17 @@ public class Inventory : MonoBehaviour
                 if (item.use == ItemUse.Tiempo)
                 {
                     item.AddParameters(item.duration);
+                    
                 }
                 else
                 {
                     item.Impact();
+                }
+
+                if (item.hasUseParticle)
+                {
+                    GameObject pInstance = Instantiate(item.associatedUseParticle, GameMaster.instance.playerObject.transform.position + Vector3.up, Quaternion.identity);
+                    Destroy(pInstance, 4f);
                 }
             }
         }
