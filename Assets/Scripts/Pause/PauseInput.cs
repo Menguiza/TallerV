@@ -20,6 +20,36 @@ public class PauseInput : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            if (guideCanvas.activeInHierarchy) // Ya está activo
+            {
+                toggle = !toggle;
+                ActiveCursor(toggle);
+                Inventory.instance.TimeChange(toggle);
+
+                guideCanvas.SetActive(false);
+                soundCanvas.SetActive(false);
+
+                if (toggle) SoundManager.instance.SetPauseMusic();
+                else SoundManager.instance.SetUnpausedMusic();
+
+                return;
+            }
+
+            guideCanvas.SetActive(true);
+            soundCanvas.SetActive(false);
+
+            if (Time.timeScale == 0) return; // Ya está pausado
+
+            toggle = !toggle;
+            ActiveCursor(toggle);
+            Inventory.instance.TimeChange(toggle);
+
+            if (toggle) SoundManager.instance.SetPauseMusic();
+            else SoundManager.instance.SetUnpausedMusic();
+        }
+
         if (Input.GetKeyDown(KeyCode.Escape) && Time.timeScale != 0 || Input.GetKeyDown(KeyCode.Escape) && pauseMenu.alpha == 1)
         {
             if (guideCanvas.activeInHierarchy || soundCanvas.activeInHierarchy)

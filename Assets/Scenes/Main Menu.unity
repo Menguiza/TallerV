@@ -31057,6 +31057,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 263964921515796437, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5258400113861310146, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
       propertyPath: m_RootOrder
       value: 10
@@ -31109,7 +31113,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 263964921515796437, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aa0ca1e3f582bc145b9c9fa8e9aecbef, type: 3}
 --- !u!4 &1740049404 stripped
 Transform:

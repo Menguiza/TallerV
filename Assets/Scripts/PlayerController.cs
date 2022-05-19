@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
 
     CharacterController characterContrl;
     Animator anim;
+    public AudioSource playerAudioSource;
 
     GameMaster gm;
 
@@ -37,7 +38,9 @@ public class PlayerController : MonoBehaviour
     float gravity = 9.8f, attackRange = 1f;
     float horizontal, verticalVelocity;
 
-    Vector3 move = Vector3.zero;
+    public float Gravity { get => gravity; set => gravity = value; }
+
+    public Vector3 move = Vector3.zero;
 
     private void Start()
     {
@@ -52,13 +55,17 @@ public class PlayerController : MonoBehaviour
 
         gm.sceneReloaded = false; //Resetear sceneReloaded para permitir la recarga de subsecuentes escenas
 
+        playerAudioSource = GetComponent<AudioSource>();
+
         feetHeight = transform.GetChild(0);
     }
 
+    public bool isPerformingElectricDash = false;
 
     void Update()
     {
         if (Time.timeScale == 0) return;
+        if (isPerformingElectricDash) return;
 
         Interact();
         Move();
@@ -107,9 +114,11 @@ public class PlayerController : MonoBehaviour
         Destroy(instance, 2f);
     }
 
+    
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (!died)
+        if (!died && !isPerformingElectricDash)
         {
             if (hit.collider.CompareTag("Enemy") && !anim.GetBool("Knocked"))
             {
@@ -164,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !ManagerHechizos.instance.castingSpell && !dodge && !knockBacked && !blocking && !airAttack)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && characterContrl.isGrounded && !attack && !ManagerHechizos.instance.castingSpell && !dodge && !knockBacked && !blocking && !airAttack)
         {
             anim.SetTrigger("Punch");
 
@@ -172,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
             anim.SetFloat("Horizontal", zero);
         }
-        else if (Input.GetButtonDown("Punch") && !characterContrl.isGrounded && !dodge && !knockBacked && !airAttack && !attack)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && !characterContrl.isGrounded && !dodge && !knockBacked && !airAttack && !attack)
         {
             airAttack = true;
             anim.SetTrigger("AirAttack");
@@ -608,32 +617,32 @@ public class PlayerController : MonoBehaviour
 
     public void StepSound()
     {
-        SoundManager.instance.PlayClip(amoSteps);
+        playerAudioSource.PlayOneShot(amoSteps);
     }
 
     public void JumpHopSound()
     {
-        SoundManager.instance.PlayClip(jumpHop);
+        playerAudioSource.PlayOneShot(jumpHop);
     }
 
     public void RollSound()
     {
-        SoundManager.instance.PlayClip(roll);
+        playerAudioSource.PlayOneShot(roll);
     }
 
     public void SwordSwing()
     {
-        SoundManager.instance.PlayClip(swordSwing);
+        playerAudioSource.PlayOneShot(swordSwing);
     }
 
     public void DeathSound()
     {
-        SoundManager.instance.PlayClip(death);
+        playerAudioSource.PlayOneShot(death);
     }
 
     public void GetHitSound()
     {
-        SoundManager.instance.PlayClip(getHit);
+        playerAudioSource.PlayOneShot(getHit);
     }
     #endregion
 }
