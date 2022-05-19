@@ -34,6 +34,5 @@ public class Conciencia : MonoBehaviour
                 units.text = gm.Player.Conciencia.ToString();
             }
         }
-
     }
 }

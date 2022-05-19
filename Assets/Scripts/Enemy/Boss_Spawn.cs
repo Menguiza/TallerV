@@ -26,6 +26,10 @@ public class Boss_Spawn : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (player == null)
+        {
+            return;
+        }
         boss.LookAtPlayer();
         if (count < 3)
         {

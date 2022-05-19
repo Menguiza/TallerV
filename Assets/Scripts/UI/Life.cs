@@ -32,6 +32,5 @@ public class Life : MonoBehaviour
                 units.text = gm.Player.Life.ToString();
             }
         }
-
     }
 }

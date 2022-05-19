@@ -20,6 +20,10 @@ public class Boss_Move : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        if (player == null)
+        {
+            return;
+        }
         boss.LookAtPlayer();
         Vector3 target = new Vector3(rb.position.x, rb.position.y, player.position.z + 3);
         Vector3 newPos = Vector3.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
