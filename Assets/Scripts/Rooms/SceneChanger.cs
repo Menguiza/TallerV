@@ -29,6 +29,12 @@ public class SceneChanger : MonoBehaviour
         {
             SoundManager.instance.SetLobbyMusic();
         }
+
+        // Para el boss
+        if (markedAsBoss)
+        {
+            SoundManager.instance.StopAllThemesOnSoundManager();
+        }
     }
 
     private void OnTriggerEnter(Collider other)

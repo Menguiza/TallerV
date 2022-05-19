@@ -19,6 +19,8 @@ MonoBehaviour:
   rarity: 0
   icon: {fileID: 21300000, guid: 03c0ea54deeb8bb438d84c93b505879e, type: 3}
   price: 20
+  hasUseParticle: 1
+  associatedUseParticle: {fileID: 8242821079472555102, guid: 467816162ad9bd543a3c5259d0490044, type: 3}
   multVidaMax: 0
   multDmg: 0
   multConciencia: 0

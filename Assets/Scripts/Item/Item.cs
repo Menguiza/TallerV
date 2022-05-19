@@ -23,6 +23,8 @@ public class Item : ScriptableObject
     public ItemRarity rarity;
     public Sprite icon;
     public int price;
+    public bool hasUseParticle;
+    public GameObject associatedUseParticle;
 
     [Header("Parametros")]
 

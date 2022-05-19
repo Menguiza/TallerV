@@ -19,7 +19,7 @@ public class ItemCrate : MonoBehaviour, IEnemy
         int randomChance = Random.Range(1, 101);
         ItemType itemType;
 
-        if (randomChance < 75) itemType = ItemType.Pasivo;
+        if (randomChance < 1) itemType = ItemType.Pasivo;
         else itemType = ItemType.Activo;
 
         // Otorgar un objeto
