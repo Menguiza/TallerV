@@ -8,7 +8,7 @@ public class Player
     private uint maxLife;
     private uint life;
     private uint damage;
-    private GameMaster.estado status = GameMaster.estado.Despierto;
+    public GameMaster.estado status = GameMaster.estado.Despierto;
     private uint tGPC = 1;
     private byte critProb = 0;
     private float critMult = 3.0f;

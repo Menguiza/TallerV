@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbd9e9f06176a8646a3093d35c1badab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  speed: 6
   particle: {fileID: 3711522678776631508}
   whatIsPlayer:
     serializedVersion: 2
