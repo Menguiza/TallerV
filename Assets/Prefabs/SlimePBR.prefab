@@ -446,7 +446,7 @@ MonoBehaviour:
   health: 22
   speed: 3
   dmg: 10
-  conciencia: 15
+  conciencia: 20
   force: 250
   distance: 1.2
   walkPoint: {x: 0, y: 0, z: 0}
