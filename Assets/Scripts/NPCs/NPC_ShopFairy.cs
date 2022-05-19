@@ -21,6 +21,7 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
 
     [SerializeField] AudioClip buySound;
     [SerializeField] AudioClip talkSound;
+    [SerializeField] AudioClip cantBuySound;
 
     AudioSource audioSource;
 
@@ -48,6 +49,10 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
             Inventory.instance.AddItem(shopItems[itemIndex]);
 
             audioSource.PlayOneShot(buySound);
+        }
+        else
+        {
+            audioSource.PlayOneShot(cantBuySound);
         }
     }
 

@@ -23,6 +23,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
     [SerializeField] AudioClip buySound;
     [SerializeField] AudioClip selectSound;
     [SerializeField] AudioClip talkSound;
+    [SerializeField] AudioClip cantBuySound;
 
     AudioSource audioSource;
 
@@ -94,6 +95,10 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
             Economy.instance.SpendGems((uint)sleepStancesData[stanceIndex].gemCost);
 
             audioSource.PlayOneShot(buySound);
+        }
+        else
+        {
+            audioSource.PlayOneShot(cantBuySound);
         }
 
         GameData.boughtStance0 = boughtStances[0] == false ? 0 : 1;
