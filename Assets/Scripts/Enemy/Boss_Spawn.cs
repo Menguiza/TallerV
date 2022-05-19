@@ -30,7 +30,9 @@ public class Boss_Spawn : StateMachineBehaviour
         {
             return;
         }
-        boss.LookAtPlayer();
+
+        boss.LookAtPlayer(player.position);
+
         if (count < 3)
         {
             timer += Time.deltaTime;
