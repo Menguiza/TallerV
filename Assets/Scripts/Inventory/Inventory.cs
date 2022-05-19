@@ -299,6 +299,28 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void ResetInventory()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            items_Activos[i] = null;
+            activables[i].GetComponent<ItemContainer>().itemInfo = null;
+            activosInv[i].GetComponent<ItemContainerInv>().itemInfo = null;
+        }
+
+        dmrcatcher = null;
+
+        for(int i = 0; i < items_Pasivos.Count; i++)
+        {
+            items_Pasivos[i] = null;
+        }
+
+        foreach(GameObject element in content.transform)
+        {
+            Destroy(element);
+        }
+    }
+
     void UpdateUi()
     {
         foreach (Item item in items_Pasivos)

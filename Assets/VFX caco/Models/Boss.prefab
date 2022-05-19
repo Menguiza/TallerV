@@ -4970,6 +4970,7 @@ MonoBehaviour:
   dmg: 10
   conciencia: 25
   prefab: {fileID: 6651134364074384656, guid: 8da290ae9663d21498cc68626af36032, type: 3}
+  bullet: {fileID: 7524826110065743135, guid: b7f9ae1cb459d064b825b8af373d0525, type: 3}
   GetHitParticle: {fileID: 1756917352542586541, guid: 2b9c7b0cc9d91b449807d783e80e8290, type: 3}
 --- !u!135 &4313324965915100728
 SphereCollider:
