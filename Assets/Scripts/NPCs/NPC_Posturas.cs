@@ -17,6 +17,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
     [SerializeField] TextMeshProUGUI[] costUI;
     [SerializeField] TextMeshProUGUI[] nameUI;
     [SerializeField] Image[] iconUI;
+    [SerializeField] GameObject fairy;
 
     [SerializeField] InventoryInput inventoryInput;
 
@@ -24,6 +25,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
     [SerializeField] AudioClip selectSound;
     [SerializeField] AudioClip talkSound;
     [SerializeField] AudioClip cantBuySound;
+    [SerializeField] int offset;
 
     AudioSource audioSource;
 
@@ -62,6 +64,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
     {
         GameMaster.instance.gameObject.GetComponent<InicializadorSistemaPosturas>().AssignNewStance(sleepStances[stanceIndex]);
         audioSource.PlayOneShot(selectSound);
+        fairy.transform.position=setStanceUI[stanceIndex].transform.position+Vector3.right*(offset);
     }
 
     void DisplaySetButton(int stanceIndex, bool state)
