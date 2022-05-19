@@ -149,7 +149,10 @@ public class PlayerController : MonoBehaviour
             {
                 gm.DamagePlayer((int)hit.GetComponent<EnemyController>().conciencia, (int)hit.GetComponent<EnemyController>().conciencia);
             }
-
+            else if(hit.GetComponent<TrapContainer>() != null)
+            {
+                gm.DamagePlayer((int)hit.GetComponent<TrapContainer>().trap.damage, (int)hit.GetComponent<TrapContainer>().trap.damage);
+            }
             // Hechizos
             ManagerHechizos.instance.EndSpellCast();
             CreateOnHitParticle();
