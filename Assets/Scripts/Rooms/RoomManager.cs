@@ -169,7 +169,7 @@ public class RoomManager : MonoBehaviour
             popUp.GetComponent<PlaceHolders>().coins.text = rewards[count-2].coins.ToString();
             popUp.GetComponent<PlaceHolders>().gems.text = rewards[count-2].gems.ToString();
             popUp.GetComponent<PlaceHolders>().icon = rewards[count - 2].Give();
-            Destroy(popUp, 5f);
+            Destroy(popUp, 3f);
         }
         else if(SceneManager.GetActiveScene().buildIndex == 9)
         {
@@ -177,7 +177,7 @@ public class RoomManager : MonoBehaviour
             popUp.GetComponent<PlaceHolders>().coins.text = rewards[rewards.Count-1].coins.ToString();
             popUp.GetComponent<PlaceHolders>().gems.text = rewards[rewards.Count - 1].gems.ToString();
             popUp.GetComponent<PlaceHolders>().icon = rewards[rewards.Count - 1].Give();
-            Destroy(popUp, 5f);
+            Destroy(popUp, 3f);
         }
     }
 }
