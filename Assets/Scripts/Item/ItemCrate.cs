@@ -14,22 +14,58 @@ public class ItemCrate : MonoBehaviour, IEnemy
 
     [SerializeField] GameObject CrateExplotion;
 
+    [SerializeField] bool markedForActiveInTutorial;
+    [SerializeField] bool markedForPasiveInTutorial;
+    [SerializeField] Item sarten;
+    [SerializeField] Item anillo;
+
     public void DestroyEnemy()
     {
-        int randomChance = Random.Range(1, 101);
         ItemType itemType;
 
-        if (randomChance < 1) itemType = ItemType.Pasivo;
-        else itemType = ItemType.Activo;
+        if (!markedForActiveInTutorial && !markedForPasiveInTutorial)
+        {
+            int randomChance = Random.Range(1, 101);
+            
 
-        // Otorgar un objeto
-        Inventory.instance.AddItem(Inventory.instance.GenerateRandomItem(itemType));
-        Inventory.instance.OnItemCollected.Invoke();
+            if (randomChance < 75) itemType = ItemType.Pasivo;
+            else itemType = ItemType.Activo;
 
-        GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
-        Destroy(instance, 4f);
+            // Otorgar un objeto
+            Inventory.instance.AddItem(Inventory.instance.GenerateRandomItem(itemType));
+            Inventory.instance.OnItemCollected.Invoke();
 
-        Destroy(gameObject);
+            GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
+            Destroy(instance, 4f);
+
+            Destroy(gameObject);
+        }
+        else
+        {
+            if (markedForActiveInTutorial)
+            {
+                Inventory.instance.AddItem(sarten);
+                Inventory.instance.OnItemCollected.Invoke();
+
+                GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
+                Destroy(instance, 4f);
+
+                Destroy(gameObject);
+            }
+            else
+            {
+                Inventory.instance.AddItem(anillo);
+                Inventory.instance.OnItemCollected.Invoke();
+
+                GameObject instance = Instantiate(CrateExplotion, transform.position, Quaternion.identity);
+                Destroy(instance, 4f);
+
+                Destroy(gameObject);
+            }
+        }
+        
+
+        
     }
 
     public void ReceiveDamage(int dmg)
