@@ -213,30 +213,33 @@ public class Inventory : MonoBehaviour
 
     public void Remove(Item it)
     {
-        int count = 0;
-
-        foreach (GameObject item in activables)
+        if(it != null)
         {
-            if (item.GetComponent<ItemContainer>().itemInfo == it)
+            int count = 0;
+
+            foreach (GameObject item in activables)
             {
-                item.GetComponent<ItemContainer>().itemInfo = null;
+                if (item.GetComponent<ItemContainer>().itemInfo == it)
+                {
+                    item.GetComponent<ItemContainer>().itemInfo = null;
 
-                items_Activos[count] = null;
+                    items_Activos[count] = null;
 
-                Debug.Log("removed ");
-                break;
+                    Debug.Log("removed ");
+                    break;
+                }
+
+                count++;
             }
 
-            count++;
-        }
-
-        foreach (GameObject item in activosInv)
-        {
-            if (item.GetComponent<ItemContainerInv>().itemInfo == it)
+            foreach (GameObject item in activosInv)
             {
-                item.GetComponent<ItemContainerInv>().itemInfo = null;
-                Debug.Log("removed Inv");
-                break;
+                if (item.GetComponent<ItemContainerInv>().itemInfo == it)
+                {
+                    item.GetComponent<ItemContainerInv>().itemInfo = null;
+                    Debug.Log("removed Inv");
+                    break;
+                }
             }
         }
     }
@@ -304,15 +307,14 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < 5; i++)
         {
             items_Activos[i] = null;
-            activables[i].GetComponent<ItemContainer>().itemInfo = null;
-            activosInv[i].GetComponent<ItemContainerInv>().itemInfo = null;
+            Remove(activables[i].GetComponent<ItemContainer>().itemInfo);
         }
 
         dmrcatcher = null;
 
         for(int i = 0; i < items_Pasivos.Count; i++)
         {
-            items_Pasivos[i] = null;
+            items_Pasivos[i].ResetParameter();
         }
 
         foreach(GameObject element in content.transform)
@@ -323,8 +325,9 @@ public class Inventory : MonoBehaviour
 
     void UpdateUi()
     {
-        foreach (Item item in items_Pasivos)
+        for (int i = 0; i < items_Pasivos.Count; i++)
         {
+            Item item = items_Pasivos[i];
             bool stack = false;
 
             if (item.format == ItemFormat.Stackeable)
