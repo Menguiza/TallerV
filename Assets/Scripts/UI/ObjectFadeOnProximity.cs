@@ -20,7 +20,7 @@ public class ObjectFadeOnProximity : MonoBehaviour
         if (distanceFromPlayer > textRange) deltaAlpha = -Time.deltaTime;
         else deltaAlpha = Time.deltaTime;
 
-        deltaAlpha = (float)Math.Round(deltaAlpha, 3);
+        deltaAlpha = (float)Math.Round(deltaAlpha*2, 3);
         float newAlpha = Mathf.Clamp(image.color.a + deltaAlpha, 0, 1);
 
         image.color = new Color(1, 1, 1, newAlpha);
