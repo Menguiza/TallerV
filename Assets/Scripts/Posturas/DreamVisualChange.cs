@@ -18,6 +18,8 @@ public class DreamVisualChange : MonoBehaviour
 
         GameMaster.instance.PlayerDream.AddListener(SetDreamProfile);
         GameMaster.instance.PlayerWake.AddListener(SetWakeProfile);
+
+        volume.profile = wakeProfile;
     }
 
     public void SetWakeProfile()

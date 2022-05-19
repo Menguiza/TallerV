@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5258400113861310169}
   - component: {fileID: 5258400113861310168}
   - component: {fileID: 5258400113861310147}
+  - component: {fileID: 263964921515796437}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -241,3 +242,18 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: 48eb70287c7845248b65e7a6676b4864, type: 2}
+--- !u!114 &263964921515796437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5258400113861310171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7f5899b5d7b51c44821d3e848026aa7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wakeProfile: {fileID: 11400000, guid: 48eb70287c7845248b65e7a6676b4864, type: 2}
+  dreamProfile: {fileID: 11400000, guid: 417366045334fa74d9011be15a756f52, type: 2}
+  nightmareProfile: {fileID: 11400000, guid: 4d45be770cc13194aa98696c0ea3bbd5, type: 2}

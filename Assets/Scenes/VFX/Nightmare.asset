@@ -40,6 +40,22 @@ MonoBehaviour:
   dirtIntensity:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-5403584872612684125
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
 --- !u!114 &-894335995983559205
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -93,6 +109,8 @@ MonoBehaviour:
   - {fileID: 5394734628400736540}
   - {fileID: 8992757205416703612}
   - {fileID: 373380202351777902}
+  - {fileID: 1228843420038187021}
+  - {fileID: -5403584872612684125}
 --- !u!114 &373380202351777902
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -108,6 +126,34 @@ MonoBehaviour:
   active: 1
   mode:
     m_OverrideState: 1
+    m_Value: 1
+--- !u!114 &1228843420038187021
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5e1dc532bcb41949b58bc4f2abfbb7e, type: 3}
+  m_Name: LensDistortion
+  m_EditorClassIdentifier: 
+  active: 1
+  intensity:
+    m_OverrideState: 1
+    m_Value: -0.5
+  xMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  yMultiplier:
+    m_OverrideState: 0
+    m_Value: 1
+  center:
+    m_OverrideState: 0
+    m_Value: {x: 0.5, y: 0.5}
+  scale:
+    m_OverrideState: 0
     m_Value: 1
 --- !u!114 &5394734628400736540
 MonoBehaviour:
@@ -198,13 +244,13 @@ MonoBehaviour:
   active: 1
   type:
     m_OverrideState: 1
-    m_Value: 8
+    m_Value: 9
   intensity:
     m_OverrideState: 1
-    m_Value: 0.5
+    m_Value: 1
   response:
-    m_OverrideState: 0
-    m_Value: 0.8
+    m_OverrideState: 1
+    m_Value: 1
   texture:
     m_OverrideState: 0
     m_Value: {fileID: 0}
