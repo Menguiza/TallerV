@@ -20,6 +20,12 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
 
     [SerializeField] InventoryInput inventoryInput;
 
+    [SerializeField] AudioClip buySound;
+    [SerializeField] AudioClip selectSound;
+    [SerializeField] AudioClip talkSound;
+
+    AudioSource audioSource;
+
     bool isStoreOpen;
     public bool IsStoreOpen { get => isStoreOpen; set => isStoreOpen = value; }
 
@@ -39,6 +45,8 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
             DisplaySetButton(i, boughtStances[i]);
             DisplayBuyButton(i, !boughtStances[i]);
         }
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     public void RetrieveBoughtStancesData(bool[] boughtStancesData)
@@ -52,6 +60,7 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
     public void SetStance(int stanceIndex)
     {
         GameMaster.instance.gameObject.GetComponent<InicializadorSistemaPosturas>().AssignNewStance(sleepStances[stanceIndex]);
+        audioSource.PlayOneShot(selectSound);
     }
 
     void DisplaySetButton(int stanceIndex, bool state)
@@ -83,6 +92,8 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
             DisplayBuyButton(stanceIndex, false);
 
             Economy.instance.SpendGems((uint)sleepStancesData[stanceIndex].gemCost);
+
+            audioSource.PlayOneShot(buySound);
         }
 
         GameData.boughtStance0 = boughtStances[0] == false ? 0 : 1;
@@ -110,6 +121,8 @@ public class NPC_Posturas : MonoBehaviour, IVendorNPC, IInteractive
         Inventory.instance.TimeChange(true);
         SoundManager.instance.SetPauseMusic();
         isStoreOpen = true;
+
+        audioSource.PlayOneShot(talkSound);
     }
 
     public void CloseStore()

@@ -19,9 +19,15 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
     [SerializeField] TextMeshProUGUI[] CostText;
     [SerializeField] Image[] Icons;
 
+    [SerializeField] AudioClip buySound;
+    [SerializeField] AudioClip talkSound;
+
+    AudioSource audioSource;
+
     void Start()
     {
         StartCoroutine(InitializeOnNextFrame());
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -40,6 +46,8 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
             Economy.instance.SpendCurrency((uint)shopItems[itemIndex].price);
 
             Inventory.instance.AddItem(shopItems[itemIndex]);
+
+            audioSource.PlayOneShot(buySound);
         }
     }
 
@@ -58,6 +66,8 @@ public class NPC_ShopFairy : MonoBehaviour, IVendorNPC, IInteractive
         ShopUI.SetActive(true);
         Inventory.instance.TimeChange(true);
         SoundManager.instance.SetPauseMusic();
+
+        audioSource.PlayOneShot(talkSound);
     }
 
     IEnumerator InitializeOnNextFrame()

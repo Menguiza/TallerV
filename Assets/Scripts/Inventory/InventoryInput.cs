@@ -9,9 +9,14 @@ public class InventoryInput : MonoBehaviour
     Animator anim;
     bool toggle = false;
 
+    [SerializeField] AudioClip openInventorySound;
+    [SerializeField] AudioClip closeInventorySound;
+    AudioSource audioSource;
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        audioSource = GetComponent<AudioSource>();
         //Cursor.lockState = CursorLockMode.Locked;
         //Cursor.visible = false;
     }
@@ -23,6 +28,9 @@ public class InventoryInput : MonoBehaviour
             toggle = !toggle;
             ActiveCursor(toggle);
             Inventory.instance.TimeChange(toggle);
+
+            if (Time.timeScale == 0) audioSource.PlayOneShot(openInventorySound);
+            else audioSource.PlayOneShot(closeInventorySound);
         }
 
         anim.SetBool("Abierto", toggle);
