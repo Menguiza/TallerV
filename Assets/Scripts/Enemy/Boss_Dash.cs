@@ -9,7 +9,7 @@ public class Boss_Dash : StateMachineBehaviour
     Boss boss;
 
     public float timeToDash, speed = 4f, timer;
-    bool dashing, goForIt;
+    bool dashing, goForIt, ohNo;
 
     Vector3 objective = Vector3.zero;
 
@@ -68,8 +68,11 @@ public class Boss_Dash : StateMachineBehaviour
     void Dash()
     {
         if(goForIt)
-        {
-            boss.CollisionDetection();
+        { 
+            if(!ohNo)
+            {
+                ohNo = boss.CollisionDetection();
+            }
             Vector3 newPos = Vector3.MoveTowards(rb.position, objective, (speed * 2) * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
         }

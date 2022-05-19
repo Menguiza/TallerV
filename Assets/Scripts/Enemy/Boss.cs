@@ -65,8 +65,9 @@ public class Boss : MonoBehaviour, IEnemy
 		abeja.transform.parent = null;
 	}
 
-	public void CollisionDetection()
+	public bool CollisionDetection()
 	{
+		bool nada = false;
 		Collider[] hitPlayer = Physics.OverlapSphere(attackPoint.position, 1, playerLayer);
 
 		foreach (Collider player in hitPlayer)
@@ -74,8 +75,9 @@ public class Boss : MonoBehaviour, IEnemy
 			if (player.GetComponent<PlayerController>() == null) continue;
 
 			player.GetComponent<PlayerController>().Embestido(this.gameObject);
+			nada = true;
 
-			return;
+			return nada;
 		}
 	}
 
