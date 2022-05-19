@@ -31,9 +31,12 @@ public class Boss_Shoot : StateMachineBehaviour
         {
             return;
         }
+
         Vector3 target = new Vector3(rb.position.x, boss.altitude, player.position.z + 3);
         Vector3 newPos = Vector3.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
         rb.MovePosition(newPos);
+
+        boss.LookAtPlayer(player.position);
 
         if (count < 5)
         {

@@ -100,7 +100,6 @@ public class GameMaster : MonoBehaviour
 
         player = new Player(maxLife, dmg);
         CheckMods();
-        OnRunEnd.AddListener(ResetStats); 
     }
 
 

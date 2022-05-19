@@ -21,10 +21,12 @@ public class Boss : MonoBehaviour, IEnemy
 
 	[SerializeField] GameObject prefab, bullet;
 
+	Quaternion rotation;
+
 	private void Start()
 	{
 		player = GameMaster.instance.playerObject.transform;
-		altitude = transform.position.y;
+		altitude = 8.48f;
 	}
 
 	[SerializeField] GameObject GetHitParticle;
@@ -45,19 +47,19 @@ public class Boss : MonoBehaviour, IEnemy
 		if (health <= 0) DestroyEnemy();
 	}
 
-	public void LookAtPlayer()
+	public void LookAtPlayer(Vector3 walkPoint)
 	{
 		if(player != null)
         {
-			if (transform.position.z > player.position.z && isFlipped)
+			if (transform.position.z > walkPoint.z)
 			{
-				transform.Rotate(0f, 180f, 0f);
-				isFlipped = false;
+				rotation = Quaternion.Euler(0, 180, 0);
+				transform.rotation = rotation;
 			}
-			else if (transform.position.z < player.position.z && !isFlipped)
+			else
 			{
-				transform.Rotate(0f, 180f, 0f);
-				isFlipped = true;
+				rotation = Quaternion.Euler(0, 0, 0);
+				transform.rotation = rotation;
 			}
 		}
 	}

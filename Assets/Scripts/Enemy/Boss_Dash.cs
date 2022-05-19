@@ -33,13 +33,13 @@ public class Boss_Dash : StateMachineBehaviour
             return;
         }
 
-        boss.LookAtPlayer();
-
         if (!dashing)
         {
             Vector3 target = new Vector3(rb.position.x, rb.position.y, player.position.z + 3);
             Vector3 newPos = Vector3.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
+
+            boss.LookAtPlayer(player.position);
         }
 
         if(dashing)
@@ -49,6 +49,8 @@ public class Boss_Dash : StateMachineBehaviour
                 Vector3 target = new Vector3(rb.position.x, player.position.y - 1.4f, rb.position.z);
                 Vector3 newPos = Vector3.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
                 rb.MovePosition(newPos);
+
+                boss.LookAtPlayer(target);
             }
 
             timer += Time.deltaTime;
