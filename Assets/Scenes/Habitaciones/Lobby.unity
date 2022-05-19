@@ -31678,6 +31678,7 @@ MonoBehaviour:
   OnRunEnd:
     m_PersistentCalls:
       m_Calls: []
+  invulnerable: 0
 --- !u!4 &1510961788
 Transform:
   m_ObjectHideFlags: 0
