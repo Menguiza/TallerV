@@ -11,7 +11,7 @@ public class Stage2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetButtonDown("Dodge"))
         {
             tasDash = true;
         }

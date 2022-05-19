@@ -116,7 +116,7 @@ public class TutorialNPC : MonoBehaviour, IInteractive, IVendorNPC
     public void SetStage7()
     {
         textNPC.text = "Debes derrotar a todos los enemigos de la sala para salir de esta, derrota a este slime!";
-        tutSection6.SetActive(true);
+        tutSection5.SetActive(true);
     }
 
     #endregion
