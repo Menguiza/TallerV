@@ -20,12 +20,17 @@ public class Boss_Dash : StateMachineBehaviour
         rb = animator.transform.parent.GetComponent<Rigidbody>();
         boss = animator.transform.parent.GetComponent<Boss>();
         timer = 0;
+        dashing = false;
+        goForIt = false;
+        ohNo = false;
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if(!dashing)
+        boss.LookAtPlayer();
+
+        if (!dashing)
         {
             Vector3 target = new Vector3(rb.position.x, rb.position.y, player.position.z + 3);
             Vector3 newPos = Vector3.MoveTowards(rb.position, target, speed * Time.fixedDeltaTime);
@@ -54,7 +59,7 @@ public class Boss_Dash : StateMachineBehaviour
         if (rb.position == objective && goForIt)
         {
             goForIt = false;
-            //animator.SetTrigger("Shoot");
+            animator.SetTrigger("Shoot");
         }
 
         if (rb.position.z == player.position.z + 3 && !dashing)
@@ -73,6 +78,7 @@ public class Boss_Dash : StateMachineBehaviour
             {
                 ohNo = boss.CollisionDetection();
             }
+
             Vector3 newPos = Vector3.MoveTowards(rb.position, objective, (speed * 2) * Time.fixedDeltaTime);
             rb.MovePosition(newPos);
         }
@@ -81,6 +87,6 @@ public class Boss_Dash : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        //animator.ResetTrigger("Dash");
+        animator.ResetTrigger("Dash");
     }
 }

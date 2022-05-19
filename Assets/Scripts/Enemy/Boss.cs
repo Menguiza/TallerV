@@ -19,7 +19,7 @@ public class Boss : MonoBehaviour, IEnemy
 	public int Damage { get => dmg; set => dmg = value; }
 	public int Conciencia { get => conciencia; set => conciencia = value; }
 
-	[SerializeField] GameObject prefab;
+	[SerializeField] GameObject prefab, bullet;
 
 	private void Start()
 	{
@@ -79,6 +79,13 @@ public class Boss : MonoBehaviour, IEnemy
 
 			return nada;
 		}
+
+		return nada;
+	}
+
+	public void Attack()
+    {
+		Instantiate(bullet, transform.position, Quaternion.identity, transform);
 	}
 
 	private void OnDrawGizmosSelected()
