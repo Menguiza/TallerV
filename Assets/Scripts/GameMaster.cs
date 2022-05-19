@@ -303,6 +303,15 @@ public class GameMaster : MonoBehaviour
         }
     }
 
+    public void RemoveAllMods()
+    {
+        for (int i = 0; i < mods.Count; i++)
+        {
+            mods.Remove(mods[i]);
+            CheckMods();
+        }
+    }
+
     public void CheckMods()
     {
         float maxLifeResult = zero;

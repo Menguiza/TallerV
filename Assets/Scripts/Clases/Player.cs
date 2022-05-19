@@ -93,20 +93,20 @@ public class Player
         {
             if (value <= maxConciencia && value > 0)
             {
-                conciencia = value;
+                if (status == GameMaster.estado.Dormido && value < conciencia) conciencia += 0;
+                else conciencia = value;
             }
-            else if (value <= 0)
+            else if (value <= 0 && status != GameMaster.estado.Dormido)
             {
                 conciencia = 0;
                 Status = GameMaster.estado.Dormido;
 
                 dreamFlag = true;
             }
-            else if (value >= maxConciencia)
+            else if (value >= maxConciencia && status != GameMaster.estado.Despierto)
             {
                 Status = GameMaster.estado.Despierto;
                 conciencia = maxConciencia;
-                //pesadilla = false;
 
                 wakeFlag = true;
             }
