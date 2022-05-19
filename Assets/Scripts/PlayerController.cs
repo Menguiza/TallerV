@@ -107,6 +107,35 @@ public class PlayerController : MonoBehaviour
         Destroy(instance, 2f);
     }
 
+
+    public void Embestido(GameObject hit)
+    {
+        anim.SetBool("Fall", false);
+        anim.ResetTrigger("Jump");
+        anim.SetTrigger("Knock");
+        anim.SetBool("Knocked", true);
+        move = -transform.forward * knockBackForce;
+        knockBacked = true;
+        ResetAnimDodge();
+        ResetAnimDodge2();
+        InactiveCollider();
+        InactiveCollider2();
+
+        if (hit.GetComponent<IEnemy>() != null)
+        {
+            gm.DamagePlayer(hit.GetComponent<IEnemy>().Damage, hit.GetComponent<IEnemy>().Conciencia);
+        }
+        else if (hit.GetComponent<EnemyController>() != null)
+        {
+            gm.DamagePlayer((int)hit.GetComponent<EnemyController>().conciencia, (int)hit.GetComponent<EnemyController>().conciencia);
+        }
+
+        // Hechizos
+        ManagerHechizos.instance.EndSpellCast();
+        CreateOnHitParticle();
+        GetHitSound();
+    }
+
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (!died)
