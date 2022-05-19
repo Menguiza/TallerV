@@ -31,7 +31,7 @@ public class Economy : MonoBehaviour
 
     private void Start()
     {
-        GameMaster.instance.OnRunEnd.AddListener(SaveGems);
+        GameMaster.instance.OnRunEnd.AddListener(EndRun_Economy);
     }
 
     void SaveGems()
@@ -68,5 +68,13 @@ public class Economy : MonoBehaviour
         GameData.Gems = (int)gems;
         SaveGems();
         GameData.SaveGameData();
+    }
+
+    void EndRun_Economy()
+    {
+        SaveGems();
+        ResetCurrencyAndGems();
+        gems = (uint)GameData.RetreiveGems();
+
     }
 }

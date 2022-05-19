@@ -1856,7 +1856,10 @@ MonoBehaviour:
   onChangeScene:
     m_PersistentCalls:
       m_Calls: []
+  rewardPopUp: {fileID: 0}
+  count: 0
   rooms: []
+  rewards: []
   objetoINP:
   - {fileID: 2807097785294483744, guid: 8f0e3ed616f020d46a376c18515947fb, type: 3}
   spawnsINP:

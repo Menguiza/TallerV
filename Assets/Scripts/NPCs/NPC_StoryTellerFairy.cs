@@ -17,10 +17,15 @@ public class NPC_StoryTellerFairy : MonoBehaviour, IVendorNPC, IInteractive
     [SerializeField] TextMeshProUGUI dialogText;
     [SerializeField] int textRange;
 
+    [SerializeField] AudioClip talkSound;
+    AudioSource audioSource;
+
     private void Start()
     {
         initialPhrase = "Soy una de las hadas más viejas y sabias en el reino. Se muchas cosas de nuestro pasado y cultura.";
         dialogText.text = initialPhrase;
+
+        audioSource = GetComponent<AudioSource>();
 
         phrases = new string[9]
         {
@@ -67,5 +72,6 @@ public class NPC_StoryTellerFairy : MonoBehaviour, IVendorNPC, IInteractive
     public void OpenStore()
     {
         dialogText.text = phrases[UnityEngine.Random.Range(0, phrases.Length)];
+        audioSource.PlayOneShot(talkSound);
     }
 }

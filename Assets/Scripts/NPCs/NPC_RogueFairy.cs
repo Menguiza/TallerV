@@ -17,8 +17,16 @@ public class NPC_RogueFairy : MonoBehaviour, IVendorNPC, IInteractive
 
     [SerializeField] InventoryInput inventoryInput;
 
+    [SerializeField] AudioClip talkSound;
+    AudioSource audioSource;
+
     bool isStoreOpen;
     public bool IsStoreOpen { get => isStoreOpen; set => isStoreOpen = value; }
+
+    void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     int[] SelectRandomSpellsForPlayer()
     {
@@ -85,6 +93,8 @@ public class NPC_RogueFairy : MonoBehaviour, IVendorNPC, IInteractive
         inventoryInput.ActiveCursor(true);
         Inventory.instance.TimeChange(true);
         SoundManager.instance.SetPauseMusic();
+
+        audioSource.PlayOneShot(talkSound);
     }
 
     public void CloseStore()
