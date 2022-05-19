@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -325}
+  m_AnchoredPosition: {x: 100.4, y: -344.3}
   m_SizeDelta: {x: 400, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4569128532162328662
@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -351}
+  m_AnchoredPosition: {x: 100.4, y: -376.7}
   m_SizeDelta: {x: 400, y: 25}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4569128532212952177
@@ -286,7 +286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4569128532385926629
 RectTransform:
   m_ObjectHideFlags: 0
@@ -303,12 +303,13 @@ RectTransform:
   - {fileID: 4569128533688618460}
   - {fileID: 4569128532162328656}
   - {fileID: 4569128532212952179}
+  - {fileID: 3107567039677904045}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 88}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3273187487223073875
@@ -360,8 +361,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 960, y: -580}
-  m_SizeDelta: {x: 2000, y: 1000}
+  m_AnchoredPosition: {x: 1050.1134, y: -557.3933}
+  m_SizeDelta: {x: 1705.0938, y: 857.404}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4569128533350677349
 CanvasRenderer:
@@ -385,13 +386,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2fb7b497505a71341b73cf444a86a5f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: af16e1a3993b76d4280c39392313c4cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -455,9 +456,85 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 71.24, y: -19.3}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &8143584956497501882
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3107567039677904045}
+  - component: {fileID: 7259811047704666051}
+  - component: {fileID: 2572605449238900737}
+  m_Layer: 5
+  m_Name: HadaRoshada
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3107567039677904045
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143584956497501882}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4569128532385926629}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 825.07, y: 348}
+  m_SizeDelta: {x: 235.1765, y: 204.8308}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &7259811047704666051
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143584956497501882}
+  m_CullTransparentMesh: 1
+--- !u!114 &2572605449238900737
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8143584956497501882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e709b3a13acc99c48ae76d57ad94a873, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1001 &4569128531899646709
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465,6 +542,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -553,10 +650,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stance 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 588a92f7be5757341bf6e2e282cbee5d, type: 3}
+      objectReference: {fileID: 21300000, guid: 270bc7ac1e357404ca6eb7ccefdf0a0c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
 --- !u!224 &811042293969227695 stripped
@@ -571,6 +688,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "-50% Da\xF1o infligido\n-50% Da\xF1o recibido"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -659,6 +800,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stance 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "-10% Da\xF1o infligido\n-10% Da\xF1o recibido"
+      objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -677,6 +842,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+25% Probabilidad cr\xEDtica\n+50% Da\xF1o cr\xEDtico"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -765,6 +954,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stance 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+10% Probabilidad cr\xEDtica\n+25% Da\xF1o cr\xEDtico"
+      objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -783,6 +996,32 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "En pesadilla:\n+40% Probabilidad cr\xEDtica\n+100% Da\xF1o cr\xEDtico\n+50%
+        Velocidad de movimiento\n\nEn sue\xF1o normal:\n+50% Da\xF1o recibido\n-75%
+        Da\xF1o infligido"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -871,6 +1110,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stance 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: +70% Probabilidad de pesadilla
+      objectReference: {fileID: 0}
+    - target: {fileID: 6382315743789249062, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -4
+      objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -889,6 +1156,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+50% Velocidad de ataque\n+100% Recarga de hechizos\n+200% TPGC\n-25%
+        Probabilidad cr\xEDtica"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -977,6 +1269,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stance 4
       objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+10% Velocidad de ataque\n+50% Recarga de hechizos\n+50% Conciencia
+        recibida\n-10% Probabilidad cr\xEDtica\n"
+      objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -995,6 +1312,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4569128533688618460}
     m_Modifications:
+    - target: {fileID: 2017221182171396961, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+50% Da\xF1o infligido\n+50% Da\xF1o recibido"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Buy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720744575694907, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3758720744756972890, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1082,6 +1423,30 @@ PrefabInstance:
     - target: {fileID: 3758720744756972891, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Name
       value: Stance 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetStance
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: NPC_Posturas, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3758720745503622968, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 5139702518203002758, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
+      propertyPath: m_text
+      value: "+10% Da\xF1o infligido\n+10% Da\xF1o recibido"
       objectReference: {fileID: 0}
     - target: {fileID: 7169673836538197451, guid: a0df072dc27783c47a58cd52f2e9467f, type: 3}
       propertyPath: m_Sprite

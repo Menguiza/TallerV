@@ -28347,26 +28347,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1013938338}
     m_Modifications:
-    - target: {fileID: 7115543719685555419, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 8fbe5c5911828094daf4d548e11fbaa2, type: 3}
-    - target: {fileID: 7115543719685555419, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
-      propertyPath: m_Color.a
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115543719685555419, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115543719685555419, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7115543719685555419, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
       propertyPath: m_Name
       value: Rogue Fairy UI
@@ -28565,19 +28545,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7115543720523921209, guid: 3326b03f39b39cb46afb057e9113032f, type: 3}
   m_PrefabInstance: {fileID: 7115543720465756316}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7115543720465756331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7115543720465756326}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1852f856149ec848a16940ba7885457, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  vendorNPC: {fileID: 1362888816}
 --- !u!1001 &7878511325078107780
 PrefabInstance:
   m_ObjectHideFlags: 0
