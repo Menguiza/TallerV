@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
 
     public float Gravity { get => gravity; set => gravity = value; }
 
-    Vector3 move = Vector3.zero;
+    public Vector3 move = Vector3.zero;
 
     private void Start()
     {
@@ -173,7 +173,7 @@ public class PlayerController : MonoBehaviour
 
     private void Attack()
     {
-        if (Input.GetButtonDown("Punch") && characterContrl.isGrounded && !attack && !ManagerHechizos.instance.castingSpell && !dodge && !knockBacked && !blocking && !airAttack)
+        if (Input.GetKeyDown(KeyCode.Mouse0) && characterContrl.isGrounded && !attack && !ManagerHechizos.instance.castingSpell && !dodge && !knockBacked && !blocking && !airAttack)
         {
             anim.SetTrigger("Punch");
 
@@ -181,7 +181,7 @@ public class PlayerController : MonoBehaviour
 
             anim.SetFloat("Horizontal", zero);
         }
-        else if (Input.GetButtonDown("Punch") && !characterContrl.isGrounded && !dodge && !knockBacked && !airAttack && !attack)
+        else if (Input.GetKeyDown(KeyCode.Mouse0) && !characterContrl.isGrounded && !dodge && !knockBacked && !airAttack && !attack)
         {
             airAttack = true;
             anim.SetTrigger("AirAttack");
