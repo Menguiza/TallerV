@@ -7,6 +7,7 @@ public class SceneChanger : MonoBehaviour
 {
     public int index;
     [SerializeField] bool markedAsInitializer, markedAsLoader, markedAsLobbyExit;
+    [SerializeField] bool markedAsBoss;
 
     private void Start()
     {
@@ -14,7 +15,10 @@ public class SceneChanger : MonoBehaviour
         if (markedAsInitializer) RoomManager.instance.GenerateRandomRun();
         if (markedAsLoader)
         {
-            RoomManager.instance.UpdateInfo();
+            if(SceneManager.GetActiveScene().buildIndex != 9)
+            {
+                RoomManager.instance.UpdateInfo();
+            }
 
             if(RoomManager.instance.count > 2)
             {
@@ -33,6 +37,7 @@ public class SceneChanger : MonoBehaviour
         {            
             FadeScreen fs = FindObjectOfType<FadeScreen>();
             fs.StartCoroutine(fs.FadeBlack());
+           if(markedAsBoss) GameMaster.instance.OnRunEnd?.Invoke();
             Invoke("ChangeScene", 0.5f);
         }
     }

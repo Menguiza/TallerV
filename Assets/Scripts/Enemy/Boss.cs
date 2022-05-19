@@ -47,15 +47,18 @@ public class Boss : MonoBehaviour, IEnemy
 
 	public void LookAtPlayer()
 	{
-		if (transform.position.z > player.position.z && isFlipped)
-		{
-			transform.Rotate(0f, 180f, 0f);
-			isFlipped = false;
-		}
-		else if (transform.position.z < player.position.z && !isFlipped)
-		{
-			transform.Rotate(0f, 180f, 0f);
-			isFlipped = true;
+		if(player != null)
+        {
+			if (transform.position.z > player.position.z && isFlipped)
+			{
+				transform.Rotate(0f, 180f, 0f);
+				isFlipped = false;
+			}
+			else if (transform.position.z < player.position.z && !isFlipped)
+			{
+				transform.Rotate(0f, 180f, 0f);
+				isFlipped = true;
+			}
 		}
 	}
 

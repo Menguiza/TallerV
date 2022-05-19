@@ -60,7 +60,7 @@ public class Item : ScriptableObject
         Inventory.instance.StartShit(duration, this);
     }
 
-    void ResetParameter()
+    public void ResetParameter()
     {
         GameMaster.instance.RemoveMod(nombre);
         Inventory.instance.Remove(this);
