@@ -469,7 +469,7 @@ public class PlayerController : MonoBehaviour
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
+                gm.Player.Conciencia = (ushort)Mathf.Max(gm.Player.Conciencia - (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia, 0);
             }
         }
 
@@ -512,7 +512,7 @@ public class PlayerController : MonoBehaviour
 
             if (gm.Player.Status == GameMaster.estado.Dormido && gm.Player.Conciencia < gm.Player.MaxConciencia)
             {
-                gm.Player.Conciencia -= (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia;
+                gm.Player.Conciencia = (ushort)Mathf.Max(gm.Player.Conciencia - (ushort)enemy.gameObject.GetComponent<IEnemy>().Conciencia, 0);
             }
 
         }
