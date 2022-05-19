@@ -100,6 +100,7 @@ public class GameMaster : MonoBehaviour
 
         player = new Player(maxLife, dmg);
         CheckMods();
+        OnRunEnd.AddListener(ResetStats); 
     }
 
 
@@ -394,6 +395,14 @@ public class GameMaster : MonoBehaviour
         player.MultDañoRecibido = one;
         player.MultHechizos = one;
         CorrectLife(maxOld, player.MaxLife);
+
+        player.dreamFlag = false;
+        player.wakeFlag = false;
+
+        if (player.status == estado.Dormido)
+        {
+            PlayerWake.Invoke();
+        }
     }
 
     void CorrectLife(uint maxLife, uint newMaxLife)
@@ -495,6 +504,5 @@ public class GameMaster : MonoBehaviour
 
         return false;
     }
-
     #endregion
 }
