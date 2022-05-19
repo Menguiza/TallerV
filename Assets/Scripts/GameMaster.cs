@@ -305,9 +305,9 @@ public class GameMaster : MonoBehaviour
 
     public void RemoveAllMods()
     {
-        foreach (Mods element in mods)
+        for (int i = 0; i < mods.Count; i++)
         {
-            mods.Remove(element);
+            mods.Remove(mods[i]);
             CheckMods();
         }
     }
