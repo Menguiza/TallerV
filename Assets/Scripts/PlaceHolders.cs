@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Audio;
 
 public class PlaceHolders : MonoBehaviour
 {
@@ -10,8 +11,7 @@ public class PlaceHolders : MonoBehaviour
 
     public TMP_Text coins, gems;
 
-    [SerializeField]
-    Image img;
+    [SerializeField] Image img;
 
     // Update is called once per frame
     void Update()

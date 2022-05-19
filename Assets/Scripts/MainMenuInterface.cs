@@ -78,7 +78,7 @@ public class MainMenuInterface : MonoBehaviour
     {
         GameData.ResetSaveFile();
         GameData.SaveGameData(); 
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(3);
         GameData.LoadGameData();
         StartCoroutine(InitializeOnNextFrame());
     }
