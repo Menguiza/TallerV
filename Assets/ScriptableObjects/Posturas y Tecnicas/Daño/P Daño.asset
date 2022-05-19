@@ -19,4 +19,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5d0f36a05f89975488074cf18b562ef4, type: 2}
   desc: "Postura creada por los guerreros del clan brutus, enfoc\xE1ndose en la agresividad"
   rarity: 0
-  gemCost: 30
+  gemCost: 5

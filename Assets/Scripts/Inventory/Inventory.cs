@@ -9,7 +9,7 @@ public class Inventory : MonoBehaviour
 
     [SerializeField]
     List<Item> items_Pasivos = new List<Item>();
-    List<Item> items_Activos = new List<Item>(5);
+    Item[] items_Activos = new Item[5];
     public DreamCatcher dmrcatcher { get; private set; }
 
     [SerializeField]
@@ -44,7 +44,7 @@ public class Inventory : MonoBehaviour
 
         for(int i = 0; i<5; i++)
         {
-            items_Activos.Add(null);
+            items_Activos[i] = null;
         }
     }
 
@@ -275,7 +275,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activables.Count; i++)
         {
             activosInv[i].GetComponent<ItemContainerInv>().itemInfo = activables[i].GetComponent<ItemContainer>().itemInfo;
-            items_Activos[i] = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
+            items_Activos[i] = activables[i].GetComponent<ItemContainer>().itemInfo;
         }
     }
     public void SlotLoadReverse()
@@ -283,7 +283,7 @@ public class Inventory : MonoBehaviour
         for (int i = 0; i < activosInv.Count; i++)
         {
             activables[i].GetComponent<ItemContainer>().itemInfo = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
-            items_Activos[i] = activables[i].GetComponent<ItemContainerInv>().itemInfo;
+            items_Activos[i] = activosInv[i].GetComponent<ItemContainerInv>().itemInfo;
         }
     }
 
@@ -299,9 +299,9 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void UpdateUi()
+    void UpdateUi()
     {
-        foreach(Item item in items_Pasivos)
+        foreach (Item item in items_Pasivos)
         {
             bool stack = false;
 
@@ -335,10 +335,22 @@ public class Inventory : MonoBehaviour
             pasivo.GetComponent<ItemContainer>().itemInfo = item;
         }
 
-        for(int i = 0; i<items_Activos.Count; i++)
+        for (int i = 0; i < activables.Count; i++)
         {
-            activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
+            ScriptableObject obj = activables[i].GetComponent<ItemContainer>().itemInfo;
+
+            if (obj == null)
+            {
+                activables[i].GetComponent<ItemContainer>().itemInfo = items_Activos[i];
+            }
         }
+
+        OnItemCollected?.Invoke();
+    }
+
+    public void InvokeWithDelay()
+    {
+        Invoke("UpdateUi", 0.1f);
     }
 
     #region"Generación de Items"

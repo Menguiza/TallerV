@@ -10,7 +10,7 @@ public class RoomManager : MonoBehaviour
     public UnityEvent onChangeScene;
     public GameObject rewardPopUp;
     int[] indexes = new int[5];
-    int count = 0;
+    public int count = 0;
 
     [SerializeField]
     List<Room> rooms = new List<Room>();
