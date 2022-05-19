@@ -1378,6 +1378,55 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &2879771268005933344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4708888031053854786}
+  - component: {fileID: 3846328200613664547}
+  m_Layer: 5
+  m_Name: UiSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &4708888031053854786
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879771268005933344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5196616377128454763}
+  m_RootOrder: 16
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &3846328200613664547
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2879771268005933344}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1 &3131602984090346315
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3054,7 @@ GameObject:
   - component: {fileID: 5196616375567907465}
   - component: {fileID: 5196616375567907469}
   - component: {fileID: 5196616375567907470}
-  - component: {fileID: 5196616375567907471}
+  - component: {fileID: 2079030505}
   m_Layer: 5
   m_Name: 2
   m_TagString: Untagged
@@ -3118,7 +3167,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5196616375567907471
+--- !u!114 &2079030505
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -3147,6 +3196,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -3154,6 +3215,18 @@ MonoBehaviour:
         - m_Target: {fileID: 5196616377128454677}
           m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
           m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3544,6 +3617,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -3551,6 +3636,18 @@ MonoBehaviour:
         - m_Target: {fileID: 5196616377128454677}
           m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
           m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3899,7 +3996,7 @@ GameObject:
   - component: {fileID: 5196616375687332302}
   - component: {fileID: 5196616375687332303}
   - component: {fileID: 5196616375687332296}
-  - component: {fileID: 5196616375687332297}
+  - component: {fileID: 492507837}
   m_Layer: 5
   m_Name: 5
   m_TagString: Untagged
@@ -4012,7 +4109,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5196616375687332297
+--- !u!114 &492507837
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -4041,6 +4138,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 4
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -4048,6 +4157,18 @@ MonoBehaviour:
         - m_Target: {fileID: 5196616377128454677}
           m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
           m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4682,6 +4803,7 @@ GameObject:
   - component: {fileID: 5196616375875310336}
   - component: {fileID: 5196616375875310338}
   - component: {fileID: 5196616375875310337}
+  - component: {fileID: 886731080}
   m_Layer: 5
   m_Name: Icono1 (2)
   m_TagString: Untagged
@@ -4759,6 +4881,75 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &886731080
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196616375875310339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfoSpells
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5196616375882985516
 GameObject:
   m_ObjectHideFlags: 0
@@ -5138,6 +5329,7 @@ GameObject:
   - component: {fileID: 5196616375941957619}
   - component: {fileID: 5196616375941957629}
   - component: {fileID: 5196616375941957628}
+  - component: {fileID: 648292172}
   m_Layer: 5
   m_Name: Icono1 (1)
   m_TagString: Untagged
@@ -5215,6 +5407,75 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &648292172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196616375941957630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfoSpells
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5196616375952957708
 GameObject:
   m_ObjectHideFlags: 0
@@ -5459,7 +5720,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Rendirse
+  m_text: Salir
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f7e0e398b527da94999ef79c7f1e929d, type: 2}
   m_sharedMaterial: {fileID: 6852845161228830805, guid: f7e0e398b527da94999ef79c7f1e929d, type: 2}
@@ -5872,6 +6133,7 @@ GameObject:
   - component: {fileID: 5196616376056091155}
   - component: {fileID: 5196616376056091165}
   - component: {fileID: 5196616376056091164}
+  - component: {fileID: 419175405}
   m_Layer: 5
   m_Name: Icono1 (3)
   m_TagString: Untagged
@@ -5949,6 +6211,75 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &419175405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5196616376056091166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonEnter
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfoSpells
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 1
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &5196616376056224467
 GameObject:
   m_ObjectHideFlags: 0
@@ -7026,7 +7357,7 @@ GameObject:
   - component: {fileID: 5196616376393408486}
   - component: {fileID: 5196616376393408506}
   - component: {fileID: 5196616376393408507}
-  - component: {fileID: 5196616376393408484}
+  - component: {fileID: 1932930561}
   m_Layer: 5
   m_Name: 3
   m_TagString: Untagged
@@ -7139,7 +7470,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5196616376393408484
+--- !u!114 &1932930561
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -7168,6 +7499,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -7175,6 +7518,18 @@ MonoBehaviour:
         - m_Target: {fileID: 5196616377128454677}
           m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
           m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8446,7 +8801,7 @@ GameObject:
   - component: {fileID: 5196616376709298752}
   - component: {fileID: 5196616376709298756}
   - component: {fileID: 5196616376709298757}
-  - component: {fileID: 5196616376709298758}
+  - component: {fileID: 1542679744}
   m_Layer: 5
   m_Name: 4
   m_TagString: Untagged
@@ -8559,7 +8914,7 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &5196616376709298758
+--- !u!114 &1542679744
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8588,6 +8943,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: PopUpInfo
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
   - eventID: 1
     callback:
       m_PersistentCalls:
@@ -8595,6 +8962,18 @@ MonoBehaviour:
         - m_Target: {fileID: 5196616377128454677}
           m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
           m_MethodName: OnButtonExit
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 5196616377128454677}
+          m_TargetAssemblyTypeName: CursorTextChange, Assembly-CSharp
+          m_MethodName: DestroyPopUp
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -10118,6 +10497,7 @@ RectTransform:
   - {fileID: 5885809281984555021}
   - {fileID: 5923817628525536426}
   - {fileID: 4206137290737885166}
+  - {fileID: 4708888031053854786}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10145,7 +10525,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: -1
+  m_SortingOrder: -2
   m_TargetDisplay: 0
 --- !u!114 &5196616377128454760
 MonoBehaviour:
@@ -10213,6 +10593,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1daca25deddb62e41b3656edeb1f3a85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCanvas: {fileID: 5196616377128454676}
+  text: {fileID: 5691103412882883224, guid: 3520e1a045eb23e4eaad088160c740a5, type: 3}
+  uiSpawn: {fileID: 2879771268005933344}
 --- !u!1 &5196616377135377260
 GameObject:
   m_ObjectHideFlags: 0
@@ -11080,7 +11463,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 12173320165988437}
         m_TargetAssemblyTypeName: PauseInput, Assembly-CSharp
-        m_MethodName: MainMenu
+        m_MethodName: ToActualMainMenu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -11967,7 +12350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 99108a2965b2c684597b9edf7cdc44df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 531f0391a0b05df45bc7c247cf1fbf5b, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

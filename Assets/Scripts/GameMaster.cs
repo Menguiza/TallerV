@@ -107,16 +107,18 @@ public class GameMaster : MonoBehaviour
     private void FixedUpdate()
     {
         Inconciencia();
-
-        if (playerObject == null && player.Life == zero && !sceneReloaded)
-        {
-            player = new Player(maxLife, dmg);
-            Invoke("ReloadScene", one);
-        }
     }
 
     private void Update()
     {
+        if (playerObject == null && !sceneReloaded)
+        {
+            sceneReloaded = true;
+            player = new Player(maxLife, dmg);
+            print("entro");
+            Invoke("ReloadScene", one);
+        }
+
         /*
         if (player.Status == estado.Dormido)
         {
@@ -176,11 +178,9 @@ public class GameMaster : MonoBehaviour
 
     public void ReloadScene()
     {
-        if (!sceneReloaded)
-        {
-            sceneReloaded = true;
-            SceneManager.LoadScene(2);
-        }
+        SceneManager.LoadScene(2);
+        sceneReloaded = false;
+        print("se corrio");
     }
 
     #endregion

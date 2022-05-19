@@ -168,7 +168,7 @@ public class RoomManager : MonoBehaviour
             GameObject popUp = Instantiate(rewardPopUp, GameMaster.instance.playerObject.transform.position, Quaternion.identity);
             popUp.GetComponent<PlaceHolders>().coins.text = rewards[count-2].coins.ToString();
             popUp.GetComponent<PlaceHolders>().gems.text = rewards[count-2].gems.ToString();
-            popUp.GetComponent<PlaceHolders>().icon = rewards[count-2].Give();
+            popUp.GetComponent<PlaceHolders>().icon = rewards[count - 2].Give();
             Destroy(popUp, 5f);
         }
         else if(SceneManager.GetActiveScene().buildIndex == 9)

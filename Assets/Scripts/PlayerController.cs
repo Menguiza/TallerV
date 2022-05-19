@@ -25,14 +25,14 @@ public class PlayerController : MonoBehaviour
     GameMaster gm;
 
     bool airAttack = false, dodge = false, dodgeAir = false, knockBacked = false, died = false;
-    public bool blocking = false, dodgeEnable = true, attack = false;
+    public bool blocking = false, dodgeEnable = true, attack = false, invulnerable = false;
 
     //Variables Utilidad
     byte hundred = 100, zero = 0, fullTurn = 180;
 
     [SerializeField]
     private float jumpFoce = 10f, dodgeForce = 100f, knockBackForce = 5f, delay = 3f;
-    public float resetDodgeTime = 2f;
+    public float resetDodgeTime = 2f, timer = 0;
 
     [SerializeField]
     float gravity = 9.8f, attackRange = 1f;
@@ -66,6 +66,17 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.timeScale == 0) return;
         if (isPerformingElectricDash) return;
+
+        if(invulnerable)
+        {
+            timer += Time.deltaTime;
+
+            if(timer>=1f)
+            {
+                timer = 0;
+                invulnerable = false;
+            }
+        }
 
         Interact();
         Move();
@@ -116,30 +127,34 @@ public class PlayerController : MonoBehaviour
 
     public void Embestido(GameObject hit)
     {
-        anim.SetBool("Fall", false);
-        anim.ResetTrigger("Jump");
-        anim.SetTrigger("Knock");
-        anim.SetBool("Knocked", true);
-        move = -transform.forward * knockBackForce;
-        knockBacked = true;
-        ResetAnimDodge();
-        ResetAnimDodge2();
-        InactiveCollider();
-        InactiveCollider2();
-
-        if (hit.GetComponent<IEnemy>() != null)
+        if(!invulnerable)
         {
-            gm.DamagePlayer(hit.GetComponent<IEnemy>().Damage, hit.GetComponent<IEnemy>().Conciencia);
-        }
-        else if (hit.GetComponent<EnemyController>() != null)
-        {
-            gm.DamagePlayer((int)hit.GetComponent<EnemyController>().conciencia, (int)hit.GetComponent<EnemyController>().conciencia);
-        }
+            invulnerable = true;
+            anim.SetBool("Fall", false);
+            anim.ResetTrigger("Jump");
+            anim.SetTrigger("Knock");
+            anim.SetBool("Knocked", true);
+            move = -transform.forward * knockBackForce;
+            knockBacked = true;
+            ResetAnimDodge();
+            ResetAnimDodge2();
+            InactiveCollider();
+            InactiveCollider2();
 
-        // Hechizos
-        ManagerHechizos.instance.EndSpellCast();
-        CreateOnHitParticle();
-        GetHitSound();
+            if (hit.GetComponent<IEnemy>() != null)
+            {
+                gm.DamagePlayer(hit.GetComponent<IEnemy>().Damage, hit.GetComponent<IEnemy>().Conciencia);
+            }
+            else if (hit.GetComponent<EnemyController>() != null)
+            {
+                gm.DamagePlayer((int)hit.GetComponent<EnemyController>().conciencia, (int)hit.GetComponent<EnemyController>().conciencia);
+            }
+
+            // Hechizos
+            ManagerHechizos.instance.EndSpellCast();
+            CreateOnHitParticle();
+            GetHitSound();
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -148,49 +163,11 @@ public class PlayerController : MonoBehaviour
         {
             if (hit.collider.CompareTag("Enemy") && !anim.GetBool("Knocked"))
             {
-                anim.SetBool("Fall", false);
-                anim.ResetTrigger("Jump");
-                anim.SetTrigger("Knock");
-                anim.SetBool("Knocked", true);
-                move = -transform.forward * knockBackForce;
-                knockBacked = true;
-                ResetAnimDodge();
-                ResetAnimDodge2();
-                InactiveCollider();
-                InactiveCollider2();
-
-                if(hit.collider.GetComponent<IEnemy>() != null)
-                {
-                    gm.DamagePlayer(hit.collider.GetComponent<IEnemy>().Damage, hit.collider.GetComponent<IEnemy>().Conciencia);
-                }
-                else if(hit.collider.GetComponent<EnemyController>() != null)
-                {
-                    gm.DamagePlayer((int)hit.collider.GetComponent<EnemyController>().conciencia, (int)hit.collider.GetComponent<EnemyController>().conciencia);
-                }
-
-                // Hechizos
-                ManagerHechizos.instance.EndSpellCast();
-                CreateOnHitParticle();
-                GetHitSound();
+                Embestido(hit.gameObject);
             }
             else if (hit.collider.GetComponent<TrapContainer>() != null && !anim.GetBool("Knocked"))
             {
-                anim.SetBool("Fall", false);
-                anim.ResetTrigger("Jump");
-                anim.SetTrigger("Knock");
-                anim.SetBool("Knocked", true);
-                move = -transform.forward * knockBackForce;
-                knockBacked = true;
-                ResetAnimDodge();
-                ResetAnimDodge2();
-                InactiveCollider();
-                InactiveCollider2();
-                gm.DamagePlayer((int)hit.collider.GetComponent<TrapContainer>().trap.damage, (int)hit.collider.GetComponent<TrapContainer>().trap.damage);
-
-                // Hechizos
-                ManagerHechizos.instance.EndSpellCast();
-                CreateOnHitParticle();
-                GetHitSound();
+                Embestido(hit.gameObject);
             }
         }
     }
