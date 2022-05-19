@@ -11,9 +11,12 @@ public class ResetAllOnArriveToLobby : MonoBehaviour
 
     void LateReset()
     {
+        GameMaster.instance.ResetStats();
         GameMaster.instance.RemoveActiveTechniques();
         Inventory.instance.ResetInventory();
         GameMaster.instance.RemoveAllMods();
+        ManagerHechizos.instance.CleanAllSpells();
+        
 
         print("Late reset");
     }

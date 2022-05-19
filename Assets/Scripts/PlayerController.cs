@@ -223,12 +223,12 @@ public class PlayerController : MonoBehaviour
                 ManagerHechizos.instance.FirstSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();
             }
-            else if (Input.GetKeyDown(KeyCode.E) && ManagerHechizos.instance.spellsData[1] != null && !(ManagerHechizos.instance.availableSpells[1] as IHechizo).IsOnCD)
+            else if (Input.GetKeyDown(KeyCode.W) && ManagerHechizos.instance.spellsData[1] != null && !(ManagerHechizos.instance.availableSpells[1] as IHechizo).IsOnCD)
             {
                 ManagerHechizos.instance.SecondSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();
             }
-            else if (Input.GetKeyDown(KeyCode.R) && ManagerHechizos.instance.spellsData[2] != null && !(ManagerHechizos.instance.availableSpells[2] as IHechizo).IsOnCD)
+            else if (Input.GetKeyDown(KeyCode.E) && ManagerHechizos.instance.spellsData[2] != null && !(ManagerHechizos.instance.availableSpells[2] as IHechizo).IsOnCD)
             {
                 ManagerHechizos.instance.ThirdSpellCast.Invoke();
                 ManagerHechizos.instance.StartSpellCast();

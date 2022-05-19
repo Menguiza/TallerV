@@ -21,7 +21,7 @@ public class ManagerHechizos : MonoBehaviour
 
     public UI_SlotsHechizos slotsHechizos;
 
-    public float spellCastSpeedMultiplier = 1;
+    public float spellCastSpeedMultiplier;
 
     // Variable de control
     public bool castingSpell = false;
@@ -500,6 +500,8 @@ public class ManagerHechizos : MonoBehaviour
 
     private void Update()
     {
+        spellCastSpeedMultiplier = GameMaster.instance.Player.MultHechizos;
+
         #region"Input para Debug de hechizos"
 
         /*
