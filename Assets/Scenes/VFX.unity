@@ -14201,6 +14201,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: VFX_SPAWN
       objectReference: {fileID: 0}
+    - target: {fileID: 7826240504955803683, guid: 17c4e2ec0cb73bb4f941171df43d978d, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8339034565871011561, guid: 17c4e2ec0cb73bb4f941171df43d978d, type: 3}
+      propertyPath: playOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17c4e2ec0cb73bb4f941171df43d978d, type: 3}
 --- !u!1001 &7959368207898159254
