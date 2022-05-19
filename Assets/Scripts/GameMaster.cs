@@ -405,6 +405,9 @@ public class GameMaster : MonoBehaviour
         player.MultHechizos = one;
         CorrectLife(maxOld, player.MaxLife);
 
+        player.Conciencia = 100;
+        player.Life = player.MaxLife;
+
         player.dreamFlag = false;
         player.wakeFlag = false;
 
